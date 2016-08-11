@@ -1,2 +1,0 @@
-class ExhibitController < ApplicationController
-end
