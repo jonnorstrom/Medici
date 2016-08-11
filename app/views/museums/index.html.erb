@@ -1,8 +1,11 @@
 <% if current_user %>
-  <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+  <h1>
+    <%="Hi #{current_user.name}!" %>
+  </h1>
+  <%= link_to "Logout", destroy_user_session_path, :method => :delete %><br>
 <% else %>
   <%= link_to "Login", new_user_session_path %>
-  <%= link_to "Register", new_user_registration_path %>
+  <%= link_to "Register", new_user_registration_path %><br>
 <% end %>
 <br>
 <% @museums.shuffle.each do |museum| %>
@@ -10,4 +13,6 @@
 
 <% end %>
 <br><br><br>
-<%=link_to "Add Museum", new_museum_path %>
+<% if current_user %>
+  <%=link_to "Add Museum", new_museum_path %>
+<% end %>
