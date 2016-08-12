@@ -5,6 +5,9 @@ class MuseumsController < ApplicationController
     # @museums = Museum.all
     # @exhibits = Exhibit.all
     @museums = Museum.all + Exhibit.all
+    if current_user
+      @user = current_user
+    end
   end
 
   def show
