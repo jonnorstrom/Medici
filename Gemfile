@@ -28,6 +28,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem "paperclip", "~> 5.0.0"
+gem 'geocoder'
+gem 'underscore-rails'
+gem 'gmaps4rails'
+gem 'jquery-turbolinks'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

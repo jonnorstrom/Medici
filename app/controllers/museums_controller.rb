@@ -10,6 +10,10 @@ class MuseumsController < ApplicationController
 
   def show
     @museum = Museum.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
+     marker.lat museum.latitude
+     marker.lng museum.longitude
+   end
   end
 
   def new
@@ -49,7 +53,7 @@ class MuseumsController < ApplicationController
   private
 
   def museum_params
-    params.require(:museum).permit(:name, :blurb, :description, :photo, :location)
+    params.require(:museum).permit(:name, :blurb, :description, :photo, :address)
   end
 
 end
