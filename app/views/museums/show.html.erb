@@ -1,5 +1,6 @@
 <%= @museum.name %><br>
 <%= @museum.description %>
+<%= image_tag @museum.photo.url(:large) %>
 <br>
 <% if current_user %>
   <%= link_to "Edit Museum", edit_museum_path %>
