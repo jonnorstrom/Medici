@@ -1,0 +1,19 @@
+<% if current_user %>
+  <h1>
+    <%= image_tag @user.avatar.url(:medium) %><br>
+    <%= link_to "#{current_user.name}", @user %>
+  </h1>
+  <%= link_to "Logout", destroy_user_session_path, :method => :delete %><br>
+<% else %>
+  <%= link_to "Login", new_user_session_path %>
+  <%= link_to "Register", new_user_registration_path %><br>
+<% end %>
+<br>
+<% @museums.shuffle.each do |museum| %>
+  <%= link_to "#{museum.name}", museum %><br>
+
+<% end %>
+<br><br><br>
+<% if current_user %>
+  <%=link_to "Add Museum", new_museum_path %>
+<% end %>
