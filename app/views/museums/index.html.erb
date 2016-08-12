@@ -1,6 +1,7 @@
 <% if current_user %>
   <h1>
-    <%="Hi #{current_user.name}!" %>
+    <%= image_tag @user.avatar.url(:medium) %><br>
+    <%= link_to "#{current_user.name}", @user %>
   </h1>
   <%= link_to "Logout", destroy_user_session_path, :method => :delete %><br>
 <% else %>

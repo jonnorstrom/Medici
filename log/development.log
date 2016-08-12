@@ -1942,3 +1942,1042 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 47ms (Views: 45.1ms | ActiveRecord: 0.0ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (23.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (11.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (126.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "mediciapp_development"[0m
+  [1m[35m (124.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "mediciapp_test"[0m
+  [1m[35m (20.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (20.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (5.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5304950054646260970);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateMuseums (20160811144932)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (31.0ms)[0m  [1m[35mCREATE TABLE "museums" ("id" serial primary key, "name" character varying, "blurb" character varying, "description" character varying, "location" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (28.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160811144932"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateExhibits (20160811144940)
+  [1m[35m (6.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.2ms)[0m  [1m[35mCREATE TABLE "exhibits" ("id" serial primary key, "name" character varying, "blurb" character varying, "description" character varying, "start_date" date, "end_date" date, "museum_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160811144940"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTickets (20160811144947)
+  [1m[35m (6.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" serial primary key, "price" float, "museum_id" integer, "user_id" integer, "paid" boolean, "redeemed" boolean, "date_redeemed" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160811144947"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20160811174511)
+  [1m[35m (5.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "name" character varying NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160811174511"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentAvatarToUsers (20160812143728)
+  [1m[35m (6.2ms)[0m  [1m[35mBEGIN[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachmentAvatarToUsers < ActiveRecord::Migration[4.2] (called from require at /Users/scottsouthard/Documents/Dev/medici/bin/rails:9)
+  [1m[35m (18.5ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_file_name" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_content_type" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_file_size" integer[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_updated_at" timestamp[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160812143728"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-08-12 14:46:21 UTC], ["updated_at", 2016-08-12 14:46:21 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5304950054646260970)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (9.1ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'exhibits'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'museums'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'tickets'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "museums" ("name", "blurb", "description", "location", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Party Museum"], ["blurb", "A Place to Party"], ["description", "Millions of party exhibits and a ton of nacho cheese dip"], ["location", "Chicago, IL"], ["created_at", 2016-08-12 14:46:33 UTC], ["updated_at", 2016-08-12 14:46:33 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "museums" ("name", "blurb", "description", "location", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Museum of Boring"], ["blurb", "It's so boring"], ["description", "Millions of boring exhibits and a ton of infomercials and geometry lectures"], ["location", "Spokane, WA"], ["created_at", 2016-08-12 14:46:33 UTC], ["updated_at", 2016-08-12 14:46:33 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMuseum Load (0.2ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "exhibits" ("name", "blurb", "description", "museum_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "History of The Chugging Competition"], ["blurb", "A look through the chugs of yore"], ["description", "A walk backwards in time to the earliest beer drinking competitions as well as the modern party bros of today. Very informative."], ["museum_id", 1], ["created_at", 2016-08-12 14:46:33 UTC], ["updated_at", 2016-08-12 14:46:33 UTC]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2016-08-12 09:46:43 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 469ms (Views: 398.1ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-08-12 09:46:47 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 93ms (Views: 60.1ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-08-12 09:46:50 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 80ms (Views: 78.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-12 09:47:01 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"92cB3IvTE+LlQkT49VKeSr17FuaShJ8aS9a0sCGAiM+kET5SQLykHFURT5zRhyQBDH+Irw/dV94eRqCOJQD1/w==", "user"=>{"email"=>"prescott.southard@aol.com", "name"=>"Scott", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (14.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "prescott.southard@aol.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "prescott.southard@aol.com"], ["name", "Scott"], ["encrypted_password", "$2a$11$WlcLfqPvD4/b/pUUIttekudL2BnnABrSTAdvyzsShCs7pyVsgPdKy"], ["created_at", 2016-08-12 14:47:01 UTC], ["updated_at", 2016-08-12 14:47:01 UTC]]
+  [1m[35m (4.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-08-12 14:47:01 UTC], ["last_sign_in_at", 2016-08-12 14:47:01 UTC], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", 2016-08-12 14:47:01 UTC], ["id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/museums/1/edit
+Completed 302 Found in 197ms (ActiveRecord: 21.1ms)
+
+
+Started GET "/museums/1/edit" for ::1 at 2016-08-12 09:47:01 -0500
+Processing by MuseumsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.2ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering museums/edit.html.erb within layouts/application
+  Rendered museums/edit.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 46ms (Views: 29.7ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:47:07 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 40ms (Views: 33.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/images/medium/default-profile.jpg" for ::1 at 2016-08-12 09:47:07 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/images/medium/default-profile.jpg"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered collection of /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [32 times] (16.7ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.4ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (142.5ms)
+Started DELETE "/users/sign_out" for ::1 at 2016-08-12 09:47:10 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"y/PfM0XMWlWb3nGsE8IJF5oHu4JQPOI93GYssbUf4/kGdqtBfBpb3HyOJKJbqdNMcb115GGwo8/xkGmoFq549g=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:47:10 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.2ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 40ms (Views: 35.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-08-12 09:47:13 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 65ms (Views: 62.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-08-12 09:47:17 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kBHjKm3ymiuuwOGykHm9P8xwKtQ/mW5bWO3YhRhWr/XNIAyOTGI8O3i4ykO7shy+IBSDSaSRHqPlyV5VikZSdA==", "user"=>{"email"=>"prescott.southard@aol.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "prescott.southard@aol.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", 2016-08-12 14:47:17 UTC], ["sign_in_count", 2], ["updated_at", 2016-08-12 14:47:17 UTC], ["id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 151ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:47:17 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 37ms (Views: 32.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/images/medium/default-profile.jpg" for ::1 at 2016-08-12 09:47:17 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/images/medium/default-profile.jpg"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered collection of /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [32 times] (12.3ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (165.8ms)
+Started DELETE "/users/sign_out" for ::1 at 2016-08-12 09:47:22 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"DQ7FqlUulbYr1M8jyAkQ9fNi4If5SvvUw9AUzVcdm5etus29230/acJDyczNDn/dpb43oSfe+FC82O+eoaZjuw=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:47:22 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 31ms (Views: 25.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-08-12 09:47:24 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 54ms (Views: 53.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-12 09:47:40 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QmjeLCueSfJQ7bh6VE2l2q5wTBK0XKDaW4ykLCsZwyZAd+spnfs/iLl9bn1FgUxG0zyUHl5bl/inl0NbacazGA==", "user"=>{"email"=>"scott@scott.scott", "name"=>"scott", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fde2aee2540 @tempfile=#<Tempfile:/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/RackMultipart20160812-34558-la9341.jpg>, @original_filename="AAEAAQAAAAAAAAinAAAAJGUzMGVmMGJhLWQxOGUtNGJlOS04NWNkLTQ0YzYzODFhMzg3Ng.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"AAEAAQAAAAAAAAinAAAAJGUzMGVmMGJhLWQxOGUtNGJlOS04NWNkLTQ0YzYzODFhMzg3Ng.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Sign up"}
+Command :: file -b --mime '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-2ilk5f.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1kc99pp.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1kc99pp.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1kc99pp.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/65fbf4aa0218fd4e12e8b0cf9f4cb38020160812-34558-13xl3js'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1kc99pp.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1kc99pp.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1kc99pp.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/65fbf4aa0218fd4e12e8b0cf9f4cb38020160812-34558-zcez8j'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-15xbx4y.jpg'
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "scott@scott.scott"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "scott@scott.scott"], ["name", "scott"], ["encrypted_password", "$2a$11$iC21oqj/nwym51VvoZiVdOBs46uBSFDdQZDs88gi1Qas.nHUMkoTe"], ["created_at", 2016-08-12 14:47:40 UTC], ["updated_at", 2016-08-12 14:47:40 UTC], ["avatar_file_name", "AAEAAQAAAAAAAAinAAAAJGUzMGVmMGJhLWQxOGUtNGJlOS04NWNkLTQ0YzYzODFhMzg3Ng.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 26627], ["avatar_updated_at", 2016-08-12 14:47:40 UTC]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-08-12 14:47:40 UTC], ["last_sign_in_at", 2016-08-12 14:47:40 UTC], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", 2016-08-12 14:47:40 UTC], ["id", 2]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 400ms (ActiveRecord: 12.8ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:47:40 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 50ms (Views: 42.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:47:58 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.2ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 35ms (Views: 29.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/museums/1" for ::1 at 2016-08-12 09:48:05 -0500
+Processing by MuseumsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMuseum Load (0.7ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering museums/show.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered museums/show.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 48ms (Views: 41.2ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/users" for ::1 at 2016-08-12 09:48:31 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gY5B6AxjTi6lJ98PapYSv2TAv33Xco5L169rpHR300LaES+P6QVCK7n/1gVV9Bbtvm3JBjUpHwvwX8xL4atRIQ==", "user"=>{"email"=>"t@scott.scott", "name"=>"scott", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fde2edf8428 @tempfile=#<Tempfile:/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/RackMultipart20160812-34558-xg69k4.jpg>, @original_filename="AAEAAQAAAAAAAAinAAAAJGUzMGVmMGJhLWQxOGUtNGJlOS04NWNkLTQ0YzYzODFhMzg3Ng.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"AAEAAQAAAAAAAAinAAAAJGUzMGVmMGJhLWQxOGUtNGJlOS04NWNkLTQ0YzYzODFhMzg3Ng.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Sign up"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 16ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:48:31 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.5ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 59ms (Views: 26.9ms | ActiveRecord: 9.3ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-08-12 09:48:38 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"skfH4+wDyc1JEnQ7qSJFVIv6RSf9u3dYtLfxBD6BS9vp2KmECWXFyFXKfTGWQEEGUVczXB/g5hiTR1brq13JuA=="}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:48:38 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 31ms (Views: 26.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-08-12 09:48:40 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 56ms (Views: 55.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-12 09:48:49 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9GSLO1uVvDh9bysuBAibZZbDY7dkvEYmIjVZomgDG/tR2/wD4UsGicFDrgAS9Z/paK2rAVQzf/i1nM9xxq1ouA==", "user"=>{"email"=>"guy@guy.guy", "name"=>"guy", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guy@guy.guy"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "guy@guy.guy"], ["name", "guy"], ["encrypted_password", "$2a$11$BMNJx64OENB01vL1R5zcPu9Wuxka6BixU3rgkamkSOHEVkXkPvu6m"], ["created_at", 2016-08-12 14:48:49 UTC], ["updated_at", 2016-08-12 14:48:49 UTC]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-08-12 14:48:49 UTC], ["last_sign_in_at", 2016-08-12 14:48:49 UTC], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", 2016-08-12 14:48:49 UTC], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 154ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:48:49 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 39ms (Views: 34.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/images/medium/default-profile.jpg" for ::1 at 2016-08-12 09:48:50 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/images/medium/default-profile.jpg"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered collection of /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [32 times] (10.7ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.7ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (151.7ms)
+Started DELETE "/users/sign_out" for ::1 at 2016-08-12 09:49:21 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kortpaXRk4ZqPXBLlXFVTIDxlnWonxGhK6w0a3VdXNCtEe9vP5tqc9+4+zB+Yw/EIdLZwreeJI9gzVGgAAnMOg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 20ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:49:21 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 55ms (Views: 29.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-08-12 09:49:22 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 64ms (Views: 62.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-12 09:49:30 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CsziOAG3iM+HQcLx3yaHIBIXJ8Am8SMyA8K0nIv66YsYwuuypVA/VqgBVWNFJb+EYUJVc+D63AQh1eidAQBRIw==", "user"=>{"email"=>"man@man.man", "name"=>"man", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "man@man.man"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "man@man.man"], ["name", "man"], ["encrypted_password", "$2a$11$oAyLY/De6FPmfnlUJn/p6eDMpK1eA1KxDLLAVTN6e1kFGrLGAfpti"], ["created_at", 2016-08-12 14:49:30 UTC], ["updated_at", 2016-08-12 14:49:30 UTC]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-08-12 14:49:30 UTC], ["last_sign_in_at", 2016-08-12 14:49:30 UTC], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", 2016-08-12 14:49:30 UTC], ["id", 4]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 168ms (ActiveRecord: 14.3ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:49:30 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.5ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 37ms (Views: 30.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/images/medium/default-profile.jpg" for ::1 at 2016-08-12 09:49:30 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/images/medium/default-profile.jpg"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered collection of /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [32 times] (9.3ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (112.8ms)
+Started GET "/" for ::1 at 2016-08-12 09:50:47 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.8ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 77ms (Views: 33.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:50:55 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.2ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 70ms (Views: 31.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/images/:medium/default-profile.jpg" for ::1 at 2016-08-12 09:50:55 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/images/:medium/default-profile.jpg"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered collection of /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [32 times] (9.7ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (117.1ms)
+Started GET "/" for ::1 at 2016-08-12 09:51:05 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 102ms (Views: 37.7ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/images/default-profile-:medium.jpg" for ::1 at 2016-08-12 09:51:05 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/images/default-profile-:medium.jpg"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered collection of /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [32 times] (11.9ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (145.9ms)
+Started GET "/" for ::1 at 2016-08-12 09:51:08 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 66ms (Views: 30.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:51:46 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 72ms (Views: 35.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:51:54 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.2ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 33ms (Views: 28.1ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-08-12 09:51:59 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"DUjxFEYbZ8Pvc/JqKPrgNJYAFmzcq/F9rQ12qeiqQmOAsNz6IWnPx1HPltZO/zB0DvLYuftpDDaPGo/6FBVrJw=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:51:59 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 31ms (Views: 26.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-08-12 09:52:01 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 53ms (Views: 51.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-08-12 09:52:04 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JKGcCdELxB03viWbYZkBTji2/NrF5/4yB8l9RFf4CFIePgfGJ0vgo2p1K8vOjBwkO5qdHDd+dQBQkYhVAZ1OhA==", "user"=>{"email"=>"prescott.southard@aol.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "prescott.southard@aol.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", 2016-08-12 14:52:04 UTC], ["last_sign_in_at", 2016-08-12 14:47:17 UTC], ["sign_in_count", 3], ["updated_at", 2016-08-12 14:52:04 UTC], ["id", 1]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 151ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:52:04 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.2ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 30ms (Views: 25.7ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-08-12 09:52:09 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"UqjM3GLqFtBkm6FQN0MJGSx7lU+3MTYjYSeLS2iP7Cy7hKIrbEUwHl1Rho4UhLpJdRfrLV8A3Hfngi5UelRBhQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:52:09 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.2ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 29ms (Views: 25.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-08-12 09:52:10 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 65ms (Views: 63.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-12 09:52:26 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eVaCmsAlC5p8DPPz84HaSF1JDQzmKXI82l6lo4eCLmQL1dCU22PERf/gBtr4ivGfERGc67Sa4xra1ryH211GSQ==", "user"=>{"email"=>"scott@scott.com", "name"=>"scott", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fde2a4b7d18 @tempfile=#<Tempfile:/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/RackMultipart20160812-34558-1e0f2ju.jpg>, @original_filename="AAEAAQAAAAAAAAinAAAAJGUzMGVmMGJhLWQxOGUtNGJlOS04NWNkLTQ0YzYzODFhMzg3Ng.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"AAEAAQAAAAAAAAinAAAAJGUzMGVmMGJhLWQxOGUtNGJlOS04NWNkLTQ0YzYzODFhMzg3Ng.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Sign up"}
+Command :: file -b --mime '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-83kdta.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1opwcwx.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1opwcwx.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1opwcwx.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/633c66c14558d15eb9a777f4f226be8720160812-34558-1xh3gbc'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1opwcwx.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1opwcwx.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1opwcwx.jpg[0]' -auto-orient -resize "200x200>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/633c66c14558d15eb9a777f4f226be8720160812-34558-1j0fwyb'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1opwcwx.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1opwcwx.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1opwcwx.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/633c66c14558d15eb9a777f4f226be8720160812-34558-1kmzt4q'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/468c2de2d69234fd727bc41edea0eed420160812-34558-1fggdrs.jpg'
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "scott@scott.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "scott@scott.com"], ["name", "scott"], ["encrypted_password", "$2a$11$e09PtFlNi71c6/POru2GvuBrbpQs/3D4hPU9EfnrodWqQq.bvxU6y"], ["created_at", 2016-08-12 14:52:26 UTC], ["updated_at", 2016-08-12 14:52:26 UTC], ["avatar_file_name", "AAEAAQAAAAAAAAinAAAAJGUzMGVmMGJhLWQxOGUtNGJlOS04NWNkLTQ0YzYzODFhMzg3Ng.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 26627], ["avatar_updated_at", 2016-08-12 14:52:26 UTC]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-08-12 14:52:26 UTC], ["last_sign_in_at", 2016-08-12 14:52:26 UTC], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", 2016-08-12 14:52:26 UTC], ["id", 5]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 420ms (ActiveRecord: 13.9ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:52:26 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.2ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 35ms (Views: 29.9ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-08-12 09:52:31 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"3rvxBNisbO/fdFCLe3S60Kr3Lyxi4476OeoK4lx71QeglaWy+v4c8F0/6lmDGk2rbz6zn7RDYHu+v0kVhqw7xA=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:52:31 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 28ms (Views: 23.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-08-12 09:52:33 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 49ms (Views: 48.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-12 09:52:40 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tgOKBa8f0tGjRoTwAXihhvAq1QZbB9n1iXJUZqlZkP2XBP9LFCuRS1nZwkxhQfxx6LUa9DekDgJd6AfQJkr3Sw==", "user"=>{"email"=>"man@guy.com", "name"=>"man", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "man@guy.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "man@guy.com"], ["name", "man"], ["encrypted_password", "$2a$11$cp/RYUcYfVjrS1cUenTEl.mhgf60t2SNzTYbuy12q7dzHV4QDPZmC"], ["created_at", 2016-08-12 14:52:40 UTC], ["updated_at", 2016-08-12 14:52:40 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-08-12 14:52:40 UTC], ["last_sign_in_at", 2016-08-12 14:52:40 UTC], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", 2016-08-12 14:52:40 UTC], ["id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 146ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:52:41 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.2ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 30ms (Views: 25.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:53:20 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 71ms (Views: 30.9ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/images/default-profile_small.jpg" for ::1 at 2016-08-12 09:53:20 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/images/default-profile_small.jpg"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered collection of /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [32 times] (23.6ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.6ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (130.6ms)
+Started GET "/" for ::1 at 2016-08-12 09:53:30 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 61ms (Views: 26.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 09:56:21 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.2ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (76.2ms)
+Completed 500 Internal Server Error in 85ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_path' for #<#<Class:0x007fde33155090>:0x007fde2f7eaa58>):
+    1: <% if current_user %>
+    2:   <h1>
+    3:     <%= image_tag @user.avatar.url(:medium) %><br>
+    4:     <%= link_to "#{current_user.name}", @user %>
+    5:   </h1>
+    6:   <%= link_to "Logout", destroy_user_session_path, :method => :delete %><br>
+    7: <% else %>
+  
+app/views/museums/index.html.erb:4:in `_app_views_museums_index_html_erb___2675462196284375003_70296128150260'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.9ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (77.3ms)
+Started GET "/" for ::1 at 2016-08-12 10:00:42 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums"[0m
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering museums/index.html.erb within layouts/application
+  Rendered museums/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 72ms (Views: 34.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/user/6" for ::1 at 2016-08-12 10:00:45 -0500
+  
+ActionController::RoutingError (uninitialized constant UserController):
+  
+activesupport (5.0.0.1) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.0.1) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.0.1) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.0.1) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.0.1) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.0.1) lib/action_dispatch/http/request.rb:93:in `controller_class'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+warden (1.2.6) lib/warden/manager.rb:34:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.0.1) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered collection of /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [33 times] (9.8ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (122.0ms)
