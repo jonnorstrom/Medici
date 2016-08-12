@@ -2,8 +2,6 @@ class MuseumsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    # @museums = Museum.all
-    # @exhibits = Exhibit.all
     @museums = Museum.all + Exhibit.all
     if current_user
       @user = current_user
@@ -51,7 +49,7 @@ class MuseumsController < ApplicationController
   private
 
   def museum_params
-    params.require(:museum).permit(:name, :blurb, :description, :museum_id)
+    params.require(:museum).permit(:name, :blurb, :description, :photo, :location)
   end
 
 end
