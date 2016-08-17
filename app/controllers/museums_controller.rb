@@ -2,14 +2,16 @@ class MuseumsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @museums = Museum.all + Exhibit.all
     if current_user
       @user = current_user
     end
+    @museums = Museum.all + Exhibit.all
+    @ticket = current_order.tickets.new
   end
 
   def show
     @museum = Museum.find(params[:id])
+    @ticket = current_order.tickets.new
     @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
      marker.lat museum.latitude
      marker.lng museum.longitude

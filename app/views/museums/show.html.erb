@@ -3,17 +3,39 @@
 <br><br>
 <%= image_tag @museum.photo.url(:large) %>
 <br><br>
-<script type="text/javascript">
-
-</script>
 
 <div id="map"></div>
 
 
-  <p>
-    <%= @museum.address %>
-  </p>
+<p>
+  <%= @museum.address %>
+</p>
+
+<%= form_for @ticket, remote: true do |f| %>
+  <h4 class="text-right">Unit Price: <%= number_to_currency @museum.price %></span></h4>
+  <div class="input-group">
+    <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+    <div class="input-group-btn">
+      <%= f.hidden_field :museum_id, value: @museum.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
 
 <% if current_user %>
   <%= link_to "Edit Museum", edit_museum_path %>
 <% end %>
+
+<script type="text/javascript">
+  function buildMap(){
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(12);
+    });
+  }
+  $(window).onload(buildMap())
+</script>

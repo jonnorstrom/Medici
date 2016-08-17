@@ -1,0 +1,20 @@
+<% if !@ticket.nil? && @ticket.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @ticket.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @tickets.size == 0 %>
+  <p>
+    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+  </p>
+<% else %>
+  <% @tickets.each do |ticket| %>
+    <%= render 'carts/cart_row', museum: ticket.museum, ticket: ticket, show_total: true %>
+  <% end %>
+  <h2> Total Cost: <%= @total %> </h2>
+<% end %>

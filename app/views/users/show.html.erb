@@ -1,4 +1,8 @@
 <%= image_tag @user.avatar.url(:medium) %><br>
 <%= @user.name %>
 <br>
+<h3>Your tickets</h3>
+<% @tickets.each do |ticket| %>
+  <h4><%= Museum.find(ticket.museum_id).name %>: <%= ticket.quantity %></h4>
+<% end %>
 <%= link_to "Edit Profile", edit_user_path %>
