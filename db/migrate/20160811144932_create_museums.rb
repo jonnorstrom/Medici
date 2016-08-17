@@ -4,6 +4,8 @@ class CreateMuseums < ActiveRecord::Migration[5.0]
       t.string :name, uniqueness: true
       t.string :blurb
       t.string :description
+      t.float :price
+      t.boolean :active
       t.string :address
       t.float :latitude
       t.float :longitude

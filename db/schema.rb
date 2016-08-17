@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812154945) do
+ActiveRecord::Schema.define(version: 20160817163333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20160812154945) do
     t.string   "name"
     t.string   "blurb"
     t.string   "description"
+    t.float    "price"
+    t.boolean  "active"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
@@ -45,10 +47,22 @@ ActiveRecord::Schema.define(version: 20160812154945) do
     t.datetime "photo_updated_at"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.decimal  "subtotal",   precision: 12, scale: 3
+    t.decimal  "tax",        precision: 12, scale: 3
+    t.decimal  "shipping",   precision: 12, scale: 3
+    t.decimal  "total",      precision: 12, scale: 3
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
   create_table "tickets", force: :cascade do |t|
-    t.float    "price"
     t.integer  "museum_id"
     t.integer  "user_id"
+    t.float    "unit_price"
+    t.integer  "quantity"
+    t.integer  "order_id"
+    t.float    "total_price"
     t.boolean  "paid"
     t.boolean  "redeemed"
     t.date     "date_redeemed"

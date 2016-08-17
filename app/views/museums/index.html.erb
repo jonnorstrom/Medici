@@ -1,3 +1,5 @@
+<h3><%= render 'layouts/cart_text' %></h3>
+
 <% if current_user %>
   <h1>
     <%= image_tag @user.avatar.url(:medium) %><br>
@@ -9,6 +11,7 @@
   <%= link_to "Register", new_user_registration_path %><br>
 <% end %>
 <br>
+<<<<<<< HEAD
 <div class="row masonry-row">
   <% @museums.shuffle.each do |museum| %>
     <div class="panel panel-default  museum-panel">
@@ -21,7 +24,15 @@
     </div>
   <% end %>
 </div>
+=======
+
+
+<% @museums.shuffle.each do |museum| %>
+  <%= render "museum_row", museum: museum, ticket: @ticket  %>
+<% end %>
+>>>>>>> ba2518a8c8590a62e900df1574e2a7fb21ceee41
 <br>
+
 <% if current_user %>
   <%=link_to "Add Museum", new_museum_path %>
 <% end %>
