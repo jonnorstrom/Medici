@@ -1,3 +1,5 @@
+<h3><%= render 'layouts/cart_text' %></h3>
+
 <% if current_user %>
   <h1>
     <%= image_tag @user.avatar.url(:medium) %><br>
@@ -9,11 +11,13 @@
   <%= link_to "Register", new_user_registration_path %><br>
 <% end %>
 <br>
+
+
 <% @museums.shuffle.each do |museum| %>
-  <h3><%= link_to "#{museum.name}", museum %></h3>
-  <%= museum.blurb %>
+  <%= render "museum_row", museum: museum, ticket: @ticket  %>
 <% end %>
 <br>
+
 <% if current_user %>
   <%=link_to "Add Museum", new_museum_path %>
 <% end %>

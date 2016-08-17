@@ -1,0 +1,6 @@
+<% if @order.errors.any? || @ticket.errors.any? %>
+alert("not valid.")
+<% p @ticket.errors%>
+<% else %>
+  $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
+<% end %>
