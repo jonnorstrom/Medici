@@ -8,10 +8,150 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc7bgkQoYVVLBCkZtxYPzzWCogA-3LmNY&callback=initMap"
                                        async defer></script>
   <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+  <!-- CDN references -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>   
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+   
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-lg-2">
+          <!-- nav stuff goes in this column-->
+          <nav class="navbar navbar-default navbar-fixed-side">
+            <div class="navbar-header">
+              <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                <span class="glyphicon glyphicon-ice-lolly-tasted">
+              </button>
+                <a href"#" class="navbar-left hidden-xs">
+                  <%=image_tag("medici_placeholder.JPG")%>
+                </a>
+                <a class="navbar-brand" href="#"> Jane Sadsafmpler </a>
+            </div>
 
+            <div class="collapse navbar-collapse">
+              <!-- menu stuff goes here-->
+              <div class="list-group list-group-borderless">
+                <button type="button" href="#" class="list-group-item">
+                  <span class="badge">15</span>
+                  special events
+                </button>                
+                <button type="button"class="list-group-item" id="museum-toggle">
+                  museums
+                </button>
+                <button type="button"class="list-group-item" id="exhibition-toggle">
+                  exhibitions
+                </button>
+                <button type="button"class="list-group-item">
+                  <a href="#">check out</a>
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <span class="badge">3</span>
+                </button>
+              </div>
+
+               
+              <input type="checkbox" id="museum-toggle" class="hidden">
+              <label for="museum-toggle" class="museum-label-toggle">museum</label>
+
+              <input type="checkbox" id="exhibit-toggle" class="hidden">
+              <label for="exhibit-toggle" class="exhibit-label-toggle">exhibit</label>
+
+
+
+            </div>
+          </nav>        
+        </div>
+        <!-- dynamic content stuff goes in this column  -->
+        <div class="col-sm-9 col-lg-10 content">
+
+          <%= yield %>
+
+          <h1>A not so dull affair in the forbidden forest</h1>
+          <div class="row masonry-row">
+            
+            <div class="panel panel-default museum-panel">
+              <div class="panel-heading">
+                my great museum event!
+              </div>
+              <div class="panel-body">
+                <p>harry and hermione sat down on a damp log and thought to themselves, "Why am i here. Whats the meaning of all this?"</p>
+                <button id="museum" type="button" class="btn btn-danger btn-md"> hide me ~_^</button>
+              </div>
+
+            </div>
+
+             <div class="panel panel-default exhibition-panel">
+              <div class="panel-heading">
+               my great event!
+              </div>
+              <div class="panel-body">
+                Hagrid showed up with his pal andre3000 and queried "why so glum arry' n' ermione?' ya look like ya just saw mr.hands makin off wit on a me hippogriffs"
+              </div>
+            </div>
+
+             <div class="panel panel-default  museum-panel">
+              <div class="panel-heading">
+                my great museum event!
+              </div>
+              <div class="panel-body">
+                harry gave hagrid a sullen stare that conveyed all the dissapointment they had succumbed to over the past weeks. andre new what to do...
+              </div>
+            </div>
+
+             <div class="panel panel-default  museum-panel">
+              <div class="panel-heading">
+                my great event!
+              </div>
+              <div class="panel-body">
+                "chik chicka-chicka" began andre... "mowp mowp, ooooohhhhhh yeahhhhh beautiful.... EVEN MORRREE beautiful" he continued "chik chicka chikaaaa... mowp mowp"
+                "chik chicka-chicka" began andre... "mowp mowp, ooooohhhhhh yeahhhhh beautiful.... EVEN MORRREE beautiful" he continued "chik chicka chikaaaa... mowp mowp"
+                "chik chicka-chicka" began andre... "mowp mowp, ooooohhhhhh yeahhhhh beautiful.... EVEN MORRREE beautiful" he continued "chik chicka chikaaaa... mowp mowp"
+                "chik chicka-chicka" began andre... "mowp mowp, ooooohhhhhh yeahhhhh beautiful.... EVEN MORRREE beautiful" he continued "chik chicka chikaaaa... mowp mowp"
+              </div>
+            </div>
+
+             <div class="panel panel-default exhibition-panel">
+              <div class="panel-heading">
+                my great museum event!
+              </div>
+              <div class="panel-body">
+                harry and hermione sat down on a damp log and thought to themselves, "Why am i here. Whats the meaning of all this?""
+              </div>
+            </div>
+
+             <div class="panel panel-default  museum-panel">
+              <div class="panel-heading">
+               <a href="#" class="thumbnail">
+                  <img src="images/the_doctor_dither.gif" alt="Mountain View">
+                </a>
+              </div>
+              <div class="panel-body">
+                Hagrid showed up with his pal andre3000 and queried "why so glum arry' n' ermione?' ya look like ya just saw mr.hands makin off wit on a me hippogriffs"
+              </div>
+            </div>
+
+             <div class="panel panel-default  museum-panel">
+              <div class="panel-heading">
+                my great event!
+              </div>
+              <div class="panel-body">
+                harry gave hagrid a sullen stare that conveyed all the dissapointment they had succumbed to over the past weeks. andre new what to do...
+              </div>
+            </div>
+
+             <div class="panel panel-default exhibition-panel">
+              <div class="panel-heading">
+                my great museum event!
+              </div>
+              <div class="panel-body">
+                "chik chicka-chicka" began andre... "mowp mowp, ooooohhhhhh yeahhhhh beautiful.... EVEN MORRREE beautiful" he continued "chik chicka chikaaaa... mowp mowp"
+                "chik chicka-chicka" began andre... "mowp mowp, ooooohhhhhh yeahhhhh beautiful.... EVEN MORRREE beautiful" he continued "chik chicka chikaaaa... mowp mowp"
+                "chik chicka-chicka" began andre... "mowp mowp, ooooohhhhhh yeahhhhh beautiful.... EVEN MORRREE beautiful" he continued "chik chicka chikaaaa... mowp mowp"
+                "chik chicka-chicka" began andre... "mowp mowp, ooooohhhhhh yeahhhhh beautiful.... EVEN MORRREE beautiful" he continued "chik chicka chikaaaa... mowp mowp"
+              </div>
+            </div>
+        </div>
+      </div>
+  </body>
 </html>
