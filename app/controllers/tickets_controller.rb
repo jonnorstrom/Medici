@@ -21,8 +21,9 @@ class TicketsController < ApplicationController
     if @quantity - 1 == 0
       @ticket.destroy
       redirect_to current_user
+    else
+      redirect_to ticket_path(@ticket)
     end
-    redirect_to ticket_path(@ticket)
   end
 
   def update
