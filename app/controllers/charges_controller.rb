@@ -2,14 +2,12 @@ class ChargesController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @user = User.find(current_user.id)
     @order = Order.find(current_order.id)
     @amount = '%.2f' % @order.subtotal
     @display_amount = @order.subtotal * 100.00
   end
 
   def create
-    @user = User.find(current_user.id)
     @order = Order.find(current_order.id)
     @amount_float = @order.subtotal * 100.00
     @amount = @amount_float.to_i

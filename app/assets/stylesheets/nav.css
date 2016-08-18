@@ -1,0 +1,137 @@
+
+/*
+* === COLLAPSABLE SIDE NAV EXTRA SMALL (collapsed) ===
+*/
+@media (max-width: 768px) {
+
+    .navbar-fixed-side {
+        margin-left: -15px;
+        margin-right: -15px;
+        border-color: transparent
+    }
+    .navbar-brand{
+        font-family: "Brandon Grotesque" , "Helvetica";
+        color:black !important;
+    }
+    .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{ 
+        color: lightGrey;
+        text-decoration: none 
+    }
+    .collapse.navbar-collapse{
+        padding: 0px 0px 
+    }
+    .list-group-borderless .list-group-item:first-child{
+        border-top: 0 none 
+    }
+    .list-group-borderless .list-group-item:last-child{
+        border-bottom: 0 none
+    }
+    
+    .list-group-item{
+        border-left: 0 none;
+        border-right: 0 none
+    }
+}
+
+
+/*
+* === COLLAPSABLE SIDE NAV LARGE ===
+*/
+@media (min-width: 768px) {
+    .navbar-fixed-side {
+        position: fixed !important;
+        margin: 0 -15px;
+        height: 100vh;
+        width: inherit;
+        border-radius: 0;
+        border-color: transparent;
+    }
+
+    .navbar-fixed-side .navbar-brand {
+        height: auto
+    }
+    .navbar-left>img{
+        width: 100%;
+        height:auto
+    }
+    .navbar-brand{
+        font-family: "Brandon Grotesque" , "Helvetica";
+        color: dimGrey;
+        font-size: 2em;
+        font-weight: bold
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        text-align: center;
+        margin: auto;
+        border: 0
+    }
+    .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{ 
+        color: lightGrey;
+        text-decoration: none 
+
+    }
+    .collapse.navbar-collapse{
+        padding: 0px 0px 
+    }
+    .list-group-borderless .list-group-item:first-child{
+        border-top: 0 none 
+    }
+    .list-group-borderless .list-group-item:last-child{
+        border-bottom: 0 none
+    }
+    
+    .list-group-item{
+        border-left: 0 none;
+        border-right: 0 none
+    }
+
+}
+
+/*
+* === MASONRY ===
+*/
+
+*, *:before, *:after {box-sizing:  border-box !important;}
+.masonry-row {
+ -moz-column-width: 25em;
+ -webkit-column-width: 25em;
+ -moz-column-gap: .5em;
+ -webkit-column-gap: .5em; 
+}
+
+.content{
+    overflow:hidden;
+}
+
+.post-wrapper {
+ display: inline-block;
+ margin:  .5em;
+ padding:  0; 
+ width:98%;http://localhost:3000/#
+}
+
+.museum-label-toggle{
+    padding: 12px 15px;
+    background-color: #fff;
+    display: block;
+}
+
+input#museum-toggle[type=checkbox]:checked ~.museum-label-toggle{
+    background-color: red;
+}
+
+.exhibit-label-toggle{
+    padding: 12px 15px;
+    display: block;
+    background: green;
+}
+
+input#exhibit-toggle[type=checkbox]:checked ~.exhibit-label-toggle{
+    background-color: red;
+}
+
+.list-group-item  a{
+    color: dimGrey
+}
