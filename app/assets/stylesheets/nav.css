@@ -33,6 +33,7 @@
     }
 }
 
+
 /*
 * === COLLAPSABLE SIDE NAV LARGE ===
 */
@@ -103,11 +104,12 @@
 .content{
     overflow:hidden;
 }
-.panel {
+
+.post-wrapper {
  display: inline-block;
  margin:  .5em;
  padding:  0; 
- width:98%;
+ width:98%;http://localhost:3000/#
 }
 
 .museum-label-toggle{

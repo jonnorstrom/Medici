@@ -11,26 +11,11 @@
   <%= link_to "Register", new_user_registration_path %><br>
 <% end %>
 <br>
-<<<<<<< HEAD
 <div class="row masonry-row">
-  <% @museums.shuffle.each do |museum| %>
-    <div class="panel panel-default  museum-panel">
-      <div class="panel-heading">
-        <h3><%= link_to "#{museum.name}", museum %></h3>
-      </div>
-      <div class="panel-body">
-        <%= museum.blurb %>
-      </div>
-    </div>
-  <% end %>
+	<% @museums.shuffle.each do |museum| %>
+	  <%= render "museum_row", museum: museum, ticket: @ticket  %>
+	<% end %>
 </div>
-=======
-
-
-<% @museums.shuffle.each do |museum| %>
-  <%= render "museum_row", museum: museum, ticket: @ticket  %>
-<% end %>
->>>>>>> ba2518a8c8590a62e900df1574e2a7fb21ceee41
 <br>
 
 <% if current_user %>
