@@ -40013,3 +40013,446 @@ Processing by MuseumsController#index as HTML
 Completed 200 OK in 315ms (Views: 114.2ms | ActiveRecord: 1.8ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (13.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (125.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "mediciapp_development"[0m
+  [1m[35m (120.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "mediciapp_test"[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5304950054646260970);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateMuseums (20160811144932)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "museums" ("id" serial primary key, "name" character varying, "blurb" character varying, "description" character varying, "price" float, "active" boolean, "address" character varying, "latitude" float, "longitude" float, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160811144932"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateExhibits (20160811144940)
+  [1m[35m (8.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.6ms)[0m  [1m[35mCREATE TABLE "exhibits" ("id" serial primary key, "name" character varying, "blurb" character varying, "description" character varying, "start_date" date, "end_date" date, "museum_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160811144940"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTickets (20160811144947)
+  [1m[35m (6.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" serial primary key, "museum_id" integer, "user_id" integer, "unit_price" float, "quantity" integer, "order_id" integer, "total_price" float, "paid" boolean DEFAULT 'f', "redeemed" boolean DEFAULT 'f', "date_redeemed" date, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160811144947"]]
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateUsers (20160811174511)
+  [1m[35m (6.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "name" character varying NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160811174511"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentAvatarToUsers (20160812143728)
+  [1m[35m (5.8ms)[0m  [1m[35mBEGIN[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachmentAvatarToUsers < ActiveRecord::Migration[4.2] (called from require at /Users/scottsouthard/Documents/Dev/medici/bin/rails:9)
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_file_name" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_content_type" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_file_size" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_updated_at" timestamp[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160812143728"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentPhotoToMuseums (20160812154926)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachmentPhotoToMuseums < ActiveRecord::Migration[4.2] (called from require at /Users/scottsouthard/Documents/Dev/medici/bin/rails:9)
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "museums" ADD "photo_file_name" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "museums" ADD "photo_content_type" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "museums" ADD "photo_file_size" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "museums" ADD "photo_updated_at" timestamp[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160812154926"]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentPhotoToExhibits (20160812154945)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachmentPhotoToExhibits < ActiveRecord::Migration[4.2] (called from require at /Users/scottsouthard/Documents/Dev/medici/bin/rails:9)
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "exhibits" ADD "photo_file_name" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "exhibits" ADD "photo_content_type" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "exhibits" ADD "photo_file_size" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "exhibits" ADD "photo_updated_at" timestamp[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160812154945"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrders (20160817163333)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "orders" ("id" serial primary key, "subtotal" decimal(12,3), "tax" decimal(12,3), "shipping" decimal(12,3), "total" decimal(12,3), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160817163333"]]
+  [1m[35m (7.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCharges (20160818155305)
+  [1m[35m (6.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "charges" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160818155305"]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-08-18 20:01:50 UTC], ["updated_at", 2016-08-18 20:01:50 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5304950054646260970)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'charges'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'exhibits'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'museums'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'orders'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'tickets'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started GET "/" for ::1 at 2016-08-18 15:01:59 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 404 Not Found in 31ms (ActiveRecord: 3.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Order with 'id'=1):
+  
+app/controllers/application_controller.rb:10:in `current_order'
+app/controllers/museums_controller.rb:5:in `index'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (83.6ms)
+Started GET "/" for ::1 at 2016-08-18 15:02:15 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (6.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (6.0ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.6ms)
+  Rendered museums/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 736ms (Views: 643.6ms | ActiveRecord: 18.1ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-08-18 15:02:31 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (28.9ms)
+Completed 500 Internal Server Error in 413ms (ActiveRecord: 3.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `users_path' for #<#<Class:0x007fbc5e578ec0>:0x007fbc5f802eb0>):
+    27:                 <%= link_to image_tag(@user.avatar.url(:medium)), @user, class: "navbar-left hidden-xs"%>
+    28:                 <%= link_to "#{current_user.name}", @user , class: "navbar-brand" %>  
+    29:               <% else %>
+    30:                 <%= link_to image_tag("medici_placeholder.JPG"), @user, class: "navbar-left hidden-xs"%>
+    31:                 <%= link_to "Medici", @user , class: "navbar-brand" %>  
+    32:               <% end %>  
+    33:             </div>
+  
+app/views/layouts/application.html.erb:30:in `_app_views_layouts_application_html_erb___2224678232226668493_70223483729780'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.4ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (76.8ms)
+Started GET "/users/sign_up" for ::1 at 2016-08-18 15:05:38 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.7ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/scottsouthard/Documents/Dev/medici/app/views/layouts/application.html.erb:30: syntax error, unexpected keyword_class, expecting ')'
+...("medici_placeholder.JPG" class: "navbar-left hidden-xs"));@...
+...                               ^
+/Users/scottsouthard/Documents/Dev/medici/app/views/layouts/application.html.erb:30: syntax error, unexpected ')', expecting keyword_end
+...lass: "navbar-left hidden-xs"));@output_buffer.safe_append='
+...                               ^):
+  
+app/views/layouts/application.html.erb:30: syntax error, unexpected keyword_class, expecting ')'
+app/views/layouts/application.html.erb:30: syntax error, unexpected ')', expecting keyword_end
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.0ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (88.0ms)
+Started GET "/users/sign_up" for ::1 at 2016-08-18 15:05:52 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 110ms (Views: 109.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-08-18 15:06:27 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (8.0ms)
+Completed 500 Internal Server Error in 320ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `root' for #<#<Class:0x007fbc5e578ec0>:0x007fbc5c522b80>):
+    27:                 <%= link_to image_tag(@user.avatar.url(:medium)), @user, class: "navbar-left hidden-xs"%>
+    28:                 <%= link_to "#{current_user.name}", @user , class: "navbar-brand" %>
+    29:               <% else %>
+    30:                 <%= link_to image_tag("medici_placeholder.JPG"), root, class: "navbar-left hidden-xs"%>
+    31:                 <%= link_to "Medici", root, class: "navbar-brand" %>  
+    32:               <% end %>
+    33:             </div>
+  
+app/views/layouts/application.html.erb:30:in `_app_views_layouts_application_html_erb___2224678232226668493_70223531155780'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.0ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (80.6ms)
+Started GET "/users/sign_up" for ::1 at 2016-08-18 15:06:42 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 88ms (Views: 86.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-18 15:07:42 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/FDmf7BuWz1w6MpQ4Q4LtHFAImhW66wUPB2w7bqPL/3UitbcoMXeECfuHe2draXBB8+eX3wLNTWDdRLkrhXI+A==", "user"=>{"email"=>"prescott.southard@aol.com", "name"=>"Scott", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fbc5e6063b0 @tempfile=#<Tempfile:/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/RackMultipart20160818-14721-qxplgw.gif>, @original_filename="giphy.gif", @content_type="image/gif", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"giphy.gif\"\r\nContent-Type: image/gif\r\n">}, "commit"=>"Sign up"}
+Command :: file -b --mime '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-cpvhgs.gif'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif' -coalesce -auto-orient -resize "500x500>" -layers "optimize" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/7306f2c64b817e55b8e654605e72175c20160818-14721-osax39'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif' -coalesce -auto-orient -resize "300x300>" -layers "optimize" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/7306f2c64b817e55b8e654605e72175c20160818-14721-1cj3t6t'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif' -coalesce -auto-orient -resize "200x200>" -layers "optimize" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/7306f2c64b817e55b8e654605e72175c20160818-14721-22grrj'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-18u3m0h.gif' -coalesce -auto-orient -resize "100x100>" -layers "optimize" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/7306f2c64b817e55b8e654605e72175c20160818-14721-1pit85w'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/5f05721cc8991c96f75d45c7360eb85820160818-14721-d1anrn.gif'
+  [1m[36mUser Exists (19.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "prescott.southard@aol.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "encrypted_password", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "prescott.southard@aol.com"], ["name", "Scott"], ["encrypted_password", "$2a$11$jWXbr7BPcerDugCmgVl8Xu3EOzPr7mqwAHyeKSx3OVxkYryMV9Bpy"], ["created_at", 2016-08-18 20:07:51 UTC], ["updated_at", 2016-08-18 20:07:51 UTC], ["avatar_file_name", "giphy.gif"], ["avatar_content_type", "image/gif"], ["avatar_file_size", 2751435], ["avatar_updated_at", 2016-08-18 20:07:42 UTC]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-08-18 20:07:51 UTC], ["last_sign_in_at", 2016-08-18 20:07:51 UTC], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", 2016-08-18 20:07:51 UTC], ["id", 1]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8608ms (ActiveRecord: 33.4ms)
+
+
+Started GET "/" for ::1 at 2016-08-18 15:07:51 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (1.1ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.3ms)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/index.html.erb within layouts/application (9.6ms)
+Completed 500 Internal Server Error in 138ms (ActiveRecord: 2.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `avatar' for nil:NilClass):
+    24:                 <span class="glyphicon glyphicon-ice-lolly-tasted">
+    25:               </button>
+    26:               <% if current_user %>
+    27:                 <%= link_to image_tag(@user.avatar.url(:medium)), @user, class: "navbar-left hidden-xs"%>
+    28:                 <%= link_to "#{current_user.name}", @user , class: "navbar-brand" %>
+    29:               <% else %>
+    30:                 <%= link_to image_tag("medici_placeholder.JPG"), root_path, class: "navbar-left hidden-xs"%>
+  
+app/views/layouts/application.html.erb:27:in `_app_views_layouts_application_html_erb___2224678232226668493_70223477580700'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.0ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (72.6ms)
+Started GET "/" for ::1 at 2016-08-18 15:08:14 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.4ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/index.html.erb within layouts/application (6.7ms)
+Completed 500 Internal Server Error in 121ms (ActiveRecord: 1.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `avatar' for nil:NilClass):
+    24:                 <span class="glyphicon glyphicon-ice-lolly-tasted">
+    25:               </button>
+    26:               <% if current_user %>
+    27:                 <%= link_to image_tag(@user.avatar.url(:medium)), current_user, class: "navbar-left hidden-xs"%>
+    28:                 <%= link_to "#{current_user.name}", current_user, class: "navbar-brand" %>
+    29:               <% else %>
+    30:                 <%= link_to image_tag("medici_placeholder.JPG"), root_path, class: "navbar-left hidden-xs"%>
+  
+app/views/layouts/application.html.erb:27:in `_app_views_layouts_application_html_erb___2224678232226668493_70223530584400'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (71.3ms)
+Started GET "/" for ::1 at 2016-08-18 15:08:16 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.9ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/index.html.erb within layouts/application (5.8ms)
+Completed 500 Internal Server Error in 119ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `avatar' for nil:NilClass):
+    24:                 <span class="glyphicon glyphicon-ice-lolly-tasted">
+    25:               </button>
+    26:               <% if current_user %>
+    27:                 <%= link_to image_tag(@user.avatar.url(:medium)), current_user, class: "navbar-left hidden-xs"%>
+    28:                 <%= link_to "#{current_user.name}", current_user, class: "navbar-brand" %>
+    29:               <% else %>
+    30:                 <%= link_to image_tag("medici_placeholder.JPG"), root_path, class: "navbar-left hidden-xs"%>
+  
+app/views/layouts/application.html.erb:27:in `_app_views_layouts_application_html_erb___2224678232226668493_70223532314300'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.7ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (77.8ms)
+Started GET "/" for ::1 at 2016-08-18 15:08:29 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.2ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 108ms (Views: 94.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1" for ::1 at 2016-08-18 15:08:41 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTicket Load (7.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 1], ["paid", true], ["redeemed", false]]
+  Rendered users/show.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 116ms (Views: 98.2ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/users/1" for ::1 at 2016-08-18 15:08:46 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTicket Load (0.8ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 1], ["paid", true], ["redeemed", false]]
+  Rendered users/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 115ms (Views: 106.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/" for ::1 at 2016-08-18 15:09:12 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.9ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 109ms (Views: 101.8ms | ActiveRecord: 1.0ms)
+
+

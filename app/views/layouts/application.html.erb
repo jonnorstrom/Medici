@@ -24,12 +24,12 @@
                 <span class="glyphicon glyphicon-ice-lolly-tasted">
               </button>
               <% if current_user %>
-                <%= link_to image_tag(@user.avatar.url(:medium)), @user, class: "navbar-left hidden-xs"%>
-                <%= link_to "#{current_user.name}", @user , class: "navbar-brand" %>  
+                <%= link_to image_tag(current_user.avatar.url(:medium)), current_user, class: "navbar-left hidden-xs"%>
+                <%= link_to "#{current_user.name}", current_user, class: "navbar-brand" %>
               <% else %>
-                <%= link_to image_tag("medici_placeholder.JPG"), @user, class: "navbar-left hidden-xs"%>
-                <%= link_to "Medici", @user , class: "navbar-brand" %>  
-              <% end %>  
+                <%= link_to image_tag("medici_placeholder.JPG"), root_path, class: "navbar-left hidden-xs"%>
+                <%= link_to "Medici", root_path, class: "navbar-brand" %>
+              <% end %>
             </div>
 
             <div class="collapse navbar-collapse">
@@ -38,7 +38,7 @@
                 <button type="button" href="#" class="list-group-item">
                   <span class="badge">15</span>
                   special events
-                </button>                
+                </button>
                 <button type="button"class="list-group-item" id="museum-toggle">
                   museums
                 </button>
@@ -58,7 +58,7 @@
               <input type="checkbox" id="exhibit-toggle" class="hidden">
               <label for="exhibit-toggle" class="exhibit-label-toggle">exhibit</label>
             </div>
-          </nav>        
+          </nav>
         </div>
         <!-- dynamic content stuff goes in this column  -->
         <div class="col-sm-9 col-lg-10 content">
