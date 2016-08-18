@@ -5,8 +5,9 @@ class MuseumsController < ApplicationController
     if current_user
       @user = current_user
     end
-    @museums = Museum.all + Exhibit.all
     @ticket = current_order.tickets.new
+    @museums = Museum.all + Exhibit.all
+
   end
 
   def show

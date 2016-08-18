@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :museums
   resources :tickets
   resources :exhibits
+  resources :charges
   resources :users, only: [:show, :edit, :update]
 
   root to: "museums#index"

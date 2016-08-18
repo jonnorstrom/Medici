@@ -6,16 +6,19 @@
       <%= museum.blurb %>
     </div>
     <div class="col-xs-4">
-
-      <%= form_for ticket, remote: true do |f| %>
-        <div class="input-group">
-          <div class="input-group-btn">
-            <%= f.hidden_field :quantity, value: 1 %>
-            <%= f.hidden_field :museum_id, value: museum.id %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-            <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+      <% if current_user %>
+        <%= form_for ticket, remote: true do |f| %>
+          <div class="input-group">
+            <div class="input-group-btn">
+              <%= f.hidden_field :quantity, value: 1 %>
+              <%= f.hidden_field :museum_id, value: museum.id %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+            </div>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+        <%= link_to "Add to Cart", new_user_session_path %>
       <% end %>
     </div>
 
