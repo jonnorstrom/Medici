@@ -32,7 +32,7 @@ gem 'geocoder'
 gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'jquery-turbolinks'
-
+gem 'stripe'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

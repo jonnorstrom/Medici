@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @ticket = Ticket.find(params[:id])
   end
 
   def create
@@ -11,6 +12,11 @@ class TicketsController < ApplicationController
     session[:order_id] = @order.id
 
     redirect_to cart_path(id: current_user.id)
+  end
+
+  def redeem
+    @ticket = Ticket.find(params[:id])
+    redirect_to ticket_path(@ticket)
   end
 
   def update

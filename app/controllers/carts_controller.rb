@@ -3,7 +3,10 @@ class CartsController < ApplicationController
 
   def show
     @tickets = current_order.tickets
-    @total = @tickets.inject(0) {|sum, ticket| sum + ticket.total_price}
+    @total_num = @tickets.inject(0) {|sum, ticket| sum + ticket.total_price}
+    @total = '%.2f' % @total_num
+    @charge = Charge.new
   end
+
 
 end

@@ -7,8 +7,8 @@ class CreateTickets < ActiveRecord::Migration[5.0]
       t.integer :quantity
       t.integer :order_id
       t.float :total_price
-      t.boolean :paid
-      t.boolean :redeemed
+      t.boolean :paid, default: false
+      t.boolean :redeemed, default: false
       t.date :date_redeemed
       t.timestamps
     end

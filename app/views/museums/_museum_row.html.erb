@@ -5,25 +5,22 @@
     <div class="caption">
       <h3><%= link_to "#{museum.name}", museum %></h3>
       <%= museum.blurb %>
-      <%= form_for ticket, remote: true do |f| %>
-        <!-- <div class="input-group">
-          <div class="input-group-btn">
-            <%= f.hidden_field :quantity, value: 1 %>
-            <%= f.hidden_field :museum_id, value: museum.id %>
-            <% if current_user %>
+    </div>
+    <div class="col-xs-4">
+      <% if current_user %>
+        <%= form_for ticket, remote: true do |f| %>
+          <div class="input-group">
+            <div class="input-group-btn">
+              <%= f.hidden_field :quantity, value: 1 %>
+              <%= f.hidden_field :museum_id, value: museum.id %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-            <% end %>
-            <%= f.submit "Add to Cart", class: "btn btn-danger btn-md" %>
+              <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+            </div>
           </div>
-        </div> -->
+        <% end %>
+      <% else %>
+        <%= link_to "Add to Cart", new_user_session_path %>
       <% end %>
     </div>
   </div>
 </div>
-
-
-      
-
-
-
-
