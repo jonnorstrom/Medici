@@ -2,12 +2,10 @@ class TicketsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = User.find(current_user.id)
     @ticket = Ticket.find(params[:id])
   end
 
   def create
-    @user = User.find(current_user.id)
     @order = current_order
     @ticket = @order.tickets.new(ticket_params)
     @order.save
@@ -17,13 +15,11 @@ class TicketsController < ApplicationController
   end
 
   def redeem
-    @user = User.find(current_user.id)
     @ticket = Ticket.find(params[:id])
     redirect_to ticket_path(@ticket)
   end
 
   def update
-    @user = User.find(current_user.id)
     @order = current_order
     @ticket = @order.tickets.find(params[:id])
     @ticket.update_attributes(ticket_params)
@@ -32,7 +28,6 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(current_user.id)
     @order = current_order
     @ticket = @order.tickets.find(params[:id])
     @ticket.destroy

@@ -24324,3 +24324,20 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 121ms (Views: 111.2ms | ActiveRecord: 2.3ms)
 
 
+Started GET "/" for ::1 at 2016-08-18 14:53:12 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."order_id" = $1[0m  [["order_id", 1]]
+  Rendered layouts/_cart_text.html.erb (3.6ms)
+  Rendered museums/_museum_row.html.erb (2.3ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (17.5ms)
+Completed 200 OK in 315ms (Views: 114.2ms | ActiveRecord: 1.8ms)
+
+
