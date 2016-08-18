@@ -16,6 +16,12 @@ class TicketsController < ApplicationController
 
   def redeem
     @ticket = Ticket.find(params[:id])
+    @quantity = @ticket.quantity
+    @ticket.update(quantity: @quantity - 1, order_id: 1)
+    if @quantity - 1 == 0
+      @ticket.destroy
+      redirect_to current_user
+    end
     redirect_to ticket_path(@ticket)
   end
 

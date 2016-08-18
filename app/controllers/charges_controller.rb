@@ -27,7 +27,7 @@ class ChargesController < ApplicationController
     )
     @order.tickets.update(paid: true)
     @order.tickets.delete_all
-    redirect_to :root
+    redirect_to current_user
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
