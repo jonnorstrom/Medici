@@ -34,23 +34,14 @@
 
             <div class="collapse navbar-collapse">
               <!-- menu stuff goes here-->
-              <div class="list-group list-group-borderless">
-                <button type="button" href="#" class="list-group-item">
-                  <span class="badge">15</span>
-                  special events
-                </button>
-                <button type="button"class="list-group-item" id="museum-toggle">
-                  museums
-                </button>
-                <button type="button"class="list-group-item" id="exhibition-toggle">
-                  exhibitions
-                </button>
+
                 <button type="button"class="list-group-item">
-                  <a href="#">check out</a>
+                    <%= link_to "Check Out", cart_path(id: current_user.id), class: "btn btn-link" %>
                   <span class="glyphicon glyphicon-shopping-cart"></span>
-                  <span class="badge">3</span>
+                  <%if current_order.tickets.size > 0 %>
+                    <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
+                  <% end %>
                 </button>
-              </div>
 
               <input type="checkbox" id="museum-toggle" class="hidden">
               <label for="museum-toggle" class="museum-label-toggle">museum</label>
@@ -63,7 +54,7 @@
         <!-- dynamic content stuff goes in this column  -->
         <div class="col-sm-9 col-lg-10 content">
 
-          <h1>A not so dull affair in the forbidden forest</h1>
+          <h1>A not so dull affair in the forbidden <%= link_to "forest", root_path %></h1>
           <%= yield %>
       </div>
   </body>
