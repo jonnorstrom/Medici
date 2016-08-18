@@ -1,14 +1,17 @@
 class ExhibitsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def show
+    @user = User.find(current_user.id)
     @exhibit = Exhibit.find(params[:id])
   end
 
   def new
+    @user = User.find(current_user.id)
     @exhibit = Exhibit.new
   end
 
   def create
+    @user = User.find(current_user.id)
     @exhibit = Exhibit.new(exhibit_params)
     if @exhibit.save
       redirect_to :root

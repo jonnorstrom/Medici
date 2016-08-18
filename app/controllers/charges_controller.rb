@@ -1,15 +1,20 @@
 class ChargesController < ApplicationController
+  before_action :authenticate_user!
 
   def new
+    @user = User.find(current_user.id)
     @order = Order.find(current_order.id)
     @amount = '%.2f' % @order.subtotal
     @display_amount = @order.subtotal * 100.00
   end
 
   def create
-    @order = Order.find(current_user.id)
-    amount_float = @order.subtotal * 100.00
-    @amount = amount_float.to_i
+    @user = User.find(current_user.id)
+    @order = Order.find(current_order.id)
+    @amount_float = @order.subtotal * 100.00
+    @amount = @amount_float.to_i
+    p @amount_float
+    p @amount
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -22,7 +27,7 @@ class ChargesController < ApplicationController
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
-
+    @order.tickets.update(paid: true)
     @order.tickets.delete_all
     redirect_to :root
   rescue Stripe::CardError => e

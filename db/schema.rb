@@ -68,11 +68,11 @@ ActiveRecord::Schema.define(version: 20160818155305) do
     t.integer  "quantity"
     t.integer  "order_id"
     t.float    "total_price"
-    t.boolean  "paid"
-    t.boolean  "redeemed"
+    t.boolean  "paid",          default: false
+    t.boolean  "redeemed",      default: false
     t.date     "date_redeemed"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "users", force: :cascade do |t|

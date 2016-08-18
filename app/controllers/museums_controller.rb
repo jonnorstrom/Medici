@@ -11,6 +11,7 @@ class MuseumsController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user.id)
     @museum = Museum.find(params[:id])
     @ticket = current_order.tickets.new
     @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
@@ -20,10 +21,12 @@ class MuseumsController < ApplicationController
   end
 
   def new
+    @user = User.find(current_user.id)
     @museum = Museum.new
   end
 
   def create
+    @user = User.find(current_user.id)
     @museum = Museum.new(museum_params)
     if @museum.save
       redirect_to :root
@@ -34,6 +37,7 @@ class MuseumsController < ApplicationController
   end
 
   def update
+    @user = User.find(current_user.id)
     @museum = Museum.find(params[:id])
     if @museum.update(museum_params)
       redirect_to :root
@@ -44,10 +48,12 @@ class MuseumsController < ApplicationController
   end
 
   def edit
+    @user = User.find(current_user.id)
     @museum = Museum.find(params[:id])
   end
 
   def destroy
+    @user = User.find(current_user.id)
     @museum = Museum.find(params[:id])
     @museum.destroy
     redirect_to :root

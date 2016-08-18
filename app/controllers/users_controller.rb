@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-before_action :authenticate_user!
+  before_action :authenticate_user!
+
   def show
     @user = User.find(params[:id])
-    @tickets = Ticket.where(user_id: current_user.id)
+    @tickets = Ticket.where(user_id: current_user.id, paid: true, redeemed: false)
   end
 
   def edit
