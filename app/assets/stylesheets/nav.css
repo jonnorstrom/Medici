@@ -13,20 +13,20 @@
         font-family: "Brandon Grotesque" , "Helvetica";
         color:black !important;
     }
-    .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{ 
+    .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{
         color: lightGrey;
-        text-decoration: none 
+        text-decoration: none
     }
     .collapse.navbar-collapse{
-        padding: 0px 0px 
+        padding: 0px 0px
     }
     .list-group-borderless .list-group-item:first-child{
-        border-top: 0 none 
+        border-top: 0 none
     }
     .list-group-borderless .list-group-item:last-child{
         border-bottom: 0 none
     }
-    
+
     .list-group-item{
         border-left: 0 none;
         border-right: 0 none
@@ -58,30 +58,30 @@
         font-family: "Brandon Grotesque" , "Helvetica";
         color: dimGrey;
         font-size: 2em;
-        font-weight: bold
+        font-weight: bold;
         position: absolute;
         width: 100%;
         left: 0;
         top: 0;
         text-align: center;
         margin: auto;
-        border: 0
+        border: 0;
     }
-    .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{ 
+    .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{
         color: lightGrey;
-        text-decoration: none 
+        text-decoration: none;
 
     }
     .collapse.navbar-collapse{
-        padding: 0px 0px 
+        padding: 0px 0px;
     }
     .list-group-borderless .list-group-item:first-child{
-        border-top: 0 none 
+        border-top: 0 none
     }
     .list-group-borderless .list-group-item:last-child{
         border-bottom: 0 none
     }
-    
+
     .list-group-item{
         border-left: 0 none;
         border-right: 0 none
@@ -98,7 +98,7 @@
  -moz-column-width: 25em;
  -webkit-column-width: 25em;
  -moz-column-gap: .5em;
- -webkit-column-gap: .5em; 
+ -webkit-column-gap: .5em;
 }
 
 .content{
@@ -108,7 +108,7 @@
 .post-wrapper {
  display: inline-block;
  margin:  .5em;
- padding:  0; 
+ padding:  0;
  width:98%;http://localhost:3000/#
 }
 
