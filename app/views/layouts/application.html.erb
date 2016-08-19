@@ -36,7 +36,10 @@
               <!-- menu stuff goes here-->
 
                 <button type="button"class="list-group-item">
+                  <% if current_user %>
                     <%= link_to "Check Out", cart_path(id: current_user.id), class: "btn btn-link" %>
+                  <% end %>
+
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   <%if current_order.tickets.where(paid: false).size > 0 %>
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
