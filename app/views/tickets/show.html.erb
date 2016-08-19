@@ -1,2 +1,8 @@
-<%= Museum.find(@ticket.museum_id).name %>: <%= @ticket.quantity %>
-<%= link_to "Redeem a ticket", tickets_redeem_path %>
+<% if @ticket.quantity == 0 %>
+  <p>
+    You have redeemed your tickets!
+  </p>
+<% else %>
+  <%= Museum.find(@ticket.museum_id).name %>: <%= @ticket.quantity %>
+  <%= link_to "Redeem a ticket", "redeem/#{@ticket.id}" %>
+<% end %>

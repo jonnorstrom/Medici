@@ -1,4 +1,5 @@
 <h3><%= render 'layouts/cart_text' %></h3>
+
 <div class="row masonry-row">
 	<% @museums.shuffle.each do |museum| %>
 	  <%= render "museum_row", museum: museum, ticket: @ticket  %>
@@ -9,5 +10,3 @@
 <% if current_user %>
   <%=link_to "Add Museum", new_museum_path %>
 <% end %>
-
-         

@@ -38,15 +38,13 @@
               <% if current_user %>
                 <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
               <% else %>
-                <%= link_to "Login", new_user_session_path %>
-                <%= link_to "Register", new_user_registration_path %><br>
                 <!-- modal window trigger -->
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Log-In-Modal">log-in</button>
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Register-Modal">Register</button>
               <% end %>
 
-              
-        
+
+
 
               <input type="checkbox" id="museum-toggle" class="hidden">
               <label for="museum-toggle" class="museum-label-toggle">museum</label>
@@ -55,12 +53,17 @@
               <label for="exhibit-toggle" class="exhibit-label-toggle">exhibit</label>
 
               <div class="list-group list-group-borderless">
+
                 <button type="button"class="list-group-item">
-                  <a href="#">check out</a>
+                  <% if current_user %>
+                    <%= link_to "Check Out", cart_path(id: current_user.id), class: "btn btn-link" %>
+                  <% end %>
+
                   <span class="glyphicon glyphicon-shopping-cart"></span>
-                  <span class="badge">3</span>
+                  <%if current_order.tickets.where(paid: false).size > 0 %>
+                    <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
+                  <% end %>
                 </button>
-              </div>
 
             </div>
           </nav>
@@ -155,9 +158,8 @@
             </div>
           </div>
         </div>
-
-        <h1>A not so dull affair in the forbidden forest</h1>
-        <%= yield %>
+          <h1>A not so dull affair in the forbidden <%= link_to "forest", root_path %></h1>
+          <%= yield %>
       </div>
   </body>
 </html>

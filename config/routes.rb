@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:show]
   resources :museums
-  get "tickets/redeem" => "tickets#redeem"
+  get "tickets/redeem/:id" => "tickets#redeem"
   resources :tickets
   resources :exhibits
   resources :charges
