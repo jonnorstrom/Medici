@@ -40456,6 +40456,222 @@ Processing by MuseumsController#index as HTML
 Completed 200 OK in 109ms (Views: 101.8ms | ActiveRecord: 1.0ms)
 
 
+<<<<<<< HEAD
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:26:06 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.0.0.1) lib/active_record/migration.rb:572:in `check_pending!'
+activerecord (5.0.0.1) lib/active_record/migration.rb:548:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:20:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.6ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (30.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5304950054646260970);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCharges (20160818155305)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.8ms)[0m  [1m[35mCREATE TABLE "charges" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160818155305"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5304950054646260970)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'charges'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'exhibits'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'museums'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'orders'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'tickets'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:26:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.2ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (23.9ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.2ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/index.html.erb within layouts/application (170.0ms)
+Completed 200 OK in 4223ms (Views: 3934.3ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:30:15 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (2.2ms)
+  Rendered museums/_museum_row.html.erb (2.0ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/index.html.erb within layouts/application (131.3ms)
+Completed 200 OK in 709ms (Views: 665.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:35:10 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/index.html.erb within layouts/application (124.9ms)
+Completed 200 OK in 675ms (Views: 650.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:37:33 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.0ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (2.2ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.3ms)
+  Rendered museums/index.html.erb within layouts/application (128.4ms)
+Completed 200 OK in 576ms (Views: 552.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:38:28 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+=======
 Started GET "/" for ::1 at 2016-08-18 15:18:05 -0500
 Processing by MuseumsController#index as HTML
   [1m[36mMuseum Load (0.8ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
@@ -40468,11 +40684,205 @@ Completed 200 OK in 126ms (Views: 115.2ms | ActiveRecord: 2.1ms)
 
 
 Started GET "/" for ::1 at 2016-08-18 15:20:18 -0500
+>>>>>>> master
 Processing by MuseumsController#index as HTML
   [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
   [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
   Rendering museums/index.html.erb within layouts/application
   Rendered layouts/_cart_text.html.erb (1.4ms)
+<<<<<<< HEAD
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (1.2ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.5ms)
+  Rendered museums/index.html.erb within layouts/application (126.3ms)
+Completed 200 OK in 606ms (Views: 579.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/5" for 10.0.2.2 at 2016-08-18 20:42:19 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 5], ["paid", true], ["redeemed", false]]
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 505ms (Views: 470.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/5" for 10.0.2.2 at 2016-08-18 20:42:20 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 5], ["paid", true], ["redeemed", false]]
+  Rendered users/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 518ms (Views: 484.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/5" for 10.0.2.2 at 2016-08-18 20:42:50 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 5], ["paid", true], ["redeemed", false]]
+  Rendered users/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 454ms (Views: 425.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:42:55 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (150.8ms)
+Completed 200 OK in 622ms (Views: 587.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/5" for 10.0.2.2 at 2016-08-18 20:43:03 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 5], ["paid", true], ["redeemed", false]]
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 476ms (Views: 449.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/5" for 10.0.2.2 at 2016-08-18 20:43:03 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 5], ["paid", true], ["redeemed", false]]
+  Rendered users/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 518ms (Views: 490.8ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:43:08 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (2.1ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.5ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.2ms)
+  Rendered museums/_museum_row.html.erb (1.2ms)
+  Rendered museums/index.html.erb within layouts/application (158.1ms)
+Completed 200 OK in 730ms (Views: 693.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:45:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.5ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/index.html.erb within layouts/application (140.9ms)
+Completed 200 OK in 581ms (Views: 549.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:47:16 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (3.9ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/index.html.erb within layouts/application (133.2ms)
+Completed 200 OK in 581ms (Views: 551.5ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:48:09 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (3.4ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/index.html.erb within layouts/application (132.5ms)
+Completed 200 OK in 596ms (Views: 558.6ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/users/sign_out" for 10.0.2.2 at 2016-08-18 20:48:28 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kyrUa0M2xiIXu4oeLXJePGA4wu4LkQkRYlrfnfz2bPRD6jK43aoonyNti6g0QTk/G4qN2aok4nFQYMuh032TrQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 38ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:48:28 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (1.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (3.9ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/index.html.erb within layouts/application (120.2ms)
+Completed 200 OK in 584ms (Views: 563.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:54:43 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+=======
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   Rendered museums/index.html.erb within layouts/application (7.5ms)
 Completed 200 OK in 112ms (Views: 106.9ms | ActiveRecord: 1.0ms)
@@ -40659,10 +41069,867 @@ Completed 302 Found in 411ms (ActiveRecord: 15.0ms)
 
 
 Started GET "/" for ::1 at 2016-08-18 15:26:08 -0500
+>>>>>>> master
 Processing by MuseumsController#index as HTML
   [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
   [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
   Rendering museums/index.html.erb within layouts/application
+<<<<<<< HEAD
+  Rendered layouts/_cart_text.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (0.4ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/index.html.erb within layouts/application (130.7ms)
+Completed 200 OK in 716ms (Views: 695.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:55:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.7ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (1.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.9ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/index.html.erb within layouts/application (122.8ms)
+Completed 200 OK in 682ms (Views: 649.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:55:59 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.7ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (134.7ms)
+Completed 200 OK in 754ms (Views: 719.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:56:13 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (1.2ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/index.html.erb within layouts/application (130.8ms)
+Completed 200 OK in 734ms (Views: 697.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:56:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.7ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.7ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/index.html.erb within layouts/application (121.8ms)
+Completed 200 OK in 683ms (Views: 652.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:57:29 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.2ms)
+  Rendered museums/_museum_row.html.erb (1.8ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (132.5ms)
+Completed 200 OK in 682ms (Views: 657.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 20:57:52 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.9ms)
+  Rendered museums/_museum_row.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/index.html.erb within layouts/application (137.9ms)
+Completed 200 OK in 690ms (Views: 668.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 21:00:13 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (2.0ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (118.2ms)
+Completed 200 OK in 666ms (Views: 647.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 21:00:49 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.4ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.7ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/index.html.erb within layouts/application (124.9ms)
+Completed 200 OK in 598ms (Views: 572.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 21:02:33 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.5ms)
+  Rendered museums/_museum_row.html.erb (1.8ms)
+  Rendered museums/_museum_row.html.erb (0.5ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/index.html.erb within layouts/application (117.7ms)
+Completed 200 OK in 586ms (Views: 568.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 21:05:00 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.7ms)
+  Rendered museums/_museum_row.html.erb (1.7ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/index.html.erb within layouts/application (126.1ms)
+Completed 200 OK in 694ms (Views: 668.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 21:06:47 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (1.5ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/index.html.erb within layouts/application (135.3ms)
+Completed 200 OK in 695ms (Views: 675.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 21:08:07 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.5ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/index.html.erb within layouts/application (129.2ms)
+Completed 200 OK in 722ms (Views: 691.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 21:08:24 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.4ms)
+  Rendered museums/_museum_row.html.erb (2.3ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (127.8ms)
+Completed 200 OK in 705ms (Views: 659.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 21:09:42 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (2.1ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.8ms)
+  Rendered museums/_museum_row.html.erb (0.4ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (127.1ms)
+Completed 200 OK in 982ms (Views: 961.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:04:32 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.6ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/index.html.erb within layouts/application (112.0ms)
+Completed 200 OK in 733ms (Views: 676.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:04:50 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/index.html.erb within layouts/application (121.0ms)
+Completed 200 OK in 712ms (Views: 684.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:06:47 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (3.0ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (1.1ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.8ms)
+  Rendered museums/_museum_row.html.erb (1.8ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (124.3ms)
+Completed 200 OK in 689ms (Views: 656.5ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:07:36 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.7ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (2.1ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.4ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/index.html.erb within layouts/application (114.5ms)
+Completed 200 OK in 587ms (Views: 543.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:08:10 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.8ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (121.2ms)
+Completed 200 OK in 694ms (Views: 673.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:09:13 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.8ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.5ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.2ms)
+  Rendered museums/_museum_row.html.erb (1.9ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (120.3ms)
+Completed 200 OK in 726ms (Views: 682.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:19:46 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.7ms)
+  Rendered museums/_museum_row.html.erb (1.9ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (119.4ms)
+Completed 200 OK in 997ms (Views: 957.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:20:19 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.5ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.4ms)
+  Rendered museums/_museum_row.html.erb (1.7ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.5ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/index.html.erb within layouts/application (129.2ms)
+Completed 200 OK in 745ms (Views: 690.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:22:10 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/index.html.erb within layouts/application (123.8ms)
+Completed 200 OK in 654ms (Views: 633.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:23:41 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.0ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (2.1ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/index.html.erb within layouts/application (123.2ms)
+Completed 200 OK in 960ms (Views: 932.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:34:39 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.2ms)
+  Rendered museums/_museum_row.html.erb (10.6ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (124.9ms)
+Completed 200 OK in 6234ms (Views: 5996.7ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:36:21 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.9ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/index.html.erb within layouts/application (110.0ms)
+Completed 200 OK in 689ms (Views: 656.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:38:06 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.4ms)
+  Rendered museums/_museum_row.html.erb (10.9ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/index.html.erb within layouts/application (139.1ms)
+Completed 200 OK in 3873ms (Views: 3619.8ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-18 22:41:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (2.0ms)
+  Rendered museums/_museum_row.html.erb (11.4ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (1.4ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/index.html.erb within layouts/application (143.9ms)
+Completed 200 OK in 4315ms (Views: 4084.0ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-19 15:52:45 +0000
+Started GET "/" for 10.0.2.2 at 2016-08-19 15:52:45 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (9.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MuseumsController#index as HTML
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.7ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.7ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.5ms)
+  Rendered layouts/_cart_text.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (15.0ms)
+  Rendered museums/_museum_row.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.4ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/index.html.erb within layouts/application (372.6ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/index.html.erb within layouts/application (608.7ms)
+Completed 200 OK in 11799ms (Views: 11390.5ms | ActiveRecord: 97.5ms)
+
+
+Completed 200 OK in 11813ms (Views: 11345.5ms | ActiveRecord: 45.3ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 15:58:07 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (513.1ms)
+Completed 200 OK in 1991ms (Views: 1903.1ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-19 16:03:55 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.7ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.5ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (3.7ms)
+  Rendered museums/_museum_row.html.erb (5.6ms)
+  Rendered museums/_museum_row.html.erb (2.9ms)
+  Rendered museums/_museum_row.html.erb (2.4ms)
+  Rendered museums/_museum_row.html.erb (2.4ms)
+  Rendered museums/_museum_row.html.erb (2.7ms)
+  Rendered museums/_museum_row.html.erb (3.0ms)
+  Rendered museums/index.html.erb within layouts/application (725.9ms)
+Completed 200 OK in 2565ms (Views: 2491.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-19 16:06:26 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (1.7ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.9ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.7ms)
+  Rendered museums/_museum_row.html.erb (3.5ms)
+  Rendered museums/_museum_row.html.erb (1.5ms)
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (1.2ms)
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/index.html.erb within layouts/application (420.0ms)
+Completed 200 OK in 1776ms (Views: 1692.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-19 16:06:50 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (1.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (1.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (10.2ms)
+  Rendered museums/_museum_row.html.erb (1.5ms)
+  Rendered museums/_museum_row.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (1.4ms)
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/_museum_row.html.erb (1.6ms)
+  Rendered museums/index.html.erb within layouts/application (391.7ms)
+Completed 200 OK in 2157ms (Views: 2038.5ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-19 16:08:41 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (1.1ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.6ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (2.3ms)
+  Rendered museums/_museum_row.html.erb (2.5ms)
+  Rendered museums/_museum_row.html.erb (1.2ms)
+  Rendered museums/_museum_row.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (1.7ms)
+  Rendered museums/_museum_row.html.erb (1.7ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/index.html.erb within layouts/application (359.1ms)
+Completed 200 OK in 1770ms (Views: 1703.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-19 16:16:22 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (1.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.8ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.9ms)
+  Rendered museums/_museum_row.html.erb (2.7ms)
+  Rendered museums/_museum_row.html.erb (1.2ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.2ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (1.3ms)
+  Rendered museums/index.html.erb within layouts/application (336.7ms)
+Completed 200 OK in 1708ms (Views: 1581.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:17:36 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (85.2ms)
+Completed 200 OK in 1470ms (Views: 1467.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:17:38 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (67.7ms)
+Completed 200 OK in 1274ms (Views: 1271.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:24:17 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (131.4ms)
+Completed 500 Internal Server Error in 440ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/vagrant/medici/app/views/layouts/application.html.erb:120: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  
+app/views/layouts/application.html.erb:120: syntax error, unexpected keyword_ensure, expecting end-of-input
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.8ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.9ms)
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:25:10 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (131.3ms)
+  Rendered devise/shared/_links.html.erb (0.7ms)
+Completed 200 OK in 1857ms (Views: 1854.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:25:30 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (9.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (169.0ms)
+  Rendered devise/shared/_links.html.erb (0.5ms)
+Completed 200 OK in 1491ms (Views: 1490.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:26:30 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (120.3ms)
+  Rendered devise/shared/_links.html.erb (0.5ms)
+Completed 200 OK in 1375ms (Views: 1373.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:42:50 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (23.6ms)
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+Completed 200 OK in 585ms (Views: 583.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:42:58 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (29.6ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/shared/_links.html.erb (0.4ms)
+Completed 200 OK in 558ms (Views: 557.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:43:46 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.3ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+Completed 200 OK in 542ms (Views: 540.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:44:02 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (31.5ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+Completed 200 OK in 481ms (Views: 480.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:44:22 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (21.6ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+Completed 200 OK in 514ms (Views: 513.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:48:21 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (21.8ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+Completed 200 OK in 558ms (Views: 556.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:49:35 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.2ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+Completed 200 OK in 548ms (Views: 546.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-19 16:49:52 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (8.8ms)
+  Rendered museums/_museum_row.html.erb (0.4ms)
+  Rendered museums/_museum_row.html.erb (0.4ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.4ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/index.html.erb within layouts/application (122.2ms)
+Completed 500 Internal Server Error in 666ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `resource' for #<#<Class:0x007fba945f15d0>:0x007fba8c79cfb8>):
+    75:                 <h4 class="modal-title">Login</h4>
+    76:               </div>
+    77:               <div class="modal-body">
+    78:                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    79:                   <div class="field">
+    80:                     <%= f.label :email %><br />
+    81:                     <%= f.email_field :email, autofocus: true %>
+  
+app/views/layouts/application.html.erb:78:in `_app_views_layouts_application_html_erb___2973842719045655978_70219528635660'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.9ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (17.9ms)
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:49:54 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (32.0ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/shared/_links.html.erb (0.2ms)
+Completed 200 OK in 554ms (Views: 552.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-19 16:50:10 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (2.0ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/_museum_row.html.erb (0.4ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/index.html.erb within layouts/application (123.3ms)
+Completed 500 Internal Server Error in 641ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `resource' for #<#<Class:0x007fba945f15d0>:0x00000006d87150>):
+    75:                 <h4 class="modal-title">Login</h4>
+    76:               </div>
+    77:               <div class="modal-body">
+    78:                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    79:                   <div class="field">
+    80:                     <%= f.label :email %><br />
+    81:                     <%= f.email_field :email, autofocus: true %>
+  
+app/views/layouts/application.html.erb:78:in `_app_views_layouts_application_html_erb___2973842719045655978_57389240'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.1ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.6ms)
+Started GET "/user" for 10.0.2.2 at 2016-08-19 16:51:15 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:20:in `block in call'
+=======
   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   Rendered museums/_museum_row.html.erb (7.4ms)
   Rendered museums/index.html.erb within layouts/application (10.7ms)
@@ -41807,6 +43074,7 @@ ActionController::RoutingError (No route matches [GET] "/tickets/redeem/1"):
 actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
 web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
 web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+>>>>>>> master
 web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
 web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
 actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
@@ -41829,6 +43097,100 @@ puma (3.6.0) lib/puma/configuration.rb:225:in `call'
 puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
 puma (3.6.0) lib/puma/server.rb:415:in `process_client'
 puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+<<<<<<< HEAD
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered collection of /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [54 times] (26.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.0ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (55.0ms)
+Started GET "/users/sign_in" for 10.0.2.2 at 2016-08-19 16:51:21 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.2ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+Completed 200 OK in 516ms (Views: 515.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2016-08-19 16:54:52 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.7ms)
+  Rendered museums/_museum_row.html.erb (2.7ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.7ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/index.html.erb within layouts/application (134.3ms)
+Completed 500 Internal Server Error in 712ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `resource' for #<#<Class:0x007fba945f15d0>:0x000000038b8668>):
+    75:                 <h4 class="modal-title">Login</h4>
+    76:               </div>
+    77:               <div class="modal-body">
+    78:                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    79:                   <div class="field">
+    80:                     <%= f.label :email %><br />
+    81:                     <%= f.email_field :email, autofocus: true %>
+  
+app/views/layouts/application.html.erb:78:in `_app_views_layouts_application_html_erb___2973842719045655978_28760640'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.0ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.3ms)
+Started GET "/" for 10.0.2.2 at 2016-08-19 16:59:36 +0000
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.9ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (1.0ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (2.2ms)
+  Rendered museums/_museum_row.html.erb (0.9ms)
+  Rendered museums/_museum_row.html.erb (1.0ms)
+  Rendered museums/_museum_row.html.erb (1.1ms)
+  Rendered museums/_museum_row.html.erb (0.8ms)
+  Rendered museums/_museum_row.html.erb (0.6ms)
+  Rendered museums/index.html.erb within layouts/application (120.9ms)
+Completed 500 Internal Server Error in 774ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `resource' for #<#<Class:0x007fba945f15d0>:0x007fba906ffa70>):
+    76:                 <h4 class="modal-title">Login</h4>
+    77:               </div>
+    78:               <div class="modal-body">
+    79:                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    80:                   <div class="field">
+    81:                     <%= f.label :email %><br />
+    82:                     <%= f.email_field :email, autofocus: true %>
+  
+app/views/layouts/application.html.erb:79:in `_app_views_layouts_application_html_erb___2973842719045655978_70219599215280'
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.5ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendering /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /var/lib/gems/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.0ms)
+=======
 puma (3.6.0) lib/puma/thread_pool.rb:116:in `call'
 puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
   Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
@@ -46708,5 +48070,281 @@ Processing by UsersController#show as HTML
   [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
 Completed 200 OK in 126ms (Views: 117.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/users/1" for ::1 at 2016-08-19 11:31:12 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 1], ["paid", true], ["redeemed", false]]
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 1], ["paid", true], ["redeemed", true]]
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (18.5ms)
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 316ms (Views: 279.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-19 11:31:15 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (1.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.7ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (1.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (5.7ms)
+  Rendered museums/index.html.erb within layouts/application (8.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 147ms (Views: 124.0ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/" for ::1 at 2016-08-19 11:31:19 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (1.6ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (4.6ms)
+  Rendered museums/index.html.erb within layouts/application (6.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 111ms (Views: 100.3ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/users/1" for ::1 at 2016-08-19 11:31:20 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 1], ["paid", true], ["redeemed", false]]
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 1], ["paid", true], ["redeemed", true]]
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (9.4ms)
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 126ms (Views: 115.9ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2016-08-19 11:31:22 -0500
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (19.1ms)
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 127ms (Views: 114.4ms | ActiveRecord: 2.9ms)
+
+
+Started PATCH "/users/1" for ::1 at 2016-08-19 11:31:31 -0500
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rH3+E1Oc0sppKTsrg55b4vIoErWVZPuUzJamyeFQ9TGJ1QsBJmeTX5OexLsgbuVkx920cgC/VFQbL67LPYQRHg==", "user"=>{"email"=>"prescott.southard@aol.com", "name"=>"Scott", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fd1da215a58 @tempfile=#<Tempfile:/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/RackMultipart20160819-19409-gf0bkl.jpg>, @original_filename="12189567_10103157611872520_7670759578092459737_n.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"12189567_10103157611872520_7670759578092459737_n.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update", "id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-1f9z1v0.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' -auto-orient -resize "500x500>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/67073ab35fad23ecf2899760d3edc6bb20160819-19409-7ghau5'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/67073ab35fad23ecf2899760d3edc6bb20160819-19409-1g03sa9'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' -auto-orient -resize "200x200>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/67073ab35fad23ecf2899760d3edc6bb20160819-19409-1aiei6f'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/67073ab35fad23ecf2899760d3edc6bb20160819-19409-rl0fbq'
+Command :: file -b --mime '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-w5as5i.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "avatar_file_name" = $1, "avatar_content_type" = $2, "avatar_file_size" = $3, "avatar_updated_at" = $4, "updated_at" = $5 WHERE "users"."id" = $6[0m  [["avatar_file_name", "12189567_10103157611872520_7670759578092459737_n.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 102019], ["avatar_updated_at", 2016-08-19 16:31:31 UTC], ["updated_at", 2016-08-19 16:31:32 UTC], ["id", 1]]
+[paperclip] deleting /Users/scottsouthard/Documents/Dev/medici/public/system/users/avatars/000/000/001/original/giphy.gif
+[paperclip] deleting /Users/scottsouthard/Documents/Dev/medici/public/system/users/avatars/000/000/001/large/giphy.gif
+[paperclip] deleting /Users/scottsouthard/Documents/Dev/medici/public/system/users/avatars/000/000/001/medium/giphy.gif
+[paperclip] deleting /Users/scottsouthard/Documents/Dev/medici/public/system/users/avatars/000/000/001/small/giphy.gif
+[paperclip] deleting /Users/scottsouthard/Documents/Dev/medici/public/system/users/avatars/000/000/001/thumb/giphy.gif
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 693ms (ActiveRecord: 8.3ms)
+
+
+Started GET "/" for ::1 at 2016-08-19 11:31:32 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (4.1ms)
+  Rendered museums/index.html.erb within layouts/application (6.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 110ms (Views: 101.3ms | ActiveRecord: 1.8ms)
+
+
+>>>>>>> master
+Started GET "/" for ::1 at 2016-08-19 12:20:42 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.6ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."order_id" = $1[0m  [["order_id", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered layouts/_cart_text.html.erb (29.5ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (16.6ms)
+  Rendered museums/index.html.erb within layouts/application (52.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 500 Internal Server Error in 1038ms (ActiveRecord: 15.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `resource' for #<#<Class:0x007f8e64435590>:0x007f8e668eca78>):
+    79:                 <h4 class="modal-title">Login</h4>
+    80:               </div>
+    81:               <div class="modal-body">
+    82:                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    83:                   <div class="field">
+    84:                     <%= f.label :email %><br />
+    85:                     <%= f.email_field :email, autofocus: true %>
+  
+app/views/layouts/application.html.erb:82:in `_app_views_layouts_application_html_erb___2909779159821608860_70124791408340'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.1ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (77.9ms)
+Started GET "/" for ::1 at 2016-08-19 12:25:49 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."order_id" = $1[0m  [["order_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered layouts/_cart_text.html.erb (38.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (5.9ms)
+  Rendered museums/index.html.erb within layouts/application (48.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 500 Internal Server Error in 332ms (ActiveRecord: 12.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `resource' for #<#<Class:0x007f8e647cc528>:0x007f8e647bf328>):
+    79:                 <h4 class="modal-title">Login</h4>
+    80:               </div>
+    81:               <div class="modal-body">
+    82:                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    83:                   <div class="field">
+    84:                     <%= f.label :email %><br />
+    85:                     <%= f.email_field :email, autofocus: true %>
+  
+app/views/layouts/application.html.erb:82:in `_app_views_layouts_application_html_erb___2909779159821608860_70124774011600'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.6ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (76.1ms)
+Started GET "/" for ::1 at 2016-08-19 12:27:43 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."order_id" = $1[0m  [["order_id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered layouts/_cart_text.html.erb (28.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (15.2ms)
+  Rendered museums/index.html.erb within layouts/application (48.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 500 Internal Server Error in 586ms (ActiveRecord: 14.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `resource' for #<#<Class:0x007ffa69041e68>:0x007ffa6904b580>):
+    79:                 <h4 class="modal-title">Login</h4>
+    80:               </div>
+    81:               <div class="modal-body">
+    82:                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    83:                   <div class="field">
+    84:                     <%= f.label :email %><br />
+    85:                     <%= f.email_field :email, autofocus: true %>
+  
+app/views/layouts/application.html.erb:82:in `_app_views_layouts_application_html_erb___4268506020183305655_70356736122460'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (20.7ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (97.1ms)
+Started GET "/" for ::1 at 2016-08-19 12:29:18 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."order_id" = $1[0m  [["order_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered layouts/_cart_text.html.erb (37.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (4.0ms)
+  Rendered museums/index.html.erb within layouts/application (45.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+Completed 200 OK in 246ms (Views: 164.3ms | ActiveRecord: 10.9ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-08-19 12:29:46 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SJLGqm1c3+5QcFVHxjzO/tY/xLnsQjfXwLGwwlDMz8xgSPYJffdawwd2gvq6n2CLoLB4jsairvZ/2RLLRFYoyQ=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 21ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-19 12:29:46 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (5.8ms)
+  Rendered museums/index.html.erb within layouts/application (11.2ms)
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/shared/_links.html.erb (0.4ms)
+Completed 200 OK in 186ms (Views: 119.7ms | ActiveRecord: 13.6ms)
 
 
