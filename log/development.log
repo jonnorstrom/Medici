@@ -48188,3 +48188,163 @@ Completed 200 OK in 110ms (Views: 101.3ms | ActiveRecord: 1.8ms)
 
 
 >>>>>>> master
+Started GET "/" for ::1 at 2016-08-19 12:20:42 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.6ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."order_id" = $1[0m  [["order_id", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered layouts/_cart_text.html.erb (29.5ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (16.6ms)
+  Rendered museums/index.html.erb within layouts/application (52.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 500 Internal Server Error in 1038ms (ActiveRecord: 15.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `resource' for #<#<Class:0x007f8e64435590>:0x007f8e668eca78>):
+    79:                 <h4 class="modal-title">Login</h4>
+    80:               </div>
+    81:               <div class="modal-body">
+    82:                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    83:                   <div class="field">
+    84:                     <%= f.label :email %><br />
+    85:                     <%= f.email_field :email, autofocus: true %>
+  
+app/views/layouts/application.html.erb:82:in `_app_views_layouts_application_html_erb___2909779159821608860_70124791408340'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.1ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (77.9ms)
+Started GET "/" for ::1 at 2016-08-19 12:25:49 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."order_id" = $1[0m  [["order_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered layouts/_cart_text.html.erb (38.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (5.9ms)
+  Rendered museums/index.html.erb within layouts/application (48.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 500 Internal Server Error in 332ms (ActiveRecord: 12.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `resource' for #<#<Class:0x007f8e647cc528>:0x007f8e647bf328>):
+    79:                 <h4 class="modal-title">Login</h4>
+    80:               </div>
+    81:               <div class="modal-body">
+    82:                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    83:                   <div class="field">
+    84:                     <%= f.label :email %><br />
+    85:                     <%= f.email_field :email, autofocus: true %>
+  
+app/views/layouts/application.html.erb:82:in `_app_views_layouts_application_html_erb___2909779159821608860_70124774011600'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.6ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (76.1ms)
+Started GET "/" for ::1 at 2016-08-19 12:27:43 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Load (0.3ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."order_id" = $1[0m  [["order_id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered layouts/_cart_text.html.erb (28.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (15.2ms)
+  Rendered museums/index.html.erb within layouts/application (48.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 500 Internal Server Error in 586ms (ActiveRecord: 14.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `resource' for #<#<Class:0x007ffa69041e68>:0x007ffa6904b580>):
+    79:                 <h4 class="modal-title">Login</h4>
+    80:               </div>
+    81:               <div class="modal-body">
+    82:                 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    83:                   <div class="field">
+    84:                     <%= f.label :email %><br />
+    85:                     <%= f.email_field :email, autofocus: true %>
+  
+app/views/layouts/application.html.erb:82:in `_app_views_layouts_application_html_erb___4268506020183305655_70356736122460'
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (20.7ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendering /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/scottsouthard/.rbenv/versions/2.2.4/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (97.1ms)
+Started GET "/" for ::1 at 2016-08-19 12:29:18 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.2ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTicket Load (0.2ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."order_id" = $1[0m  [["order_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.3ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered layouts/_cart_text.html.erb (37.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (4.0ms)
+  Rendered museums/index.html.erb within layouts/application (45.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/shared/_links.html.erb (0.3ms)
+Completed 200 OK in 246ms (Views: 164.3ms | ActiveRecord: 10.9ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-08-19 12:29:46 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SJLGqm1c3+5QcFVHxjzO/tY/xLnsQjfXwLGwwlDMz8xgSPYJffdawwd2gvq6n2CLoLB4jsairvZ/2RLLRFYoyQ=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 21ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-19 12:29:46 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  Rendered layouts/_cart_text.html.erb (1.3ms)
+  Rendered museums/_museum_row.html.erb (5.8ms)
+  Rendered museums/index.html.erb within layouts/application (11.2ms)
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/shared/_links.html.erb (0.4ms)
+Completed 200 OK in 186ms (Views: 119.7ms | ActiveRecord: 13.6ms)
+
+
