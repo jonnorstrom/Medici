@@ -3,9 +3,7 @@ class Ticket < ApplicationRecord
   belongs_to :museum
   belongs_to :order
 
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  # validate :museum_present
-  # validate :order_present
+  validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   before_save :finalize
 

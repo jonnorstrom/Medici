@@ -10,8 +10,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
-tmp/
-config/environments/production.rb
+tmp/*
+log/*
 !/log/.keep
 !/tmp/.keep
 public/system/*
