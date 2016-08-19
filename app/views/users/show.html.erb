@@ -5,5 +5,11 @@
 <% @tickets.each do |ticket| %>
   <h4><%= link_to "#{Museum.find(ticket.museum_id).name}", ticket %>: <%= ticket.quantity %></h4>
 <% end %>
-<%= link_to "Edit Profile", edit_user_path %>
+<h4>Redeemed Tickets</h4>
+<% @redeemed_tickets.each do |ticket| %>
+  <p>
+    <%= Museum.find(ticket.museum_id).name %>
+  </p>
+<% end %>
+<%= link_to "Edit Profile", edit_user_path %><br>
 <%= link_to "Home", root_path %>

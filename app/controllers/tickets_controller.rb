@@ -19,7 +19,8 @@ class TicketsController < ApplicationController
     @quantity = @ticket.quantity
     @ticket.update(quantity: @quantity - 1, order_id: 1)
     if @quantity - 1 == 0
-      @ticket.destroy
+      @ticket.update(redeemed: true)
+      # @ticket.destroy
       redirect_to current_user
     else
       redirect_to ticket_path(@ticket)

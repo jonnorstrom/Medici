@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tickets = Ticket.where(user_id: current_user.id, paid: true, redeemed: false)
+    @redeemed_tickets = Ticket.where(user_id: current_user.id, paid: true, redeemed: true)
   end
 
   def edit
