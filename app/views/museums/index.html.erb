@@ -1,16 +1,4 @@
 <h3><%= render 'layouts/cart_text' %></h3>
-
-<% if current_user %>
-  <h1>
-    <%= image_tag current_user.avatar.url(:medium) %><br>
-    <%= link_to "#{current_user.name}", current_user %>
-  </h1>
-  <%= link_to "Logout", destroy_user_session_path, :method => :delete %><br>
-<% else %>
-  <%= link_to "Login", new_user_session_path %>
-  <%= link_to "Register", new_user_registration_path %><br>
-<% end %>
-<br>
 <div class="row masonry-row">
 	<% @museums.shuffle.each do |museum| %>
 	  <%= render "museum_row", museum: museum, ticket: @ticket  %>

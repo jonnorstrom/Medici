@@ -1,0 +1,14 @@
+
+@font-face {
+ font-family: "HansKendrick";
+ src: asset-url('HansKendrick-Regular.otf') format("truetype");
+}
+a {
+ font-family: "HansKendrick";
+}
+
+p{
+   font-family: Open-Hans-Kendrick-Regular, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+   color: dimGrey;
+}

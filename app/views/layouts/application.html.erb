@@ -34,17 +34,27 @@
 
             <div class="collapse navbar-collapse">
               <!-- menu stuff goes here-->
+
+              <% if current_user %>
+                <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+              <% else %>
+                <%= link_to "Login", new_user_session_path %>
+                <%= link_to "Register", new_user_registration_path %><br>
+                <!-- modal window trigger -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Log-In-Modal">log-in</button>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Register-Modal">Register</button>
+              <% end %>
+
+              
+        
+
+              <input type="checkbox" id="museum-toggle" class="hidden">
+              <label for="museum-toggle" class="museum-label-toggle">museum</label>
+
+              <input type="checkbox" id="exhibit-toggle" class="hidden">
+              <label for="exhibit-toggle" class="exhibit-label-toggle">exhibit</label>
+
               <div class="list-group list-group-borderless">
-                <button type="button" href="#" class="list-group-item">
-                  <span class="badge">15</span>
-                  special events
-                </button>
-                <button type="button"class="list-group-item" id="museum-toggle">
-                  museums
-                </button>
-                <button type="button"class="list-group-item" id="exhibition-toggle">
-                  exhibitions
-                </button>
                 <button type="button"class="list-group-item">
                   <a href="#">check out</a>
                   <span class="glyphicon glyphicon-shopping-cart"></span>
@@ -52,19 +62,102 @@
                 </button>
               </div>
 
-              <input type="checkbox" id="museum-toggle" class="hidden">
-              <label for="museum-toggle" class="museum-label-toggle">museum</label>
-
-              <input type="checkbox" id="exhibit-toggle" class="hidden">
-              <label for="exhibit-toggle" class="exhibit-label-toggle">exhibit</label>
             </div>
           </nav>
         </div>
         <!-- dynamic content stuff goes in this column  -->
         <div class="col-sm-9 col-lg-10 content">
+        <!-- Modal content-->
+        <div id="Log-In-Modal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Login</h4>
+              </div>
+              <div class="modal-body">
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <div class="field">
+                    <%= f.label :email %><br />
+                    <%= f.email_field :email, autofocus: true %>
+                  </div>
+                  <div class="field">
+                    <%= f.label :password %><br />
+                    <%= f.password_field :password, autocomplete: "off" %>
+                  </div>
+                  <% if devise_mapping.rememberable? -%>
+                    <div class="field">
+                      <%= f.check_box :remember_me %>
+                      <%= f.label :remember_me %>
+                    </div>
+                  <% end -%>
+                  <div class="actions">
+                    <%= f.submit "Log in" %>
+                  </div>
+                <% end %>
+                <%= render "devise/shared/links" %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="Register-Modal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Register</h4>
+              </div>
+              <div class="modal-body">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= devise_error_messages! %>
+                  <div class="field">
+                    <%= f.label :email %><br />
+                    <%= f.email_field :email, autofocus: true %>
+                  </div>
 
-          <h1>A not so dull affair in the forbidden forest</h1>
-          <%= yield %>
+                  <div class="field">
+                    <%= f.label :name %><br />
+                    <%= f.text_field :name, autofocus: true %>
+                  </div>
+
+                  <div class="field">
+                    <%= f.label :password %>
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autocomplete: "off" %>
+                  </div>
+
+                  <div class="field">
+                    <%= f.label :password_confirmation %><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                  </div>
+
+                  <div class="field">
+                    <%= f.label :avatar %>
+                    <%= f.file_field :avatar %>
+                  </div>
+
+                  <div class="actions">
+                    <%= f.submit "Sign up" %>
+                  </div>
+                <% end %>
+
+                <%= render "devise/shared/links" %>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h1>A not so dull affair in the forbidden forest</h1>
+        <%= yield %>
       </div>
   </body>
 </html>
