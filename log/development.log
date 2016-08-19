@@ -46710,3 +46710,118 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 126ms (Views: 117.3ms | ActiveRecord: 3.2ms)
 
 
+Started GET "/users/1" for ::1 at 2016-08-19 11:31:12 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTicket Load (0.4ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 1], ["paid", true], ["redeemed", false]]
+  [1m[36mTicket Load (0.5ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 1], ["paid", true], ["redeemed", true]]
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (18.5ms)
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 316ms (Views: 279.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-19 11:31:15 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (1.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.7ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (1.4ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (5.7ms)
+  Rendered museums/index.html.erb within layouts/application (8.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 147ms (Views: 124.0ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/" for ::1 at 2016-08-19 11:31:19 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.6ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (1.6ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (4.6ms)
+  Rendered museums/index.html.erb within layouts/application (6.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 111ms (Views: 100.3ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/users/1" for ::1 at 2016-08-19 11:31:20 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTicket Load (0.7ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 1], ["paid", true], ["redeemed", false]]
+  [1m[36mTicket Load (0.6ms)[0m  [1m[34mSELECT "tickets".* FROM "tickets" WHERE "tickets"."user_id" = $1 AND "tickets"."paid" = $2 AND "tickets"."redeemed" = $3[0m  [["user_id", 1], ["paid", true], ["redeemed", true]]
+  [1m[36mMuseum Load (0.5ms)[0m  [1m[34mSELECT  "museums".* FROM "museums" WHERE "museums"."active" = $1 AND "museums"."id" = $2 LIMIT $3[0m  [["active", true], ["id", 3], ["LIMIT", 1]]
+  Rendered users/show.html.erb within layouts/application (9.4ms)
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 126ms (Views: 115.9ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2016-08-19 11:31:22 -0500
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (19.1ms)
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 127ms (Views: 114.4ms | ActiveRecord: 2.9ms)
+
+
+Started PATCH "/users/1" for ::1 at 2016-08-19 11:31:31 -0500
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rH3+E1Oc0sppKTsrg55b4vIoErWVZPuUzJamyeFQ9TGJ1QsBJmeTX5OexLsgbuVkx920cgC/VFQbL67LPYQRHg==", "user"=>{"email"=>"prescott.southard@aol.com", "name"=>"Scott", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fd1da215a58 @tempfile=#<Tempfile:/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/RackMultipart20160819-19409-gf0bkl.jpg>, @original_filename="12189567_10103157611872520_7670759578092459737_n.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[avatar]\"; filename=\"12189567_10103157611872520_7670759578092459737_n.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update", "id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-1f9z1v0.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' -auto-orient -resize "500x500>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/67073ab35fad23ecf2899760d3edc6bb20160819-19409-7ghau5'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/67073ab35fad23ecf2899760d3edc6bb20160819-19409-1g03sa9'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' -auto-orient -resize "200x200>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/67073ab35fad23ecf2899760d3edc6bb20160819-19409-1aiei6f'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]'
+Command :: convert '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-o36jb2.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/67073ab35fad23ecf2899760d3edc6bb20160819-19409-rl0fbq'
+Command :: file -b --mime '/var/folders/6z/kzsbjfl178v4xr56zp5_zh440000gn/T/ee8f8f1b71d0228409dd19cc19876b5620160819-19409-w5as5i.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "avatar_file_name" = $1, "avatar_content_type" = $2, "avatar_file_size" = $3, "avatar_updated_at" = $4, "updated_at" = $5 WHERE "users"."id" = $6[0m  [["avatar_file_name", "12189567_10103157611872520_7670759578092459737_n.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 102019], ["avatar_updated_at", 2016-08-19 16:31:31 UTC], ["updated_at", 2016-08-19 16:31:32 UTC], ["id", 1]]
+[paperclip] deleting /Users/scottsouthard/Documents/Dev/medici/public/system/users/avatars/000/000/001/original/giphy.gif
+[paperclip] deleting /Users/scottsouthard/Documents/Dev/medici/public/system/users/avatars/000/000/001/large/giphy.gif
+[paperclip] deleting /Users/scottsouthard/Documents/Dev/medici/public/system/users/avatars/000/000/001/medium/giphy.gif
+[paperclip] deleting /Users/scottsouthard/Documents/Dev/medici/public/system/users/avatars/000/000/001/small/giphy.gif
+[paperclip] deleting /Users/scottsouthard/Documents/Dev/medici/public/system/users/avatars/000/000/001/thumb/giphy.gif
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 693ms (ActiveRecord: 8.3ms)
+
+
+Started GET "/" for ::1 at 2016-08-19 11:31:32 -0500
+Processing by MuseumsController#index as HTML
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMuseum Load (0.4ms)[0m  [1m[34mSELECT "museums".* FROM "museums" WHERE "museums"."active" = $1[0m  [["active", true]]
+  [1m[36mExhibit Load (0.3ms)[0m  [1m[34mSELECT "exhibits".* FROM "exhibits"[0m
+  Rendering museums/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered museums/_museum_row.html.erb (4.1ms)
+  Rendered museums/index.html.erb within layouts/application (6.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tickets" WHERE "tickets"."order_id" = $1 AND "tickets"."paid" = $2[0m  [["order_id", 1], ["paid", false]]
+Completed 200 OK in 110ms (Views: 101.3ms | ActiveRecord: 1.8ms)
+
+
