@@ -6,7 +6,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc7bgkQoYVVLBCkZtxYPzzWCogA-3LmNY&callback=initMap" async defer></script>
-  <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+    <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+
   <!-- CDN references -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -34,7 +35,7 @@
 
             <div class="collapse navbar-collapse">
               <!-- menu stuff goes here-->
-             
+
               <div class="list-group list-group-borderless">
                 <% if current_user %>
                 <button type="button"class="list-group-item">
@@ -45,7 +46,7 @@
                   <% end %>
                 </button>
                   <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "list-group-item" %>
-                  
+
                 <% else %>
                   <!-- modal window trigger -->
                   <button type="button" class="list-group-item" data-toggle="modal" data-target="#Log-In-Modal">log-in</button>
@@ -58,7 +59,7 @@
                   <% end %>
                 </button>
               <% end %>
-               
+
 
                  <div class="toggle-group">
                 <input type="checkbox" id="museum-toggle" class="hidden">
@@ -75,8 +76,9 @@
         <!-- Modal content-->
         <div id="Log-In-Modal" class="modal fade" role="dialog">
           <div class="modal-dialog">
-            <div class="modal-form">
-             <%= form_for(resource, as: resource_name, url: session_path(resource_name) , class:"modal-body") do |f| %>
+
+             <div class="modal-form">
+             <%= form_for(resource, as: resource_name, url: session_path(resource_name), class:"modal-body") do |f| %>
                 <p class="title">Log in</p>
                 <%= f.email_field :email, placeholder:"e-mail", autofocus: true, class:"input-field"%>
                 <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>
@@ -85,7 +87,7 @@
                 </div>
                 <a href="#">Forgot your password?</a>
                 <%= f.submit "Log in", class:"input-button"%>
-              <% end -%>
+              <% end %>
             </div>
           </div>
         </div>
@@ -95,7 +97,7 @@
               <%= devise_error_messages! %>
               <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                 <p class="title">sign up</p>
-                
+
                 <%= f.text_field :name, placeholder:"name", autofocus: true, class:"input-field" %>
                 <%= f.email_field :email, placeholder:"e-mail", class:"input-field"%>
                 <div class="field">
@@ -114,7 +116,7 @@
             </div>
           </div>
         </div>
-          <h1>A not so dull affair in the forbidden <%= link_to "forest", root_path %></h1>
+          <h1><%= link_to "Home", root_path %></h1>
           <%= yield %>
       </div>
   </body>

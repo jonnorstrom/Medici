@@ -3,6 +3,8 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find(params[:id])
+    @tweetable_museum = Museum.find(@ticket.museum_id).name
+    p @tweetable_museum
   end
 
   def create
