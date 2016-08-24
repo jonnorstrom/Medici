@@ -21,7 +21,7 @@
           <nav class="navbar navbar-default navbar-fixed-side">
             <div class="navbar-header">
               <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
-                <span class="glyphicon glyphicon-ice-lolly-tasted">
+                <span class="glyphicon glyphicon-ice-lolly-tasted"></span>
               </button>
               <% if current_user %>
                 <%= link_to image_tag(current_user.avatar.url(:medium)), current_user, class: "navbar-left hidden-xs"%>
@@ -34,31 +34,39 @@
 
             <div class="collapse navbar-collapse">
               <!-- menu stuff goes here-->
-
-              <% if current_user %>
-                <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-              <% else %>
-                <!-- modal window trigger -->
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Log-In-Modal">log-in</button>
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Register-Modal">Register</button>
-              <% end %>
-
-              <input type="checkbox" id="museum-toggle" class="hidden">
-              <label for="museum-toggle" class="museum-label-toggle">museum</label>
-
-              <input type="checkbox" id="exhibit-toggle" class="hidden">
-              <label for="exhibit-toggle" class="exhibit-label-toggle">exhibit</label>
-
+             
               <div class="list-group list-group-borderless">
+                <% if current_user %>
                 <button type="button"class="list-group-item">
-                  <% if current_user %>
-                    <%= link_to "Check Out", cart_path(id: current_user.id), class: "btn btn-link" %>
-                  <% end %>
+                    <a href="#">Check Out</a>
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   <%if current_order.tickets.where(paid: false).size > 0 %>
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
                   <% end %>
                 </button>
+                  <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "list-group-item" %>
+                  
+                <% else %>
+                  <!-- modal window trigger -->
+                  <button type="button" class="list-group-item" data-toggle="modal" data-target="#Log-In-Modal">log-in</button>
+                  <button type="button" class="list-group-item" data-toggle="modal" data-target="#Register-Modal">Register</button>
+                   <button type="button"class="list-group-item">
+                    <a href="#">Check Out</a>
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <%if current_order.tickets.where(paid: false).size > 0 %>
+                    <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
+                  <% end %>
+                </button>
+              <% end %>
+               
+
+                 <div class="toggle-group">
+                <input type="checkbox" id="museum-toggle" class="hidden">
+                <label for="museum-toggle" class="museum-label-toggle"><p>museums</p></label>
+
+                <input type="checkbox" id="exhibit-toggle" class="hidden">
+                <label for="exhibit-toggle" class="exhibit-label-toggle"><p>exhibits</p></label>
+              </div>
             </div>
           </nav>
         </div>
@@ -67,7 +75,7 @@
         <!-- Modal content-->
         <div id="Log-In-Modal" class="modal fade" role="dialog">
           <div class="modal-dialog">
-             <form class="modal-form">
+            <div class="modal-form">
              <%= form_for(resource, as: resource_name, url: session_path(resource_name) , class:"modal-body") do |f| %>
                 <p class="title">Log in</p>
                 <%= f.email_field :email, placeholder:"e-mail", autofocus: true, class:"input-field"%>
@@ -78,47 +86,31 @@
                 <a href="#">Forgot your password?</a>
                 <%= f.submit "Log in", class:"input-button"%>
               <% end -%>
+            </div>
           </div>
         </div>
         <div id="Register-Modal" class="modal fade" role="dialog">
           <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Register</h4>
-              </div>
-              <div class="modal-body">
-                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                  <%= devise_error_messages! %>
-                  <div class="field">
-                    <%= f.label :email %><br />
-                    <%= f.email_field :email, autofocus: true %>
-                  </div>
-                  <div class="field">
-                    <%= f.label :name %><br />
-                    <%= f.text_field :name, autofocus: true %>
-                  </div>
-                  <div class="field">
-                    <%= f.label :password %>
-                    <% if @minimum_password_length %>
-                    <em>(<%= @minimum_password_length %> characters minimum)</em>
-                    <% end %><br />
-                    <%= f.password_field :password, autocomplete: "off" %>
-                  </div>
-                  <div class="field">
-                    <%= f.label :password_confirmation %><br />
-                    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-                  </div>
-                  <div class="field">
+            <div class="modal-form">
+              <%= devise_error_messages! %>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <p class="title">sign up</p>
+                
+                <%= f.text_field :name, placeholder:"name", autofocus: true, class:"input-field" %>
+                <%= f.email_field :email, placeholder:"e-mail", class:"input-field"%>
+                <div class="field">
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %>
+                  <%= f.password_field :password, placeholder: "password", autocomplete: "off", class:"input-field" %>
+                </div>
+                  <%= f.password_field :password_confirmation, placeholder: "confirm password", autocomplete: "off", class:"input-field" %>
+                <div class="field">
                     <%= f.label :avatar %>
                     <%= f.file_field :avatar %>
-                  </div>
-                  <div class="actions">
-                    <%= f.submit "Sign up" %>
-                  </div>
-                <% end %>
-                <%= render "devise/shared/links" %>
-              </div>
+                </div>
+                <%= f.submit "Log in", class:"input-button"%>
+              <% end -%>
             </div>
           </div>
         </div>
