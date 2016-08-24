@@ -4,7 +4,8 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     @tweetable_museum = Museum.find(@ticket.museum_id).name
-    p @tweetable_museum
+    prng = Random.new
+    @ticket_code = prng.rand(1000000000000).to_s + "MD101"
   end
 
   def create
@@ -12,7 +13,6 @@ class TicketsController < ApplicationController
     @ticket = @order.tickets.new(ticket_params)
     @order.save
     session[:order_id] = @order.id
-
     redirect_to cart_path(id: current_user.id)
   end
 
