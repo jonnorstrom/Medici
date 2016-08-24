@@ -6,3 +6,5 @@
   <%= Museum.find(@ticket.museum_id).name %>: <%= @ticket.quantity %>
   <%= link_to "Redeem a ticket", "redeem/#{@ticket.id}" %>
 <% end %>
+<br>
+<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-mention-button" data-text="gave me a great experience at <%=@tweetable_museum %>!" data-show-count="false">Tweet to @Medici_App</a>

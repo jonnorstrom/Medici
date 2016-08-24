@@ -1,0 +1,3 @@
+class RefundsMailer < ApplicationMailer
+  
+end
