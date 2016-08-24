@@ -23,22 +23,24 @@
 
 .museum-label-toggle{
     padding: 12px 15px;
-    background-color: #fff;
     display: block;
+    background-color: white
 }
 
 input#museum-toggle[type=checkbox]:checked ~.museum-label-toggle{
-    background-color: red;
+    background-color: lightGrey;
+    border-left: solid 3px dimGrey;
 }
 
 .exhibit-label-toggle{
     padding: 12px 15px;
     display: block;
-    background: green;
+    background-color: white
 }
 
 input#exhibit-toggle[type=checkbox]:checked ~.exhibit-label-toggle{
-    background-color: red;
+    background-color: lightGrey;
+    border-left: solid 3px dimGrey;
 }
 
 .list-group-item  a{

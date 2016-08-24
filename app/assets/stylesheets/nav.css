@@ -59,7 +59,7 @@
         color: dimGrey;
         font-size: 2em;
         font-weight: bold;
-        position: absolute;
+        position: relative;
         width: 100%;
         left: 0;
         top: 0;
@@ -95,50 +95,45 @@ p{
 
 }
 
-/*
-* === MASONRY ===
-*/
-
-*, *:before, *:after {box-sizing:  border-box !important;}
-.masonry-row {
- -moz-column-width: 25em;
- -webkit-column-width: 25em;
- -moz-column-gap: .5em;
- -webkit-column-gap: .5em;
-}
-
-.content{
-    overflow:hidden;
-}
-
-.post-wrapper {
- display: inline-block;
- margin:  .5em;
- padding:  0;
- width:98%;
-}
-
 .museum-label-toggle{
+    margin-top: 2px;
+    margin-bottom: 0px;
     padding: 12px 15px;
-    background-color: #fff;
     display: block;
+    background-color: white
+}
+
+.museum-label-toggle p{
+    margin-bottom: 0;
 }
 
 input#museum-toggle[type=checkbox]:checked ~.museum-label-toggle{
-    background-color: red;
+    background-color: lightGrey;
+    border-left: solid 3px dimGrey;
 }
 
 .exhibit-label-toggle{
+    margin-top: 2px;
+    margin-bottom: 0px;
     padding: 12px 15px;
     display: block;
-    background: green;
+    background-color: white
+}
+
+.exhibit-label-toggle p{
+    margin-bottom: 0;
 }
 
 input#exhibit-toggle[type=checkbox]:checked ~.exhibit-label-toggle{
-    background-color: red;
+    background-color: lightGrey;
+    border-left: solid 3px dimGrey;
 }
 
 .list-group-item  a{
-    color: dimGrey;
+    color: dimGrey
+}
+
+.toggle-group{
+    margin-top: 10px;
 }
 
