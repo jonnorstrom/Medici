@@ -7,7 +7,7 @@
  -moz-column-width: 25em;
  -webkit-column-width: 25em;
  -moz-column-gap: .5em;
- -webkit-column-gap: .5em; 
+ -webkit-column-gap: .5em;
 }
 
 .content{
@@ -17,7 +17,7 @@
 .post-wrapper {
  display: inline-block;
  margin: .5em ;
- padding:  0; 
+ padding:  0;
  width:98%;
 }
 
@@ -43,4 +43,10 @@ input#exhibit-toggle[type=checkbox]:checked ~.exhibit-label-toggle{
 
 .list-group-item  a{
     color: dimGrey
+}
+
+* {
+   font-family: HansKendrick;
+   font-weight: 300;
+   color: dimGrey;
 }
