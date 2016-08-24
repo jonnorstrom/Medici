@@ -13,12 +13,12 @@
                 <%= f.hidden_field :quantity, value: 1 %>
                 <%= f.hidden_field :museum_id, value: museum.id %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+                <%= f.submit "Purchase Tickets", class: "btn btn-primary" %>
               </div>
             </div>
           <% end %>
         <% else %>
-          <%= link_to "Add to Cart", new_user_session_path %>
+          <%= link_to "Purchase Tickets", new_user_session_path %>
         <% end %>
       </div>
     </div>

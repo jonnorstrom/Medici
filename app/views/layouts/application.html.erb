@@ -7,6 +7,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc7bgkQoYVVLBCkZtxYPzzWCogA-3LmNY&callback=initMap" async defer></script>
     <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
   <!-- CDN references -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -39,7 +40,7 @@
               <div class="list-group list-group-borderless">
                 <% if current_user %>
                 <button type="button"class="list-group-item">
-                    <a href="#">Check Out</a>
+                    <%= link_to "Checkout", cart_path(current_user.id) %>
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   <%if current_order.tickets.where(paid: false).size > 0 %>
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
@@ -116,7 +117,8 @@
             </div>
           </div>
         </div>
-          <h1><%= link_to "Home", root_path %></h1>
+          <h1><%= link_to "Medici", root_path %></h1>
+          <h3>The first mobile way to discover, reserve and share your museum visit. Medici lets you experience museums like never before.</h3>
           <%= yield %>
       </div>
   </body>

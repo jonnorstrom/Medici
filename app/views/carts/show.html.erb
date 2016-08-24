@@ -17,6 +17,5 @@
     <%= render 'carts/cart_row', museum: ticket.museum, ticket: ticket, show_total: true %>
   <% end %>
   <h2> Total Cost: <%= @total %> </h2>
+  <%= link_to "Checkout", new_charge_path %>
 <% end %>
-
-<%= link_to "Checkout", new_charge_path %>
