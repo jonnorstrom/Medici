@@ -35,7 +35,7 @@ input#museum-toggle[type=checkbox]:checked ~.museum-label-toggle{
 .exhibit-label-toggle{
     padding: 12px 15px;
     display: block;
-    background-color: white
+    background-color: white;
 }
 
 input#exhibit-toggle[type=checkbox]:checked ~.exhibit-label-toggle{
@@ -44,11 +44,15 @@ input#exhibit-toggle[type=checkbox]:checked ~.exhibit-label-toggle{
 }
 
 .list-group-item  a{
-    color: dimGrey
+    color: dimGrey;
 }
 
 * {
    font-family: HansKendrick;
-   font-weight: 300;
    color: dimGrey;
+}
+
+* a {
+  font-family: HansKendrick-Heavy;
+  font-weight: heavy;
 }
