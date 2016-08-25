@@ -76,9 +76,8 @@
         <!-- Modal content-->
         <div id="Log-In-Modal" class="modal fade" role="dialog">
           <div class="modal-dialog">
-
-             <div class="modal-form">
-             <%= form_for(resource, as: resource_name, url: session_path(resource_name), class:"modal-body") do |f| %>
+            <div class="modal-form">
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name), class:"modal-body") do |f| %>
                 <p class="title">Log in</p>
                 <%= f.email_field :email, placeholder:"e-mail", autofocus: true, class:"input-field"%>
                 <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>
