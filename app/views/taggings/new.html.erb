@@ -1,0 +1,7 @@
+<%= form_for(@tagging) do |f| %>
+  <% Tag.all.each do |tag| %>
+    <%= f.label tag.name %>
+    <%= f.check_box("taggings", {multiple: true}, tag.name, nil) %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

@@ -1,5 +1,6 @@
 class MuseumsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
   def index
     @ticket = current_order.tickets.new
@@ -37,7 +38,23 @@ class MuseumsController < ApplicationController
     else
       render :"post/edit"
     end
+  end
 
+  def tagging_new
+    @museum = Museum.find(params[:id])
+    @tagging = Tagging.new
+  end
+
+  def tagging_create
+    @museum = Museum.find(params[:id])
+    museum_params[:tag_ids].each do |tag|
+      if tag != ""
+        @tagging = @museum.taggings.new(tag_id: tag.to_i)
+        @tagging.save
+        Rails.logger.info(@tagging.errors.inspect)
+      end
+    end
+    redirect_to museum_path(@museum)
   end
 
   def edit
@@ -53,7 +70,7 @@ class MuseumsController < ApplicationController
   private
 
   def museum_params
-    params.require(:museum).permit(:name, :blurb, :description, :photo, :address, :price)
+    params.require(:museum).permit(:name, :blurb, :description, :photo, :address, :price, :tag_ids => [])
   end
 
 end

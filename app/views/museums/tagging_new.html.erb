@@ -1,0 +1,16 @@
+<%= form_for(@museum, :url => "tagging", :html => { :method => :post }) do |f| %>
+
+   <p>Tags</p>
+   <ul>
+     <% Tag.all.each do |tag| %>
+     <%= hidden_field_tag "museum_tag_ids_none", nil, {:name => "museum[tag_ids][]"}%>
+     <li>
+       <%= check_box_tag "museum_tag_ids_#{tag.id}", tag.id, (f.object.taggings.present? && f.object.taggings.include?(tag.id)), {:name => "museum[tag_ids][]"} %>
+       <%= label_tag "museum_tag_ids_#{tag.id}", tag.name %>
+     </li>
+     <% end %>
+   </ul>
+
+   <%= f.submit %>
+
+<% end %>

@@ -27,6 +27,7 @@ class ChargesController < ApplicationController
     )
     @order.tickets.update(paid: true)
     @order.tickets.delete_all
+    TicketsMailer.purchase_email(current_user).deliver_later
     redirect_to current_user
   rescue Stripe::CardError => e
     flash[:error] = e.message

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818155305) do
+ActiveRecord::Schema.define(version: 20160825162804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,21 @@ ActiveRecord::Schema.define(version: 20160818155305) do
     t.datetime "updated_at",                          null: false
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "user_id",    default: 0
+    t.integer  "museum_id",  default: 0
+    t.integer  "exhibit_id", default: 0
+    t.integer  "tag_id",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.integer  "museum_id"
     t.integer  "user_id"
@@ -68,11 +83,11 @@ ActiveRecord::Schema.define(version: 20160818155305) do
     t.integer  "quantity"
     t.integer  "order_id"
     t.float    "total_price"
-    t.boolean  "paid"
-    t.boolean  "redeemed"
+    t.boolean  "paid",          default: false
+    t.boolean  "redeemed",      default: false
     t.date     "date_redeemed"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "users", force: :cascade do |t|
