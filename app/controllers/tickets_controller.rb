@@ -29,10 +29,15 @@ class TicketsController < ApplicationController
     end
   end
 
+  def stats
+    @museums = Museum.all
+  end
+
   def update
     @order = current_order
     @ticket = @order.tickets.find(params[:id])
     @ticket.update_attributes(ticket_params)
+    @ticket.update(original_quantity: @ticket.quantity)
     @tickets = @order.tickets
     redirect_to cart_path(id: current_user.id)
   end
@@ -48,7 +53,7 @@ class TicketsController < ApplicationController
   private
 
     def ticket_params
-      params.require(:ticket).permit(:user_id, :quantity, :museum_id)
+      params.require(:ticket).permit(:user_id, :quantity, :original_quantity, :museum_id)
     end
 
 end

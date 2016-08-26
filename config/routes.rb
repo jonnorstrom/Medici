@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "museums/:id/tagging" => "museums#tagging_new"
   post "museums/:id/tagging" => "museums#tagging_create"
   resources :museums
+  get "tickets/stats" => "tickets#stats"
   get "tickets/redeem/:id" => "tickets#redeem"
   resources :tickets
   get "exhibits/:id/tagging" => "exhibits#tagging_new"
