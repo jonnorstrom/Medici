@@ -10,4 +10,5 @@
   <%= Museum.find(@ticket.museum_id).name %>: <%= @ticket.quantity %>
 <% end %>
 <br>
-<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-mention-button" data-text="guided me along a great experience at <%=@tweetable_museum %>!" data-show-count="false">Tweet to @Medici_App</a>
+<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-mention-button" data-text="guided me along a great experience at <%=@tweetable_museum %>!" data-show-count="false">Tweet @Medici_App</a>
+<%= social_share_button_tag("Share on Facebook") %>
