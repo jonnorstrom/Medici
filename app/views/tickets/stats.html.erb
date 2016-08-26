@@ -1,0 +1,27 @@
+<table>
+  <tr>
+    <th>
+      Museums
+    </th>
+    <th>
+      Tickets Sold
+    </th>
+    <th>
+      Tickets Redeemed
+    </th>
+  </tr>
+  <% @museums.each do |museum| %>
+  <tr>
+      <td>
+        <%= museum.name %>
+      </td>
+      <td>
+        <%= total_tickets(museum) %>
+      </td>
+      <td>
+        <%= total_redeemed(museum) %>
+      </td>
+  </tr>
+  <% end %>
+
+</table>
