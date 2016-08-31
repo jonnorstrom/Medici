@@ -12,4 +12,5 @@
   </p>
 <% end %>
 <%= link_to "Edit Profile", edit_user_path %><br>
-<%= link_to "Home", root_path %>
+<%= link_to "Customize Your Experience", "#{current_user.id}/tagging" %><br>
+<%= link_to "See Backend Numbers", tickets_stats_path %>

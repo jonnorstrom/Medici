@@ -1,7 +1,9 @@
 class Museum < ApplicationRecord
   has_many :tickets
+  has_many :taggings
+  has_many :tags, through: :taggings
   default_scope { where(active: true) }
-
+  accepts_nested_attributes_for :taggings, :allow_destroy => true
   has_many :exhibits
 
   has_attached_file :photo, styles: { large: "768x768>", medium: "300x300>", thumb: "100x100>" }

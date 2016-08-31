@@ -1,8 +1,8 @@
 <h3><%= render 'layouts/cart_text' %></h3>
 
 <div class="row masonry-row">
-	<% @museums.shuffle.each do |museum| %>
-	  <%= render "museum_row", museum: museum, ticket: @ticket  %>
+	<% @posts.shuffle.each do |post| %>
+	  <%= render "museum_row", post: post, ticket: @ticket  %>
 	<% end %>
 </div>
 <br>

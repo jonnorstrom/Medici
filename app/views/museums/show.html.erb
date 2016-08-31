@@ -26,6 +26,7 @@
   <%= link_to "Sign in to buy tickets!", new_user_session_path %>
 <% end %>
 <% if current_user %>
+  <%= link_to "Add Museum Tags", "#{@museum.id}/tagging" %>
   <%= link_to "Edit Museum", edit_museum_path %>
 <% end %>
 

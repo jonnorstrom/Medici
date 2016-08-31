@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
   def show
     @user = User.find(params[:id])
@@ -21,7 +22,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def tagging_new
+    @user = current_user
+    @tagging = Tagging.new
+  end
+
+  def tagging_create
+    user_params[:tag_ids].each do |tag|
+      if tag != ""
+        @tagging = current_user.taggings.new(tag_id: tag.to_i)
+        @tagging.save
+        Rails.logger.info(@tagging.errors.inspect)
+      end
+    end
+    redirect_to user_path(current_user)
+  end
+
   def user_params
-    params.require(:user).permit(:email, :name, :avatar)
+    params.require(:user).permit(:email, :name, :avatar, :tag_ids => [])
   end
 end

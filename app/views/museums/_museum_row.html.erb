@@ -1,17 +1,17 @@
 
 <div class="post-wrapper museum-panel">
   <div class="thumbnail">
-    <%= image_tag museum.photo.url(:large) %>
+    <%= image_tag post.photo.url(:large) %>
     <div class="caption">
-      <h3><%= link_to "#{museum.name}", museum %></h3>
-      <p><%= museum.blurb %></p>
+      <h3><%= link_to "#{post.name}", post %></h3>
+      <p><%= post.blurb %></p>
       <div>
         <% if current_user %>
           <%= form_for ticket, remote: true do |f| %>
             <div class="input-group">
               <div class="input-group-btn">
                 <%= f.hidden_field :quantity, value: 1 %>
-                <%= f.hidden_field :museum_id, value: museum.id %>
+                <%= f.hidden_field :museum_id, value: post.id %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
                 <%= f.submit "Purchase Tickets", class: "btn btn-primary" %>
               </div>

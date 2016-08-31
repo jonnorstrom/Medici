@@ -10,9 +10,16 @@
     </label>
   </article>
 
+  <p>
+    <%= label_tag(:couponCode, 'Coupon:') %>
+    <%= text_field_tag(:couponCode) %>
+    (Discount will be applied after credit card verification)
+  </p>
+
+
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="Total"
-          data-amount=<%= @display_amount %> 
+          data-amount=<%= @display_amount %>
           data-locale="auto"></script>
 <% end %>

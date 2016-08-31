@@ -7,7 +7,6 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc7bgkQoYVVLBCkZtxYPzzWCogA-3LmNY&callback=initMap" async defer></script>
     <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- CDN references -->
@@ -18,6 +17,7 @@
   </head>
 
   <body>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-lg-2">
@@ -70,6 +70,10 @@
               <i class="fa fa-twitter-square" aria-hidden="true"></i>
               <p class= "text-muted">Medici LLC, Is brought to you buy the international asscociation of dislexic court reporters</p>
             </footer>
+                <%= form_tag(exhibits_search_path, :method => "get", id: "search-form") do %>
+                  <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+                <% end %>
+              </div>
           </nav>
         </div>
         <div class="col-sm-9 col-lg-10 content">
