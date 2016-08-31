@@ -1,0 +1,17 @@
+.body {
+	background-color: #f8f8f8;
+}
+
+p{
+	font-size: 17px;
+   font-family: HansKendrick-light, "Helvetica Neue Light", "Helvetica Neue";
+   color: dimGrey; 
+}
+
+* {
+   font-family: HansKendrick;
+   color: dimGrey;
+}
+* a {
+  font-family: HansKendrick-Heavy;
+}

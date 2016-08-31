@@ -1,17 +1,17 @@
-
 /*
 * === COLLAPSABLE SIDE NAV EXTRA SMALL (collapsed) ===
 */
 @media (max-width: 768px) {
 
     .navbar-fixed-side {
+        position: fixed;
         margin-left: -15px;
         margin-right: -15px;
         border-color: transparent;
     }
     .navbar-brand{
         font-family: "Brandon Grotesque" , "Helvetica";
-        color:black !important;
+        color: dimGrey;
     }
     .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{
         color: lightGrey;
@@ -20,20 +20,19 @@
     .collapse.navbar-collapse{
         padding: 0px 0px;
     }
-    .list-group-borderless .list-group-item:first-child{
-        border-top: 0 none;
-    }
-    .list-group-borderless .list-group-item:last-child{
-        border-bottom: 0 none;
-    }
 
-    .list-group-item{
-        border-left: 0 none;
-        border-right: 0 none;
+    .side-nav-button{
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        margin-top: 2px;
+        background-color: #fff;
+        border: transparent;
+        text-align: left;
+        font-size: 16px;
     }
 }
-
-
 /*
 * === COLLAPSABLE SIDE NAV LARGE ===
 */
@@ -44,55 +43,67 @@
         height: 100vh;
         width: inherit;
         border-radius: 0;
-        border-color: transparent;
     }
-
-    .navbar-fixed-side .navbar-brand {
-        height: auto;
+        .navbar-fixed-side .navbar-header{
+        float: none;
+        margin-left: none;
+        margin-right: none;
     }
-    .navbar-left>img{
+    .navbar-fixed-side .container{
+        width: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+        position: relative;
+        top: 35%;
+        transform: translateY(-35%);
+    }
+     .navbar-collapse.collapse{
+        padding: 0px 0px;
+    }
+    .navbar-header img{
+        margin: 1em 0em;
         width: 100%;
         height:auto;
     }
     .navbar-brand{
-        font-family: "Brandon Grotesque" , "Helvetica";
-        color: dimGrey;
-        font-size: 2em;
-        font-weight: bold;
-        position: relative;
+        margin-left: 0px !important;
+        display: block;
         width: 100%;
-        left: 0;
-        top: 0;
         text-align: center;
-        margin: auto;
-        border: 0;
+     }
+    .side-nav-menu{
     }
-    .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{
+    .side-nav-button{
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        margin-top: 2px;
+        background-color: #fff;
+        border: transparent;
+        text-align: left;
+        font-size: 16px;
+    }
+    footer { 
+        position: absolute;
+        width: auto;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+        padding: 2.2em;
+    }
+    footer i {
+        font-size: 35px !important;
         color: lightGrey;
-        text-decoration: none;
-
+        margin: 4px;
     }
-    .collapse.navbar-collapse{
-        padding: 0px 0px;
-    }
-    .list-group-borderless .list-group-item:first-child{
-        border-top: 0 none;
-    }
-    .list-group-borderless .list-group-item:last-child{
-        border-bottom: 0 none;
-    }
-
-    .list-group-item{
-        border-left: 0 none;
-        border-right: 0 none;
+    .text-muted{
+    color:lightGrey !important;
+    font-size: 13px;
     }
 }
-
-p{
-   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-   font-weight: 300;
-   color: dimGrey;
-
+.navbar-default{
+    border-color: transparent !important;
 }
 
 .museum-label-toggle{
@@ -100,40 +111,45 @@ p{
     margin-bottom: 0px;
     padding: 12px 15px;
     display: block;
-    background-color: white
+    background-color: white;
+    border-left: solid 0px lightGrey;
+    transition: border-left 0.2s;  
 }
-
 .museum-label-toggle p{
     margin-bottom: 0;
 }
-
 input#museum-toggle[type=checkbox]:checked ~.museum-label-toggle{
-    background-color: lightGrey;
-    border-left: solid 3px dimGrey;
-}
+    border-left: solid 16px lightGrey;
 
+}
 .exhibit-label-toggle{
     margin-top: 2px;
     margin-bottom: 0px;
     padding: 12px 15px;
     display: block;
-    background-color: white
+    background-color: white;
+    border-left: solid 0px lightGrey;
+    transition: border-left 0.2s;  
 }
-
 .exhibit-label-toggle p{
     margin-bottom: 0;
 }
-
 input#exhibit-toggle[type=checkbox]:checked ~.exhibit-label-toggle{
-    background-color: lightGrey;
-    border-left: solid 3px dimGrey;
-}
+    border-left: solid 16px lightGrey;
 
+}
+.list-group-item{
+    margin-top: 2px;
+    margin-bottom: 0px;
+    border: transparent!important;
+    color: dimGrey;
+    font-size: 17px;
+}
 .list-group-item  a{
     color: dimGrey
 }
-
 .toggle-group{
     margin-top: 10px;
 }
+
 
