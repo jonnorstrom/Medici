@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :tickets
   get "exhibits/:id/tagging" => "exhibits#tagging_new"
   post "exhibits/:id/tagging" => "exhibits#tagging_create"
+  get "exhibits/search" => "exhibits#search"
   resources :exhibits
   resources :charges
   get "users/:id/tagging" => "users#tagging_new"

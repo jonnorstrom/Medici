@@ -1,5 +1,23 @@
 class ExhibitsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
+  def search
+    @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all
+    @posts = []
+    @term = params[:search].downcase
+    if params[:search]
+      @all_posts.each do |post|
+        if post.name.downcase.include?(@term)
+          @posts << post
+        elsif post.description.downcase.include?("%#{params[:search].downcase}%")
+          @posts << post
+        end
+      end
+    else
+      @posts = @all_posts.all.order('created_at DESC')
+    end
+  end
+
   def show
     @exhibit = Exhibit.find(params[:id])
   end
