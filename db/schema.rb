@@ -10,14 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825162804) do
+ActiveRecord::Schema.define(version: 20160831173422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "charges", force: :cascade do |t|
+    t.integer  "amount"
+    t.integer  "coupon_id"
+    t.integer  "stripe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.string   "code"
+    t.integer  "discount_percent"
+    t.datetime "expires_at"
+    t.string   "description"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "blurb"
+    t.string   "description"
+    t.integer  "museum_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "exhibits", force: :cascade do |t|
@@ -59,6 +86,19 @@ ActiveRecord::Schema.define(version: 20160825162804) do
     t.decimal  "total",      precision: 12, scale: 3
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+  end
+
+  create_table "pieces", force: :cascade do |t|
+    t.string   "name"
+    t.string   "blurb"
+    t.string   "description"
+    t.integer  "museum_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "taggings", force: :cascade do |t|
