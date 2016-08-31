@@ -14,112 +14,109 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   </head>
 
   <body>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-lg-2">
-          <!-- nav stuff goes in this column-->
           <nav class="navbar navbar-default navbar-fixed-side">
-            <div class="navbar-header">
-              <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
-                <span class="glyphicon glyphicon-ice-lolly-tasted"></span>
-              </button>
-              <% if current_user %>
-                <%= link_to image_tag(current_user.avatar.url(:medium)), current_user, class: "navbar-left hidden-xs"%>
-                <%= link_to "#{current_user.name}", current_user, class: "navbar-brand" %>
-              <% else %>
-                <%= link_to image_tag("medici_placeholder.JPG"), root_path, class: "navbar-left hidden-xs"%>
-                <%= link_to "Medici", root_path, class: "navbar-brand" %>
-              <% end %>
-            </div>
-
-            <div class="collapse navbar-collapse">
-              <!-- menu stuff goes here-->
-
-              <div class="list-group list-group-borderless">
+            <div class="container">
+              <div class="navbar-header">
+                <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <% if current_user %>
+                  <%= link_to image_tag(current_user.avatar.url(:medium)), current_user, class: "navbar-left hidden-xs"%>
+                  <%= link_to "#{current_user.name}", current_user, class: "navbar-brand" %>
+                <% else %>
+                  <%= link_to image_tag("Medici_logos/m_logo_dim_grey.JPG"), root_path, class: "navbar-left hidden-xs"%>
+                <% end %>
+              </div>
+              <div class="collapse navbar-collapse">
+                <input type="checkbox" id="museum-toggle" class="hidden">
+                <label for="museum-toggle" class="museum-label-toggle"><p>museums</p></label>
+                <input type="checkbox" id="exhibit-toggle" class="hidden">
+                <label for="exhibit-toggle" class="exhibit-label-toggle"><p>exhibits</p></label>
                 <% if current_user %>
                 <button type="button"class="list-group-item">
-                    <%= link_to "Checkout", cart_path(current_user.id) %>
+                  <%= link_to "Checkout", cart_path(current_user.id) %>
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   <%if current_order.tickets.where(paid: false).size > 0 %>
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
                   <% end %>
                 </button>
                   <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "list-group-item" %>
-
                 <% else %>
-                  <!-- modal window trigger -->
                   <button type="button" class="list-group-item" data-toggle="modal" data-target="#Log-In-Modal">log-in</button>
                   <button type="button" class="list-group-item" data-toggle="modal" data-target="#Register-Modal">Register</button>
-                   <button type="button"class="list-group-item">
+                  <button type="button"class="list-group-item">
                     <a href="#">Check Out</a>
-                  <span class="glyphicon glyphicon-shopping-cart"></span>
-                  <%if current_order.tickets.where(paid: false).size > 0 %>
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <%if current_order.tickets.where(paid: false).size > 0 %>
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
-                  <% end %>
-                </button>
-              <% end %>
-
-
-                 <div class="toggle-group">
-                <input type="checkbox" id="museum-toggle" class="hidden">
-                <label for="museum-toggle" class="museum-label-toggle"><p>museums</p></label>
-
-                <input type="checkbox" id="exhibit-toggle" class="hidden">
-                <label for="exhibit-toggle" class="exhibit-label-toggle"><p>exhibits</p></label>
+                    <% end %>
+                  </button>
+                <% end %>
               </div>
             </div>
+            <footer>
+              <i class="fa fa-facebook-square" aria-hidden="true"></i>  
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+              <i class="fa fa-twitter-square" aria-hidden="true"></i>
+              <p class= "text-muted">Medici LLC, Is brought to you buy the international asscociation of dislexic court reporters</p>
+            </footer>
           </nav>
         </div>
-        <!-- dynamic content stuff goes in this column  -->
         <div class="col-sm-9 col-lg-10 content">
-        <!-- Modal content-->
-        <div id="Log-In-Modal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-form">
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name), class:"modal-body") do |f| %>
-                <p class="title">Log in</p>
-                <%= f.email_field :email, placeholder:"e-mail", autofocus: true, class:"input-field"%>
-                <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>
-                <div class="checkbox">
-                  <label><%= f.check_box :remember_me %><p>remember me</p></label>
-                </div>
-                <a href="#">Forgot your password?</a>
-                <%= f.submit "Log in", class:"input-button"%>
-              <% end %>
+          <div id="Log-In-Modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <div class="modal-form">
+               <%= form_for(resource, as: resource_name, url: session_path(resource_name), class:"modal-body") do |f| %>
+                  <p class="title">Log in</p>
+                  <%= f.email_field :email, placeholder:"e-mail", autofocus: true, class:"input-field"%>
+                  <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>
+                  <div class="checkbox">
+                    <label><%= f.check_box :remember_me %><p>remember me</p></label>
+                  </div>
+                  <a href="#">Forgot your password?</a>
+                  <%= f.submit "Log in", class:"input-button"%>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
-        <div id="Register-Modal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-form">
-              <%= devise_error_messages! %>
-              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                <p class="title">sign up</p>
+          <div id="Register-Modal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-form">
+                <%= devise_error_messages! %>
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <p class="title">sign up</p>
 
-                <%= f.text_field :name, placeholder:"name", autofocus: true, class:"input-field" %>
-                <%= f.email_field :email, placeholder:"e-mail", class:"input-field"%>
-                <div class="field">
-                  <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
-                  <% end %>
-                  <%= f.password_field :password, placeholder: "password", autocomplete: "off", class:"input-field" %>
-                </div>
-                  <%= f.password_field :password_confirmation, placeholder: "confirm password", autocomplete: "off", class:"input-field" %>
-                <div class="field">
-                    <%= f.label :avatar %>
-                    <%= f.file_field :avatar %>
-                </div>
-                <%= f.submit "Log in", class:"input-button"%>
-              <% end -%>
+                  <%= f.text_field :name, placeholder:"name", autofocus: true, class:"input-field" %>
+                  <%= f.email_field :email, placeholder:"e-mail", class:"input-field"%>
+                  <div class="field">
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %>
+                    <%= f.password_field :password, placeholder: "password", autocomplete: "off", class:"input-field" %>
+                  </div>
+                    <%= f.password_field :password_confirmation, placeholder: "confirm password", autocomplete: "off", class:"input-field" %>
+                  <div class="field">
+                      <%= f.label :avatar %>
+                      <%= f.file_field :avatar %>
+                  </div>
+                  <%= f.submit "Log in", class:"input-button"%>
+                <% end -%>
+              </div>
             </div>
           </div>
-        </div>
-          <h1><%= link_to "Medici", root_path %></h1>
-          <h3>The first mobile way to discover, reserve and share your museum visit. Medici lets you experience museums like never before.</h3>
           <%= yield %>
+        </div>
       </div>
+    </div>
   </body>
 </html>

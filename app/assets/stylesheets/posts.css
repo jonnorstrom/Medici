@@ -1,7 +1,6 @@
 /*
 * === MASONRY ===
 */
-
 *, *:before, *:after {box-sizing:  border-box !important;}
 .masonry-row {
  -moz-column-width: 25em;
@@ -9,49 +8,39 @@
  -moz-column-gap: .5em;
  -webkit-column-gap: .5em;
 }
-
 .content{
     overflow:hidden;
+    background-color: #f8f8f8;
 }
-
 .post-wrapper {
  display: inline-block;
- padding:  0;
+ padding: 0px 10px;
+ margin-top: 34px;
  width:98%;
 }
-
-.museum-label-toggle{
-    padding: 12px 15px;
-    display: block;
-    background-color: white
+.thumbnail{
+	position: relative;
+    margin: 0 !important;
+    padding :0 !important;
+    border: 0 none;
+    z-index: 2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+}
+.thumbnail a{
+	color: dimGrey;
 }
 
-input#museum-toggle[type=checkbox]:checked ~.museum-label-toggle{
-    background-color: lightGrey;
-    border-left: solid 3px dimGrey;
+.thumbnail p{
+	line-height: 120%;
+	font-size: 15px;
+	color: #9B9999;
 }
 
-.exhibit-label-toggle{
-    padding: 12px 15px;
-    display: block;
-    background-color: white;
+.progress{
+	position: relative;
+	bottom: 10px;
+}
+.progress-bar{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
 }
 
-input#exhibit-toggle[type=checkbox]:checked ~.exhibit-label-toggle{
-    background-color: lightGrey;
-    border-left: solid 3px dimGrey;
-}
-
-.list-group-item  a{
-    color: dimGrey;
-}
-
-* {
-   font-family: HansKendrick;
-   color: dimGrey;
-}
-
-* a {
-  font-family: HansKendrick-Heavy;
-  font-weight: heavy;
-}
