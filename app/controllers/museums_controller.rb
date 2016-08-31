@@ -4,7 +4,7 @@ class MuseumsController < ApplicationController
 
   def index
     @ticket = current_order.tickets.new
-    @museums = Museum.all + Exhibit.all
+    @posts = Museum.all + Exhibit.all
 
   end
 
