@@ -38,6 +38,9 @@
                 <% end %>
               </div>
               <div class="collapse navbar-collapse">
+                <%= form_tag(exhibits_search_path, :method => "get", id: "search-form") do %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+                <% end %>
                 <input type="checkbox" id="museum-toggle" class="hidden">
                 <label for="museum-toggle" class="museum-label-toggle"><p>museums</p></label>
                 <input type="checkbox" id="exhibit-toggle" class="hidden">
@@ -63,19 +66,17 @@
                   </button>
                 <% end %>
               </div>
+
             </div>
             <footer>
-              <i class="fa fa-facebook-square" aria-hidden="true"></i>  
+              <i class="fa fa-facebook-square" aria-hidden="true"></i>
               <i class="fa fa-instagram" aria-hidden="true"></i>
               <i class="fa fa-twitter-square" aria-hidden="true"></i>
               <p class= "text-muted">Medici LLC, Is brought to you buy the international asscociation of dislexic court reporters</p>
             </footer>
-                <%= form_tag(exhibits_search_path, :method => "get", id: "search-form") do %>
-                  <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-                <% end %>
-              </div>
           </nav>
         </div>
+
         <div class="col-sm-9 col-lg-10 content">
           <div id="Log-In-Modal" class="modal fade" role="dialog">
             <div class="modal-dialog">
