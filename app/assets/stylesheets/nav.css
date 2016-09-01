@@ -58,10 +58,10 @@
         transform: translateY(-50%);
     }
      .navbar-collapse.collapse{
-
+       padding: 0px;
     }
     .navbar-header img{
-        
+
         width: 100%;
         height:auto;
     }
@@ -136,7 +136,7 @@
     margin-left: 15px;
 }
 .checkbox-wrapper .well{
-    display: inline;
+    display: inline-block;
     border: 0 none;
     margin-bottom: 0px;
     box-shadow: inset 0 3px 3px rgba(0,0,0,.15);
@@ -157,10 +157,10 @@
     padding: 8px;
     display: inline-block;
     background-color: #f8f8f8;
-} 
+}
 .checkbox-wrapper label p{
     margin-bottom: 0;
-} 
+}
 .checkbox-wrapper label p:hover{
     color: black;
     border-left: solid 0px lightGrey;
@@ -222,4 +222,3 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
     height: 100%;
     margin-left: -15px
 }
-
