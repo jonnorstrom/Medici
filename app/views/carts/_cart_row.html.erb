@@ -1,8 +1,7 @@
-
-      <h4><%= museum.name %></h4>
+<h4><%= museum.name %></h4>
 
       <%= form_for ticket, remote: true do |f| %>
-        <h4>Price: <%= number_to_currency ticket.unit_price %></h4>
+        <h4>Regular Price: <%= number_to_currency ticket.unit_price %></h4>
             <%= f.number_field :quantity, value: ticket.quantity.to_i, class: "form-control", min: 1 %>
             <%= f.hidden_field :original_quantity, value: ticket.quantity %>
             <%= f.hidden_field :museum_id, value: museum.id %>

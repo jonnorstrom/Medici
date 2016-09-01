@@ -1,6 +1,6 @@
 <%= @exhibit.name %>
 <%= @exhibit.description %>
 
-<% if current_user %>
+<% if admin? %>
   <%= link_to "Edit Exhibit", edit_exhibit_path %>
 <% end %>

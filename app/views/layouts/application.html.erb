@@ -99,7 +99,7 @@
                   <div class="checkbox">
                     <label><%= f.check_box :remember_me %><p>remember me</p></label>
                   </div>
-                  <a href="#">Forgot your password?</a>
+                  <%= link_to "Forgot your password?", new_user_password_path %>
                   <%= f.submit "Log in", class:"input-button"%>
                 <% end %>
               </div>

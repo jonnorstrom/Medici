@@ -1,5 +1,7 @@
 class ExhibitsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => :tagging_create
+
 
   def search
     @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all
