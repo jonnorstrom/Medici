@@ -38,11 +38,18 @@
               </div>
               <div class="collapse navbar-collapse">
                 <%= form_tag(exhibits_search_path, :method => "get", id: "search-form") do %>
-                  <i class="fa fa-search" aria-hidden="true"></i> <%= text_field_tag :search, params[:search], placeholder: "Search" %> 
+                  <i class="fa fa-search" aria-hidden="true"></i> <%= text_field_tag :search, params[:search], placeholder: "Search" %>
                 <% end %>
-                <input type="checkbox" id="museum-toggle" class="hidden">
-                <label for="museum-toggle" class="museum-label-toggle"><p>museums</p></label>
-                <input type="checkbox" id="exhibit-toggle" class="hidden">
+                <div class="checkbox-wrapper">
+                 <!--  <div class="progress">
+                    <div class="progress-bar progress-bar-warning progress-bar-striped"style="width: 100%">
+                    </div>
+                  </div> -->
+                  <input type="checkbox" id="museum-toggle" class="hidden" checked>
+                  <label for="museum-toggle" class="museum-label-toggle"><p>museums</p></label>
+                  <div class="well"></div>
+                </div>
+                <input type="checkbox" id="exhibit-toggle" class="hidden" checked>
                 <label for="exhibit-toggle" class="exhibit-label-toggle"><p>exhibits</p></label>
                 <% if current_user %>
                 <button type="button"class="list-group-item">
@@ -54,8 +61,8 @@
                 </button>
                   <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "list-group-item" %>
                 <% else %>
-                  <button type="button" class="list-group-item" data-toggle="modal" data-target="#Log-In-Modal">log-in</button>
-                  <button type="button" class="list-group-item" data-toggle="modal" data-target="#Register-Modal">Register</button>
+                  <button type="button" class="list-group-item" data-toggle="modal" data-target="#Log-In-Modal">log in</button>
+                  <button type="button" class="list-group-item" data-toggle="modal" data-target="#Register-Modal">register</button>
                   <button type="button"class="list-group-item">
                     <a href="#">Check Out</a>
                     <span class="glyphicon glyphicon-shopping-cart"></span>

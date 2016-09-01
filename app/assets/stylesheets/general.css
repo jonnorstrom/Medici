@@ -11,7 +11,16 @@ p{
 * {
    font-family: HansKendrick;
    color: dimGrey;
+   font-size: 10px;
 }
 * a {
   font-family: HansKendrick-Heavy;
+  font-size: 1.6rem;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
 }
