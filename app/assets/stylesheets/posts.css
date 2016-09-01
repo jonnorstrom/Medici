@@ -3,10 +3,12 @@
 */
 *, *:before, *:after {box-sizing:  border-box !important;}
 .masonry-row {
- -moz-column-width: 25em;
- -webkit-column-width: 25em;
+ -moz-column-width: 33em;
+ -webkit-column-width: 33em;
+ column-width:33em;
  -moz-column-gap: .5em;
  -webkit-column-gap: .5em;
+ column-gap: .5em;
 }
 .content{
     overflow:hidden;
@@ -15,16 +17,17 @@
 .post-wrapper {
  display: inline-block;
  padding: 0px 10px;
- margin-top: 34px;
+ margin-top: 2rem;
+ margin-bottom: -4rem;
  width:98%;
 }
 .thumbnail{
 	position: relative;
     margin: 0 !important;
-    padding :0 !important;
+    padding: 0 !important;
     border: 0 none;
     z-index: 2;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35);
 }
 .thumbnail a{
 	color: dimGrey;
@@ -34,6 +37,10 @@
 	line-height: 120%;
 	font-size: 15px;
 	color: #9B9999;
+}
+
+.thumbnail h3 a{
+	font-size: 2rem;
 }
 
 .progress{

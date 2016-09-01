@@ -82,7 +82,7 @@
         background-color: #fff;
         border: transparent;
         text-align: left;
-        font-size: 16px;
+        font-size: 1.6rem;
     }
     footer { 
         position: absolute;
@@ -95,18 +95,63 @@
     footer i {
         font-size: 35px !important;
         color: lightGrey;
-        margin: 4px;
+        margin: .4rem;
     }
     .text-muted{
     color:lightGrey !important;
-    font-size: 13px;
+    font-size: 1.3rem;
     }
 }
 .navbar-default{
     border-color: transparent !important;
 }
 
+
+.search-bar{
+    display: block;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 0px solid lightGrey;
+    transition: border-left 0.2s;
+    border-radius: 0px;
+    
+}
+.search-bar:focus{
+    outline: none;
+    border-left: solid 16px lightGrey;
+}
+.checkbox-wrapper{
+    display: block; 
+}
+
+.checkbox-wrapper .progress{}
+.checkbox-wrapper .well{
+    display: inline;
+    border: 0 none;
+    padding: .7rem 4rem;
+    margin-bottom: 0px;
+    box-shadow: inset 0 3px 3px rgba(0,0,0,.3);
+    background: repeating-linear-gradient(
+    45deg,
+    #E1AC61,
+    #E1AC61 12px,
+    #DFA148 12px,
+    #DFA148 24px
+  );
+}
 .museum-label-toggle{
+    margin-top: 2px;
+    margin-bottom: 0px;
+    padding: 15px 8px 15px 12px;
+    display: inline-block;
+    background-color: #f8f8f8;
+    border-left: solid 0px lightGrey;
+    transition: border-left 0.2s;  
+} 
+.exhibit-label-toggle{
     margin-top: 2px;
     margin-bottom: 0px;
     padding: 12px 15px;
@@ -117,30 +162,21 @@
 }
 .museum-label-toggle p{
     margin-bottom: 0;
+} 
+.exhibit-label-toggle p{
+    margin-bottom: 0;
 }
 input#museum-toggle[type=checkbox]:checked ~.museum-label-toggle{
     border-left: solid 16px lightGrey;
-
-}
-.exhibit-label-toggle{
-    margin-top: 2px;
-    margin-bottom: 0px;
-    padding: 12px 15px;
-    display: block;
-    background-color: white;
-    border-left: solid 0px lightGrey;
-    transition: border-left 0.2s;  
-}
-.exhibit-label-toggle p{
-    margin-bottom: 0;
 }
 input#exhibit-toggle[type=checkbox]:checked ~.exhibit-label-toggle{
     border-left: solid 16px lightGrey;
 
 }
+
 .list-group-item{
     margin-top: 2px;
-    margin-bottom: 0px;
+    margin-bottom: 0px !important;
     border: transparent!important;
     color: dimGrey;
     font-size: 17px;

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	document.getElementById('museum-toggle').focus();
     $("#museum-toggle").click(function(){
         $(".museum-panel").fadeToggle();
     });
