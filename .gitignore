@@ -15,6 +15,7 @@ log/
 !/log/.keep
 !/tmp/.keep
 public/system/*
+log/development.log
 
 # Ignore Byebug command history file.
 .byebug_history
