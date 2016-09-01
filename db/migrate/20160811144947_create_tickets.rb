@@ -5,6 +5,7 @@ class CreateTickets < ActiveRecord::Migration[5.0]
       t.integer :user_id
       t.float :unit_price
       t.integer :quantity
+      t.string :redemption_code
       t.integer :original_quantity
       t.integer :order_id
       t.float :total_price

@@ -12,6 +12,7 @@ class ChargesController < ApplicationController
     @amount_float = @order.subtotal * 100.00
     @amount = @amount_float.to_i
     @final_amount = @amount
+    @coupon = Coupon.new(discount_percent: 0.00)
     code = params[:couponCode]
 
     if !code.blank?

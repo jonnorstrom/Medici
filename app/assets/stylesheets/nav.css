@@ -54,8 +54,8 @@
         padding-left: 15px;
         padding-right: 15px;
         position: relative;
-        top: 35%;
-        transform: translateY(-35%);
+        top: 10%;
+        transform: translateY(-10%);
     }
      .navbar-collapse.collapse{
         padding: 0px 0px;
@@ -84,7 +84,7 @@
         text-align: left;
         font-size: 1.6rem;
     }
-    footer { 
+    footer {
         position: absolute;
         width: auto;
         bottom: 0;
@@ -117,14 +117,16 @@
     border-left: 0px solid lightGrey;
     transition: border-left 0.2s;
     border-radius: 0px;
-    
+    background-color: white;
+    border-left: solid 0px lightGrey;
+    transition: border-left 0.2s;
 }
 .search-bar:focus{
     outline: none;
     border-left: solid 16px lightGrey;
 }
 .checkbox-wrapper{
-    display: block; 
+    display: block;
 }
 
 .checkbox-wrapper .progress{}
@@ -149,8 +151,8 @@
     display: inline-block;
     background-color: #f8f8f8;
     border-left: solid 0px lightGrey;
-    transition: border-left 0.2s;  
-} 
+    transition: border-left 0.2s;
+}
 .exhibit-label-toggle{
     margin-top: 2px;
     margin-bottom: 0px;
@@ -158,11 +160,11 @@
     display: block;
     background-color: white;
     border-left: solid 0px lightGrey;
-    transition: border-left 0.2s;  
+    transition: border-left 0.2s;
 }
 .museum-label-toggle p{
     margin-bottom: 0;
-} 
+}
 .exhibit-label-toggle p{
     margin-bottom: 0;
 }
@@ -187,5 +189,3 @@ input#exhibit-toggle[type=checkbox]:checked ~.exhibit-label-toggle{
 .toggle-group{
     margin-top: 10px;
 }
-
-

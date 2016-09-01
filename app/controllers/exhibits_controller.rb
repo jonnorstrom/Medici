@@ -7,9 +7,7 @@ class ExhibitsController < ApplicationController
     @term = params[:search].downcase
     if params[:search]
       @all_posts.each do |post|
-        if post.name.downcase.include?(@term)
-          @posts << post
-        elsif post.description.downcase.include?("%#{params[:search].downcase}%")
+        if post.name.downcase.include?(@term) || post.description.downcase.include?(@term)
           @posts << post
         end
       end

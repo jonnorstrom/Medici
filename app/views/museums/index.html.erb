@@ -1,5 +1,3 @@
-<h3><%= render 'layouts/cart_text' %></h3>
-
 <div class="row masonry-row">
 	<% @posts.shuffle.each do |post| %>
 	  <%= render "museum_row", post: post, ticket: @ticket  %>

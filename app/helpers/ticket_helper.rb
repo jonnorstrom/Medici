@@ -5,7 +5,7 @@ module TicketHelper
       Ticket.all.where(museum_id: museum.id).each do |ticket|
         @total << ticket.original_quantity
       end
-    @total.inject(:+)
+    @total.inject(0, :+)
   end
 
   def total_redeemed(museum)
@@ -15,7 +15,7 @@ module TicketHelper
           @total << ticket.original_quantity
         end
       end
-    @total.inject(:+)
+    @total.inject(0, :+)
   end
 
 end

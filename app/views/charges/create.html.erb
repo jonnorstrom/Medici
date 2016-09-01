@@ -3,17 +3,17 @@
     <span>Subtotal: <%= number_to_currency(@amount * 0.01) %></span>
   </label>
 </p>
-<% if @coupon.present? %>
+<% if @discount_amount %>
   <p>
     <label class="coupon">
       <span>Coupon: <%= @coupon.code %></span>
     </label>
   </p>
-  <p>
-    <label class="savings">
-      <span>Savings: <%= number_to_currency(@discount_amount * 0.01) %></span>
-    </label>
-  </p>
+    <p>
+      <label class="savings">
+        <span>Savings: <%= number_to_currency(@discount_amount * 0.01) %></span>
+      </label>
+    </p>
   <p>
     <label class="discount">
       <span>Discount: <%= @coupon.discount_percent_human %></span>
