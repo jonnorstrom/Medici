@@ -42,16 +42,20 @@
                   <%= text_field_tag :search, params[:search], placeholder: "Search", class:"search-bar" %>
                 <% end %>
                 <div class="checkbox-wrapper">
-                 <!--  <div class="progress">
-                    <div class="progress-bar progress-bar-warning progress-bar-striped"style="width: 100%">
-                    </div>
-                  </div> -->
                   <input type="checkbox" id="museum-toggle" class="hidden" checked>
-                  <label for="museum-toggle" class="museum-label-toggle"><p>museums</p></label>
-                  <div class="well"></div>
+                  <div class=" well museum-label-toggle"></div>
+                  <label for="museum-toggle"><p>museums</p></label>
                 </div>
-                <input type="checkbox" id="exhibit-toggle" class="hidden" checked>
-                <label for="exhibit-toggle" class="exhibit-label-toggle"><p>exhibits</p></label>
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="exhibit-toggle" class="hidden" checked>
+                  <div class=" well exhibit-label-toggle"></div>
+                  <label for="exhibit-toggle"><p>exhbits</p></label>
+                </div>
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="event-toggle" class="hidden" checked>
+                  <div class=" well event-label-toggle"></div>
+                  <label for="event-toggle"><p>events</p></label>     
+                </div>
                 <% if current_user %>
                 <button type="button"class="list-group-item">
                   <%= link_to "Checkout", cart_path(current_user.id) %>
@@ -125,6 +129,10 @@
             </div>
           </div>
           <%= yield %>
+          <!-- Pete, you need to fix this shit -->
+          <div id="color-hack">
+            <h2>Oops looks like theres nothing here...</h2>
+          </div>
         </div>
       </div>
     </div>
