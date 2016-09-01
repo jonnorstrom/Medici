@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "exhibits/search" => "exhibits#search"
   resources :exhibits
   resources :charges
+  get "users/:id/personalized" => "users#personalized"
   get "users/:id/tagging" => "users#tagging_new"
   post "users/:id/tagging" => "users#tagging_create"
   resources :users, only: [:show, :edit, :update]

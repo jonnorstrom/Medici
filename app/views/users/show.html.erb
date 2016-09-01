@@ -1,6 +1,3 @@
-<!-- <%= image_tag @user.avatar.url(:medium) %><br>
-<%= @user.name %> -->
-<br>
 <h3>Your tickets</h3>
 <% @tickets.each do |ticket| %>
   <h4><%= link_to "#{Museum.find(ticket.museum_id).name}", ticket %>: <%= ticket.quantity %></h4>
@@ -12,5 +9,10 @@
   </p>
 <% end %>
 <%= link_to "Edit Profile", edit_user_path %><br>
-<%= link_to "Customize Your Experience", "#{current_user.id}/tagging" %><br>
+<%= link_to "Add Interests", "#{current_user.id}/tagging" %><br>
+<% if current_user.taggings != []%>
+  <%= link_to "Museums for You!", "#{current_user.id}/personalized" %><br>
+<% else %>
+  <%= link_to "Museums for You!", "#{current_user.id}/tagging" %><br>
+<% end %>
 <%= link_to "See Backend Numbers", tickets_stats_path %>
