@@ -58,7 +58,7 @@
         transform: translateY(-50%);
     }
      .navbar-collapse.collapse{
-
+        padding: 0px;
     }
     .navbar-header img{
         
