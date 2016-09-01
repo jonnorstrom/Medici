@@ -30,27 +30,34 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <%= link_to image_tag("Medici_logos/m_logo_dim_grey.JPG"), root_path, class: "navbar-left hidden-xs"%>
+                <%= link_to image_tag("Medici_logos/m_logo_simple_lite_grey.jpg"), root_path, class: "navbar-left hidden-xs"%>
                 <% if current_user %>
                   <%= link_to "Hi, #{current_user.name}!", current_user, class: "navbar-brand" %>
 
                 <% end %>
               </div>
               <div class="collapse navbar-collapse">
-                <%= form_tag(exhibits_search_path, :method => "get", id: "search-form") do %>
-                  <i class="fa fa-search" aria-hidden="true"></i> <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-                <% end %>
-                <div class="checkbox-wrapper">
-                 <!--  <div class="progress">
-                    <div class="progress-bar progress-bar-warning progress-bar-striped"style="width: 100%">
-                    </div>
-                  </div> -->
-                  <input type="checkbox" id="museum-toggle" class="hidden" checked>
-                  <label for="museum-toggle" class="museum-label-toggle"><p>museums</p></label>
-                  <div class="well"></div>
+                <div id= "search-wrapper">
+                  <%= form_tag(exhibits_search_path, :method => "get", id: "search-form") do %>
+                    <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i> 
+                    <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+                  <% end %>
                 </div>
-                <input type="checkbox" id="exhibit-toggle" class="hidden" checked>
-                <label for="exhibit-toggle" class="exhibit-label-toggle"><p>exhibits</p></label>
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="museum-toggle" class="hidden" checked>
+                  <div class=" well museum-label-toggle"></div>
+                  <label for="museum-toggle"><p>museums</p></label>
+                </div>
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="exhibit-toggle" class="hidden" checked>
+                  <div class=" well exhibit-label-toggle"></div>
+                  <label for="exhibit-toggle"><p>exhbits</p></label>
+                </div>
+                <div class="checkbox-wrapper">
+                  <input type="checkbox" id="event-toggle" class="hidden" checked>
+                  <div class=" well event-label-toggle"></div>
+                  <label for="event-toggle"><p>events</p></label>     
+                </div>
                 <% if current_user %>
                 <button type="button"class="list-group-item">
                   <%= link_to "Checkout", cart_path(current_user.id) %>
@@ -72,8 +79,7 @@
                   </button>
                 <% end %>
               </div>
-            </div>
-            <footer>
+              <footer class="hidden-xs">
               <%= link_to "https://www.facebook.com/mediciapp" do %>
                 <i class="fa fa-facebook-square" aria-hidden="true"></i>
               <% end %>
@@ -85,9 +91,9 @@
               <% end %>
               <p class= "text-muted">Medici LLC, Is brought to you buy the international asscociation of dislexic court reporters</p>
             </footer>
+            </div>
           </nav>
         </div>
-
         <div class="col-sm-9 col-lg-10 content">
           <div id="Log-In-Modal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -127,7 +133,12 @@
               </div>
             </div>
           </div>
+
           <%= yield %>
+          <!-- Pete, you need to fix this shit -->
+          <div id="color-hack">
+            <h2>Oops looks like theres nothing here...</h2>
+          </div>
         </div>
       </div>
     </div>
