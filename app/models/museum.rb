@@ -5,6 +5,8 @@ class Museum < ApplicationRecord
   default_scope { where(active: true) }
   accepts_nested_attributes_for :taggings, :allow_destroy => true
   has_many :exhibits
+  has_many :events
+  has_many :pieces
 
   has_attached_file :photo, styles: { large: "768x768>", medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/

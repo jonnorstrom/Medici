@@ -1,0 +1,11 @@
+<%= @piece.name %><br>
+<%= @piece.description %>
+
+<%= link_to "Currently at #{@museum.name}", @museum %>
+<br><br>
+<%= image_tag @piece.photo.url(:large) %>
+
+<% if admin? %>
+  <%= link_to "Add Piece Tags", "#{@piece.id}/tagging" %>
+  <%= link_to "Edit Piece", edit_piece_path %>
+<% end %>

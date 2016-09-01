@@ -1,6 +1,13 @@
-<%= @exhibit.name %>
+<%= @exhibit.name %><br>
 <%= @exhibit.description %>
+<p>
+  From <%=@exhibit.start_date%> - <%= @exhibit.end_date %>
+</p>
+<%= link_to "Currently at #{@museum.name}", @museum %>
+<br><br>
+<%= image_tag @exhibit.photo.url(:large) %>
 
-<% if current_user %>
+<% if admin? %>
+  <%= link_to "Add Exhibit Tags", "#{@exhibit.id}/tagging" %>
   <%= link_to "Edit Exhibit", edit_exhibit_path %>
 <% end %>

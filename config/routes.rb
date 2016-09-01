@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   post "exhibits/:id/tagging" => "exhibits#tagging_create"
   get "exhibits/search" => "exhibits#search"
   resources :exhibits
+  get "pieces/:id/tagging" => "pieces#tagging_new"
+  post "pieces/:id/tagging" => "pieces#tagging_create"
+  resources :pieces
+  get "events/:id/tagging" => "events#tagging_new"
+  post "events/:id/tagging" => "events#tagging_create"
+  resources :events
   resources :charges
   get "users/:id/personalized" => "users#personalized"
   get "users/:id/tagging" => "users#tagging_new"

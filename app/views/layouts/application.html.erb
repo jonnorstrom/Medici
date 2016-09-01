@@ -39,7 +39,7 @@
               <div class="collapse navbar-collapse">
                 <div id= "search-wrapper">
                   <%= form_tag(exhibits_search_path, :method => "get", id: "search-form") do %>
-                    <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i> 
+                    <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
                     <%= text_field_tag :search, params[:search], placeholder: "Search" %>
                   <% end %>
                 </div>
@@ -51,12 +51,12 @@
                 <div class="checkbox-wrapper">
                   <input type="checkbox" id="exhibit-toggle" class="hidden" checked>
                   <div class=" well exhibit-label-toggle"></div>
-                  <label for="exhibit-toggle"><p>exhbits</p></label>
+                  <label for="exhibit-toggle"><p>exhibits</p></label>
                 </div>
                 <div class="checkbox-wrapper">
                   <input type="checkbox" id="event-toggle" class="hidden" checked>
                   <div class=" well event-label-toggle"></div>
-                  <label for="event-toggle"><p>events</p></label>     
+                  <label for="event-toggle"><p>events</p></label>
                 </div>
                 <% if current_user %>
                 <button type="button"class="list-group-item">
@@ -105,7 +105,7 @@
                   <div class="checkbox">
                     <label><%= f.check_box :remember_me %><p>remember me</p></label>
                   </div>
-                  <a href="#">Forgot your password?</a>
+                  <%= link_to "Forgot your password?", new_user_password_path %>
                   <%= f.submit "Log in", class:"input-button"%>
                 <% end %>
               </div>

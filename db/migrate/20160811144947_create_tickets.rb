@@ -4,8 +4,14 @@ class CreateTickets < ActiveRecord::Migration[5.0]
       t.integer :museum_id
       t.integer :user_id
       t.float :unit_price
+      # t.float :child_price
+      # t.float :senior_price
+      # t.integer :child_quantity
+      # t.integer :senior_quantity
       t.integer :quantity
       t.string :redemption_code
+      # t.integer :original_child_quantity
+      # t.integer :original_senior_quantity
       t.integer :original_quantity
       t.integer :order_id
       t.float :total_price

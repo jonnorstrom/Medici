@@ -4,6 +4,8 @@ class CreateTaggings < ActiveRecord::Migration[5.0]
       t.integer :user_id, :default => 0
       t.integer :museum_id, :default => 0
       t.integer :exhibit_id, :default => 0
+      t.integer :event_id, :default => 0
+      t.integer :piece_id, :default => 0
       t.integer :tag_id, :default => 0
       t.timestamps
     end

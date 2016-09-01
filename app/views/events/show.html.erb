@@ -1,0 +1,13 @@
+<%= @event.name %><br>
+<%= @event.description %>
+<p>
+  From <%=@event.start_date%> - <%= @event.end_date %>
+</p>
+<%= link_to "Currently at #{@museum.name}", @museum %>
+<br><br>
+<%= image_tag @event.photo.url(:large) %>
+
+<% if admin? %>
+  <%= link_to "Add Event Tags", "#{@event.id}/tagging" %>
+  <%= link_to "Edit Event", edit_event_path %>
+<% end %>
