@@ -1,0 +1,6 @@
+<div class="row masonry-row">
+	<% @posts.shuffle.each do |post| %>
+	  <%= render "custom_row", post: post, ticket: @ticket  %>
+	<% end %>
+</div>
+<br>

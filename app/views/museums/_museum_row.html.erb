@@ -1,7 +1,7 @@
 
 <div class="post-wrapper museum-panel">
   <div class="thumbnail">
-    <%= image_tag post.photo.url(:large) %>
+    <%= link_to image_tag(post.photo.url(:large)), post %>
     <div class="caption">
       <h3><%= link_to "#{post.name}", post %></h3>
       <p><%= post.blurb %></p>
