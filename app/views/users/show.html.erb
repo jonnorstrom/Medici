@@ -10,7 +10,7 @@
 <% end %>
 <%= link_to "Edit Profile", edit_user_path %><br>
 <%= link_to "Add Interests", "#{current_user.id}/tagging" %><br>
-<% if current_user.taggings %>
+<% if current_user.taggings != []%>
   <%= link_to "Museums for You!", "#{current_user.id}/personalized" %><br>
 <% else %>
   <%= link_to "Museums for You!", "#{current_user.id}/tagging" %><br>
