@@ -38,7 +38,7 @@
               </div>
               <div class="collapse navbar-collapse">
                 <%= form_tag(exhibits_search_path, :method => "get", id: "search-form") do %>
-                <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+                  <i class="fa fa-search" aria-hidden="true"></i> <%= text_field_tag :search, params[:search], placeholder: "Search" %> 
                 <% end %>
                 <input type="checkbox" id="museum-toggle" class="hidden">
                 <label for="museum-toggle" class="museum-label-toggle"><p>museums</p></label>
