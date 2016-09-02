@@ -13,6 +13,7 @@ class TicketsController < ApplicationController
     prng = Random.new
     @ticket.redemption_code = prng.rand(1000000000000).to_s + "MD101"
     @order.save
+    @ticket.update(original_quantity: @ticket.quantity)
     session[:order_id] = @order.id
     redirect_to cart_path(id: current_user.id)
   end
@@ -23,7 +24,6 @@ class TicketsController < ApplicationController
     @ticket.update(quantity: @quantity - 1, order_id: 1)
     if @quantity - 1 == 0
       @ticket.update(redeemed: true)
-      # @ticket.destroy
       redirect_to current_user
     else
       redirect_to ticket_path(@ticket)
