@@ -32,6 +32,7 @@ class TicketsController < ApplicationController
 
   def stats
     @museums = Museum.all
+    @coupons = Coupon.all
   end
 
   def update

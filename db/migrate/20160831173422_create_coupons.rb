@@ -5,7 +5,7 @@ class CreateCoupons < ActiveRecord::Migration[5.0]
       t.integer :discount_percent
       t.timestamp :expires_at
       t.string :description
-
+      t.integer :quantity_redeemed, default: 0
       t.timestamps
     end
   end

@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 20160831173422) do
     t.integer  "discount_percent"
     t.datetime "expires_at"
     t.string   "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "quantity_redeemed", default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160831173422) do
     t.string   "name"
     t.string   "blurb"
     t.string   "description"
+    t.float    "price"
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "museum_id"

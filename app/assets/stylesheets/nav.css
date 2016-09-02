@@ -160,6 +160,7 @@
 }
 .checkbox-wrapper label p{
     margin-bottom: 0;
+    font-size: 1vw;
 }
 .checkbox-wrapper label p:hover{
     color: black;
