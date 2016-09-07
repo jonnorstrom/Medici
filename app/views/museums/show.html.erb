@@ -30,6 +30,14 @@
   <%= link_to "Edit Museum", edit_museum_path %>
 <% end %>
 
+<h2> Exhibits: </h2>
+
+<% @exhibits.each do |exhibit| %>
+  <h3> <%= exhibit.name %> </h3 >
+  <p><%= exhibit.description %></p>
+  <%= image_tag exhibit.photo.url(:large) %>
+<% end %>
+
 <script type="text/javascript">
   function buildMap(){
     handler = Gmaps.build('Google');
