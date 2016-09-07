@@ -5,13 +5,18 @@ class ExhibitsController < ApplicationController
 
   def search_show
     @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all + Tag.all
+    @ticket = current_order.tickets.new
     @posts = []
     @term = params[:search].downcase
     if params[:search]
       if params[:tag_search]
         @all_posts.each do |post|
           params[:tag_search].each do |param|
-            if (post.name.downcase.include?(@term) && post.tags.any? {|attribute| attribute.name == param}) || (post.description.downcase.include?(@term) &&  post.tags.any? {|attribute| attribute == param})
+            if post.is_a?(Tag)
+              if post.name.downcase.include?(param)
+                @posts << post
+              end
+            elsif (post.name.downcase.include?(@term) && post.tags.any? {|attribute| attribute.name == param}) || (post.description.downcase.include?(@term) &&  post.tags.any? {|attribute| attribute == param})
               @posts << post
               end
             end

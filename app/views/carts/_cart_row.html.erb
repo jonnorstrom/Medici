@@ -7,5 +7,8 @@
             <%= f.hidden_field :museum_id, value: museum.id %>
               <%= f.submit "Update Quantity", class: "btn btn-primary" %>
               <%= link_to "Delete", ticket, { data: { confirm: "Are you sure you wish to delete the museum '#{ticket.museum.name}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
+
+
+              
         <h4>Total Price: <%= number_to_currency ticket.total_price %></h4>
       <% end %>
