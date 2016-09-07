@@ -38,3 +38,10 @@
     <%= f.submit "Edit Event"%>
   </div>
 <% end %>
+
+<% if @event.errors.any? %>
+  <% @event.errors.each do |attribute, message| %>
+    <%= attribute %>:
+    <%= message %>
+  <% end %>
+<% end %>

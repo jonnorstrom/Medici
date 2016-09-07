@@ -28,3 +28,9 @@
     <%= f.submit "Add Piece"%>
   </div>
 <% end %>
+<% if @piece.errors.any? %>
+  <% @piece.errors.each do |attribute, message| %>
+    <%= attribute %>:
+    <%= message %>
+  <% end %>
+<% end %>

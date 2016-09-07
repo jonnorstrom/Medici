@@ -29,6 +29,13 @@
   </div>
 <% end %>
 
+<% if @mueseum.errors.any? %>
+  <% @mueseum.errors.each do |attribute, message| %>
+    <%= attribute %>:
+    <%= message %>
+  <% end %>
+<% end %>
+
 <br>
 
 <%= link_to "Delete Museum", @museum, :method => :delete, :confirm => "You sure?" %>

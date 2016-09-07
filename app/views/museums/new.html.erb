@@ -33,3 +33,10 @@
     <%= f.submit "Add Museum"%>
   </div>
 <% end %>
+
+<% if @museum.errors.any? %>
+  <% @museum.errors.each do |attribute, message| %>
+    <%= attribute %>:
+    <%= message %>
+  <% end %>
+<% end %>

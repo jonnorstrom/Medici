@@ -38,3 +38,10 @@
     <%= f.submit "Add Exhibit"%>
   </div>
 <% end %>
+
+<% if @exhibit.errors.any? %>
+  <% @exhibit.errors.each do |attribute, message| %>
+    <%= attribute %>:
+    <%= message %>
+  <% end %>
+<% end %>

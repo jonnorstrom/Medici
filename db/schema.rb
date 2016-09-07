@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20160902180613) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
-    t.date     "start_date"
-    t.date     "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.string   "blurb"
     t.string   "description"
     t.integer  "museum_id"
