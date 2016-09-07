@@ -47,7 +47,17 @@
 	position: relative;
 	bottom: 10px;
 }
-.progress-bar{
+ .museum-panel .progress-bar{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
+	background-color: orange;
+}
+.exhibit-panel .progress-bar{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
+	background-color: #1cade6;
+}
+
+.event-panel .progress-bar{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
+	background-color: #DE6092;
 }
 
