@@ -137,6 +137,10 @@ GEM
       mimemagic (~> 0.3.0)
     pg (0.18.4)
     pg (0.18.4-x86-mingw32)
+    pg_search (1.0.6)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     pkg-config (1.1.7)
     puma (3.6.0)
     rack (2.0.1)
@@ -247,6 +251,7 @@ DEPENDENCIES
   omniauth-facebook
   paperclip (~> 5.0.0)
   pg (~> 0.18)
+  pg_search
   puma (~> 3.0)
   rails (~> 5.0.0)
   sass-rails (~> 5.0)

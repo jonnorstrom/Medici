@@ -3,19 +3,37 @@ class ExhibitsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
 
-  def search
+  def search_show
     @all_posts = Museum.all + Exhibit.all + Exhibit.all + Piece.all
     @posts = []
     @term = params[:search].downcase
     if params[:search]
-      @all_posts.each do |post|
-        if post.name.downcase.include?(@term) || post.description.downcase.include?(@term)
-          @posts << post
+      if params[:tag_search]
+        @all_posts.each do |post|
+          params[:tag_search].each do |param|
+            if (post.name.downcase.include?(@term) && post.tags.any? {|attribute| attribute.name == param}) || (post.description.downcase.include?(@term) && post.tags.any? {|attribute| attribute == param})
+              @posts << post
+              end
+            end
+          end
+        puts params[:tag_search]
+      else
+        @all_posts.each do |post|
+          if post.name.downcase.include?(@term) || post.description.downcase.include?(@term)
+            @posts << post
+          end
         end
       end
     else
       @posts = @all_posts.all.order('created_at DESC')
     end
+    @posts = @posts.uniq
+  end
+
+
+  def search_new
+    @all_posts = Museum.all + Exhibit.all + Exhibit.all + Piece.all
+    @tags = Tag.all
   end
 
   def show

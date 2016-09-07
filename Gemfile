@@ -35,6 +35,7 @@ gem 'jquery-turbolinks'
 gem 'stripe'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'pg_search'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

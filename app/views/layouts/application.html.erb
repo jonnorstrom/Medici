@@ -38,10 +38,11 @@
               </div>
               <div class="collapse navbar-collapse">
                 <div id= "search-wrapper">
-                  <%= form_tag(exhibits_search_path, :method => "get", id: "search-form") do %>
+                  <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
                     <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
                     <%= text_field_tag :search, params[:search], placeholder: "Search" %>
                   <% end %>
+                  <%= link_to "Advanced Search", exhibits_search_new_path %>
                 </div>
 
                 <% if ["index"].include?(params[:action]) %>
