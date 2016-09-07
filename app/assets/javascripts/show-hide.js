@@ -3,7 +3,12 @@ $(document).on('turbolinks:load', function(){
     $("#museum-toggle").click(function(){
         $(".museum-panel").fadeToggle();
     });
-     $("#exhibition-toggle").click(function(){
-        $(".exhibition-panel").fadeToggle();
+    document.getElementById('exhibit-toggle').focus();
+     $("#exhibit-toggle").click(function(){
+        $(".exhibit-panel").fadeToggle();
+    });
+     document.getElementById('event-toggle').focus();
+     $("#event-toggle").click(function(){
+        $(".event-panel").fadeToggle();
     });
 });
