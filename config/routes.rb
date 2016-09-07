@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post "users/:id/tagging" => "users#tagging_create"
   resources :users, only: [:show, :edit, :update]
   resources :taggings
+  resources :tags, only: [:show]
 
   root to: "museums#index"
 end

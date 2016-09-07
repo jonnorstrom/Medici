@@ -1,4 +1,7 @@
 <%= @museum.name %><br>
+<% @museum.tags.each do |tag| %>
+  <p><%= link_to "##{tag.name}", tag %></p>
+<% end %>
 <%= @museum.description %>
 <br><br>
 <%= image_tag @museum.photo.url(:large) %>

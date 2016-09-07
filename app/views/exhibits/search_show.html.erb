@@ -1,6 +1,10 @@
-<h3>Search Results:</h3>
-<ul>
-  <% @posts.each do |post| %>
-    <li> <%= link_to post.name, post %> </li>
+<h2>Search Results:</h2>
+<div class="row masonry-row">
+  <% if @posts.empty? %>
+    <p> Sorry! Nothing matches your search query.</p>
+  <% else %>
+  	<% @posts.shuffle.each do |post| %>
+  	  <%= render "search_row", post: post, ticket: @ticket  %>
+  	<% end %>
   <% end %>
-</ul>
+</div>
