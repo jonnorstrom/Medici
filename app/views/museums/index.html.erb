@@ -5,8 +5,10 @@
 </div>
 <br>
 
-<%= link_to "Add Museum", new_museum_path %><br>
-<%= link_to "Add Exhibit", new_exhibit_path %><br>
-<%= link_to "Add Event", new_event_path %><br>
-<%= link_to "Add Piece", new_piece_path %><br>
-<%= link_to "See Backend Numbers", tickets_stats_path %>
+<% if admin? %>
+	<%= link_to "Add Museum", new_museum_path %><br>
+	<%= link_to "Add Exhibit", new_exhibit_path %><br>
+	<%= link_to "Add Event", new_event_path %><br>
+	<%= link_to "Add Piece", new_piece_path %><br>
+	<%= link_to "See Backend Numbers", tickets_stats_path %>
+<% end %>
