@@ -6,6 +6,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.datetime :end_date
       t.string :blurb
       t.string :description
+      t.float :price
       t.integer :museum_id
       t.timestamps
     end

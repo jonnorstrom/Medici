@@ -132,8 +132,8 @@
 }
 .checkbox-wrapper{
     display: block;
-    margin-left: 15px;
-    margin-bottom: 0px; 
+    margin-left: 5px;
+    margin-bottom: 0px;
 }
 .checkbox-wrapper .well{
     display: inline;
@@ -155,14 +155,13 @@
 
     margin-top: 2px;
     margin-bottom: 0px;
-    padding: 8px;
+    padding: 2px;
     display: inline-block;
     background-color: transparent;
 }
 .checkbox-wrapper label p{
-    font-size: 16px;
     margin-bottom: 0;
-    font-size: 1vw;
+    font-size: 2.5vh;
 }
 .checkbox-wrapper label p:hover{
     color: black;

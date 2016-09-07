@@ -34,6 +34,7 @@
 
 <% @exhibits.each do |exhibit| %>
   <h3> <%= exhibit.name %> </h3 >
+  <p> <%= exhibit.start_date.strftime("%m/%Y/%d %I:%M%p") %> - <%= exhibit.end_date.strftime("%m/%Y/%d %I:%M%p") %> </p>
   <p><%= exhibit.description %></p>
   <%= image_tag exhibit.photo.url(:large) %>
 <% end %>
