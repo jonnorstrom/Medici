@@ -33,6 +33,8 @@ gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'jquery-turbolinks'
 gem 'stripe'
+gem 'omniauth'
+gem 'omniauth-facebook'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
