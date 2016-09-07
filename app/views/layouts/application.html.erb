@@ -43,6 +43,8 @@
                     <%= text_field_tag :search, params[:search], placeholder: "Search" %>
                   <% end %>
                 </div>
+
+                <% if ["index"].include?(params[:action]) %>
                 <div class="checkbox-wrapper">
                   <input type="checkbox" id="museum-toggle" class="hidden" checked>
                   <div class=" well museum-label-toggle"></div>
@@ -58,6 +60,8 @@
                   <div class=" well event-label-toggle"></div>
                   <label for="event-toggle"><p>events</p></label>
                 </div>
+                <% end %>
+
                 <% if current_user %>
                 <button type="button"class="list-group-item">
                   <%= link_to "Checkout", cart_path(current_user.id) %>
@@ -108,6 +112,7 @@
                   <%= link_to "Forgot your password?", new_user_password_path %>
                   <%= f.submit "Log in", class:"input-button"%>
                 <% end %>
+                <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
               </div>
             </div>
           </div>
