@@ -1,14 +1,18 @@
-<h4><%= museum.name %></h4>
+<h2><%= museum.name %></h2>
+<% if defined? museum.museum %>
+  <h4> at <%= museum.museum.name %> </h4>
+<% end %>
 
       <%= form_for ticket, remote: true do |f| %>
-        <h4>Regular Price: <%= number_to_currency ticket.unit_price %></h4>
-            <%= f.number_field :quantity, value: ticket.quantity.to_i, class: "form-control", min: 1 %>
+        <h4>Price: <%= number_to_currency ticket.unit_price %></h4>
+            <%= f.label :quantity %>
+            <%= f.select :quantity, (0..12) %>
             <%= f.hidden_field :original_quantity, value: ticket.quantity %>
             <%= f.hidden_field :museum_id, value: museum.id %>
               <%= f.submit "Update Quantity", class: "btn btn-primary" %>
               <%= link_to "Delete", ticket, { data: { confirm: "Are you sure you wish to delete the museum '#{ticket.museum.name}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
 
 
-              
+
         <h4>Total Price: <%= number_to_currency ticket.total_price %></h4>
       <% end %>

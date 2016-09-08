@@ -1,12 +1,18 @@
 <h3>Your tickets</h3>
 <% @tickets.each do |ticket| %>
-  <h4><%= link_to "#{Museum.find(ticket.museum_id).name}", ticket %>: <%= ticket.quantity %></h4>
+  <% if ticket.exhibit_id != nil %>
+    <%= link_to "#{Exhibit.find(ticket.exhibit_id).name} at #{Museum.find(ticket.museum_id).name}", ticket %>: <%= ticket.quantity %>
+  <% else %>
+    <%= link_to "#{Museum.find(ticket.museum_id).name}", ticket %>: <%= ticket.quantity %>
+  <% end %>
 <% end %>
 <h4>Redeemed Tickets</h4>
 <% @redeemed_tickets.each do |ticket| %>
-  <p>
-    <%= Museum.find(ticket.museum_id).name %>
-  </p>
+  <% if ticket.exhibit_id != nil %>
+    <p> <%= Exhibit.find(ticket.exhibit_id).name %> at <%= Museum.find(ticket.museum_id).name %></p>
+  <% else %>
+    <p> <%= Museum.find(ticket.museum_id).name %></p>
+  <% end %>
 <% end %>
 <%= link_to "Edit Profile", edit_user_path %><br>
 <%= link_to "Add Interests", "#{current_user.id}/tagging" %><br>

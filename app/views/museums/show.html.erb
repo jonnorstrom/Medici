@@ -15,7 +15,7 @@
 </p>
 <% if current_user %>
   <%= form_for @ticket, remote: true do |f| %>
-    <h4>Unit Price: <%= number_to_currency @museum.price %></span></h4>
+    <h4>Price: <%= number_to_currency @museum.price %></span></h4>
     <div class="input-group">
       <div class="input-group-btn">
         <%= f.hidden_field :quantity, value: 1%>

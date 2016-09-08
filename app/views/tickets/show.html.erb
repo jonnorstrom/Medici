@@ -7,7 +7,11 @@
   <h4><%= @ticket_code %></h4>
   <%= link_to "Redeem ticket", "redeem/#{@ticket.id}" %>
   <br>
-  <%= Museum.find(@ticket.museum_id).name %>: <%= @ticket.quantity %>
+  <% if @ticket.exhibit_id != nil %>
+    <%= Exhibit.find(@ticket.exhibit_id).name %>: <%= @ticket.quantity %>
+  <% else %>
+    <%= Museum.find(@ticket.museum_id).name %>: <%= @ticket.quantity %>
+  <% end %>
 <% end %>
 <br>
 <a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-mention-button" data-text="guided me along a great experience at <%=@tweetable_museum %>!" data-show-count="false">Tweet</a>

@@ -9,6 +9,17 @@
 <%= link_to "Currently at #{@museum.name}", @museum %>
 <br><br>
 <%= image_tag @exhibit.photo.url(:large) %>
+<%= form_for @ticket, remote: true do |f| %>
+  <div class="input-group">
+    <div class="input-group-btn">
+      <%= f.hidden_field :quantity, value: 1%>
+      <%= f.hidden_field :museum_id, value: @exhibit.museum_id %>
+      <%= f.hidden_field :exhibit_id, value: @exhibit.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
 
 <% if admin? %>
   <%= link_to "Add Exhibit Tags", "#{@exhibit.id}/tagging" %>

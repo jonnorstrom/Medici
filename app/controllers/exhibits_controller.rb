@@ -3,6 +3,27 @@ class ExhibitsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
 
+
+  def show
+    @ticket = current_order.tickets.new
+    @exhibit = Exhibit.find(params[:id])
+    @museum = Museum.find(@exhibit.museum_id)
+  end
+
+  def new
+    @exhibit = Exhibit.new
+  end
+
+  def create
+    @exhibit = Exhibit.new(exhibit_params)
+    if @exhibit.save
+      redirect_to :root
+    else
+      @errors = @exhibit.errors.full_messages
+      render :"exhibits/new"
+    end
+  end
+
   def search_show
     @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all + Tag.all
     @ticket = current_order.tickets.new
@@ -18,9 +39,9 @@ class ExhibitsController < ApplicationController
               end
             elsif (post.name.downcase.include?(@term) && post.tags.any? {|attribute| attribute.name == param}) || (post.description.downcase.include?(@term) &&  post.tags.any? {|attribute| attribute == param})
               @posts << post
-              end
             end
           end
+        end
         puts params[:tag_search]
       else
         @all_posts.each do |post|
@@ -46,26 +67,7 @@ class ExhibitsController < ApplicationController
     @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all + Tag.all
     @tags = Tag.all
   end
-
-  def show
-    @exhibit = Exhibit.find(params[:id])
-    @museum = Museum.find(@exhibit.museum_id)
-  end
-
-  def new
-    @exhibit = Exhibit.new
-  end
-
-  def create
-    @exhibit = Exhibit.new(exhibit_params)
-    if @exhibit.save
-      redirect_to :root
-    else
-      @errors = @exhibit.errors.full_messages
-      render :"exhibits/new"
-    end
-  end
-
+  
   def update
     @exhibit = Exhibit.find(params[:id])
     if @exhibit.update(exhibit_params)
