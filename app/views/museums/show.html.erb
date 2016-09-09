@@ -1,37 +1,46 @@
-<%= @museum.name %><br>
-<% @museum.tags.each do |tag| %>
-  <p><%= link_to "##{tag.name}", tag %></p>
-<% end %>
-<%= @museum.description %>
-<br><br>
-<%= image_tag @museum.photo.url(:large) %>
-<br><br>
-
-<div id="map"></div>
-
-
-<p>
-  <%= @museum.address %>
-</p>
-<% if current_user %>
-  <%= form_for @ticket, remote: true do |f| %>
-    <h4>Price: <%= number_to_currency @museum.price %></span></h4>
-    <div class="input-group">
-      <div class="input-group-btn">
-        <%= f.hidden_field :quantity, value: 1%>
-        <%= f.hidden_field :museum_id, value: @museum.id %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-      </div>
+<div class= "container-fluid yourDiv">
+  <div class="row myDiv">
+    <div class= "col-sm-6 image-wrap">
+      <%= image_tag @museum.photo.url(:large), class:"hero-image" %>
     </div>
+    <div class= "col-sm-6 myDiv">
+      <%= @museum.name %>
+      <%= @museum.description %>
+    </div>
+  </div>
+  <div class= "row myDiv">
+    <div class="col-sm-4 myDiv"><div id="map">
+    </div>
+    <p>
+      <%= @museum.address %>
+    </p>
+  </div>
+    <div class="col-sm-4 myDiv">moope</div>
+    <div class="col-sm-4 myDiv">morp</div>
+  </div>
+  <div class= "row mydiv">
+
+</div>
+
+  <% if current_user %>
+    <%= form_for @ticket, remote: true do |f| %>
+      <h4>Unit Price: <%= number_to_currency @museum.price %></span></h4>
+      <div class="input-group">
+        <div class="input-group-btn">
+          <%= f.hidden_field :quantity, value: 1%>
+          <%= f.hidden_field :museum_id, value: @museum.id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to "Sign in to buy tickets!", new_user_session_path %>
   <% end %>
-<% else %>
-  <%= link_to "Sign in to buy tickets!", new_user_session_path %>
-<% end %>
-<% if admin? %>
-  <%= link_to "Add Museum Tags", "#{@museum.id}/tagging" %>
-  <%= link_to "Edit Museum", edit_museum_path %>
-<% end %>
+  <% if admin? %>
+    <%= link_to "Add Museum Tags", "#{@museum.id}/tagging" %>
+    <%= link_to "Edit Museum", edit_museum_path %>
+  <% end %>
 
 <h2> Exhibits: </h2>
 
