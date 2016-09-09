@@ -13,13 +13,12 @@
     <%= link_to image_tag(post.photo.url(:large)), post %>
     <div class="caption">
       <h3><%= link_to "#{post.name}", post %></h3>
-      <p> $<%= '%.2f' % post.price %>
+      <p> $<%= '%i' % post.price %>
         <% if defined? post.exhibits %>
-        - $<%= '%.2f' %post.exhibits.sort.first.price %>
+        - $<%= '%i' %post.exhibits.sort.first.price %>
         <% end %>
       </p>
       <p><%= post.blurb %></p>
-      <a>Read More</a>
       <div>
         <% if current_user && post.is_a?(Museum) %>
           <%= form_for ticket, remote: true do |f| %>
