@@ -1,51 +1,52 @@
-/*
-* === MASONRY ===
-*/
-*, *:before, *:after {box-sizing:  border-box !important;}
-.masonry-row {
- -moz-column-width: 33em;
- -webkit-column-width: 33em;
- column-width:33em;
- -moz-column-gap: .5em;
- -webkit-column-gap: .5em;
- column-gap: .5em;
-}
+*:before, *:after {box-sizing:  border-box !important;}
 .content{
+	margin-top: 40px;
     overflow:hidden;
     background-color: #f8f8f8;
 }
-.post-wrapper {
- display: inline-block;
- padding: 0px 10px;
- margin-top: 2rem;
- margin-bottom: -4rem;
- width:98%;
+
+.post-wrapper{
+	padding: 0px !important;
+	margin-bottom: -10px;
 }
 .thumbnail{
 	position: relative;
-    margin: 0 !important;
+    margin: 0px 10px !important;
     padding: 0 !important;
     border: 0 none;
     z-index: 2;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35);
 }
-.thumbnail a{
+.thumbnail-header{
+	position: relative;
+	margin-bottom: 8px;
+}
+.thumbnail-header a {
+	color: dimGrey;
+	display: inline;
+	font-size: 2rem;
+}
+.thumbnail-header .price-range{
+	display: inline;
+	position: absolute;
+	margin: 0px;
+	right: 0px;
+	bottom: 1px;
 	color: dimGrey;
 }
-
 .thumbnail p{
 	line-height: 120%;
 	font-size: 15px;
 	color: #9B9999;
 }
-
-.thumbnail h3 a{
-	font-size: 2rem;
-}
-
 .progress{
+	margin: 0px 10px ;
 	position: relative;
 	bottom: 10px;
+}
+.app-advertisement .progress-bar{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
+	background-color: dimGrey;
 }
  .museum-panel .progress-bar{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);

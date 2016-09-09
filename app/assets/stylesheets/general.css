@@ -1,7 +1,6 @@
-.body {
+.body, .row{
 	background-color: #f8f8f8;
 }
-
 p{
 	font-size: 17px;
    font-family: HansKendrick-light, "Helvetica Neue Light", "Helvetica Neue";
@@ -23,4 +22,8 @@ p{
   display: -webkit-flex;
   display: -ms-flexbox;
   display:         flex;
+}
+
+.col-lg-3, .col-lg-6{
+    transition: all 200ms; 
 }
