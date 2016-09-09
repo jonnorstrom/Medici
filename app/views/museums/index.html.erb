@@ -1,14 +1,29 @@
+<div class= "col-sm-6 col-md-4 col-lg-3 app-advertisement post-wrapper">
+	<div class="thumbnail">
+	 <%= image_tag("hero.png") %>
+		<div class="caption">
+			<div class="thumbnail-header">
+				<a href="medici-app.com">Mobile App Coming Soon</a>
+			</div>
+			<p>medici app by cinco technologys &copy is the first mobile app for ordering bike messangers to carry you to the Art exhibits for free all week long call them when ever but dont touch</p>
+		</div>
+	</div>
+	<div class="progress">
+		<div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
+	</div>
+</div>
 <div class="row masonry-row">
 	<% @posts.shuffle.each do |post| %>
 	  <%= render "museum_row", post: post, ticket: @ticket  %>
 	<% end %>
 </div>
-<br>
 
-<% if admin? %>
-	<%= link_to "Add Museum", new_museum_path %><br>
-	<%= link_to "Add Exhibit", new_exhibit_path %><br>
-	<%= link_to "Add Event", new_event_path %><br>
-	<%= link_to "Add Piece", new_piece_path %><br>
-	<%= link_to "See Backend Numbers", tickets_stats_path %>
-<% end %>
+<div class="admin">
+	<% if admin? %>
+		<%= link_to "Add Museum", new_museum_path %><br>
+		<%= link_to "Add Exhibit", new_exhibit_path %><br>
+		<%= link_to "Add Event", new_event_path %><br>
+		<%= link_to "Add Piece", new_piece_path %><br>
+		<%= link_to "See Backend Numbers", tickets_stats_path %>
+	<% end %>
+</div>

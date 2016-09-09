@@ -4,7 +4,7 @@
 p{
 	font-size: 17px;
    font-family: HansKendrick-light, "Helvetica Neue Light", "Helvetica Neue";
-   color: dimGrey; 
+   color: dimGrey;
 }
 
 * {
@@ -25,5 +25,8 @@ p{
 }
 
 .col-lg-3, .col-lg-6{
-    transition: all 200ms; 
+    transition: all 200ms;
+}
+.admin {
+	float:right;
 }

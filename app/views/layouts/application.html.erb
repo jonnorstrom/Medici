@@ -45,21 +45,25 @@
                     <%= text_field_tag :search, params[:search], placeholder: "Search" %>
                   <% end %>
                 </div>
-                <label class="checkbox-wrapper" for="museum-toggle">
-                  <input type="checkbox" id="museum-toggle" class="hidden" checked>
-                  <div class=" well museum-label-toggle"></div>
-                  <label for="museum-toggle"><p>museums</p></label>
-                </label>
-                <label class="checkbox-wrapper" for="exhibit-toggle">
-                  <input type="checkbox" id="exhibit-toggle" class="hidden" checked>
-                  <div class=" well exhibit-label-toggle"></div>
-                  <label for="exhibit-toggle"><p>exhibits</p></label>
-                </label>
-                <label class="checkbox-wrapper" for="event-toggle">
-                  <input type="checkbox" id="event-toggle" class="hidden" checked>
-                  <div class=" well event-label-toggle"></div>
-                  <label for="event-toggle"><p>events</p></label>
-                </label>
+
+                <% if ["index"].include?(params[:action]) %>
+                  <label class="checkbox-wrapper" for="museum-toggle">
+                    <input type="checkbox" id="museum-toggle" class="hidden" checked>
+                    <div class=" well museum-label-toggle"></div>
+                    <label for="museum-toggle"><p>museums</p></label>
+                  </label>
+                  <label class="checkbox-wrapper" for="exhibit-toggle">
+                    <input type="checkbox" id="exhibit-toggle" class="hidden" checked>
+                    <div class=" well exhibit-label-toggle"></div>
+                    <label for="exhibit-toggle"><p>exhibits</p></label>
+                  </label>
+                  <label class="checkbox-wrapper" for="event-toggle">
+                    <input type="checkbox" id="event-toggle" class="hidden" checked>
+                    <div class=" well event-label-toggle"></div>
+                    <label for="event-toggle"><p>events</p></label>
+                  </label>
+                <% end %>
+
                 <% if current_user %>
                 <button type="button"class="list-group-item">
                   <%= link_to "Checkout", cart_path(current_user.id) %>
@@ -134,21 +138,7 @@
         </div>
         <div class="col-sm-9 col-lg-10 content">
           <div class= "row masonry-container">
-           
-            <div class= "col-sm-6 col-md-4 col-lg-3 app-advertisement post-wrapper">
-              <div class="thumbnail">
-               <%= image_tag("hero.png") %>
-                <div class="caption">
-                  <div class="thumbnail-header">
-                    <a href="medici-app.com">Mobile App Coming Soon</a>
-                  </div>
-                  <p>medici app by cinco technologys &copy is the first mobile app for ordering bike messangers to carry you to the Art exhibits for free all week long call them when ever but dont touch</p>
-                </div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
-              </div>
-            </div>
+
             <%= yield %>
           </div>
         </div>
