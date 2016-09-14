@@ -30,3 +30,7 @@ p{
 .admin {
 	float:right;
 }
+
+.hidden-xs a:hover {
+	text-decoration: none;
+}
