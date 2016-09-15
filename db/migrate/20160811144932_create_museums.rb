@@ -6,6 +6,8 @@ class CreateMuseums < ActiveRecord::Migration[5.0]
       t.string :description
       t.float :price
       t.boolean :active
+      t.time :opening_time
+      t.time :closing_time
       t.string :address
       t.float :latitude
       t.float :longitude
