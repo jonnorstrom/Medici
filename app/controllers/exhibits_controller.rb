@@ -7,6 +7,7 @@ class ExhibitsController < ApplicationController
   def show
     @ticket = current_order.tickets.new
     @exhibit = Exhibit.find(params[:id])
+    @ticket = current_order.tickets.new
     @museum = Museum.find(@exhibit.museum_id)
   end
 
@@ -67,7 +68,7 @@ class ExhibitsController < ApplicationController
     @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all + Tag.all
     @tags = Tag.all
   end
-  
+
   def update
     @exhibit = Exhibit.find(params[:id])
     if @exhibit.update(exhibit_params)
