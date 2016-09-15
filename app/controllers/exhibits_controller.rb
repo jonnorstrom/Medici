@@ -2,12 +2,14 @@ class ExhibitsController < ApplicationController
   before_action :administrative, only: [:new, :create, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
-
-
   def show
     @ticket = current_order.tickets.new
     @exhibit = Exhibit.find(params[:id])
     @museum = Museum.find(@exhibit.museum_id)
+    @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
+     marker.lat museum.latitude
+     marker.lng museum.longitude
+   end
   end
 
   def new
@@ -62,12 +64,11 @@ class ExhibitsController < ApplicationController
     @posts = @posts.uniq
   end
 
-
   def search_new
     @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all + Tag.all
     @tags = Tag.all
   end
-  
+
   def update
     @exhibit = Exhibit.find(params[:id])
     if @exhibit.update(exhibit_params)

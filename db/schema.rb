@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160902180613) do
     t.datetime "end_date"
     t.string   "blurb"
     t.string   "description"
+    t.float    "price"
     t.integer  "museum_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -122,9 +123,11 @@ ActiveRecord::Schema.define(version: 20160902180613) do
 
   create_table "tickets", force: :cascade do |t|
     t.integer  "museum_id"
+    t.integer  "exhibit_id"
     t.integer  "user_id"
     t.float    "unit_price"
-    t.integer  "quantity"
+    t.integer  "quantity",          default: 0
+    t.integer  "exhibit_quantity",  default: 0
     t.string   "redemption_code"
     t.integer  "original_quantity"
     t.integer  "order_id"

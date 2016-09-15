@@ -4,7 +4,7 @@
 <% end %>
 <%= @exhibit.description %>
 <p>
-  From <%=@exhibit.start_date%> - <%= @exhibit.end_date %>
+  <%=@exhibit.start_date.strftime("%B, %d")%> - <%= @exhibit.end_date.strftime("%B, %d %Y") %>
 </p>
 <%= link_to "Currently at #{@museum.name}", @museum %>
 <br><br>
@@ -21,7 +21,22 @@
   </div>
 <% end %>
 
+<div id="map">
+
 <% if admin? %>
   <%= link_to "Add Exhibit Tags", "#{@exhibit.id}/tagging" %>
   <%= link_to "Edit Exhibit", edit_exhibit_path %>
 <% end %>
+
+<script type="text/javascript">
+  function buildMap(){
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(12);
+    });
+  }
+  $(window).onload(buildMap())
+</script>
