@@ -71,6 +71,9 @@ ActiveRecord::Schema.define(version: 20160902180613) do
     t.string   "description"
     t.float    "price"
     t.boolean  "active"
+    t.time     "opening_time"
+    t.time     "closing_time"
+    t.string   "website"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
@@ -126,8 +129,7 @@ ActiveRecord::Schema.define(version: 20160902180613) do
     t.integer  "exhibit_id"
     t.integer  "user_id"
     t.float    "unit_price"
-    t.integer  "quantity",          default: 0
-    t.integer  "exhibit_quantity",  default: 0
+    t.integer  "quantity"
     t.string   "redemption_code"
     t.integer  "original_quantity"
     t.integer  "order_id"

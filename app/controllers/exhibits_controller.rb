@@ -3,7 +3,6 @@ class ExhibitsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
   def show
-    @ticket = current_order.tickets.new
     @exhibit = Exhibit.find(params[:id])
     @ticket = current_order.tickets.new
     @museum = Museum.find(@exhibit.museum_id)
@@ -109,6 +108,6 @@ class ExhibitsController < ApplicationController
   private
 
   def exhibit_params
-    params.require(:exhibit).permit(:name, :blurb, :description, :photo, :start_date, :end_date, :museum_id, :tag_ids => [])
+    params.require(:exhibit).permit(:name, :blurb, :description, :photo, :price, :start_date, :end_date, :museum_id, :tag_ids => [])
   end
   end

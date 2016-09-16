@@ -1,67 +1,14 @@
-<div class= "container-fluid yourDiv">
-  <div class="row museum-row">
-    <div class= "col-sm-4 image-wrap">
-      <%= image_tag @museum.photo.url(:large), class:"hero-image" %>
-    </div>
-    <div class= "col-sm-4 museum-description">
-      <h1> <%= @museum.name %> </h1>
-      <p><%= @museum.description %></p>
-    </div>
-  </div>
-  <div class= "row myDiv">
-    <div class=" col-sm-3 myDiv"><div id="map">
-    </div>
-  </div>
-    <div class="col-sm-3 myDiv">
-      <p>
-        <%= @museum.address %>
-      </p>
-  </div>
+<% if admin? %>
+  <%= link_to "Add Museum Tags", "#{@museum.id}/tagging" %>
+  <%= link_to "Edit Museum", edit_museum_path %>
+<% end %>
 
-    <div class="col-sm-2 myDiv">
-
-      <% if current_user %>
-        <%= form_for @ticket, remote: true do |f| %>
-          <h4>Unit Price: <%= number_to_currency @museum.price %></span></h4>
-          <div class="input-group">
-            <div class="input-group-btn">
-              <%= f.hidden_field :quantity, value: 1%>
-              <%= f.hidden_field :museum_id, value: @museum.id %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <%= link_to "Sign in to buy tickets!", new_user_session_path %>
-      <% end %>
-      <% if admin? %>
-        <%= link_to "Add Museum Tags", "#{@museum.id}/tagging" %>
-        <%= link_to "Edit Museum", edit_museum_path %>
-      <% end %>
-    </div>
-  </div>
-  <div class= "row mydiv">
-</div>
-
+<%= render "shared/post_show_row", exhibit: @museum, museum: @museum, ticket: @ticket  %>
 <h2> Exhibits: </h2>
 
 <% @exhibits.each do |exhibit| %>
-<h3> <%= exhibit.name %> </h3 >
+  <h3> <%= exhibit.name %> </h3 >
   <p> <%= exhibit.start_date.strftime("%m/%Y/%d %I:%M%p") %> - <%= exhibit.end_date.strftime("%m/%Y/%d %I:%M%p") %> </p>
   <p><%= exhibit.description %></p>
   <%= image_tag exhibit.photo.url(:large) %>
-  <% end %>
-  
-  <script type="text/javascript">
-    function buildMap(){
-      handler = Gmaps.build('Google');
-      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-        markers = handler.addMarkers(<%=raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        handler.getMap().setZoom(12);
-      });
-    }
-    $(window).onload(buildMap())
-  </script>
+<% end %>
