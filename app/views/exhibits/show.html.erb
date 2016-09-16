@@ -1,32 +1,62 @@
-<%= @exhibit.name %><br>
-<% @exhibit.tags.each do |tag| %>
-  <p><%= link_to "##{tag.name}", tag %></p>
-<% end %>
-<%= @exhibit.description %>
-<p>
-  <%=@exhibit.start_date.strftime("%B, %d")%> - <%= @exhibit.end_date.strftime("%B, %d %Y") %>
-</p>
-<%= link_to "Currently at #{@museum.name}", @museum %>
-<br><br>
-<%= image_tag @exhibit.photo.url(:large) %>
-<%= form_for @ticket, remote: true do |f| %>
-  <div class="input-group">
-    <div class="input-group-btn">
-      <%= f.hidden_field :quantity, value: 1%>
-      <%= f.hidden_field :museum_id, value: @exhibit.museum_id %>
-      <%= f.hidden_field :exhibit_id, value: @exhibit.id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-    </div>
-  </div>
-<% end %>
-
-<div id="map">
-
 <% if admin? %>
   <%= link_to "Add Exhibit Tags", "#{@exhibit.id}/tagging" %>
   <%= link_to "Edit Exhibit", edit_exhibit_path %>
 <% end %>
+<div class="panel panel-exhibit-show">
+	<div class="panel-heading">
+		<div class="row panel-row">
+			<div class= "image-featured col-md-4">
+				<%= image_tag @exhibit.photo.url(:large) %>
+				<%= form_for @museum, class: "pricing", remote: true do |f| %>
+			    	<h4>Tickets: $20-36</h4>
+			    	<div class="input-group">
+				    	<div class="input-group-btn">
+				        	<%= f.submit "Add to Cart", class: "input-button" %>
+				    	</div>
+					</div>
+				 <% end %>
+			</div>
+			<div class= "col-lg-8" >
+				<div class="row">
+					<div class= "description-wrapper col-md-8 col-lg-12">
+						<h2><%= @exhibit.name %></h2>
+						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=@exhibit.start_date.strftime("%B, %d")%> - <%= @exhibit.end_date.strftime("%B, %d %Y") %></h4>
+						<p><%= @exhibit.description %></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class= "col-xs-4 geo-location">
+						<div id="map"></div>
+					</div>
+					<div class= "col-xs-8 museum-info-wrapper">
+						<h3><%= link_to "#{@museum.name}", @museum, class: "venue"%></h3>
+						<div class= "museum-info">
+							<p class= "museum-info-type"> Address:</p>
+							<p class= "museum-info-entry"> <%= @museum.address %></p>
+						</div>
+						<div class= "museum-info">
+							<p class= "museum-info-type"> Hours:</p>
+							<p class= "museum-info-entry"> <%=@museum.opening_time%> - <%=@museum.closing_time%></p>
+						</div>
+						<div class= "museum-info">
+							<p class= "museum-info-type">Website:</p>
+							<p class= "museum-info-entry"> <%= @museum.website %></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="panel-body">
+			<i class="fa fa-share-square-o icon-link" aria-hidden="true"></i>
+			<i class="fa fa-bookmark-o icon-link" aria-hidden="true"></i>
+			<div class="tag-wrapper">
+        <% @exhibit.tags.each do |tag| %>
+			     <button type="button" class="btn btn-default tag-button"><%= link_to "##{tag.name}", tag %></button>
+        <% end %>
+			</div>
+	</div>
+</div>
 
 <script type="text/javascript">
   function buildMap(){

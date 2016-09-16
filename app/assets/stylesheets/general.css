@@ -1,10 +1,13 @@
-.body, .row{
+.body, .nav-row{
 	background-color: #f8f8f8;
+}
+h1, h2, h3{
+  font-family: HansKendrick-Heavy !important;
 }
 p{
 	font-size: 17px;
    font-family: HansKendrick-light, "Helvetica Neue Light", "Helvetica Neue";
-   color: dimGrey;
+   color: #8D8D8D;
 }
 
 * {
