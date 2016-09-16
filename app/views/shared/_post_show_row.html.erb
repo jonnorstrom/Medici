@@ -59,7 +59,11 @@
 			<i class="fa fa-bookmark-o icon-link" aria-hidden="true"></i>
 			<div class="tag-wrapper">
         <% exhibit.tags.each do |tag| %>
-			     <button type="button" class="btn btn-default tag-button"><%= link_to "##{tag.name}", tag %></button>
+					<div class="btn-link">
+						<%= link_to(tag) do %>
+					    <button type="button" class="btn btn-default tag-button"><%="##{tag.name}"%></button>
+						<% end %>
+					</div>
         <% end %>
 			</div>
 	</div>

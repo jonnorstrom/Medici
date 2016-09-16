@@ -1,13 +1,15 @@
-<h2>Search Results:</h2>
-<p><%= @term %></p>
+<h2>Search Results: <%= @term %></h2>
 
-<% @tags.each do |tag| %>
-  <p>
-    #<%= tag %>
-  </p>
+<% unless @tags.nil? %>
+  <% @tags.each do |tag| %>
+  <div class="btn-link">
+    <%= link_to(Tag.find_by(name:tag)) do %>
+       <button type="button" class="btn btn-default tag-button"><%="##{tag}"%></button>
+     <% end %>
+  </div>
+  <% end %>
 <% end %>
-
-<div class="row masonry-row">
+<div class= "row masonry-container">
   <% if @posts.empty? %>
     <p> Sorry! Nothing matches your search query.</p>
   <% else %>
