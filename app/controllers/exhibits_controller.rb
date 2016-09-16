@@ -31,11 +31,12 @@ class ExhibitsController < ApplicationController
     @ticket = current_order.tickets.new
     @posts = []
     @term = params[:search].downcase
+    @tags = params[:tag_search]
     if params[:search]
-      if params[:tag_search]
+      if @tags
         @all_posts.each do |post|
           if params[:any_or_all] == "Any"
-            params[:tag_search].each do |param|
+            @tags.each do |param|
               if post.is_a?(Tag)
                 if post.name.downcase.include?(param)
                   @posts << post
@@ -51,7 +52,7 @@ class ExhibitsController < ApplicationController
               post.tags.each do |tag|
                 post_tags << tag.name
               end
-              if (post.name.downcase.include?(@term) && (params[:tag_search] - post_tags).empty?) || (post.description.downcase.include?(@term) && (params[:tag_search] - post_tags).empty?)
+              if (post.name.downcase.include?(@term) && (@tags - post_tags).empty?) || (post.description.downcase.include?(@term) && (@tags - post_tags).empty?)
                 @posts << post
               end
             end

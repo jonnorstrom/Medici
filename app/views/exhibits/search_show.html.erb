@@ -1,4 +1,12 @@
 <h2>Search Results:</h2>
+<p><%= @term %></p>
+
+<% @tags.each do |tag| %>
+  <p>
+    #<%= tag %>
+  </p>
+<% end %>
+
 <div class="row masonry-row">
   <% if @posts.empty? %>
     <p> Sorry! Nothing matches your search query.</p>
