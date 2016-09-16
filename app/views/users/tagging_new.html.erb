@@ -1,6 +1,6 @@
 <%= form_for(@user, :url => "tagging", :html => { :method => :post }) do |f| %>
 
-   <p>Tags</p>
+   <h2>Choose your interests and we'll tailor a list of museums, events, and exhibits just for you!</h2>
    <ul>
      <% Tag.all.each do |tag| %>
      <%= hidden_field_tag "user_tag_ids_none", nil, {:name => "user[tag_ids][]"}%>
@@ -11,6 +11,6 @@
      <% end %>
    </ul>
 
-   <%= f.submit %>
+   <%= f.submit "Check 'em out!'"%>
 
 <% end %>
