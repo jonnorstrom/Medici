@@ -1,4 +1,7 @@
 <%= @event.name %><br>
+<% @event.tags.each do |tag| %>
+  <p><%= link_to "##{tag.name}", tag %></p>
+<% end %>
 <%= @event.description %>
 <p>
   From <%=@event.start_date%> - <%= @event.end_date %>

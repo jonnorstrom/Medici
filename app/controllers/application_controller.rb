@@ -25,6 +25,16 @@ class ApplicationController < ActionController::Base
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def is_admin?
+    current_user.admin if current_user
+  end
+
+  def administrative
+    if not is_admin?
+     redirect_to root_url
+   end
+  end
+
 
   protected
 

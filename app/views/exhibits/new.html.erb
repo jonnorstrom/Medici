@@ -25,6 +25,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
     <%= f.label :photo %>
     <%= f.file_field :photo %>
   </div>
@@ -37,4 +42,11 @@
   <div class="actions">
     <%= f.submit "Add Exhibit"%>
   </div>
+<% end %>
+
+<% if @exhibit.errors.any? %>
+  <% @exhibit.errors.each do |attribute, message| %>
+    <%= attribute %>:
+    <%= message %>
+  <% end %>
 <% end %>

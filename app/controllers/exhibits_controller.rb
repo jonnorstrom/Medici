@@ -1,26 +1,16 @@
 class ExhibitsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :administrative, only: [:new, :create, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
-
-  def search
-    @all_posts = Museum.all + Exhibit.all + Exhibit.all + Piece.all
-    @posts = []
-    @term = params[:search].downcase
-    if params[:search]
-      @all_posts.each do |post|
-        if post.name.downcase.include?(@term) || post.description.downcase.include?(@term)
-          @posts << post
-        end
-      end
-    else
-      @posts = @all_posts.all.order('created_at DESC')
-    end
-  end
-
   def show
+    @ticket = current_order.tickets.new
     @exhibit = Exhibit.find(params[:id])
+    @ticket = current_order.tickets.new
     @museum = Museum.find(@exhibit.museum_id)
+    @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
+     marker.lat museum.latitude
+     marker.lng museum.longitude
+   end
   end
 
   def new
@@ -35,6 +25,49 @@ class ExhibitsController < ApplicationController
       @errors = @exhibit.errors.full_messages
       render :"exhibits/new"
     end
+  end
+
+  def search_show
+    @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all + Tag.all
+    @ticket = current_order.tickets.new
+    @posts = []
+    @term = params[:search].downcase
+    if params[:search]
+      if params[:tag_search]
+        @all_posts.each do |post|
+          params[:tag_search].each do |param|
+            if post.is_a?(Tag)
+              if post.name.downcase.include?(param)
+                @posts << post
+              end
+            elsif (post.name.downcase.include?(@term) && post.tags.any? {|attribute| attribute.name == param}) || (post.description.downcase.include?(@term) &&  post.tags.any? {|attribute| attribute == param})
+              @posts << post
+            end
+          end
+        end
+        puts params[:tag_search]
+      else
+        @all_posts.each do |post|
+          if post.is_a?(Tag)
+            if post.name.downcase.include?(@term)
+              @posts << post
+            end
+          else
+            if post.name.downcase.include?(@term) || post.description.downcase.include?(@term)
+              @posts << post
+            end
+          end
+        end
+      end
+    else
+      @posts = @all_posts.all.order('created_at DESC')
+    end
+    @posts = @posts.uniq
+  end
+
+  def search_new
+    @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all + Tag.all
+    @tags = Tag.all
   end
 
   def update

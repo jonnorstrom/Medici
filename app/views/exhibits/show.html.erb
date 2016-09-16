@@ -1,4 +1,3 @@
-
 <% if admin? %>
   <%= link_to "Add Exhibit Tags", "#{@exhibit.id}/tagging" %>
   <%= link_to "Edit Exhibit", edit_exhibit_path %>
@@ -15,7 +14,7 @@
 				        	<%= f.submit "Add to Cart", class: "input-button" %>
 				    	</div>
 					</div>
-				 <% end %>  
+				 <% end %>
 			</div>
 			<div class= "col-lg-8" >
 				<div class="row">
@@ -27,21 +26,21 @@
 				</div>
 				<div class="row">
 					<div class= "col-xs-4 geo-location">
-						<%= image_tag("map.JPG")%>
-					</div>	
+						<div id="map"></div>
+					</div>
 					<div class= "col-xs-8 museum-info-wrapper">
-						<h3><%= link_to "#{@museum.name}", @museum, class: "venue"%></h3> 
+						<h3><%= link_to "#{@museum.name}", @museum, class: "venue"%></h3>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Address:</p>
-							<p class= "museum-info-entry"> 1600 Pennsylvania Ave NW, Washington, DC</p>
+							<p class= "museum-info-entry"> <%= @museum.address %></p>
 						</div>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Hours:</p>
-							<p class= "museum-info-entry"> Daily: 10:30am - 5:30pm, CST</p>
+							<p class= "museum-info-entry"> <%=@museum.opening_time%> - <%=@museum.closing_time%></p>
 						</div>
 						<div class= "museum-info">
 							<p class= "museum-info-type">Website:</p>
-							<p class= "museum-info-entry"> whitehouse.gov</p>
+							<p class= "museum-info-entry"> <%= @museum.website %></p>
 						</div>
 					</div>
 				</div>
@@ -52,9 +51,22 @@
 			<i class="fa fa-share-square-o icon-link" aria-hidden="true"></i>
 			<i class="fa fa-bookmark-o icon-link" aria-hidden="true"></i>
 			<div class="tag-wrapper">
-				<button type="button" class="btn btn-default tag-button">#Modern</button>
-				<button type="button" class="btn btn-default tag-button">#Indistrial-Design</button>
-				<button type="button" class="btn btn-default tag-button">#Kid-Freindly</button>
+        <% @exhibit.tags.each do |tag| %>
+			     <button type="button" class="btn btn-default tag-button"><%= link_to "##{tag.name}", tag %></button>
+        <% end %>
 			</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+  function buildMap(){
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(12);
+    });
+  }
+  $(window).onload(buildMap())
+</script>

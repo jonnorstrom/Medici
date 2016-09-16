@@ -45,7 +45,7 @@ class ChargesController < ApplicationController
       :metadata    => charge_metadata
     )
     @charge = Charge.create!(amount: @final_amount, coupon: @coupon, stripe_id: stripe_charge.id)
-
+    @coupon.update_attributes(quantity_redeemed: @coupon.quantity_redeemed += 1)
     @order.tickets.update(paid: true)
     @order.tickets.delete_all
     TicketsMailer.purchase_email(current_user).deliver_later

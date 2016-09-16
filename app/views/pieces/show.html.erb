@@ -1,4 +1,7 @@
 <%= @piece.name %><br>
+<% @piece.tags.each do |tag| %>
+  <p><%= link_to "##{tag.name}", tag %></p>
+<% end %>
 <%= @piece.description %>
 
 <%= link_to "Currently at #{@museum.name}", @museum %>

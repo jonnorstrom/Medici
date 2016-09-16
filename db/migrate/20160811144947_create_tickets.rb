@@ -2,6 +2,7 @@ class CreateTickets < ActiveRecord::Migration[5.0]
   def change
     create_table :tickets do |t|
       t.integer :museum_id
+      t.integer :exhibit_id
       t.integer :user_id
       t.float :unit_price
       # t.float :child_price

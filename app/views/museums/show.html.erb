@@ -17,6 +17,7 @@
         <%= @museum.address %>
       </p>
   </div>
+
     <div class="col-sm-2 myDiv">
 
       <% if current_user %>
@@ -38,11 +39,20 @@
         <%= link_to "Add Museum Tags", "#{@museum.id}/tagging" %>
         <%= link_to "Edit Museum", edit_museum_path %>
       <% end %>
-
     </div>
   </div>
-  <div class= "row mydiv"> 
+  <div class= "row mydiv">
 </div>
+
+<h2> Exhibits: </h2>
+
+<% @exhibits.each do |exhibit| %>
+<h3> <%= exhibit.name %> </h3 >
+  <p> <%= exhibit.start_date.strftime("%m/%Y/%d %I:%M%p") %> - <%= exhibit.end_date.strftime("%m/%Y/%d %I:%M%p") %> </p>
+  <p><%= exhibit.description %></p>
+  <%= image_tag exhibit.photo.url(:large) %>
+  <% end %>
+  
   <script type="text/javascript">
     function buildMap(){
       handler = Gmaps.build('Google');
@@ -54,4 +64,4 @@
       });
     }
     $(window).onload(buildMap())
-</script>
+  </script>
