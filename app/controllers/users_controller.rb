@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         Rails.logger.info(@tagging.errors.inspect)
       end
     end
-    redirect_to user_path(current_user)
+    redirect_to action: "personalized", id: current_user.id
   end
 
   def personalized
