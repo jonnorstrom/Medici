@@ -3,10 +3,12 @@
     <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
     <%= text_field_tag :search, params[:search], placeholder: "Search" %>
     <% @tags.each do |tag| %>
-    <li class="checkboxtext">
-      <%= check_box_tag "tag_search[]", tag.name %>
-      <%= tag.name %>
-    </li>
+      <li class="checkboxtext">
+        <%= check_box_tag "tag_search[]", tag.name %>
+        <%= tag.name %>
+      </li>
     <% end %>
+    <%= select_tag "any_or_all", "<option>Any</option><option>All</option>".html_safe %>
+    <%= submit_tag "Search"%>
   <% end %>
 </div>

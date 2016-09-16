@@ -34,17 +34,29 @@ class ExhibitsController < ApplicationController
     if params[:search]
       if params[:tag_search]
         @all_posts.each do |post|
-          params[:tag_search].each do |param|
-            if post.is_a?(Tag)
-              if post.name.downcase.include?(param)
+          if params[:any_or_all] == "Any"
+            params[:tag_search].each do |param|
+              if post.is_a?(Tag)
+                if post.name.downcase.include?(param)
+                  @posts << post
+                end
+              elsif (post.name.downcase.include?(@term) && post.tags.any? {|attribute| attribute.name == param}) || (post.description.downcase.include?(@term) &&  post.tags.any? {|attribute| attribute.name == param})
                 @posts << post
               end
-            elsif (post.name.downcase.include?(@term) && post.tags.any? {|attribute| attribute.name == param}) || (post.description.downcase.include?(@term) &&  post.tags.any? {|attribute| attribute == param})
-              @posts << post
+            end
+          else
+            if post.is_a?(Tag)
+            else
+              post_tags = []
+              post.tags.each do |tag|
+                post_tags << tag.name
+              end
+              if (post.name.downcase.include?(@term) && (params[:tag_search] - post_tags).empty?) || (post.description.downcase.include?(@term) && (params[:tag_search] - post_tags).empty?)
+                @posts << post
+              end
             end
           end
         end
-        puts params[:tag_search]
       else
         @all_posts.each do |post|
           if post.is_a?(Tag)
@@ -66,6 +78,7 @@ class ExhibitsController < ApplicationController
 
   def search_new
     @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all + Tag.all
+    @any_or_all = ["any", "all"]
     @tags = Tag.all
   end
 
