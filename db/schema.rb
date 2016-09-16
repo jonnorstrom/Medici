@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160831173422) do
+ActiveRecord::Schema.define(version: 20160902180613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,16 +28,18 @@ ActiveRecord::Schema.define(version: 20160831173422) do
     t.integer  "discount_percent"
     t.datetime "expires_at"
     t.string   "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "quantity_redeemed", default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
-    t.date     "start_date"
-    t.date     "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.string   "blurb"
     t.string   "description"
+    t.float    "price"
     t.integer  "museum_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160831173422) do
     t.string   "name"
     t.string   "blurb"
     t.string   "description"
+    t.float    "price"
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "museum_id"
@@ -68,6 +71,9 @@ ActiveRecord::Schema.define(version: 20160831173422) do
     t.string   "description"
     t.float    "price"
     t.boolean  "active"
+    t.time     "opening_time"
+    t.time     "closing_time"
+    t.string   "website"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
@@ -120,6 +126,7 @@ ActiveRecord::Schema.define(version: 20160831173422) do
 
   create_table "tickets", force: :cascade do |t|
     t.integer  "museum_id"
+    t.integer  "exhibit_id"
     t.integer  "user_id"
     t.float    "unit_price"
     t.integer  "quantity"
@@ -149,6 +156,8 @@ ActiveRecord::Schema.define(version: 20160831173422) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.string   "provider"
+    t.string   "uid"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

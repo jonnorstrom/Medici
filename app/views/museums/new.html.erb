@@ -20,6 +20,21 @@
   </div>
 
   <div class="field">
+    <%= f.label :opening_time %>
+    <%= f.time_field :opening_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :closing_time %>
+    <%= f.time_field :closing_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :website %>
+    <%= f.text_field :website%>
+  </div>
+
+  <div class="field">
     <%= f.label :price %>
     <%= f.number_field :price %>
   </div>
@@ -32,4 +47,11 @@
   <div class="actions">
     <%= f.submit "Add Museum"%>
   </div>
+<% end %>
+
+<% if @museum.errors.any? %>
+  <% @museum.errors.each do |attribute, message| %>
+    <%= attribute %>:
+    <%= message %>
+  <% end %>
 <% end %>

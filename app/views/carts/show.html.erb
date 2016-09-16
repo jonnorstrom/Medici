@@ -14,10 +14,30 @@
   </p>
 <% else %>
   <% @tickets.each do |ticket| %>
-    <%= render 'carts/cart_row', museum: ticket.museum, ticket: ticket, show_total: true %>
-  <% end %>
+    <% if ticket.exhibit_id != nil%>
+      <%= render 'carts/cart_row', museum: ticket.exhibit, ticket: ticket, show_total: true %>
+    <% else %>
+      <%= render 'carts/cart_row', museum: ticket.museum, ticket: ticket, show_total: true %>
+      <h3>Want to upgrade your <%= ticket.museum.name %> experience?</h3>
+      <% ticket.museum.exhibits.each do |exhibit| %>
+        <%= link_to exhibit.name, exhibit %>
+        <%= form_for ticket, remote: true do |f| %>
+          <div class="input-group">
+            <div class="input-group-btn">
+              <%= f.hidden_field :quantity, value: 1%>
+              <%= f.hidden_field :museum_id, value: ticket.museum.id %>
+              <%= f.hidden_field :exhibit_id, value: exhibit.id %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   <%= link_to "Checkout", new_charge_path %>
+  <% end %>
 <% end %>
+
   <h3> TERMS AND CONDITIONS</h3>
   <p>
   Our website terms and conditions template has been designed for use on typical websites, including those with with basic interactive features. It includes, amongst other things, a licence specifying how the website may be used, a disclaimer of liability, a statutory disclosures section and rules on user-contributed content. It is an extended version of our website disclaimer document. It is not suitable for websites featuring payments: for which, see these templates. By using this document, you agree to our T&#38;Cs, which include an express licence.

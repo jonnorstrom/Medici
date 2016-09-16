@@ -13,11 +13,16 @@
   <div class="thumbnail">
     <%= link_to image_tag(post.photo.url(:large)), post %>
     <div class="caption">
+
       <div class="thumbnail-header">
-        <%= link_to "#{post.name}", post %>
-        <p class= "price-range">$10 - $15</p>
+        <h3><%= link_to "#{post.name}", post %></h3>
+        <p> $<%= '%i' % post.price %>
+          <% if defined? post.exhibits.sort.first.price %>
+          - $<%= '%i' %post.exhibits.sort.first.price %>
+          <% end %>
       </div>
-      <p><%= post.blurb %></p> 
+      <p><%= post.blurb %></p>
+
       <div>
         <% if current_user && post.is_a?(Museum) %>
           <%= form_for ticket, remote: true do |f| %>

@@ -1,16 +1,16 @@
 class MuseumsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :administrative, only: [:new, :create, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
   def index
     @ticket = current_order.tickets.new
     @posts = Museum.all + Exhibit.all + Event.all + Piece.all
-
   end
 
   def show
     @museum = Museum.find(params[:id])
     @ticket = current_order.tickets.new
+    @exhibits = @museum.exhibits.all
     @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
      marker.lat museum.latitude
      marker.lng museum.longitude
@@ -70,7 +70,7 @@ class MuseumsController < ApplicationController
   private
 
   def museum_params
-    params.require(:museum).permit(:name, :blurb, :description, :photo, :address, :price, :tag_ids => [])
+    params.require(:museum).permit(:name, :blurb, :website, :opening_time, :closing_time, :description, :photo, :address, :price, :tag_ids => [])
   end
 
 end

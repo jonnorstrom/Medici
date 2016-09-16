@@ -1,6 +1,7 @@
 class Ticket < ApplicationRecord
   belongs_to :user
   belongs_to :museum
+  belongs_to :exhibit, :required => false
   belongs_to :order
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
@@ -8,10 +9,14 @@ class Ticket < ApplicationRecord
   before_save :finalize
 
   def unit_price
-    if persisted?
-      self[:unit_price]
+    if self.exhibit_id != nil
+      exhibit.price
     else
-      museum.price
+      if persisted?
+        self[:unit_price]
+      else
+        museum.price
+      end
     end
   end
 

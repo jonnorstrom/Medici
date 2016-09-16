@@ -25,3 +25,23 @@
   <% end %>
 
 </table>
+<table>
+  <tr>
+    <th>
+      Coupon
+    </th>
+    <th>
+      Coupon's redeemed
+    </th>
+  </tr>
+  <% @coupons.each do |coupon| %>
+  <tr>
+    <td>
+      <%= coupon.code %>
+    </td>
+    <td>
+      <%= coupon.quantity_redeemed %>
+    </td>
+  </tr>
+  <% end %>
+</table>

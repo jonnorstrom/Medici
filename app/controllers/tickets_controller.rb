@@ -32,6 +32,7 @@ class TicketsController < ApplicationController
 
   def stats
     @museums = Museum.all
+    @coupons = Coupon.all
   end
 
   def update
@@ -54,7 +55,7 @@ class TicketsController < ApplicationController
   private
 
     def ticket_params
-      params.require(:ticket).permit(:user_id, :quantity, :original_quantity, :museum_id)
+      params.require(:ticket).permit(:user_id, :quantity, :exhibit_id, :original_quantity, :museum_id)
     end
 
 end

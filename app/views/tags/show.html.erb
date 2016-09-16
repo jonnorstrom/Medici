@@ -1,0 +1,7 @@
+<h2> #<%= @tag.name %> </h2>
+
+<div class="row masonry-row">
+	<% @posts.shuffle.each do |post| %>
+	  <%= render "tag_row", post: post, ticket: @ticket  %>
+	<% end %>
+</div>

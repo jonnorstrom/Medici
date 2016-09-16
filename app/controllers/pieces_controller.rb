@@ -1,10 +1,15 @@
 class PiecesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :administrative, only: [:new, :create, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
   def show
     @piece = Piece.find(params[:id])
     @museum = Museum.find(@piece.museum_id)
+    @ticket = current_order.tickets.new
+    @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
+     marker.lat museum.latitude
+     marker.lng museum.longitude
+   end
   end
 
   def new

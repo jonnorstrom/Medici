@@ -7,7 +7,7 @@ h1, h2, h3{
 p{
 	font-size: 17px;
    font-family: HansKendrick-light, "Helvetica Neue Light", "Helvetica Neue";
-   color: #8D8D8D; 
+   color: #8D8D8D;
 }
 
 * {
@@ -28,5 +28,12 @@ p{
 }
 
 .col-lg-3, .col-lg-6{
-    transition: all 200ms; 
+    transition: all 200ms;
+}
+.admin {
+	float:right;
+}
+
+.hidden-xs a:hover {
+	text-decoration: none;
 }
