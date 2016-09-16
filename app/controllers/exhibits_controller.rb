@@ -27,7 +27,7 @@ class ExhibitsController < ApplicationController
   end
 
   def search_show
-    @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all + Tag.all
+    @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all
     @ticket = current_order.tickets.new
     @posts = []
     @term = params[:search].downcase
@@ -37,37 +37,24 @@ class ExhibitsController < ApplicationController
         @all_posts.each do |post|
           if params[:any_or_all] == "Any"
             @tags.each do |param|
-              if post.is_a?(Tag)
-                if post.name.downcase.include?(param)
-                  @posts << post
-                end
-              elsif (post.name.downcase.include?(@term) && post.tags.any? {|attribute| attribute.name == param}) || (post.description.downcase.include?(@term) &&  post.tags.any? {|attribute| attribute.name == param})
+              if (post.name.downcase.include?(@term) && post.tags.any? {|attribute| attribute.name == param}) || (post.description.downcase.include?(@term) &&  post.tags.any? {|attribute| attribute.name == param})
                 @posts << post
               end
             end
           else
-            if post.is_a?(Tag)
-            else
-              post_tags = []
-              post.tags.each do |tag|
-                post_tags << tag.name
-              end
-              if (post.name.downcase.include?(@term) && (@tags - post_tags).empty?) || (post.description.downcase.include?(@term) && (@tags - post_tags).empty?)
-                @posts << post
-              end
+            post_tags = []
+            post.tags.each do |tag|
+              post_tags << tag.name
+            end
+            if (post.name.downcase.include?(@term) && (@tags - post_tags).empty?) || (post.description.downcase.include?(@term) && (@tags - post_tags).empty?)
+              @posts << post
             end
           end
         end
       else
         @all_posts.each do |post|
-          if post.is_a?(Tag)
-            if post.name.downcase.include?(@term)
-              @posts << post
-            end
-          else
-            if post.name.downcase.include?(@term) || post.description.downcase.include?(@term)
-              @posts << post
-            end
+          if post.name.downcase.include?(@term) || post.description.downcase.include?(@term)
+            @posts << post
           end
         end
       end

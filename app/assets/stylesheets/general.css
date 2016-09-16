@@ -37,3 +37,9 @@ p{
 .hidden-xs a:hover {
 	text-decoration: none;
 }
+.btn-link {
+	display: inline-block;
+}
+.btn-link a:hover {
+	text-decoration: none !important;
+}
