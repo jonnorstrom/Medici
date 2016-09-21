@@ -25,6 +25,21 @@
   </div>
 
   <div class="field">
+    <%= f.label :opening_time %>
+    <%= f.time_select :opening_time, {ampm:true, minute_step: 30} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :closing_time %>
+    <%= f.time_select :closing_time, {ampm:true, minute_step: 30}  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
     <%= f.label :price %>
     <%= f.number_field :price %>
   </div>
