@@ -32,14 +32,14 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class= "col-xs-4 geo-location">
+					<div class= "col-xs-4 geo-location hidden-xs">
 						<div id="map"></div>
 					</div>
-					<div class= "col-xs-8 museum-info-wrapper">
+					<div class= "col-sm-8 col-xs-12 museum-info-wrapper">
 						<h3><%= link_to "#{museum.name}", museum, class: "venue"%></h3>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Address:</p>
-							<p class= "museum-info-entry"> <%= museum.address %></p>
+							<p class= "museum-info-entry"> <%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
 						</div>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Hours:</p>
