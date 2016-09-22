@@ -13,6 +13,7 @@
 	max-width: 100%;
 }
 .panel-exhibit-show .input-button {
+  text-align: center;
   font-size: 16px;
   width: 100%;
   height: 100%;
@@ -42,10 +43,11 @@
 .museum-info-wrapper{
 	text-align: left;
 }
-.geo-location{
-	margin-top: 15px;
+#map{
+	height: 200px !important;
+	width: 100%!important;
 }
-.museum-info-wrapper a{
+.museum-info-wrapper h3 > a{
 	color: dimGrey !important;
 	font-size: 20px !important;
 	font-family: HansKendrick-Heavy;
@@ -65,9 +67,11 @@
 	font-size: 14px;
 	font-family: HansKendrick-Heavy;
 }
-.museum-info-entry{
+.museum-info-entry, .museum-info-entry a{
+	font-family: HansKendrick-light;
+	color: dimGrey;
 	margin: 3px;
-	font-size: 14px;
+	font-size: 14px !important;
 	float: right;
 }
 .icon-link{
