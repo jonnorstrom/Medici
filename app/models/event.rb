@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
-  belongs_to :museum
+  belongs_to :museum, :required => false
   has_many :taggings
+  has_many :tickets
   has_many :tags, through: :taggings
   accepts_nested_attributes_for :taggings, :allow_destroy => true
   validate :end_must_be_after_start
@@ -9,6 +10,9 @@ class Event < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   validates_presence_of :name, :start_date, :end_date, :blurb, :description, :photo, :price
   validates_uniqueness_of :name
+
+  geocoded_by :address
+  after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
   private
     def end_must_be_after_start

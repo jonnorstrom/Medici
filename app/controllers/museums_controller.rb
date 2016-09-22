@@ -1,5 +1,6 @@
 class MuseumsController < ApplicationController
   before_action :administrative, only: [:new, :create, :edit, :update, :destroy]
+
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
   def index

@@ -1,5 +1,5 @@
 <div class= "row masonry-container">
-	<div class= "col-sm-6 col-md-4 col-lg-3 app-advertisement post-wrapper">
+	<div class= "col-sm-6 col-md-4 col-lg-3 hidden-xs app-advertisement post-wrapper">
 		<div class="thumbnail">
 	       <%= image_tag("hero.png") %>
 	        <div class="caption">
@@ -10,8 +10,8 @@
 	        </div>
 	      </div>
 	      <div class="progress">
-	      <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
-	    </div>
+      <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
+    </div>
 	</div>
 	<% @posts.shuffle.each do |post| %>
 	  <%= render "museum_row", post: post, ticket: @ticket  %>

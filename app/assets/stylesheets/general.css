@@ -38,8 +38,18 @@ p{
 	text-decoration: none;
 }
 .btn-link {
+	margin-bottom: 20px;
+	margin-left: 5px;
 	display: inline-block;
 }
+
+button.btn.btn-default.tag-button:focus {
+  outline: none;
+}
+
 .btn-link a:hover {
 	text-decoration: none !important;
+}
+.btn-link button{
+	background-color: transparent;
 }

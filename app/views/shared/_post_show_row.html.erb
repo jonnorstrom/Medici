@@ -2,6 +2,7 @@
 	<div class="panel-heading">
 		<div class="row panel-row">
 			<div class= "image-featured col-md-4">
+
 				<%= image_tag exhibit.photo.url(:large) %>
 			    	<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
 						<% if current_user %>
@@ -19,13 +20,15 @@
 					  	<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
 					<% end %>
 			</div>
+
 			<div class= "col-lg-8" >
 				<div class="row">
 					<div class= "description-wrapper col-md-8 col-lg-12">
 						<h2><%= exhibit.name %></h2>
-            			<% if exhibit.is_a?(Exhibit) %>
-  							<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B, %d")%> - <%= exhibit.end_date.strftime("%B, %d %Y") %></h4>
-           				<% end %>
+            <% if exhibit.is_a?(Exhibit) || exhibit.is_a?(Event)%>
+  						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B, %d")%> - <%= exhibit.end_date.strftime("%B, %d %Y") %></h4>
+            <% end %>
+
 						<p><%= exhibit.description %></p>
 					</div>
 				</div>
@@ -37,7 +40,9 @@
 						<h3><%= link_to "#{museum.name}", museum, class: "venue"%></h3>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Address:</p>
-							<p class= "museum-info-entry"> <i class="fa fa-map-pin" aria-hidden="true"></i> <%= museum.address %></p>
+
+							<p class= "museum-info-entry"> <i class="fa fa-map-pin" aria-hidden="true"></i> <%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
+
 						</div>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Hours:</p>
