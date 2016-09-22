@@ -38,6 +38,7 @@ class TicketsController < ApplicationController
     #   redirect_to ticket_path(@ticket)
     # end
       @ticket.update(redeemed: true)
+      puts @ticket.errors.full_messages
       redirect_to tickets_thanks_path
   end
 

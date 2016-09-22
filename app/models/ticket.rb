@@ -3,7 +3,7 @@ class Ticket < ApplicationRecord
   belongs_to :museum, :required => false
   belongs_to :event, :required => false
   belongs_to :exhibit, :required => false
-  belongs_to :order
+  belongs_to :order, :required => false
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
