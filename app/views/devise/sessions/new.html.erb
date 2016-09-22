@@ -1,17 +1,9 @@
 <div class="container-sign-in">
   <div class="panel panel-sign-in">
     <div class="panel-heading">
-      <div class= "header-wrapper">
+      
         <p id="header">Log in</p>
-        <div class="or-wrapper">
-          <p>or</p>
-          <div class="or-line"></div>
-        </div>
-        <div class="btn-group" role="group" aria-label="connect with faceboo">
-          <button type="button" class="btn btn-primary">connect</button>
-          <button type="button" class="btn btn-primary"> <i class="fa fa-facebook-square" style= "color: white;" aria-hidden="true"></i></button>
-        </div>
-      </div>
+      
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= f.email_field :email, placeholder:"e-mail", autofocus: true, class:"input-field"%>
         <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>        
@@ -22,7 +14,17 @@
       <%= render "devise/shared/links" %>
     </div>
       <div class="panel-body">
-          <%= f.submit "Log in", class:"input-button"  %>
+        <div class= "header-wrapper">
+          <%= f.submit "Log in", class:"input-button"%>
+          <div class="or-wrapper">
+            <p>or</p>
+            <div class="or-line"></div>
+          </div>
+          <div class="btn-group" role="group" aria-label="connect with faceboobs">
+            <button type="button" class="btn btn-primary">connect</button>
+            <button type="button" class="btn btn-primary"> <i class="fa fa-facebook-square" style= "color: white;" aria-hidden="true"></i></button>
+          </div>
+      </div>
         <% end %>
     </div>
   </div>
