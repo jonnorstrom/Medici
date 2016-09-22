@@ -1,17 +1,20 @@
 .panel-exhibit-show{
-
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15) !important;
 }
 .panel-row{
-	background-color: white;
+	border: solid 3px purple;
 }
 .panel-body{
 	clear: both;
 	border-top: dashed 1px #D3D3D3;
 }
+.image-featured{
+	background-color: blue !important;
+}
 .panel-exhibit-show img{
 	max-width: 100%;
 }
+
 .panel-exhibit-show .input-button {
  text-align: center;
  font-size: 16px;
@@ -33,6 +36,7 @@
  z-index: 10 !important;
 }
 .panel-exhibit-show .input-button:focus {
+
   border-bottom-width: 3px;
 }
 .panel-exhibit-show h4{
