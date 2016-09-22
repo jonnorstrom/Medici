@@ -1,15 +1,9 @@
 .panel-exhibit-show{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15) !important;
 }
-.panel-row{
-	border: solid 3px purple;
-}
 .panel-body{
 	clear: both;
 	border-top: dashed 1px #D3D3D3;
-}
-.image-featured{
-	background-color: blue !important;
 }
 .panel-exhibit-show img{
 	max-width: 100%;
@@ -31,12 +25,15 @@
 	border: 0px solid rgba(0, 0, 0, 0.1);
 	border-radius: 7px;
 	transform: rotateZ(0deg);
-	transition: all 0.5s ease-out;
-	border-bottom-width: 4px;
+	transition: all 0.2s ease;
+	border-bottom-width: 5px;
 	z-index: 10 !important;
 }
-.input-button:focus {
-  border-bottom-width: 3px;
+.input-button:focus, .input-button:focus {
+    text-decoration: none;
+    color: lightGrey;
+    border-bottom-width: 3px;
+    margin-bottom: 6px;
 }
 .panel-exhibit-show h4{
 	color: dimGrey;
