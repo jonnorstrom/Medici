@@ -2,6 +2,8 @@
 <% @tickets.each do |ticket| %>
   <% if ticket.exhibit_id != nil %>
     <%= link_to "#{Exhibit.find(ticket.exhibit_id).name} at #{Museum.find(ticket.museum_id).name}", ticket %>: <%= ticket.quantity %>
+  <% elsif ticket.event_id != nil %>
+    <%= link_to "#{Event.find(ticket.event_id).name}", ticket %>: <%= ticket.quantity %>
   <% else %>
     <%= link_to "#{Museum.find(ticket.museum_id).name}", ticket %>: <%= ticket.quantity %>
   <% end %>
@@ -9,11 +11,14 @@
 <h4>Redeemed Tickets</h4>
 <% @redeemed_tickets.each do |ticket| %>
   <% if ticket.exhibit_id != nil %>
-    <p> <%= Exhibit.find(ticket.exhibit_id).name %> at <%= Museum.find(ticket.museum_id).name %></p>
+    <%= link_to "#{Exhibit.find(ticket.exhibit_id).name} at #{Museum.find(ticket.museum_id).name}", ticket %>: <%= ticket.quantity %>
+  <% elsif ticket.event_id != nil %>
+    <%= link_to "#{Event.find(ticket.event_id).name}", ticket %>: <%= ticket.quantity %>
   <% else %>
-    <p> <%= Museum.find(ticket.museum_id).name %></p>
+    <%= link_to "#{Museum.find(ticket.museum_id).name}", ticket %>: <%= ticket.quantity %>
   <% end %>
 <% end %>
+
 <%= link_to "Edit Profile", edit_user_path %><br>
 <%= link_to "Add Interests", "#{current_user.id}/tagging" %><br>
 <% if current_user.taggings != []%>

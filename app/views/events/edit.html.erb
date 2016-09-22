@@ -15,6 +15,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :website %>
+    <%= f.text_field :website%>
+  </div>
+
+  <div class="field">
     <%= f.label :start_date %>
     <%= f.date_field :start_date %>
   </div>
@@ -25,17 +30,43 @@
   </div>
 
   <div class="field">
-    <%= f.label :photo %>
-    <%= f.file_field :photo %>
+    <%= f.label :opening_time %>
+    <%= f.time_select :opening_time, {ampm:true, minute_step: 30} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :closing_time %>
+    <%= f.time_select :closing_time, {ampm:true, minute_step: 30}  %>
   </div>
 
   <div class="field">
     <%= f.label :museum_id %>
-    <%= f.collection_select :museum_id, Museum.order(:name), :id, :name %>
+    <%= f.collection_select :museum_id, Museum.order(:name), :id, :name, :prompt => true %>
   </div>
 
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :transportation_info %>
+    <%= f.text_area :transportation_info %>
+  </div>
+
+  <div class="field">
+    <%= f.label :photo %>
+    <%= f.file_field :photo %>
+  </div>
+
+
   <div class="actions">
-    <%= f.submit "Edit Event"%>
+    <%= f.submit "Add Event"%>
   </div>
 <% end %>
 

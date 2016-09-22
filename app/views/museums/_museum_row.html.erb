@@ -23,7 +23,7 @@
       <p><%= post.blurb %></p>
 
       <div>
-        <% if current_user && post.is_a?(Museum) %>
+        <% if current_user %>
           <%= form_for ticket, remote: true do |f| %>
             <div class="input-group">
               <div class="input-group-btn">
@@ -34,6 +34,10 @@
               </div>
             </div>
           <% end %>
+        <% else %>
+          <div class="input-button">
+            <%= link_to "Sign in to Buy Tickets!", new_user_session_path%>
+          </div>
         <% end %>
       </div>
     </div>

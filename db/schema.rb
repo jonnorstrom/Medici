@@ -37,10 +37,16 @@ ActiveRecord::Schema.define(version: 20160902180613) do
     t.string   "name"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.time     "opening_time"
+    t.time     "closing_time"
     t.string   "blurb"
     t.string   "description"
     t.float    "price"
     t.integer  "museum_id"
+    t.string   "website"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "photo_file_name"
@@ -127,6 +133,7 @@ ActiveRecord::Schema.define(version: 20160902180613) do
   create_table "tickets", force: :cascade do |t|
     t.integer  "museum_id"
     t.integer  "exhibit_id"
+    t.integer  "event_id"
     t.integer  "user_id"
     t.float    "unit_price"
     t.integer  "quantity"

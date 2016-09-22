@@ -1,4 +1,7 @@
+
+
 $(document).on('turbolinks:load', function(){
+
 
     var $container = $('.masonry-container');
 
@@ -29,6 +32,5 @@ $(document).on('turbolinks:load', function(){
         $( this ).toggleClass('col-lg-3').toggleClass('col-lg-6');
         setTimeout(function(){ $container.masonry(); $( this ).css('z-index','1'); }, 300);
     });
+
 });
-
-

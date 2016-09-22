@@ -4,11 +4,13 @@
 <% end %>
 
 <%= render "shared/post_show_row", exhibit: @museum, museum: @museum, ticket: @ticket  %>
-<h2> Exhibits: </h2>
+<% if @exhibits[0] != nil %>
+  <h2> Exhibits: </h2>
 
-<% @exhibits.each do |exhibit| %>
-  <h3> <%= exhibit.name %> </h3 >
-  <p> <%= exhibit.start_date.strftime("%m/%Y/%d %I:%M%p") %> - <%= exhibit.end_date.strftime("%m/%Y/%d %I:%M%p") %> </p>
-  <p><%= exhibit.description %></p>
-  <%= image_tag exhibit.photo.url(:large) %>
+  <% @exhibits.each do |exhibit| %>
+    <h3> <%= link_to exhibit.name, exhibit %> </h3 >
+    <p> <%= exhibit.start_date.strftime("%m/%Y/%d %I:%M%p") %> - <%= exhibit.end_date.strftime("%m/%Y/%d %I:%M%p") %> </p>
+    <p><%= exhibit.description %></p>
+    <%= image_tag exhibit.photo.url(:large) %>
+  <% end %>
 <% end %>
