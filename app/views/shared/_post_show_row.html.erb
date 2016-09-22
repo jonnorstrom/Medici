@@ -38,7 +38,7 @@
 					<div class= "col-sm-8 col-xs-12 museum-info-wrapper">
 						<h3><%= link_to "#{museum.name}", museum, class: "venue"%></h3>
 						<div class= "museum-info">
-							<p class= "museum-info-type"> Address:</p>
+							<p class= "museum-info-type"> Address: </p>
 
 							<p class= "museum-info-entry"> <i class="fa fa-map-pin" aria-hidden="true"></i> <%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
 
