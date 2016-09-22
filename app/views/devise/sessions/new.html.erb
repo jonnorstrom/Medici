@@ -1,31 +1,29 @@
 <div class="container-sign-in">
   <div class="panel panel-sign-in">
     <div class="panel-heading">
-      
-        <p id="header">Log in</p>
-      
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= f.email_field :email, placeholder:"e-mail", autofocus: true, class:"input-field"%>
-        <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>        
-        <% if devise_mapping.rememberable? -%>
-          <%= f.check_box :remember_me, id: "rm-s"%>
-          <label for="rm-s"><span></span>remember me</label>
-        <% end -%>
-      <%= render "devise/shared/links" %>
-    </div>
-      <div class="panel-body">
-        <div class= "header-wrapper">
+      <div class= "header-wrapper">
+        <p id="header">Log into Medici</p>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= f.email_field :email, placeholder:"e-mail", autofocus: true, class:"input-field"%>
+          <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>        
+          <div class= "check-box-wrapper" style= "text-align: left;">
+            <% if devise_mapping.rememberable? -%>
+            <%= f.check_box :remember_me, id: "rm-s"%>
+            <label for="rm-s"><span></span>remember me</label>
+          <% end -%>
+          </div>
           <%= f.submit "Log in", class:"input-button"%>
-          <div class="or-wrapper">
-            <p>or</p>
-            <div class="or-line"></div>
-          </div>
-          <div class="btn-group" role="group" aria-label="connect with faceboobs">
-            <button type="button" class="btn btn-primary">connect</button>
-            <button type="button" class="btn btn-primary"> <i class="fa fa-facebook-square" style= "color: white;" aria-hidden="true"></i></button>
-          </div>
-      </div>
         <% end %>
+        <div class= "or-wrapper">
+           <i><span>or</span></i>
+        </div>
+        <div class="btn-group" role="group" aria-label="connect with faceboobs">
+          <button type="button" class="btn btn-primary"><i class="fa fa-facebook-square" style= "color: white;" aria-hidden="true"></i></button>
+          <button type="button" class="btn btn-primary">Connect</button>
+        </div>
+      </div>
+      
     </div>
+        
   </div>
 </div>
