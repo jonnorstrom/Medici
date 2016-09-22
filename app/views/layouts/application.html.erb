@@ -44,7 +44,7 @@
                     <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
                     <%= text_field_tag :search, params[:search], placeholder: "Search" %>
                   <% end %>
-                  <%= link_to "Advanced Search", exhibits_search_new_path %>
+                  <%= link_to "Advanced Search", exhibits_search_new_path, id: "advanced-search" %>
                 </div>
 
                 <% if ["index"].include?(params[:action]) %>
@@ -108,10 +108,13 @@
                 <p class="title">Log in</p>
                 <%= f.email_field :email, placeholder:"e-mail", autofocus: true, class:"input-field"%>
                 <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>
-                <div class="checkbox">
-                  <label><%= f.check_box :remember_me %><p>remember me</p></label>
-                </div>
-                <%= link_to "Forgot your password?", new_user_password_path %>
+                <% if devise_mapping.rememberable? -%>
+                  <%= f.check_box :remember_me, id: "rm"%>
+                  <label for="rm"><span></span>remember me</label>
+                <% end -%>
+                  <div>
+                    <%= link_to "Forgot your password?", new_user_password_path %>
+                  </div>
                 <%= f.submit "Log in", class:"input-button"%>
               <% end %>
             </div>

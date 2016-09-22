@@ -4,50 +4,48 @@
 			<div class= "image-featured col-md-4">
 				<%= image_tag exhibit.photo.url(:large) %>
 			    	<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
-			    	<div class="input-group">
-							<% if current_user %>
+						<% if current_user %>
 					    <%= form_for ticket, remote: true do |f| %>
 					      <div class="input-group">
 					        <div class="input-group-btn">
 					          <%= f.hidden_field :quantity, value: 1%>
 					          <%= f.hidden_field :museum_id, value: museum.id %>
 					          <%= f.hidden_field :user_id, value: current_user.id %>
-					          <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+					          <%= f.submit "Add to Cart", class: "input-button" %>
 					        </div>
 					      </div>
 					    <% end %>
-					  <% else %>
-					    <%= link_to "Sign in to buy tickets!", new_user_session_path %>
-					  <% end %>
-					</div>
+					<% else %>
+					  	<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
+					<% end %>
 			</div>
 			<div class= "col-lg-8" >
 				<div class="row">
 					<div class= "description-wrapper col-md-8 col-lg-12">
 						<h2><%= exhibit.name %></h2>
-            <% if exhibit.is_a?(Exhibit) %>
-  						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B, %d")%> - <%= exhibit.end_date.strftime("%B, %d %Y") %></h4>
-            <% end %>
+            			<% if exhibit.is_a?(Exhibit) %>
+  							<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B, %d")%> - <%= exhibit.end_date.strftime("%B, %d %Y") %></h4>
+           				<% end %>
 						<p><%= exhibit.description %></p>
 					</div>
 				</div>
 				<div class="row">
-					<div class= "col-xs-4 geo-location">
+					<div class= "col-xs-4 geo-location hidden-xs">
 						<div id="map"></div>
 					</div>
-					<div class= "col-xs-8 museum-info-wrapper">
+					<div class= "col-sm-8 col-xs-12 museum-info-wrapper">
 						<h3><%= link_to "#{museum.name}", museum, class: "venue"%></h3>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Address:</p>
-							<p class= "museum-info-entry"> <%= museum.address %></p>
+							<p class= "museum-info-entry"> <i class="fa fa-map-pin" aria-hidden="true"></i> <%= museum.address %></p>
 						</div>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Hours:</p>
-							<p class= "museum-info-entry"> <%=museum.opening_time.strftime("%I:%M%p")%> - <%=museum.closing_time.strftime("%I:%M%p")%></p>
+							<p class= "museum-info-entry"> <i class="fa fa-clock-o" aria-hidden="true"></i> <%=museum.opening_time.strftime("%I:%M%p")%> - <%=museum.closing_time.strftime("%I:%M%p")%></p>
 						</div>
 						<div class= "museum-info">
-							<p class= "museum-info-type">Website:</p>
-							<p class= "museum-info-entry"> <%= link_to museum.website, "http://#{museum.website}"%></p>
+							<p class= "museum-info-type"> Website:</p>
+							<p class= "museum-info-entry"> <i class="fa fa-share-square-o" aria-hidden="true" style="padding-top: 7px;"></i><%= link_to museum.website, "http://#{museum.website}"%></p>
 						</div>
 					</div>
 				</div>

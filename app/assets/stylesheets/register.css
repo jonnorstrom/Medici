@@ -1,0 +1,87 @@
+.container-sign-in{
+	height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.panel-sign-in{
+	display: inline-block;
+	width: 500px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15) !important;
+}
+.header-wrapper{
+	display: flex;
+	flex-direction: row;
+}
+.panel-sign-in #header{
+	margin-top: 2px;
+	display: inline;
+	font-size: 24px;
+}
+.or-wrapper {
+	text-align: center;
+    position: relative;
+    width: 20px;
+    height: 40px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+.or-line {
+    position: absolute;
+    left: 40%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #ccc;
+    z-index: 1;
+}
+.or-wrapper p{
+	font-style: italic;
+	position: absolute;
+	top: 17%;
+	background-color: white;
+    z-index: 2;
+}
+.panel-sign-in .btn-group{
+	margin: 5px 15px;
+}
+.panel-sign-in .input-field {
+  font-size: 12px;
+  display: block;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 1px solid #ddd;
+  transition: border-width 0.2s ease;
+  border-radius: 2px;
+  color: dimGrey;
+}
+
+.panel-sign-in .input-field:focus {
+  outline: none;
+  color: #444;
+  border-color: #35A9C3;
+  border-left-width: 35px;
+}
+
+.panel-sign-in label{
+  font-size: 12px;
+  color: lightGrey;
+  padding-left: 0px !important;
+  margin-bottom: 15px;
+}
+.panel-sign-in input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"] + label span {
+  display:inline-block;
+  width:18px;
+  height:18px;
+  margin:-1px 4px 0 0;
+  vertical-align:middle;
+  background:url(sprite.png) -18px top no-repeat;
+  cursor:pointer;
+}
+input[type="checkbox"]:checked + label span {
+    background:url(sprite.png) left top no-repeat;
+} 
