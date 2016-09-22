@@ -32,14 +32,17 @@
  border: 0px solid rgba(0, 0, 0, 0.1);
  border-radius: 7px;
  transform: rotateZ(0deg);
- transition: all 0.5s ease-out;
- border-bottom-width: 4px;
+ transition: all 0.2s ease;
+ border-bottom-width: 5px;
  z-index: 10 !important;
 }
-.panel-exhibit-show .input-button:focus {
-
-  border-bottom-width: 3px;
+.input-button:focus, .input-button:hover {
+   text-decoration: none;
+   color: lightGrey;
+   border-bottom-width: 3px;
+   margin-bottom: 6px;
 }
+
 .panel-exhibit-show h4{
 	color: dimGrey;
 }
