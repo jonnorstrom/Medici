@@ -2,6 +2,8 @@
 <% @tickets.each do |ticket| %>
   <% if ticket.exhibit_id != nil %>
     <%= link_to "#{Exhibit.find(ticket.exhibit_id).name} at #{Museum.find(ticket.museum_id).name}", ticket %>: <%= ticket.quantity %>
+  <% elsif ticket.event_id != nil %>
+    <%= link_to "#{Event.find(ticket.event_id).name}", ticket %>: <%= ticket.quantity %>
   <% else %>
     <%= link_to "#{Museum.find(ticket.museum_id).name}", ticket %>: <%= ticket.quantity %>
   <% end %>
@@ -10,6 +12,8 @@
 <% @redeemed_tickets.each do |ticket| %>
   <% if ticket.exhibit_id != nil %>
     <p> <%= Exhibit.find(ticket.exhibit_id).name %> at <%= Museum.find(ticket.museum_id).name %></p>
+  <% elsif ticket.event_id != nil %>
+    <p> <%= Event.find(ticket.event_id).name %></p>
   <% else %>
     <p> <%= Museum.find(ticket.museum_id).name %></p>
   <% end %>

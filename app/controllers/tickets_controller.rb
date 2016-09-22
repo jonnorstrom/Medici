@@ -3,7 +3,16 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find(params[:id])
-    @tweetable_museum = Museum.find(@ticket.museum_id).name
+    if @ticket.exhibit_id != nil
+      @tweetable_museum = Museum.find(@ticket.museum_id).name
+      @ticketed_post = @ticket.exhibit
+    elsif @ticket.event_id != nil
+      @tweetable_museum = @ticket.event.name
+      @ticketed_post = @ticket.event
+    else
+      @tweetable_museum = Museum.find(@ticket.museum_id).name
+      @ticketed_post = @ticket.museum
+    end
     @ticket_code = @ticket.redemption_code
   end
 
@@ -20,14 +29,19 @@ class TicketsController < ApplicationController
 
   def redeem
     @ticket = Ticket.find(params[:id])
-    @quantity = @ticket.quantity
-    @ticket.update(quantity: @quantity - 1, order_id: 1)
-    if @quantity - 1 == 0
+    # @quantity = @ticket.quantity
+    # @ticket.update(quantity: @quantity - 1, order_id: 1)
+    # if @quantity - 1 == 0
+    #   @ticket.update(redeemed: true)
+    #   redirect_to current_user
+    # else
+    #   redirect_to ticket_path(@ticket)
+    # end
       @ticket.update(redeemed: true)
-      redirect_to current_user
-    else
-      redirect_to ticket_path(@ticket)
-    end
+      redirect_to tickets_thanks_path
+  end
+
+  def thanks
   end
 
   def stats
@@ -55,7 +69,7 @@ class TicketsController < ApplicationController
   private
 
     def ticket_params
-      params.require(:ticket).permit(:user_id, :quantity, :exhibit_id, :original_quantity, :museum_id)
+      params.require(:ticket).permit(:user_id, :quantity, :exhibit_id, :event_id, :original_quantity, :museum_id)
     end
 
 end

@@ -1,6 +1,9 @@
 <h2><%= museum.name %></h2>
-<% if defined? museum.museum %>
-  <h4> at <%= museum.museum.name %> </h4>
+
+<% if museum.is_a?(Exhibit) || museum.is_a?(Event) %>
+  <% if  museum.museum != nil%>
+    <h4> at <%= museum.museum.name %> </h4>
+  <% end %>
 <% end %>
 
       <%= form_for ticket, remote: true do |f| %>
@@ -8,9 +11,15 @@
             <%= f.label :quantity %>
             <%= f.select :quantity, (0..12) %>
             <%= f.hidden_field :original_quantity, value: ticket.quantity %>
-            <%= f.hidden_field :museum_id, value: museum.id %>
+            <% if museum.is_a?(Museum) %>
+              <%= f.hidden_field :museum_id, value: museum.id %>
+            <% elsif museum.is_a?(Exhibit) %>
+              <%= f.hidden_field :exhibit_id, value: museum.id %>
+            <% elsif museum.is_a?(Event) %>
+              <%= f.hidden_field :event_id, value: museum.id %>
+            <% end %>
               <%= f.submit "Update Quantity", class: "btn btn-primary" %>
-              <%= link_to "Delete", ticket, { data: { confirm: "Are you sure you wish to delete the museum '#{ticket.museum.name}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
+              <%= link_to "Delete", ticket, { data: { confirm: "Are you sure you wish to delete the ticket from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
 
 
 

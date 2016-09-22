@@ -48,7 +48,7 @@ class ChargesController < ApplicationController
     @coupon.update_attributes(quantity_redeemed: @coupon.quantity_redeemed += 1)
     @order.tickets.update(paid: true)
     @order.tickets.delete_all
-    TicketsMailer.purchase_email(current_user).deliver_later
+    TicketsMailer.purchase_email(current_user).deliver_now
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

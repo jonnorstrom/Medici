@@ -9,6 +9,8 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.string :blurb
       t.string :description
       t.float :price
+      t.integer :museum_id
+      t.string :website
       t.string :address
       t.float :latitude
       t.float :longitude

@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  belongs_to :museum, :required => false
   has_many :taggings
   has_many :tickets
   has_many :tags, through: :taggings
