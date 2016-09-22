@@ -2,29 +2,24 @@
 	<div class="panel-heading">
 		<div class="row panel-row">
 			<div class= "image-featured col-md-4">
-				<%= image_tag exhibit.photo.url(:large) %>
-			    	<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
-			    	<div class="input-group">
-							<% if current_user %>
-					    <%= form_for ticket, remote: true do |f| %>
-					      <div class="input-group">
-					        <div class="input-group-btn">
-					          <%= f.hidden_field :quantity, value: 1%>
-										<% if museum.is_a?(Event) %>
-											<%= f.hidden_field :event_id, value: museum.id %>
-										<% else %>
-					          	<%= f.hidden_field :museum_id, value: museum.id %>
-										<% end %>
-					          <%= f.hidden_field :user_id, value: current_user.id %>
-					          <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-					        </div>
-					      </div>
-					    <% end %>
-					  <% else %>
-					    <%= link_to "Sign in to buy tickets!", new_user_session_path %>
-					  <% end %>
-					</div>
-			</div>
+          <%= image_tag exhibit.photo.url(:large) %>
+          <h4>Tickets: $<%= '%i' % exhibit.price%></h4>
+              <% if current_user %>
+              <%= form_for ticket, remote: true do |f| %>
+                <div class="input-group">
+                  <div class="input-group-btn">
+                    <%= f.hidden_field :quantity, value: 1%>
+                    <%= f.hidden_field :museum_id, value: museum.id %>
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <%= f.submit "Add to Cart", class: "input-button" %>
+                  </div>
+                </div>
+              <% end %>
+          <% else %>
+                <%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
+          <% end %>
+      </div>
+
 			<div class= "col-lg-8" >
 				<div class="row">
 					<div class= "description-wrapper col-md-8 col-lg-12">

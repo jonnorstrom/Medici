@@ -21,6 +21,7 @@ class TicketsController < ApplicationController
     @ticket = @order.tickets.new(ticket_params)
     prng = Random.new
     @ticket.redemption_code = prng.rand(1000000000000).to_s + "MD101"
+    @ticket.user_id = current_user.id
     @order.save
     @ticket.update(original_quantity: @ticket.quantity)
     session[:order_id] = @order.id

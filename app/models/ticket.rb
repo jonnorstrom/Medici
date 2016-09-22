@@ -1,5 +1,5 @@
 class Ticket < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, :required => false
   belongs_to :museum, :required => false
   belongs_to :event, :required => false
   belongs_to :exhibit, :required => false
