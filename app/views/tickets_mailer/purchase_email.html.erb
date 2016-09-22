@@ -13,8 +13,36 @@
       You're redemption code is: <%= @code %>
     </p>
 
-      To login to the site, just follow this link: <%=link_to "Redeem Ticket", @url %>.
+      To login to the site, just follow this link: <div class="input-button"><%=link_to "Redeem Ticket", @url %>.</div>
+      <style media="screen">
+      .input-button {
+        font-size: 16px;
+        width: 150px;
+        text-align: center;
+        padding: 10px 10px;
+        background: #35A9C3;
+        color: #fff;
+        display: block;
+        border: none;
+        margin-top: 20px;
+        margin-bottom: 100px;
+        margin-left: 10px
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        max-height: 60px;
+        border: 0px solid rgba(0, 0, 0, 0.1);
+        border-radius: 4px 4px 2px 2px;
+        transform: rotateZ(0deg);
+        transition: all 0.1s ease-out;
+        border-bottom-width: 7px;
+      }
 
+      .input-button a {
+        color: whitesmoke;
+        text-decoration: none;
+      }
+      </style>
     <p>Thanks for your purchse and have a great day!</p>
   </body>
 </html>

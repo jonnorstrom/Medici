@@ -2,7 +2,6 @@
 	<div class="panel-heading">
 		<div class="row panel-row">
 			<div class= "image-featured col-md-4">
-
 				<%= image_tag exhibit.photo.url(:large) %>
 			    	<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
 						<% if current_user %>
