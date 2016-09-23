@@ -1,7 +1,4 @@
-
-
 $(document).on('turbolinks:load', function(){
-
 
     var $container = $('.masonry-container');
 
@@ -33,4 +30,10 @@ $(document).on('turbolinks:load', function(){
         setTimeout(function(){ $container.masonry(); $( this ).css('z-index','1'); }, 300);
     });
 
+    $(window).resize(function(){
+       var width = $(window).width();
+       if(width <= 768){
+        setTimeout(function(){ $container.masonry('layout'); }, 700);
+       }
+    })
 });
