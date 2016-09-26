@@ -53,3 +53,13 @@ button.btn.btn-default.tag-button:focus {
 .btn-link button{
 	background-color: transparent;
 }
+
+.content {
+	overflow: hidden;
+}
+.masonry-container {
+	overflow: hidden;
+}
+.post-wrapper {
+	overflow: hidden;
+}

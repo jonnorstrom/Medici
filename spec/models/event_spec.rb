@@ -1,7 +1,8 @@
 require "rails_helper"
 #
-RSpec.describe Museum, :type => :model do
-  let(:field) {Museum.new }
+RSpec.describe Event, :type => :model do
+  Event.create(name: "Art", blurb: "More Art", description: "Art stuff", address: "123 Fake St.", price: "10", photo: File.new("test/fixtures/field.jpg"), start_date: DateTime.now, end_date: DateTime.now, opening_time: DateTime.now, closing_time: DateTime.now, website: "www.aic.org")
+  let(:field) {Event.new }
 
   it "is valid with valid attributes" do
     field.name = "Field Museum"
@@ -10,6 +11,8 @@ RSpec.describe Museum, :type => :model do
     field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
     field.price = 10
     field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
     field.opening_time = Time.now
     field.closing_time = Time.now
     field.website = "www.fieldmuseum.org"
@@ -21,6 +24,8 @@ RSpec.describe Museum, :type => :model do
     field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
     field.price = 10
     field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
     field.opening_time = Time.now
     field.closing_time = Time.now
     field.website = "www.fieldmuseum.org"
@@ -32,6 +37,8 @@ RSpec.describe Museum, :type => :model do
     field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
     field.price = 10
     field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
     field.opening_time = Time.now
     field.closing_time = Time.now
     field.website = "www.fieldmuseum.org"
@@ -43,6 +50,8 @@ RSpec.describe Museum, :type => :model do
     field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
     field.price = 10
     field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
     field.opening_time = Time.now
     field.closing_time = Time.now
     field.website = "www.fieldmuseum.org"
@@ -54,6 +63,8 @@ RSpec.describe Museum, :type => :model do
     field.description = "Remember when SUE was a huge deal? It's still great."
     field.price = 10
     field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
     field.opening_time = Time.now
     field.closing_time = Time.now
     field.website = "www.fieldmuseum.org"
@@ -65,6 +76,8 @@ RSpec.describe Museum, :type => :model do
     field.description = "Remember when SUE was a huge deal? It's still great."
     field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
     field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
     field.opening_time = Time.now
     field.closing_time = Time.now
     field.website = "www.fieldmuseum.org"
@@ -76,6 +89,34 @@ RSpec.describe Museum, :type => :model do
     field.description = "Remember when SUE was a huge deal? It's still great."
     field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
     field.price = 10
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
+    field.opening_time = Time.now
+    field.closing_time = Time.now
+    field.website = "www.fieldmuseum.org"
+    expect(field).to_not be_valid
+  end
+  it "is not valid without a start date" do
+    field.name = "Field Museum"
+    field.blurb = "A great museum"
+    field.description = "Remember when SUE was a huge deal? It's still great."
+    field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
+    field.price = 10
+    field.photo = File.new("test/fixtures/field.jpg")
+    field.end_date = DateTime.now
+    field.opening_time = Time.now
+    field.closing_time = Time.now
+    field.website = "www.fieldmuseum.org"
+    expect(field).to_not be_valid
+  end
+  it "is not valid without an end date" do
+    field.name = "Field Museum"
+    field.blurb = "A great museum"
+    field.description = "Remember when SUE was a huge deal? It's still great."
+    field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
+    field.price = 10
+    field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
     field.opening_time = Time.now
     field.closing_time = Time.now
     field.website = "www.fieldmuseum.org"
@@ -88,6 +129,8 @@ RSpec.describe Museum, :type => :model do
     field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
     field.price = 10
     field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
     field.closing_time = Time.now
     field.website = "www.fieldmuseum.org"
     expect(field).to_not be_valid
@@ -99,6 +142,8 @@ RSpec.describe Museum, :type => :model do
     field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
     field.price = 10
     field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
     field.opening_time = Time.now
     field.website = "www.fieldmuseum.org"
     expect(field).to_not be_valid
@@ -110,6 +155,8 @@ RSpec.describe Museum, :type => :model do
     field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
     field.price = 10
     field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
     field.opening_time = Time.now
     field.closing_time = Time.now
     expect(field).to_not be_valid
@@ -121,8 +168,38 @@ RSpec.describe Museum, :type => :model do
     field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
     field.price = 10
     field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
     field.opening_time = DateTime.new(2002,1,1)
     field.closing_time = DateTime.new(2000,1,1)
+    field.website = "www.fieldmuseum.org"
+    expect(field).to_not be_valid
+  end
+  it "is not valid if start date is after end date" do
+    field.name = "Field Museum"
+    field.blurb = "A great museum"
+    field.description = "Remember when SUE was a huge deal? It's still great."
+    field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
+    field.price = 10
+    field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.new(2002,1,1)
+    field.end_date = DateTime.new(2000,1,1)
+    field.opening_time = DateTime.now
+    field.closing_time = DateTime.now
+    field.website = "www.fieldmuseum.org"
+    expect(field).to_not be_valid
+  end
+  it "is not valid with same name" do
+    field.name = "Art"
+    field.blurb = "A great museum"
+    field.description = "Remember when SUE was a huge deal? It's still great."
+    field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
+    field.price = 10
+    field.photo = File.new("test/fixtures/field.jpg")
+    field.start_date = DateTime.now
+    field.end_date = DateTime.now
+    field.opening_time = Time.now
+    field.closing_time = Time.now
     field.website = "www.fieldmuseum.org"
     expect(field).to_not be_valid
   end

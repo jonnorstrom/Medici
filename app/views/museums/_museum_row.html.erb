@@ -35,9 +35,7 @@
             </div>
           <% end %>
         <% else %>
-          <div class="input-button">
-            <%= link_to "Sign in to Buy Tickets!", new_user_session_path%>
-          </div>
+            <%= link_to "Sign in to Buy Tickets!", new_user_session_path, class: "input-button"%>
         <% end %>
       </div>
     </div>

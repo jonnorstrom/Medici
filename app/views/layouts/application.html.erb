@@ -34,8 +34,10 @@
                 </button>
                 <%= link_to image_tag("Medici_logos/m_logo_simple_grey.jpg"), root_path, class: "navbar-left hidden-xs"%>
                 <% if current_user %>
+                  <!-- <% if current_user.avatar != nil %>
+                    <%= link_to image_tag(current_user.avatar.url(:medium)), current_user, class: "navbar-left hidden-xs"%>
+                  <% end %> -->
                   <%= link_to "Hi, #{current_user.name}!", current_user, class: "navbar-brand" %>
-
                 <% end %>
               </div>
               <div class="collapse navbar-collapse">
@@ -75,7 +77,7 @@
                 </button>
                   <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "list-group-item" %>
                 <% else %>
-                  <button type="button" class="list-group-item" data-toggle="modal" data-target="#Log-In-Modal">log in</button>
+                  <%= button_to "Log in", new_user_session_path, type: "button", class: "list-group-item" %>
                   <button type="button" class="list-group-item" data-toggle="modal" data-target="#Register-Modal">register</button>
                   <button type="button"class="list-group-item">
                     <a href="#">Check Out</a>
