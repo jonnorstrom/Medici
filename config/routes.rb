@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :taggings
   resources :tags, only: [:show]
+  get "terms/terms" => "terms#terms"
+  get "terms/privacy" => "terms#privacy"
 
   root to: "museums#index"
 end
