@@ -13,7 +13,9 @@
           <h4>Price: <%= number_to_currency ticket.unit_price %></h4>
         <% end %>
             <%= f.label :quantity %>
+
             <%= f.select :quantity, (0..12) %>
+
             <%= f.hidden_field :original_quantity, value: ticket.quantity %>
             <% if museum.is_a?(Museum) %>
               <%= f.hidden_field :museum_id, value: museum.id %>

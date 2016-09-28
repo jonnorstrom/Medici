@@ -6,6 +6,7 @@ class TicketsMailer < ApplicationMailer
     @user = user
     attachments.inline['logo.jpg'] = File.read("#{Rails.root}/app/assets/images/giphy.gif")
     @ticket = Ticket.where(user_id: @user.id).last
+    @quantity = @ticket.quantity
     @url  = tickets_redeem_url(@ticket)
     @code = @ticket.redemption_code
     if @ticket.exhibit_id != nil

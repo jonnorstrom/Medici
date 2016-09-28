@@ -7,7 +7,7 @@
     <h1>Thank you for your purchase, <%= @user.name %></h1>
     <%= image_tag attachments["logo.jpg"].url %>
     <p>
-      You've purchased a ticket to <%= @museum %>
+      You've purchased <%= @quantity %> tickets to <%= @museum %>
     </p>
     <p>
       You're redemption code is: <%= @code %>
