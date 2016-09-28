@@ -36,4 +36,11 @@ $(document).on('turbolinks:load', function(){
         setTimeout(function(){ $container.masonry('layout'); }, 700);
        }
     })
+
+    $('.cart_form').on('click', function(e){
+      if (!$("input[name='terms']").is(':checked')){
+        e.preventDefault();
+        alert("You must accept the Terms and Conditions")
+      }
+    });
 });

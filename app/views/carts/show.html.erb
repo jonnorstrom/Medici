@@ -1,3 +1,14 @@
+<script type="text/javascript">
+  $(document).on('turbolinks:load', function(){
+    $('.cart_form').on('click', function(e){
+      if (!$("input[name='terms']").is(':checked')){
+        e.preventDefault();
+        alert("You must accept the Terms and Conditions")
+      }
+    });
+  });
+</script>
+
 <% if !@ticket.nil? && @ticket.errors.any? %>
   <div class="alert alert-danger">
     <ul>
@@ -38,7 +49,7 @@
         <% end %>
       <% end %>
     <% end %>
-  <%= link_to "Checkout", new_charge_path %>
+  <%= link_to "Checkout", new_charge_path, class: "cart_form" %>
   <% end %>
 <% end %>
 
