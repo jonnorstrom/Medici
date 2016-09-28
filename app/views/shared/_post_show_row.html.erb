@@ -3,20 +3,21 @@
 		<div class="row panel-row">
 			<div class= "image-featured col-md-4">
 				<%= image_tag exhibit.photo.url(:large) %>
-			    	<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
-						<% if current_user && museum.is_a?(Event)%>
-					    <%= form_for ticket, remote: true do |f| %>
-					      <div class="input-group">
-					        <div class="input-group-btn">
-					          <%= f.hidden_field :quantity, value: 1%>
-					          <%= f.hidden_field :event_id, value: museum.id %>
-					          <%= f.hidden_field :user_id, value: current_user.id %>
-					          <%= f.submit "Add to Cart", class: "input-button" %>
-					        </div>
-					      </div>
-					    <% end %>
-	
-					<% end %>
+	    	<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
+				<% if current_user && museum.is_a?(Event)%>
+			    <%= form_for ticket, remote: true do |f| %>
+			      <div class="input-group">
+			        <div class="input-group-btn">
+			          <%= f.hidden_field :quantity, value: 1%>
+			          <%= f.hidden_field :event_id, value: museum.id %>
+			          <%= f.hidden_field :user_id, value: current_user.id %>
+			          <%= f.submit "Add to Cart", class: "input-button" %>
+			        </div>
+			      </div>
+			    <% end %>
+				<% else %>
+					<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
+				<% end %>
 			</div>
 
 			<div class= "col-lg-8" >

@@ -23,7 +23,9 @@
               <%= f.hidden_field :event_id, value: museum.id %>
             <% end %>
               <%= f.submit "Update Quantity", class: "btn btn-primary" %>
-              <%= link_to "Delete", ticket, { data: { confirm: "Are you sure you wish to delete the ticket from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
+              <%= link_to ticket, method: :delete, data: { confirm: "Are you sure you wish to delete the ticket from your cart?" } do %><i class="fa fa-pencil-square-o"></i><% end %>
+
+ <i class="fa fa-times" aria-hidden="true"></i>
 
 
 
