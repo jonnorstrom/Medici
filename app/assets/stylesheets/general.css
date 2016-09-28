@@ -63,3 +63,12 @@ button.btn.btn-default.tag-button:focus {
 .post-wrapper {
 	overflow: hidden;
 }
+a.avatar img{
+	border-radius: 100px;
+	width: 50%;
+	border: 5px solid white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
+	margin-left: 30%;
+	margin-bottom: 2%;
+	margin-top: -15%;
+}

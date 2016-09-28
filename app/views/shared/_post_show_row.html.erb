@@ -15,19 +15,6 @@
 					        </div>
 					      </div>
 					    <% end %>
-					<% elsif current_user %>
-						<%= form_for ticket, remote: true do |f| %>
-							<div class="input-group">
-								<div class="input-group-btn">
-									<%= f.hidden_field :quantity, value: 1%>
-									<%= f.hidden_field :museum_id, value: museum.id %>
-									<%= f.hidden_field :user_id, value: current_user.id %>
-									<%= f.submit "Add to Cart", class: "input-button" %>
-								</div>
-							</div>
-						<% end %>
-				<% else %>
-					  	<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
 					<% end %>
 			</div>
 
