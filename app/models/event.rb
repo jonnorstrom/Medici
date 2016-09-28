@@ -19,7 +19,7 @@ class Event < ApplicationRecord
     def end_must_be_after_start
       if start_date == nil || end_date == nil
         errors.add(:closing_time, "must be after start date")
-      elsif start_date >= end_date
+      elsif start_date > end_date
         errors.add(:end_date, "must be after start date")
       end
     end

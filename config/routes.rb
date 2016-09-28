@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :carts, only: [:show]
   get "museums/:id/tagging" => "museums#tagging_new"
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "events/:id/tagging" => "events#tagging_new"
   post "events/:id/tagging" => "events#tagging_create"
   resources :events
+  get "charges/redemption" => "charges#redemption"
   resources :charges
   get "users/:id/personalized" => "users#personalized"
   get "users/:id/tagging" => "users#tagging_new"

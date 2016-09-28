@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :current_order, :resource_name, :resource, :devise_mapping
+  helper_method :current_order, :resource_name, :resource, :devise_mapping, :finish_order
   before_filter :store_location, :unless => :devise_controller?
 
   def store_location
@@ -24,6 +24,12 @@ class ApplicationController < ActionController::Base
 
   def resource_name
     :user
+  end
+
+  def finish_order
+    @order.tickets.update(paid: true)
+    @order.tickets.delete_all
+    TicketsMailer.purchase_email(current_user).deliver_now
   end
 
   def resource

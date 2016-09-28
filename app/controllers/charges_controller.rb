@@ -55,4 +55,15 @@ class ChargesController < ApplicationController
     redirect_to new_charge_path
   end
 
+  def redemption
+    @order = Order.find(current_order.id)
+    @amount_float = @order.subtotal * 100.00
+    @amount = @amount_float.to_i
+    @final_amount = @amount
+    @coupon = Coupon.new(discount_percent: 0.00)
+    @order.tickets.update(paid: true)
+    @order.tickets.delete_all
+    TicketsMailer.purchase_email(current_user).deliver_now
+  end
+
 end

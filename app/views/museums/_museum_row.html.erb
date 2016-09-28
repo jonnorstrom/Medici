@@ -15,10 +15,16 @@
 
       <div class="thumbnail-header">
         <h3><%= link_to "#{post.name}", post %></h3>
+        <% if post.price == 0.0 %>
+          <p>
+            FREE
+          </p>
+        <% else %>
         <p> $<%= '%i' % post.price %>
           <% if defined? post.exhibits.sort.first.price %>
           - $<%= '%i' %post.exhibits.sort.first.price %>
-          <% end %>
+          <% end %> </p>
+        <% end %>
       </div>
       <p><%= post.blurb %></p>
 

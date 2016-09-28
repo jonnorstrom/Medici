@@ -7,7 +7,11 @@
 <% end %>
 
       <%= form_for ticket, remote: true do |f| %>
-        <h4>Price: <%= number_to_currency ticket.unit_price %></h4>
+        <% if ticket.unit_price == 0 %>
+          <h4>FREE</h4>
+        <% else %>
+          <h4>Price: <%= number_to_currency ticket.unit_price %></h4>
+        <% end %>
             <%= f.label :quantity %>
             <%= f.select :quantity, (0..12) %>
             <%= f.hidden_field :original_quantity, value: ticket.quantity %>
