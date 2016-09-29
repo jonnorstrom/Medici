@@ -6,9 +6,9 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :taggings, :allow_destroy => true
 
   has_attached_file :avatar, styles: { large: "768x768>", medium: "300x300>", thumb: "100x100>" }
-  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  # validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  validates :name, :email, presence: true
+  # validates :name, :email, presence: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:facebook]
