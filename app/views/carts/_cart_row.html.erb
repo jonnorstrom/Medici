@@ -1,18 +1,15 @@
-<h2><%= museum.name %></h2>
-<% if defined? museum.museum %>
-  <h4> at <%= museum.museum.name %> </h4>
+<%= form_for ticket, remote: true do |f| %>
+<div class= "ticket-sub-row">
+  <%= link_to ticket, method: :delete, data: { confirm: "Are you sure you wish to delete the ticket from your cart?" } do %><i class="fa fa-times"></i><% end %>
+  <p class = "item-name"><%= museum.name %></p>
+  <% if defined? museum.museum %>
+    <h4 style="display : none;"> at <%= museum.museum.name %> </h4>
+  <% end %>
+  <div class = "ticket-drop-down" id= "drop-select">
+    <%= f.select :quantity, (0..12) %>
+  </div>
+  <h4>$</h4> <h4 class= "unit-price"> <%=ticket.unit_price%></h4><h4>0</h4>
+</div>
+<%= f.hidden_field :original_quantity, value: ticket.quantity %>
+<%= f.hidden_field :museum_id, value: museum.id %>           
 <% end %>
-
-      <%= form_for ticket, remote: true do |f| %>
-        <h4>Price: <%= number_to_currency ticket.unit_price %></h4>
-            <%= f.label :quantity %>
-            <%= f.select :quantity, (0..12) %>
-            <%= f.hidden_field :original_quantity, value: ticket.quantity %>
-            <%= f.hidden_field :museum_id, value: museum.id %>
-              <%= f.submit "Update Quantity", class: "btn btn-primary" %>
-              <%= link_to "Delete", ticket, { data: { confirm: "Are you sure you wish to delete the museum '#{ticket.museum.name}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
-
-
-
-        <h4>Total Price: <%= number_to_currency ticket.total_price %></h4>
-      <% end %>

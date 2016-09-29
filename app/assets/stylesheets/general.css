@@ -1,8 +1,11 @@
 .body, .nav-row{
 	background-color: #f8f8f8;
 }
-h1, h2, h3{
+h1, h2, h3, h4{
   font-family: HansKendrick-Heavy !important;
+}
+h4{
+  color: #35A9C3 !important;
 }
 p{
 	font-size: 17px;
@@ -18,6 +21,11 @@ p{
 * a {
   font-family: HansKendrick-Heavy;
   font-size: 1.6rem;
+}
+
+.input-button, .input-button:hover{
+  color: #FFF;
+  text-decoration: none !important;
 }
 
 .row-eq-height {
