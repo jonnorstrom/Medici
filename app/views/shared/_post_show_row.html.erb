@@ -15,8 +15,11 @@
 			        </div>
 			      </div>
 			    <% end %>
-				<% else %>
+				<% elsif museum.is_a?(Event) %>
 					<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
+				<% else %>
+					<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-mention-button" data-text="is guiding my experience at <%= museum.name %>!" data-show-count="false">Tweet</a>
+					<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.facebook.com%2Fmediciapp&layout=button&size=small&mobile_iframe=true&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 				<% end %>
 			</div>
 
