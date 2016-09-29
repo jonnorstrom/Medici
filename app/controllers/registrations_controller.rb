@@ -1,8 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
-  before_filter :configure_permitted_parameters
+  before_filter :configure_permitted_parameters_update, :configure_permitted_parameters_signup
 
- def configure_permitted_parameters
+ def configure_permitted_parameters_update
    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar])
+ end
+ def configure_permitted_parameters_signup
+   devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar])
  end
 
   def update_resource(resource, params)
