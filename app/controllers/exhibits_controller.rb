@@ -33,6 +33,7 @@ class ExhibitsController < ApplicationController
     @term = params[:search].downcase
     @tags = params[:tag_search]
     if params[:search]
+
       if @tags
         @all_posts.each do |post|
           if params[:any_or_all] == "Any"
@@ -61,7 +62,15 @@ class ExhibitsController < ApplicationController
     else
       @posts = @all_posts.all.order('created_at DESC')
     end
+    Tag.all.each do |tag|
+      if tag.name.downcase == @term
+        @posts << tag
+      end
+    end
     @posts = @posts.uniq
+    if @posts.length == 1 && @posts[0].is_a?(Tag)
+      redirect_to @posts[0]
+    end
   end
 
   def search_new

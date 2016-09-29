@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, class_name: 'FormUser', :controllers => { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations'}
+
 
   resources :carts, only: [:show]
   get "museums/:id/tagging" => "museums#tagging_new"
   post "museums/:id/tagging" => "museums#tagging_create"
   resources :museums
   get "tickets/stats" => "tickets#stats"
-  get "tickets/redeem/:id" => "tickets#redeem"
+  get "tickets/thanks" => "tickets#thanks"
+  get "tickets/redeem/:id" => "tickets#redeem", as: :tickets_redeem
   resources :tickets
   get "exhibits/:id/tagging" => "exhibits#tagging_new"
   post "exhibits/:id/tagging" => "exhibits#tagging_create"
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   get "events/:id/tagging" => "events#tagging_new"
   post "events/:id/tagging" => "events#tagging_create"
   resources :events
+  get "charges/redemption" => "charges#redemption"
   resources :charges
   get "users/:id/personalized" => "users#personalized"
   get "users/:id/tagging" => "users#tagging_new"
@@ -26,6 +29,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :taggings
   resources :tags, only: [:show]
+  get "terms/terms" => "terms#terms"
+  get "terms/privacy" => "terms#privacy"
 
   root to: "museums#index"
 end

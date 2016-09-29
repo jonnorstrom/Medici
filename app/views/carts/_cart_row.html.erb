@@ -10,6 +10,12 @@
   </div>
   <h4>$</h4> <h4 class= "unit-price"> <%=ticket.unit_price%></h4><h4>0</h4>
 </div>
-<%= f.hidden_field :original_quantity, value: ticket.quantity %>
-<%= f.hidden_field :museum_id, value: museum.id %>           
+  <%= f.hidden_field :original_quantity, value: ticket.quantity %>
+  <% if museum.is_a?(Museum) %>
+    <%= f.hidden_field :museum_id, value: museum.id %>
+  <% elsif museum.is_a?(Exhibit) %>
+    <%= f.hidden_field :exhibit_id, value: museum.id %>
+  <% elsif museum.is_a?(Event) %>
+    <%= f.hidden_field :event_id, value: museum.id %>
+  <% end %>
 <% end %>

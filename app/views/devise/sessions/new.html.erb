@@ -3,9 +3,10 @@
     <div class="panel-heading">
       <div class= "header-wrapper">
         <p id="header">Log into Medici</p>
+        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <%= f.email_field :email, placeholder:"e-mail", autofocus: true, class:"input-field"%>
-          <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>        
+          <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>
           <div class= "check-box-wrapper" style= "text-align: left;">
             <% if devise_mapping.rememberable? -%>
             <%= f.check_box :remember_me, id: "rm-s"%>

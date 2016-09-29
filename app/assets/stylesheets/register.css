@@ -1,9 +1,9 @@
 .container-sign-in{
-	  height: 80vh;
-    display: flex;
+	height: 80vh;
+  display: flex;
 }
 .panel-sign-in{
-  display: none; 
+  display: none;
   position: absolute;
   left: 40%;
   top: 50%;
@@ -59,10 +59,10 @@
 	line-height:0.1em;
 	margin:10px 0 20px;
 }
-.or-wrapper i span { 
+.or-wrapper i span {
 	font-size: 16px;
 	color: #d8d8d8;
-	background:#fff; 
+	background:#fff;
 	padding:0 10px;
 }
 .panel-sign-in .input-field{
@@ -115,4 +115,4 @@ input[type="checkbox"] + label span {
 }
 input[type="checkbox"]:checked + label span {
     background:url(sprite.png) left top no-repeat;
-} 
+}

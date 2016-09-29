@@ -15,25 +15,32 @@
 
       <div class="thumbnail-header">
         <h3><%= link_to "#{post.name}", post %></h3>
+        <% if post.price == 0.0 %>
+          <p>
+            FREE
+          </p>
+        <% else %>
         <p> $<%= '%i' % post.price %>
           <% if defined? post.exhibits.sort.first.price %>
           - $<%= '%i' %post.exhibits.sort.first.price %>
-          <% end %>
+          <% end %> </p>
+        <% end %>
       </div>
       <p><%= post.blurb %></p>
 
-      <div>
-        <% if current_user && post.is_a?(Museum) %>
+      <div>	<% if current_user && post.is_a?(Event)%>
           <%= form_for ticket, remote: true do |f| %>
             <div class="input-group">
               <div class="input-group-btn">
-                <%= f.hidden_field :quantity, value: 1 %>
-                <%= f.hidden_field :museum_id, value: post.id %>
+                <%= f.hidden_field :quantity, value: 1%>
+                <%= f.hidden_field :event_id, value: post.id %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.submit "Purchase Tickets", class: "btn btn-primary" %>
+                <%= f.submit "Purchase Tickets", class: "input-button" %>
               </div>
             </div>
           <% end %>
+        <% elsif post.is_a?(Event) %>
+					<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
         <% end %>
       </div>
     </div>

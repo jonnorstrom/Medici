@@ -34,6 +34,18 @@ $(document).on('turbolinks:load', function(){
         $( this ).toggleClass('col-lg-3').toggleClass('col-lg-6');
         setTimeout(function(){ $container.masonry(); $( this ).css('z-index','1'); }, 300);
     });
+
+    $(window).resize(function(){
+       var width = $(window).width();
+       if(width <= 768){
+        setTimeout(function(){ $container.masonry('layout'); }, 700);
+       }
+    })
+
+    $('.cart_form').on('click', function(e){
+      if (!$("input[name='terms']").is(':checked')){
+        e.preventDefault();
+        alert("You must accept the Terms and Conditions")
+      }
+    });
 });
-
-

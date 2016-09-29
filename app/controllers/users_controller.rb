@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     @redeemed_tickets = Ticket.where(user_id: current_user.id, paid: true, redeemed: true)
   end
 
+  def create
+    
+  end
+
   def edit
     @user = User.find(params[:id])
   end
@@ -57,6 +61,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :name, :tag_ids => [])
+    params.require(:user).permit(:email, :name, :avatar, :tag_ids => [])
   end
 end

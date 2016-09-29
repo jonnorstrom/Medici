@@ -35,13 +35,14 @@ gem 'jquery-turbolinks'
 gem 'stripe'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'pg_search'
+gem 'aws-sdk', '>= 2.5.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do

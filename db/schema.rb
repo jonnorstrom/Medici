@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902180613) do
+ActiveRecord::Schema.define(version: 20160928214035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,19 @@ ActiveRecord::Schema.define(version: 20160902180613) do
     t.string   "name"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.time     "opening_time"
+    t.time     "closing_time"
     t.string   "blurb"
     t.string   "description"
     t.float    "price"
     t.integer  "museum_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.string   "website"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "transportation_info"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -65,6 +72,20 @@ ActiveRecord::Schema.define(version: 20160902180613) do
     t.datetime "photo_updated_at"
   end
 
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "accesstoken"
+    t.string   "refreshtoken"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "email"
+    t.string   "image"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
+  end
+
   create_table "museums", force: :cascade do |t|
     t.string   "name"
     t.string   "blurb"
@@ -77,8 +98,9 @@ ActiveRecord::Schema.define(version: 20160902180613) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.string   "transportation_info"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -127,6 +149,7 @@ ActiveRecord::Schema.define(version: 20160902180613) do
   create_table "tickets", force: :cascade do |t|
     t.integer  "museum_id"
     t.integer  "exhibit_id"
+    t.integer  "event_id"
     t.integer  "user_id"
     t.float    "unit_price"
     t.integer  "quantity"
@@ -146,6 +169,7 @@ ActiveRecord::Schema.define(version: 20160902180613) do
     t.string   "name",                                   null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.boolean  "admin",                  default: false
+    t.string   "image_url"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -158,8 +182,13 @@ ActiveRecord::Schema.define(version: 20160902180613) do
     t.datetime "updated_at",                             null: false
     t.string   "provider"
     t.string   "uid"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "identities", "users"
 end
