@@ -35,7 +35,7 @@
                 <% if current_user && current_user.avatar_file_name != nil %>
                   <%= link_to image_tag(current_user.avatar.url(:medium)), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
                 <% elsif current_user && current_user.image_url != nil %>
-                  <%= link_to image_tag(current_user.image_url), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
+                  <%= link_to image_tag(current_user.image_url + "?type=large"), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
                 <% end %>
                 <%= link_to image_tag("Medici_logos/m_logo_simple_grey.jpg"), root_path, class: "navbar-left hidden-xs"%>
                 <% if current_user %>
