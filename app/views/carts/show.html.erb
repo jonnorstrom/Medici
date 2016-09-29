@@ -1,24 +1,26 @@
 <div class="container-sign-in">
+  <% if !@ticket.nil? && @ticket.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @ticket.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <% if @tickets.size == 0 %>
+  <p>
+    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+  </p>
+  <% else %>
   <div class="panel panel-sign-in">
     <div class="panel-heading">
       <div class= "cart-wrapper">
-        <% if !@ticket.nil? && @ticket.errors.any? %>
-          <div class="alert alert-danger">
-            <ul>
-            <% @ticket.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
-        <% if @tickets.size == 0 %>
-          <p>
-            There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
-          </p>
-        <% else %>
           <% @tickets.each do |ticket| %>
             <% if ticket.exhibit_id != nil%>
               <%= render 'carts/cart_row', museum: ticket.exhibit, ticket: ticket, show_total: true %>
+            <% elsif ticket.event_id != nil %>
+              <%= render 'carts/cart_row', museum: ticket.event, ticket: ticket, show_total: true %>
             <% else %>
               <%= render 'carts/cart_row', museum: ticket.museum, ticket: ticket, show_total: true %>
               <% ticket.museum.exhibits.each do |exhibit| %>
@@ -30,11 +32,8 @@
       </div>
       <div class="panel-body cart-body">
         <input type="CHECKBOX" name="terms" id= "rm-t">
-        <label for="rm-t"><span></span>I've read the <br><a href="#">terms and conditions</a></label>
+        <label for="rm-t"><span></span>I've read the <br><%= link_to "Terms and Conditions", terms_terms_path %> </label>
          <h3>$</h3><h3 id='grand-total'>0.00</h3>
-        <div class="cart-submit">
-          <%= link_to "Check Out>", new_charge_path, class: "input-button cart_form" %>
-        </div>
         <% end %>
         <% end %>
     </div>

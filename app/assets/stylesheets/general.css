@@ -73,11 +73,15 @@ button.btn.btn-default.tag-button:focus {
 }
 a.avatar img{
 	border-radius: 100px;
-	width: 50%;
+	width: 40%;
 	border: 5px solid white;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05);
-	left: 50%;
-	transform: translate(50%, -25%);
+	left: 60%;
+	transform: translate(75%, -5%);
 	margin-bottom: 2%;
+	margin-top: -30%;
+}
 
+.cart-submit .input-button{
+	top: 110px;
 }

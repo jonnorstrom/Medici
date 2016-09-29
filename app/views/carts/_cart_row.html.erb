@@ -1,8 +1,11 @@
 <%= form_for ticket, remote: true do |f| %>
+  <p class = "item-name">
 <div class= "ticket-sub-row">
-  <%= link_to ticket, method: :delete, data: { confirm: "Are you sure you wish to delete the ticket from your cart?" } do %><i class="fa fa-times"></i><% end %>
-  <p class = "item-name"><%= museum.name %></p>
-  <% if defined? museum.museum %>
+
+
+
+  <p class = "item-name">  <%= link_to ticket_path(ticket), method: :delete do%> <i class="fa fa-times"></i><% end %><%= museum.name %></p>
+  <% if museum.museum != nil %>
     <h4 style="display : none;"> at <%= museum.museum.name %> </h4>
   <% end %>
   <div class = "ticket-drop-down" id= "drop-select">
@@ -18,4 +21,7 @@
   <% elsif museum.is_a?(Event) %>
     <%= f.hidden_field :event_id, value: museum.id %>
   <% end %>
+  <div class="cart-submit">
+    <%= f.submit "Check Out", class: "btn input-button" %>
+  </div>
 <% end %>

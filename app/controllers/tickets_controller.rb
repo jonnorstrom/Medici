@@ -28,6 +28,10 @@ class TicketsController < ApplicationController
     redirect_to cart_path(id: current_user.id)
   end
 
+  def update
+
+  end
+
   def redeem
     @ticket = Ticket.find(params[:id])
     # @quantity = @ticket.quantity
@@ -57,7 +61,7 @@ class TicketsController < ApplicationController
     @ticket.update_attributes(ticket_params)
     @ticket.update(original_quantity: @ticket.quantity)
     @tickets = @order.tickets
-    redirect_to cart_path(id: current_user.id)
+    redirect_to new_charge_path
   end
 
   def destroy
