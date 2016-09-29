@@ -1,9 +1,6 @@
 <%= form_for ticket, remote: true do |f| %>
   <p class = "item-name">
 <div class= "ticket-sub-row">
-
-
-
   <p class = "item-name">  <%= link_to ticket_path(ticket), method: :delete do%> <i class="fa fa-times"></i><% end %><%= museum.name %></p>
   <% if museum.museum != nil %>
     <h4 style="display : none;"> at <%= museum.museum.name %> </h4>
