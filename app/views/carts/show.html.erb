@@ -1,3 +1,46 @@
+<div class="container-sign-in">
+  <div class="panel panel-sign-in">
+    <div class="panel-heading">
+      <div class= "cart-wrapper">
+        <% if !@ticket.nil? && @ticket.errors.any? %>
+          <div class="alert alert-danger">
+            <ul>
+            <% @ticket.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <% if @tickets.size == 0 %>
+          <p>
+            There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+          </p>
+        <% else %>
+          <% @tickets.each do |ticket| %>
+            <% if ticket.exhibit_id != nil%>
+              <%= render 'carts/cart_row', museum: ticket.exhibit, ticket: ticket, show_total: true %>
+            <% else %>
+              <%= render 'carts/cart_row', museum: ticket.museum, ticket: ticket, show_total: true %>
+              <% ticket.museum.exhibits.each do |exhibit| %>
+                <%= form_for ticket, remote: true do |f| %>
+                <% end %>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+      <div class="panel-body cart-body">
+        <input type="CHECKBOX" name="terms" id= "rm-t">
+        <label for="rm-t"><span></span>I've read the <br><a href="#">terms and conditions</a></label>
+         <h3>$</h3><h3 id='grand-total'>0.00</h3>
+        <div class="cart-submit">
+          <%= link_to "Check Out>", new_charge_path, class: "input-button cart_form" %>
+        </div>
+        <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
   $(document).on('turbolinks:load', function(){
     $('.cart_form').on('click', function(e){
@@ -8,52 +51,3 @@
     });
   });
 </script>
-
-<% if !@ticket.nil? && @ticket.errors.any? %>
-  <div class="alert alert-danger">
-    <ul>
-    <% @ticket.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<% if @tickets.size == 0 %>
-  <p>
-    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
-  </p>
-<% else %>
-  <% @tickets.each do |ticket| %>
-    <% if ticket.exhibit_id != nil%>
-      <%= render 'carts/cart_row', museum: ticket.exhibit, ticket: ticket, show_total: true %>
-    <% elsif ticket.event_id != nil %>
-      <%= render 'carts/cart_row', museum: ticket.event, ticket: ticket, show_total: true %>
-    <% else %>
-      <%= render 'carts/cart_row', museum: ticket.museum, ticket: ticket, show_total: true %>
-      <h3>Want to upgrade your <%= ticket.museum.name %> experience?</h3>
-      <% ticket.museum.exhibits.each do |exhibit| %>
-        <% if exhibit.price != 0 %>
-          <%= link_to exhibit.name, exhibit %>
-          <%= form_for ticket, remote: true do |f| %>
-            <div class="input-group">
-              <div class="input-group-btn">
-                <%= f.hidden_field :quantity, value: 1%>
-                <%= f.hidden_field :museum_id, value: ticket.museum.id %>
-                <%= f.hidden_field :exhibit_id, value: exhibit.id %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    <% end %>
-  <%= link_to "Checkout", new_charge_path, class: "cart_form" %>
-  <% end %>
-<% end %>
-
-  <h3> TERMS AND CONDITIONS</h3>
-  <p>
-  Our website terms and conditions template has been designed for use on typical websites, including those with with basic interactive features. It includes, amongst other things, a licence specifying how the website may be used, a disclaimer of liability, a statutory disclosures section and rules on user-contributed content. It is an extended version of our website disclaimer document. It is not suitable for websites featuring payments: for which, see these templates. By using this document, you agree to our T&#38;Cs, which include an express licence.
-</p>

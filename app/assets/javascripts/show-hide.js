@@ -1,12 +1,17 @@
 $(document).on('turbolinks:load', function(){
-
     var $container = $('.masonry-container');
-
     $container.imagesLoaded(function(){
         $container.masonry({
         itemSelector : '.post-wrapper',
         columnWidth : '.post-wrapper',
         });
+    });
+    $("#log-in-button").click(function(){
+        $(".post-wrapper").fadeOut(2000);
+    });
+    $(".panel-sign-in").fadeIn(1000);
+    $(".btn2").click(function(){
+        $(".panel-sign-in").slideDown();
     });
 	  document.getElementById('museum-toggle').focus();
     $("#museum-toggle").click(function(){
