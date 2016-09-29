@@ -3,13 +3,27 @@ class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
   def show
+    is_user_page
     @user = User.find(params[:id])
     @tickets = Ticket.where(user_id: current_user.id, paid: true, redeemed: false)
     @redeemed_tickets = Ticket.where(user_id: current_user.id, paid: true, redeemed: true)
+    @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all
+    @posts = []
+    @ticket = current_order.tickets.new
+    @all_posts.each do |post|
+      post.taggings.each do |post_tagging|
+        current_user.taggings.each do |user_tagging|
+          if Tag.find(post_tagging.tag_id) == Tag.find(user_tagging.tag_id)
+            @posts << post
+          end
+        end
+      end
+    end
+    @posts = @posts.uniq
   end
 
   def create
-    
+
   end
 
   def edit
@@ -61,6 +75,10 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :name, :avatar, :tag_ids => [])
+    params.require(:user).permit(:email, :name, :avatar, :image_url, :tag_ids => [])
+  end
+
+  def is_user_page
+    @user_page = true
   end
 end

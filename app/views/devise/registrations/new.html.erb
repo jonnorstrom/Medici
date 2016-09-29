@@ -7,7 +7,6 @@
         <%= devise_error_messages! %>
         <%= f.text_field :name, placeholder:"username", autocomplete: "off", class:"input-field" %>
         <%= f.email_field :email, placeholder:"e mail", autofocus: true, class:"input-field"%>
-        <%= f.email_field :email, placeholder:"confirm", autofocus: true, class:"input-field"%>
         <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>

@@ -44,6 +44,9 @@
                   <%= link_to "Hi, #{current_user.name}!", user_path(current_user), class: "navbar-brand" %>
                 <% end %>
               </div>
+              <% if @user_page %>
+                <%= link_to "Edit Profile", edit_user_registration_path, class: "list-group-item" %>
+              <% end %>
               <div class="collapse navbar-collapse">
                 <div id= "search-wrapper">
                   <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
@@ -79,6 +82,7 @@
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
                   <% end %>
                 </button>
+
                   <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "list-group-item" %>
                 <% else %>
 

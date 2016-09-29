@@ -1,9 +1,9 @@
-
-
-<%= link_to "Edit Profile", edit_user_path %><br>
 <%= link_to "Add Interests", "#{current_user.id}/tagging" %><br>
-<% if current_user.taggings != []%>
-  <%= link_to "Museums for You!", "#{current_user.id}/personalized" %><br>
-<% else %>
-  <%= link_to "Museums for You!", "#{current_user.id}/tagging" %><br>
-<% end %>
+
+<h2>Museums for you!</h2>
+<div class="row masonry-row">
+	<% @posts.shuffle.each do |post| %>
+	  <%= render "custom_row", post: post, ticket: @ticket  %>
+	<% end %>
+</div>
+<br>
