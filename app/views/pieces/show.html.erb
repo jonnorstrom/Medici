@@ -3,4 +3,42 @@
   <%= link_to "Edit Piece", edit_piece_path %>
 <% end %>
 
-<%= render "shared/post_show_row", exhibit: @piece, museum: @museum, ticket: @ticket  %>
+<div class="panel panel-exhibit-show">
+	<div class="panel-heading">
+		<div class="row panel-row">
+			<div class= "image-featured col-md-4">
+				<%= image_tag @piece.photo.url(:large) %>
+					<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-mention-button" data-text="is guiding my experience at <%= @piece.name %>!" data-show-count="false">Tweet</a>
+					<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.facebook.com%2Fmediciapp&layout=button&size=small&mobile_iframe=true&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+			</div>
+
+			<div class= "col-lg-8" >
+				<div class="row">
+					<div class= "description-wrapper col-md-8 col-lg-12">
+						<h2><%= @piece.name %></h2>
+            <% if @piece.is_a?(Exhibit) || @piece.is_a?(Event)%>
+  						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=@piece.start_date.strftime("%B, %d")%> - <%= @piece.end_date.strftime("%B, %d %Y") %></h4>
+            <% end %>
+						<p><%= @piece.description %></p>
+					</div>
+				</div>
+				<div class="row">
+
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="panel-body">
+			<i class="fa fa-share-square-o icon-link" aria-hidden="true"></i>
+			<i class="fa fa-bookmark-o icon-link" aria-hidden="true"></i>
+			<div class="tag-wrapper">
+        <% @piece.tags.each do |tag| %>
+					<div class="btn-link">
+						<%= link_to(tag) do %>
+					    <button type="button" class="btn btn-default tag-button"><%="##{tag.name}"%></button>
+						<% end %>
+					</div>
+        <% end %>
+			</div>
+	</div>
+</div>

@@ -4,7 +4,7 @@ class TicketsMailer < ApplicationMailer
 
   def purchase_email(user)
     @user = user
-    attachments.inline['logo.jpg'] = File.read("#{Rails.root}/app/assets/images/giphy.gif")
+    attachments.inline['logo.jpg'] = File.read("#{Rails.root}/app/assets/images/Medici_logos/MediciLogo_final.jpg")
     @ticket = Ticket.where(user_id: @user.id).last
     @quantity = @ticket.quantity
     @url  = tickets_redeem_url(@ticket)

@@ -15,7 +15,8 @@
 
       <div class="thumbnail-header">
         <h3><%= link_to "#{post.name}", post %></h3>
-        <% if post.price == 0.0 %>
+        <% if post.is_a?(Piece) %>
+        <% elsif post.price == 0.0 %>
           <p>
             FREE
           </p>

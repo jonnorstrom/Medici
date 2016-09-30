@@ -3,7 +3,9 @@
 		<div class="row panel-row">
 			<div class= "image-featured col-md-4">
 				<%= image_tag exhibit.photo.url(:large) %>
-	    	<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
+
+					<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
+
 				<% if current_user && museum.is_a?(Event)%>
 					<% if current_order.tickets.length > 0 %>
 						<div class="input-group-btn">
