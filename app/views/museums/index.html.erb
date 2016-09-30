@@ -1,10 +1,11 @@
 <div class= "row masonry-container">
-	<div class= "col-sm-6 col-lg-6 hidden-xs app-advertisement event-panel post-wrapper">
+	<%= link_to @main_post do %>
+		<div class= "col-sm-6 col-lg-6 hidden-xs app-advertisement event-panel post-wrapper">
 		<div class="thumbnail">
-	       <%= link_to image_tag(@main_post.photo.url(:large)), @main_post %>
+	       <%= image_tag(@main_post.photo.url(:large)) %>
 	        <div class="caption">
 	          <div class="thumbnail-header">
-	            <h3><%=link_to @main_post.name, @main_post %></h3>
+	            <h3><%=@main_post.name%></h3>
 			        <% if @main_post.price == 0.0 %>
 			          <p>
 			            FREE
@@ -40,6 +41,7 @@
       <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
     </div>
 	</div>
+	<% end %>
 	<% @posts.shuffle.each do |post| %>
 	  <%= render "museum_row", post: post, ticket: @ticket  %>
 	<% end %>

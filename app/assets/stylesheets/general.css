@@ -148,3 +148,14 @@ a:hover {
 	transition: box-shadow 0.5s ease;
 	box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.15) !important;
 }
+
+.avatar:hover, .user-name:hover, .main-logo:hover {
+	transition: transform 0.5s ease;
+	transform: scale(1.04);
+}
+.avatar, .user-name, .main-logo {
+	transition: transform 0.5s ease;
+}
+a:focus {
+	outline:0;
+}

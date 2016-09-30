@@ -39,10 +39,10 @@
                 <% elsif current_user && !current_user.avatar_file_name.nil? %>
                     <%= link_to image_tag(current_user.avatar.url(:large)), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
                 <% end %>
-                <%= link_to image_tag("Medici_logos/MediciLogo_final.jpg"), root_path, class: "navbar-left hidden-xs"%>
+                <%= link_to image_tag("Medici_logos/MediciLogo_final.jpg"), root_path, class: "navbar-left hidden-xs main-logo"%>
                 <% if current_user %>
 
-                  <%= link_to "Hi, #{current_user.name}!", user_path(current_user), class: "navbar-brand" %>
+                  <%= link_to " #{current_user.name}!", user_path(current_user), class: "navbar-brand user-name" %>
                 <% end %>
               </div>
               <% if @user_page && !current_user.avatar_file_name.nil? %>
