@@ -45,7 +45,7 @@
                   <%= link_to "Hi, #{current_user.name}!", user_path(current_user), class: "navbar-brand" %>
                 <% end %>
               </div>
-              <% if @user_page %>
+              <% if @user_page && !current_user.avatar_file_name.nil? %>
                 <%= link_to "Edit Profile", edit_user_registration_path, class: "list-group-item" %>
               <% end %>
               <div class="collapse navbar-collapse">
