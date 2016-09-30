@@ -5,13 +5,13 @@
 <% if current_user.tags == [] %>
 	<div class="row masonry-row">
 		<% @all_posts.shuffle.each do |post| %>
-		<%= render "custom_row", post: post, ticket: @ticket  %>
+		<%= render "museums/museum_row", post: post, ticket: @ticket  %>
 		<% end %>
 	</div>
 <% else %>
 	<div class="row masonry-row">
 		<% @posts.shuffle.each do |post| %>
-		<%= render "custom_row", post: post, ticket: @ticket  %>
+		<%= render "museums/museum_row", post: post, ticket: @ticket  %>
 		<% end %>
 	</div>
 <% end %>

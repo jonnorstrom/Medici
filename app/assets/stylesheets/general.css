@@ -159,3 +159,7 @@ a:hover {
 a:focus {
 	outline:0;
 }
+
+*:focus {
+	outline:0;
+}
