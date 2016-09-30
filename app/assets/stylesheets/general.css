@@ -90,3 +90,43 @@ a.avatar img{
 	margin-right: 10px;
 	margin-bottom: 5px;
 }
+
+p:first-child:first-letter { 
+	float: left;
+	color: #903;
+	font-size: 75px;
+	line-height: 60px;
+	padding-top: 4px;
+	padding-right: 8px;
+	padding-left: 3px;
+	font-family: Georgia;
+}
+
+.blog-img {
+	margin-top: 1%;
+	margin-bottom: 2%;
+}
+.cyan {
+	float: left;
+	background-color: cyan;
+	height: 2px;
+	width: 33%;
+	/*display: inline-block;*/
+	box-sizing: border-box;
+}
+.magenta {
+	float:left;
+	background-color: magenta;
+	height: 2px;
+	width: 33%;
+	/*box-sizing: border-box;*/
+	display: inline-block;
+}
+.yellow {
+	float: left;
+	background-color: yellow;
+	height: 2px;
+	width: 33%;
+	/*box-sizing: border-box;*/
+	display: inline-block;
+}
