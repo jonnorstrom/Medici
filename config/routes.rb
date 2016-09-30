@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get "users/:id/personalized" => "users#personalized"
   get "users/:id/tagging" => "users#tagging_new"
   post "users/:id/tagging" => "users#tagging_create"
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show]
   resources :taggings
   resources :tags, only: [:show]
   get "terms/terms" => "terms#terms"

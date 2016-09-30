@@ -48,8 +48,9 @@ ActiveRecord::Schema.define(version: 20160928214035) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "transportation_info"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.boolean  "main",                default: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"

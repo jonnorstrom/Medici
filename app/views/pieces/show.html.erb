@@ -20,7 +20,9 @@
             <div class= "image-featured col-xs-8  col-sm-6 col-md-6 blog-img">
               <%= image_tag @piece.photo.url(:large) %>
             </div>
-						<p class="blog-description"><%= @piece.description %></p>
+            <div class="blog-description">
+              <p><%= @piece.description %></p>
+            </div>
 					</div>
 				</div>
 				<div class="row">

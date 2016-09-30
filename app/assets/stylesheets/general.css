@@ -91,19 +91,24 @@ a.avatar img{
 	margin-bottom: 5px;
 }
 
-p:first-child:first-letter { 
+.blog-description {
+	padding-top: 4.5%;
+}
+
+.blog-description p:first-child:first-letter {
 	float: left;
-	color: #903;
-	font-size: 75px;
-	line-height: 60px;
-	padding-top: 4px;
-	padding-right: 8px;
-	padding-left: 3px;
+	/*color: #903;*/
+	font-size: 3.2em;
+	/*line-height: 55px;*/
+	margin-top: -6%;
+	margin-bottom: -5%;
+	padding-right: .5%;
+	/*padding-left: 3px;*/
 	font-family: Georgia;
 }
 
 .blog-img {
-	margin-top: 1%;
+	margin-top: 2%;
 	margin-bottom: 2%;
 }
 .cyan {

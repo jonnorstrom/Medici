@@ -6,6 +6,12 @@ class MuseumsController < ApplicationController
   def index
     @ticket = current_order.tickets.new
     @posts = Museum.all + Exhibit.all + Event.all + Piece.all
+    Event.all.each do |event|
+      if event.main
+        @main_post = event
+      end
+    end
+    @posts.delete(@main_post)
   end
 
   def show

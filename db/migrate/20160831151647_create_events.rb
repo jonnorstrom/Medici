@@ -15,6 +15,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.float :latitude
       t.float :longitude
       t.string :transportation_info
+      t.boolean :main, default: false
       t.timestamps
     end
   end
