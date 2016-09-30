@@ -1,5 +1,5 @@
 <div class= "row masonry-container">
-	<div class= "col-sm-6 col-md-4 col-lg-3 hidden-xs app-advertisement event-panel post-wrapper">
+	<div class= "col-sm-6 col-lg-6 hidden-xs app-advertisement event-panel post-wrapper">
 		<div class="thumbnail">
 	       <%= link_to image_tag(@main_post.photo.url(:large)), @main_post %>
 	        <div class="caption">
@@ -17,13 +17,13 @@
 	        </div>
 					<% if current_user && @main_post.is_a?(Event)%>
 						<% if current_order.tickets.length > 0 %>
-							<div class="input-group-btn">
+							<div class="input-group-btn big-button">
 								<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
 							</div>
 						<% else %>
 							<%= form_for @ticket, remote: true do |f| %>
-								<div class="input-group">
-									<div class="input-group-btn">
+								<div class="input-group ">
+									<div class="input-group-btn big-button">
 										<%= f.hidden_field :quantity, value: 1%>
 										<%= f.hidden_field :event_id, value: @main_post.id %>
 										<%= f.hidden_field :user_id, value: current_user.id %>

@@ -135,3 +135,16 @@ a.avatar img{
 	/*box-sizing: border-box;*/
 	display: inline-block;
 }
+
+.big-button a, .big-button .input-button{
+	width: 90%;
+	margin-left: 5%;
+}
+a:hover {
+	text-decoration: none !important;
+}
+
+.thumbnail:hover {
+	transition: box-shadow 0.5s ease;
+	box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.15) !important;
+}
