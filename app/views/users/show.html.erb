@@ -1,9 +1,17 @@
+<h2> Welcome <%= current_user.name %>!</h2>
+<h3> Customize your experience</h3>
 <%= link_to "Add Interests", "#{current_user.id}/tagging" %><br>
-
-<h2>Museums for you!</h2>
-<div class="row masonry-row">
-	<% @posts.shuffle.each do |post| %>
-	  <%= render "custom_row", post: post, ticket: @ticket  %>
-	<% end %>
-</div>
-<br>
+<h3>Museums for you:</h3>
+<% if current_user.tags == [] %>
+	<div class="row masonry-row">
+		<% @all_posts.shuffle.each do |post| %>
+		<%= render "custom_row", post: post, ticket: @ticket  %>
+		<% end %>
+	</div>
+<% else %>
+	<div class="row masonry-row">
+		<% @posts.shuffle.each do |post| %>
+		<%= render "custom_row", post: post, ticket: @ticket  %>
+		<% end %>
+	</div>
+<% end %>
