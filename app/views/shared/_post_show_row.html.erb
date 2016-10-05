@@ -27,17 +27,10 @@
 					<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
 				<% else %>
 					<div class="social-buttons">
-						<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-share-button" data-text="is guiding my experience at <%= museum.name %>!" data-show-count="false">Tweet</a>
+						<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-mention-button" data-text="@medici_app is guiding my experience at <%= museum.name %>!" data-show-count="false">Tweet</a>
 						<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.facebook.com%2Fmediciapp&layout=button&size=small&mobile_iframe=true&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-						<div class="dropdown">
-							<button class="fa fa-car icon-link" type="button" data-toggle="dropdown">
-							<span ></span></button>
-							<ul class="dropdown-menu">
-								<li> <p> <%= museum.transportation_info %> </p> </li>
-							</ul>
-						</div>
-					</div>
 
+					</div>
 				<% end %>
 			</div>
 
@@ -55,14 +48,21 @@
 				<div class="row">
 					<div class= "col-xs-4 geo-location hidden-xs">
 						<div id="map"></div>
-
 					</div>
 					<div class= "col-sm-8 col-xs-12 museum-info-wrapper">
 						<h3><%= link_to "#{museum.name}", museum, class: "venue"%></h3>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Address: </p>
 
-							<p class= "museum-info-entry"> <i class="fa fa-map-pin" aria-hidden="true"></i> <%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
+							<p class= "museum-info-entry"> <i class="fa fa-map-pin" aria-hidden="true"></i> <%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p><div class="dropdown">
+								<button class="dropdown-toggle" type="button" data-toggle="dropdown">
+									<i class="fa fa-car" aria-hidden="true"></i>
+								</button>
+								<ul class="dropdown-menu">
+									<li> - <%= museum.transportation_info %></li>
+								</ul>
+							</div>
+
 						</div>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Hours:</p>
@@ -78,7 +78,6 @@
 		</div>
 	</div>
 		<div class="panel-body">
-
 			<div class="tag-wrapper">
         <% exhibit.tags.each do |tag| %>
 					<div class="btn-link">
