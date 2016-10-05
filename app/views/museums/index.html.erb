@@ -1,46 +1,48 @@
 <div class= "row masonry-container">
-	<%= link_to @main_post do %>
-		<div class= "col-sm-6 col-md-4 col-lg-3 hidden-xs app-advertisement event-panel post-wrapper">
-		<div class="thumbnail">
-	       <%= image_tag(@main_post.photo.url(:large)) %>
-	        <div class="caption">
-	          <div class="thumbnail-header">
-	            <h3><%=@main_post.name%></h3>
-			        <% if @main_post.price == 0.0 %>
-			          <p>
-			            FREE
-			          </p>
-			        <% else %>
-			        <p> $<%= '%i' % @main_post.price %>
-			        <% end %>
-	          </div>
-	          <p><%= @main_post.blurb %></p>
-	        </div>
-					<% if current_user && @main_post.is_a?(Event)%>
-						<% if current_order.tickets.length > 0 %>
-							<div class="input-group-btn big-button">
-								<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
-							</div>
-						<% else %>
-							<%= form_for @ticket, remote: true do |f| %>
-								<div class="input-group ">
-									<div class="input-group-btn big-button">
-										<%= f.hidden_field :quantity, value: 1%>
-										<%= f.hidden_field :event_id, value: @main_post.id %>
-										<%= f.hidden_field :user_id, value: current_user.id %>
-										<%= f.submit "Purchase Tickets", class: "input-button" %>
-									</div>
+	<% if !@main_post.nil? %>
+		<%= link_to @main_post do %>
+			<div class= "col-sm-6 col-md-4 col-lg-3 hidden-xs app-advertisement event-panel post-wrapper">
+			<div class="thumbnail">
+		       <%= image_tag(@main_post.photo.url(:large)) %>
+		        <div class="caption">
+		          <div class="thumbnail-header">
+		            <h3><%=@main_post.name%></h3>
+				        <% if @main_post.price == 0.0 %>
+				          <p>
+				            FREE
+				          </p>
+				        <% else %>
+				        <p> $<%= '%i' % @main_post.price %>
+				        <% end %>
+		          </div>
+		          <p><%= @main_post.blurb %></p>
+		        </div>
+						<% if current_user && @main_post.is_a?(Event)%>
+							<% if current_order.tickets.length > 0 %>
+								<div class="input-group-btn big-button">
+									<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
 								</div>
+							<% else %>
+								<%= form_for @ticket, remote: true do |f| %>
+									<div class="input-group ">
+										<div class="input-group-btn big-button">
+											<%= f.hidden_field :quantity, value: 1%>
+											<%= f.hidden_field :event_id, value: @main_post.id %>
+											<%= f.hidden_field :user_id, value: current_user.id %>
+											<%= f.submit "Purchase Tickets", class: "input-button" %>
+										</div>
+									</div>
+								<% end %>
 							<% end %>
+						<% elsif @main_post.is_a?(Event) %>
+							<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
 						<% end %>
-					<% elsif @main_post.is_a?(Event) %>
-						<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
-					<% end %>
-	      </div>
-	      <div class="progress">
-      <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
-    </div>
-	</div>
+		      </div>
+		      <div class="progress">
+	      <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
+	    </div>
+		</div>
+	<% end %>
 <% end %>
 	<div class= "col-sm-6 col-md-4 col-lg-3 hidden-xs app-advertisement post-wrapper">
 		<div class="thumbnail">
