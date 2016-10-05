@@ -1,6 +1,6 @@
 <h2> Welcome <%= current_user.name %>!</h2>
-<h3> Customize your experience</h3>
-<%= link_to "Add Interests", "#{current_user.id}/tagging" %><br>
+<h4> Customize your experience - <%= link_to "Add Interests", "#{current_user.id}/tagging" %></h4>
+
 <h3>Museums for you:</h3>
 <% if current_user.tags == [] %>
 	<div class="row masonry-row">
