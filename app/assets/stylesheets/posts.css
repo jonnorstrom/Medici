@@ -44,15 +44,17 @@
 	position: relative;
 	bottom: 10px;
 }
-.app-advertisement .progress-bar{
+.app-advertisement .progress-bar {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
 	background-color: dimGrey;
 }
- .museum-panel .progress-bar{
+
+
+.museum-panel .progress-bar {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
 	background-color: orange;
 }
-.exhibit-panel .progress-bar{
+.exhibit-panel .progress-bar {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
 	background-color: #1cade6;
 }
@@ -61,4 +63,3 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
 	background-color: #DE6092;
 }
-

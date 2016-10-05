@@ -163,3 +163,7 @@ a:focus {
 *:focus {
 	outline:0;
 }
+
+.dropdown {
+	display:inline-block;;
+}
