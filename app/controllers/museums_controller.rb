@@ -7,7 +7,7 @@ class MuseumsController < ApplicationController
     @ticket = current_order.tickets.new
     @posts = Museum.all + Exhibit.all + Event.all + Piece.all
     Event.all.each do |event|
-      if event.main
+      if !event.main.nil?
         @main_post = event
       end
     end
