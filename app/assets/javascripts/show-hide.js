@@ -29,12 +29,6 @@ $(document).on('turbolinks:load', function(){
         setTimeout(function(){ $container.masonry('layout'); }, 300);
     });
 
-    $container.on( 'click', '.museum-panel', function() {
-        $( this ).css('z-index','10');
-        $( this ).toggleClass('col-lg-3').toggleClass('col-lg-6');
-        setTimeout(function(){ $container.masonry(); $( this ).css('z-index','1'); }, 300);
-    });
-
     $(window).resize(function(){
        var width = $(window).width();
        if(width <= 768){
