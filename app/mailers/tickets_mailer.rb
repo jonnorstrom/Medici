@@ -1,5 +1,5 @@
 class TicketsMailer < ApplicationMailer
-  default from: "MediciTickets@poptarts.com"
+  default from: "Admin@medicimuseums.com"
   include ActionView::Helpers::UrlHelper
 
   def purchase_email(user)
@@ -16,7 +16,7 @@ class TicketsMailer < ApplicationMailer
     else
       @museum = Museum.find(@ticket.museum_id).name
     end
-    mail(to: @user.email, subject: 'Thanks for buying that ticket, dog')
+    mail(from: 'MediciMuseums <admin@medicimuseums.com>', to: @user.email, subject: 'Thanks for purchasing your ticket!')
   end
 
 end

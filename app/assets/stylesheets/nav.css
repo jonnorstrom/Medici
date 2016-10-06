@@ -158,7 +158,7 @@
     lightGrey 18px
   );
 }
-.posts:hover{
+.exhibit-toggle:hover, .museum-toggle:hover, .event-toggle:hover{
   color: darkSlateGray;
 }
 
