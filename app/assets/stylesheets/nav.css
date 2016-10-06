@@ -158,6 +158,10 @@
     lightGrey 18px
   );
 }
+.posts:hover{
+  color: darkSlateGray;
+}
+
 .checkbox-wrapper label{
 
     margin-top: 2px;
@@ -221,8 +225,13 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
     font-size: 17px;
 }
 .list-group-item  a{
-    color: dimGrey
+    color: dimGrey;
 }
+
+.list-group-item a:hover{
+    color: darkSlateGray;
+}
+
 .toggle-group{
     margin-top: 10px;
 }

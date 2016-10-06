@@ -168,3 +168,7 @@ a:focus {
 	margin-top: 1%;
 	display:inline-block;
 }
+
+.social-footer a i:hover {
+	color: darkSlateGray;
+}

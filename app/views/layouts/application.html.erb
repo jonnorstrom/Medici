@@ -62,17 +62,17 @@
                   <label class="checkbox-wrapper" for="museum-toggle">
                     <input type="checkbox" id="museum-toggle" class="hidden" checked>
                     <div class=" well museum-label-toggle"></div>
-                    <label for="museum-toggle"><p>museums</p></label>
+                    <label for="posts museum-toggle"><p>museums</p></label>
                   </label>
                   <label class="checkbox-wrapper" for="exhibit-toggle">
                     <input type="checkbox" id="exhibit-toggle" class="hidden" checked>
                     <div class=" well exhibit-label-toggle"></div>
-                    <label for="exhibit-toggle"><p>exhibits</p></label>
+                    <label for="posts exhibit-toggle"><p>exhibits</p></label>
                   </label>
                   <label class="checkbox-wrapper" for="event-toggle">
                     <input type="checkbox" id="event-toggle" class="hidden" checked>
                     <div class=" well event-label-toggle"></div>
-                    <label for="event-toggle"><p>events</p></label>
+                    <label for="posts event-toggle"><p>events</p></label>
                   </label>
                 <% end %>
 
@@ -84,8 +84,9 @@
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
                   <% end %>
                 </button>
-
-                  <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "list-group-item" %>
+                  <button type="button"class="list-group-item">
+                    <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+                  </button>
                 <% else %>
 
                   <%= button_to "Log in", new_user_session_path, type: "button", id: "log-in-button", class: "list-group-item" %>
@@ -100,7 +101,7 @@
                   </button>
                 <% end %>
               </div>
-              <footer class="hidden-xs">
+              <footer class="social-footer hidden-xs">
               <%= link_to "https://www.facebook.com/mediciapp" do %>
                 <i class="fa fa-facebook-square" aria-hidden="true"></i>
               <% end %>
