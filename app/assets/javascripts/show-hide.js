@@ -1,4 +1,8 @@
 $(document).on('turbolinks:load', function(){
+    $('#search-form').click(function(){
+      $("#advanced-search").css('visibility', 'visible').hide().fadeIn();
+    });
+
     var $container = $('.masonry-container');
     $container.imagesLoaded(function(){
         $container.masonry({
@@ -27,10 +31,6 @@ $(document).on('turbolinks:load', function(){
      $("#event-toggle").click(function(){
         $(".event-panel").toggle();
         setTimeout(function(){ $container.masonry('layout'); }, 300);
-    });
-
-    $('#search-form').click(function(){
-        $("#advanced-search").css('visibility', 'visible').hide().fadeIn();
     });
 
     $(window).resize(function(){
