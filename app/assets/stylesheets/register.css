@@ -120,3 +120,13 @@ input[type="checkbox"]:checked + label span {
 	color: white;
 	font-family: HansKendrick, "Helvetica Neue Light", "Helvetica Neue";
 }
+
+.tag-list {
+	color: darkSlateGray !important;
+	margin-bottom: -5px !important;
+	margin-top: -5px !important;
+}
+
+.form-panel {
+	background-color: #f8f8f8 !important;
+}

@@ -11,11 +11,14 @@
 
 <div class="panel-body">
 	<h4> Your current interests:</h4>
+	<div class="interest-link">	
+		<%= link_to "Change Interests", "#{current_user.id}/tagging" %>
+	</div>
 		<div class="tag-wrapper-user">
 			<% current_user.tags.each do |tag| %>
 				<div class="btn-link">
 					<%= link_to(tag) do %>
-						<button type="button" class="btn btn-default tag-button"><%="##{tag.name}"%></button>
+						<button type="button" class="btn btn-default tag-button tag-list"><%="##{tag.name}"%></button>
 					<% end %>
 				</div>
 			<% end %>
@@ -26,5 +29,5 @@
 		<%= render "museums/museum_row", post: post, ticket: @ticket  %>
 		<% end %>
 	</div>
-	<%= link_to "Change Interests", "#{current_user.id}/tagging" %>
+
 <% end %>

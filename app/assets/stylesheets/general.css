@@ -172,3 +172,7 @@ a:focus {
 .social-footer a i:hover {
 	color: darkSlateGray;
 }
+
+.tags-list {
+	list-style: none;
+}
