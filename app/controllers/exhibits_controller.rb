@@ -75,6 +75,8 @@ class ExhibitsController < ApplicationController
   end
 
   def search_new
+    @search_show = true
+    @show_page = true
     @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all + Tag.all
     @any_or_all = ["any", "all"]
     @tags = Tag.all
@@ -90,6 +92,8 @@ class ExhibitsController < ApplicationController
   end
 
   def tagging_new
+    @search_show = true
+    @show_page = true
     @exhibit = Exhibit.find(params[:id])
     @tagging = Tagging.new
   end

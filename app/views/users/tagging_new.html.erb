@@ -1,26 +1,26 @@
-  <div class="container-sign-in">
-    <div class="panel form-panel">
-      <div class="panel-heading">
-        <div class= "header-wrapper">
-          <h2>Pick some interest from our list of tags!</h2>
-  <%= form_for(@user, :url => "tagging", :html => { :method => :post }) do |f| %>
+<div class="container-sign-in">
+  <div class="panel form-panel">
+    <div class="panel-heading">
+      <div class= "header-wrapper">
+        <h2>Pick some interest from our list of tags!</h2>
+          <%= form_for(@user, :url => "tagging", :html => { :method => :post }) do |f| %>
 
-     <ul class="tags-list">
-       <% Tag.all.each do |tag| %>
-       <%= hidden_field_tag "user_tag_ids_none", nil, {:name => "user[tag_ids][]"}%>
-       <li>
-         <%= check_box_tag "user_tag_ids_#{tag.id}", tag.id, (f.object.taggings.present? && f.object.taggings.include?(tag.id)), {:name => "user[tag_ids][]"}%>
-         <div class="btn-link tag-btn">
-           <%= label_tag "user_tag_ids_#{tag.id}", "##{tag.name}", class: "btn  tag-button tag-list" %>
-         </div>
-       </li>
-       <% end %>
-     </ul>
-     <div class="input-group">
-       <%= f.submit "Save Interests", class: "input-button"%>
-     </div>
-  <% end %>
-</div>
-</div>
-</div>
+             <ul class="tags-list">
+               <% Tag.all.each do |tag| %>
+               <%= hidden_field_tag "user_tag_ids_none", nil, {:name => "user[tag_ids][]"}%>
+               <li>
+                 <%= check_box_tag "user_tag_ids_#{tag.id}", tag.id, (f.object.taggings.present? && f.object.taggings.include?(tag.id)), {:name => "user[tag_ids][]"}%>
+                 <div class="btn-link tag-btn">
+                   <%= label_tag "user_tag_ids_#{tag.id}", "##{tag.name}", class: "btn  tag-button tag-list" %>
+                 </div>
+               </li>
+               <% end %>
+             </ul>
+             <div class="input-group">
+               <%= f.submit "Save Interests", class: "input-button"%>
+             </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 </div>

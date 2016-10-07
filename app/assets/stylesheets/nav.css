@@ -104,8 +104,8 @@
 }
 #search-wrapper{
     margin-left: 15px;
-    margin-top: -73%;
-    margin-bottom: 10rem;
+    margin-top: -75%;
+    margin-bottom: 6rem;
 }
 #search-wrapper i{
     background-color: #F8F8F8;
@@ -136,8 +136,15 @@
   width: 35%;
 }
 #advanced-search{
-    display: none;
+  font-size: 1.3em;
+  visibility: hidden;
+  color: dimGrey;
 }
+
+#advanced-search:hover {
+  color: darkSlateGray;
+}
+
 .checkbox-wrapper{
     display: block;
     margin-left: 5px;

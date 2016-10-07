@@ -36,13 +36,15 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <div id= "search-wrapper">
-                  <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
-                    <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
-                    <%= text_field_tag :search, params[:search], placeholder: "" %>
-                  <% end %>
-                  <%= link_to "Advanced Search", exhibits_search_new_path, id: "advanced-search" %>
-                </div>
+                <% unless @search_show %>
+                  <div id= "search-wrapper">
+                    <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
+                      <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
+                      <%= text_field_tag :search, params[:search], placeholder: "" %>
+                    <% end %>
+                    <%= link_to "Advanced Search", exhibits_search_new_path, id: "advanced-search" %>
+                  </div>
+                <% end %>
 
                 <% if current_user && !current_user.image_url.nil? %>
                   <%= link_to image_tag(current_user.image_url + "?type=large"), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
@@ -121,7 +123,7 @@
           </nav>
         </div>
         <div class="col-sm-9 col-lg-10 content">
-          
+
           <%= yield %>
         <div id="color-hack"></div>
         </div>

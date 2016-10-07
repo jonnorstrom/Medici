@@ -176,3 +176,12 @@ a:focus {
 .tags-list {
 	list-style: none;
 }
+
+.row-tags {
+	color: #9B9999;
+	font-family: HansKendrick-Light;
+	font-size: 1.4em;
+}
+.row-tags:hover {
+	color: darkSlateGray;
+}

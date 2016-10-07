@@ -29,6 +29,10 @@ $(document).on('turbolinks:load', function(){
         setTimeout(function(){ $container.masonry('layout'); }, 300);
     });
 
+    $('#search-form').click(function(){
+        $("#advanced-search").css('visibility', 'visible').hide().fadeIn();
+    });
+
     $(window).resize(function(){
        var width = $(window).width();
        if(width <= 768){

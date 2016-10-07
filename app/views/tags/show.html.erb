@@ -1,7 +1,8 @@
 <h2> #<%= @tag.name %> </h2>
-
-<div class= "row masonry-container">
-	<% @posts.shuffle.each do |post| %>
-	  <%= render "tag_row", post: post, ticket: @ticket  %>
-	<% end %>
+<div class="panel-body">
+	<div class= "row masonry-container">
+		<% @posts.shuffle.each do |post| %>
+		  <%= render "tag_row", post: post, ticket: @ticket  %>
+		<% end %>
+	</div>
 </div>
