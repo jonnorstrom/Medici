@@ -59,10 +59,12 @@
 						<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
 					<% end %>
 				</div>
-				<% @main_post.tags[0..1].each do |tag| %>
-					<%= link_to "##{tag.name}, ", tag, type: "button", class: "row-tags" %>
+				<% if @main_post.tags.length > 2 %>
+					<% @main_post.tags[0..1].each do |tag| %>
+						<%= link_to "##{tag.name}, ", tag, type: "button", class: "row-tags" %>
+					<% end %>
+						<%= link_to "##{@main_post.tags[2].name}", @main_post.tags[2], type: "button", class: "row-tags" %>
 				<% end %>
-					<%= link_to "##{@main_post.tags[2].name}", @main_post.tags[2], type: "button", class: "row-tags" %>
 			</div>
 		</div>
 		<% end %>
