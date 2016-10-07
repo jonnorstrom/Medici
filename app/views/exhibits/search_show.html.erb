@@ -1,20 +1,23 @@
 <h2>Search Results: <%= @term %></h2>
-
-<% unless @tags.nil? %>
-  <% @tags.each do |tag| %>
-  <div class="btn-link">
-    <%= link_to(Tag.find_by(name:tag)) do %>
-       <button type="button" class="btn btn-default tag-button"><%="##{tag}"%></button>
-     <% end %>
-  </div>
+<div class="panel-body">
+  <% unless @tags.nil? %>
+    <% @tags.each do |tag| %>
+    <div class="btn-link">
+      <%= link_to(Tag.find_by(name:tag)) do %>
+         <button type="button" class="btn btn-default tag-button"><%="##{tag}"%></button>
+       <% end %>
+    </div>
+    <% end %>
   <% end %>
-<% end %>
-<div class= "row masonry-container">
-  <% if @posts.empty? %>
-    <p> Sorry! Nothing matches your search query.</p>
-  <% else %>
-  	<% @posts.shuffle.each do |post| %>
-  	  <%= render "search_row", post: post, ticket: @ticket  %>
-  	<% end %>
-  <% end %>
+    <% if @posts.empty? %>
+    <div class="row ">
+      <p> Sorry! Nothing matches your search query.</p>
+    </div>
+    <% else %>
+    <div class= "row masonry-container">
+    	<% @posts.shuffle.each do |post| %>
+    	  <%= render "search_row", post: post, ticket: @ticket  %>
+    	<% end %>
+    </div>
+    <% end %>
 </div>
