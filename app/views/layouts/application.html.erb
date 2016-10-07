@@ -36,7 +36,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <% unless @search_show %>
+                <% if !@search_show %>
                   <div id= "search-wrapper">
                     <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
                       <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
