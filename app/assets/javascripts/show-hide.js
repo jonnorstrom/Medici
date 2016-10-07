@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function(){
+
     $('.super-search').click(function(){
       $('.search-in-search').slideDown();
     });

@@ -15,6 +15,7 @@
   animation-timing-function: ease-out;
   animation-duration: 0.6s;
 }
+
 @keyframes dropPanel {
     0% {
         left: 40%;
