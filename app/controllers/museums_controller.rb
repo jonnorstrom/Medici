@@ -15,6 +15,7 @@ class MuseumsController < ApplicationController
   end
 
   def show
+    @show_page = true
     @museum = Museum.find(params[:id])
     @ticket = current_order.tickets.new
     @exhibits = @museum.exhibits.all

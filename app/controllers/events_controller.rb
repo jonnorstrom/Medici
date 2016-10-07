@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
   def show
+    @show_page = true
     @event = Event.find(params[:id])
     @ticket = current_order.tickets.new
     # @museum = Museum.find(@event.museum_id)

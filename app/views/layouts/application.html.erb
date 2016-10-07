@@ -27,13 +27,22 @@
         <div class="col-sm-3 col-lg-2">
           <nav class="navbar navbar-default navbar-fixed-side">
             <div class="container">
+
               <div class="navbar-header">
+
                 <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                   <span class="sr-only">Toggle navigation</span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
+                <div id= "search-wrapper">
+                  <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
+                    <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
+                    <%= text_field_tag :search, params[:search], placeholder: "" %>
+                  <% end %>
+                  <%= link_to "Advanced Search", exhibits_search_new_path, id: "advanced-search" %>
+                </div>
 
                 <% if current_user && !current_user.image_url.nil? %>
                   <%= link_to image_tag(current_user.image_url + "?type=large"), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
@@ -47,18 +56,13 @@
                 <% end %>
               </div>
               <% if @user_page && !current_user.avatar_file_name.nil? %>
-                <%= link_to "Edit Profile", edit_user_registration_path, class: "list-group-item" %>
+              <button type="button"class="list-group-item">
+                <%= link_to "Edit Profile", edit_user_registration_path %>
+              </button>
               <% end %>
               <div class="collapse navbar-collapse">
-                <div id= "search-wrapper">
-                  <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
-                    <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
-                    <%= text_field_tag :search, params[:search], placeholder: "Search" %>
-                  <% end %>
-                  <%= link_to "Advanced Search", exhibits_search_new_path, id: "advanced-search" %>
-                </div>
 
-                <% if ["index"].include?(params[:action]) %>
+                <% unless @user_page || @show_page %>
                   <label class="checkbox-wrapper" for="museum-toggle">
                     <input type="checkbox" id="museum-toggle" class="hidden" checked>
                     <div class=" well museum-label-toggle"></div>
@@ -102,13 +106,13 @@
                 <% end %>
               </div>
               <footer class="social-footer hidden-xs">
-              <%= link_to "https://www.facebook.com/mediciapp" do %>
+              <%= link_to "https://www.facebook.com/medicimuseums" do %>
                 <i class="fa fa-facebook-square" aria-hidden="true"></i>
               <% end %>
-              <%= link_to "https://www.instagram.com/medici_app/" do %>
+              <%= link_to "https://www.instagram.com/medicimuseums/" do %>
                 <i class="fa fa-instagram" aria-hidden="true"></i>
               <% end %>
-              <%= link_to "https://twitter.com/medici_app" do %>
+              <%= link_to "https://twitter.com/medicimuseums" do %>
                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
               <% end %>
               <p class= "text-muted">Medici LLC, Is brought to you buy the international asscociation of dislexic court reporters</p>

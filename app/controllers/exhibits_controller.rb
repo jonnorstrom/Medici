@@ -3,6 +3,7 @@ class ExhibitsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
   def show
+    @show_page = true
     @exhibit = Exhibit.find(params[:id])
     @ticket = current_order.tickets.new
     @museum = Museum.find(@exhibit.museum_id)
