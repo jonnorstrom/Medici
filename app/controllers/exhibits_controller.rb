@@ -28,6 +28,8 @@ class ExhibitsController < ApplicationController
   end
 
   def search_show
+    @all_tags = Tag.all
+    @search_show = true
     @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all
     @ticket = current_order.tickets.new
     @posts = []

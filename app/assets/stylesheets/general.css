@@ -185,3 +185,7 @@ a:focus {
 .row-tags:hover {
 	color: darkSlateGray;
 }
+
+.search-in-search {
+	display: none;
+}

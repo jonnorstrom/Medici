@@ -36,15 +36,6 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <% if !@search_show %>
-                  <div id= "search-wrapper">
-                    <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
-                      <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
-                      <%= text_field_tag :search, params[:search], placeholder: "" %>
-                    <% end %>
-                    <%= link_to "Advanced Search", exhibits_search_new_path, id: "advanced-search" %>
-                  </div>
-                <% end %>
 
                 <% if current_user && !current_user.image_url.nil? %>
                   <%= link_to image_tag(current_user.image_url + "?type=large"), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
@@ -57,13 +48,21 @@
                   <%= link_to " #{current_user.name}!", user_path(current_user), class: "navbar-brand user-name" %>
                 <% end %>
               </div>
-              <% if @user_page && !current_user.avatar_file_name.nil? %>
-              <button type="button"class="list-group-item">
-                <%= link_to "Edit Profile", edit_user_registration_path %>
-              </button>
-              <% end %>
-              <div class="collapse navbar-collapse">
 
+              <div class="collapse navbar-collapse">
+                <% if !@search_show %>
+                  <div id= "search-wrapper">
+                    <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
+                      <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
+                      <%= text_field_tag :search, params[:search], placeholder: "search" %>
+                    <% end %>
+                  </div>
+                <% end %>
+                <% if @user_page && !current_user.avatar_file_name.nil? %>
+                <button type="button"class="list-group-item">
+                  <%= link_to "edit profile", edit_user_registration_path %>
+                </button>
+                <% end %>
                 <% unless @user_page || @show_page %>
                   <label class="checkbox-wrapper" for="museum-toggle">
                     <input type="checkbox" id="museum-toggle" class="hidden" checked>
@@ -84,14 +83,14 @@
 
                 <% if current_user %>
                 <button type="button"class="list-group-item">
-                  <%= link_to "Checkout", cart_path(current_user.id) %>
+                  <%= link_to "checkout", cart_path(current_user.id) %>
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   <%if current_order.tickets.where(paid: false).size > 0 %>
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
                   <% end %>
                 </button>
                   <button type="button"class="list-group-item">
-                    <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+                    <%= link_to "logout", destroy_user_session_path, :method => :delete %>
                   </button>
                 <% else %>
 
@@ -117,7 +116,7 @@
               <%= link_to "https://twitter.com/medicimuseums" do %>
                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
               <% end %>
-              <p class= "text-muted">Medici LLC, Is brought to you buy the international asscociation of dislexic court reporters</p>
+              <p class= "text-muted">Medici LLC&copy;</p>
             </footer>
             </div>
           </nav>

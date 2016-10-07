@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function(){
-    $('#search-form').click(function(){
-      $("#advanced-search").css('visibility', 'visible').hide().fadeIn();
+    $('.super-search').click(function(){
+      $('.search-in-search').slideDown();
     });
 
     var $container = $('.masonry-container');

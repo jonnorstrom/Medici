@@ -10,9 +10,7 @@
 <% else %>
 
 <div class="panel-body">
-	<h4> Your current interests:</h4>
-	<div class="interest-link">	
-		<%= link_to "Change Interests", "#{current_user.id}/tagging" %>
+	<div class="interest-link">
 	</div>
 		<div class="tag-wrapper-user">
 			<% current_user.tags.each do |tag| %>
@@ -24,6 +22,7 @@
 			<% end %>
 		</div>
 	</div>
+	<%= link_to "Change Interests", "#{current_user.id}/tagging" %>
 	<div class="row masonry-row">
 		<% @posts.shuffle.each do |post| %>
 		<%= render "museums/museum_row", post: post, ticket: @ticket  %>
