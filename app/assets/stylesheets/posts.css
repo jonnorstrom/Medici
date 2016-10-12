@@ -52,14 +52,13 @@
 
 .museum-panel .progress-bar {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
-	background-color: orange;
+	background-color: #0C8795;
 }
 .exhibit-panel .progress-bar {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
-	background-color: #1cade6;
+	background-color: #1EBAEA;
 }
-
 .event-panel .progress-bar{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
-	background-color: #DE6092;
+	background-color: #8CD6E8;
 }

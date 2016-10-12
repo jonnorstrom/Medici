@@ -20,8 +20,8 @@
            <i><span>or</span></i>
         </div>
         <div class="btn-group" role="group" aria-label="connect with faceboobs">
-          <button type="button" class="btn btn-primary"><i class="fa fa-facebook-square" style= "color: white;" aria-hidden="true"></i></button>
-          <button type="button" class="btn btn-primary">Connect</button>
+          <%= button_to user_facebook_omniauth_authorize_path, class: "btn btn-primary facebook-connect" do %> <i class="fa fa-facebook-square" style= "color: white;" aria-hidden="true"></i>  Connect with Facebook <% end %>
+
         </div>
       </div>
     </div>
