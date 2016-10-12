@@ -242,3 +242,14 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
     height: 100%;
     margin-left: -15px
 }
+
+.list-group-item .logout {
+
+  color: lightGrey;
+}
+
+.glyphicon-shopping-cart {
+  margin-top: 5px;
+  margin-left: -3px;
+  font-size: 20px;
+}
