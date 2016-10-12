@@ -42,7 +42,8 @@
                 <% elsif current_user && !current_user.avatar_file_name.nil? %>
                     <%= link_to image_tag(current_user.avatar.url(:large)), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
                 <% end %>
-                <%= link_to image_tag("Medici_logos/MediciLogo_final.jpg"), root_path, class: "navbar-left hidden-xs main-logo"%>
+
+                <%= link_to image_tag("Medici_logos/Medici_logo_final.png"), root_path, class: "navbar-left hidden-xs main-logo"%>
                 <% if current_user %>
 
                   <%= link_to " #{current_user.name}!", user_path(current_user), class: "navbar-brand user-name" %>
@@ -64,6 +65,7 @@
                 </button>
                 <% end %>
                 <% unless @user_page || @show_page %>
+                <div class="nav-boxes">
                   <label class="checkbox-wrapper" for="museum-toggle">
                     <input type="checkbox" id="museum-toggle" class="hidden" checked="checked">
                     <div class=" well museum-label-toggle"></div>
@@ -79,6 +81,7 @@
                     <div class=" well event-label-toggle"></div>
                     <label for="event-toggle"><p>events</p></label>
                   </label>
+                </div>
                 <% end %>
                 <% if current_user %>
                 <button type="button"class="list-group-item">
@@ -120,6 +123,7 @@
         <div class="col-sm-9 col-lg-10 content">
           <%= yield %>
         <div id="color-hack"></div>
+        <%= render 'layouts/footer' %>
         </div>
       </div>
     </div>

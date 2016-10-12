@@ -17,13 +17,17 @@
       <div class="thumbnail-header">
         <h3><%= post.name %></h3>
         <% if post.is_a?(Piece) %>
+        <% elsif post.is_a?(Exhibit) && post.price == post.museum.price %>
+          <p>
+            General Admission
+          </p>
         <% elsif post.price == 0.0 %>
           <p>
             FREE
           </p>
         <% else %>
         <p> $<%= '%i' % post.price %>
-          <% if defined? post.exhibits.sort.first.price %>
+          <% if (defined? post.exhibits.sort.first.price) && post.price != post.exhibits.sort.first.price%>
           - $<%= '%i' %post.exhibits.sort.first.price %>
           <% end %> </p>
         <% end %>

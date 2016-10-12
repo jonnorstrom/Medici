@@ -156,6 +156,11 @@ a:hover {
 .avatar, .user-name, .main-logo {
 	transition: transform 0.5s ease;
 }
+
+.user-name:hover{
+	color:#0C8795 !important;
+}
+
 a:focus {
 	outline:0;
 }
@@ -170,7 +175,7 @@ a:focus {
 }
 
 .social-footer a i:hover {
-	color: darkSlateGray;
+	color: #0C8795;
 }
 
 .tags-list {
@@ -183,9 +188,15 @@ a:focus {
 	font-size: 1.4em;
 }
 .row-tags:hover {
-	color: darkSlateGray;
+	color: #0C8795;
 }
 
 .search-in-search {
 	display: none;
+	padding-top: 2%;
+}
+
+select#any_or_all.form-control {
+	width: 8%;
+	display: inline-block;
 }

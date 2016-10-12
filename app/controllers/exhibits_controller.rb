@@ -36,7 +36,6 @@ class ExhibitsController < ApplicationController
     @term = params[:search].downcase
     @tags = params[:tag_search]
     if params[:search]
-
       if @tags
         @all_posts.each do |post|
           if params[:any_or_all] == "Any"

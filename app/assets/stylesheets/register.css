@@ -123,11 +123,17 @@ input[type="checkbox"]:checked + label span {
 }
 
 .tag-list {
-	color: darkSlateGray !important;
+	color: #0C8795 !important;
 	margin-bottom: -5px !important;
 	margin-top: -5px !important;
 }
 
 .form-panel {
 	background-color: #f8f8f8 !important;
+}
+
+.search-input-button {
+  padding-top: 8px;
+	padding-bottom: 6px;
+  margin: 0;
 }

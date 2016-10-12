@@ -70,7 +70,9 @@
 						</div>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Website:</p>
-							<p class= "museum-info-entry"> <i class="fa fa-share-square-o" aria-hidden="true" style="padding-top: 7px;"></i><%= link_to museum.website, "http://#{museum.website}"%></p>
+							<p class= "museum-info-entry"> <i class="fa fa-share-square-o" aria-hidden="true" style="padding-top: 7px;"></i>
+								<a href= '<%="http://#{museum.website}"%>' onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;"><%="http://#{museum.website}"%></a>
+							</p>
 						</div>
 					</div>
 				</div>
