@@ -123,7 +123,7 @@ input[type="checkbox"]:checked + label span {
 }
 
 .tag-list {
-	color: darkSlateGray !important;
+	color: #0C8795 !important;
 	margin-bottom: -5px !important;
 	margin-top: -5px !important;
 }

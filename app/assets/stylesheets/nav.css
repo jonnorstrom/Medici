@@ -141,7 +141,7 @@
 }
 
 #advanced-search:hover {
-  color: darkSlateGray;
+  color: #0C8795;
 }
 
 .checkbox-wrapper{
@@ -166,7 +166,7 @@
       );
 }
 .exhibit-toggle:hover, .museum-toggle:hover, .event-toggle:hover{
-  color: darkSlateGray;
+  color: #0C8795;
 }
 
 .checkbox-wrapper label{
@@ -188,7 +188,7 @@
     transition: border-left 0.2s;
 }
 input#museum-toggle[type=checkbox]:checked ~.museum-label-toggle{
-     background: #0C8795;
+    background: #0C8795;
     padding: .3vw 2.3vw;
     box-shadow: inset 0 3px 3px rgba(0,0,0,.2);
 }
@@ -218,7 +218,7 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
 }
 
 .list-group-item a:hover{
-    color: darkSlateGray;
+    color: #0C8795;
 }
 
 .toggle-group{
