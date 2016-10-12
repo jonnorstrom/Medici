@@ -42,7 +42,7 @@
                 <% elsif current_user && !current_user.avatar_file_name.nil? %>
                     <%= link_to image_tag(current_user.avatar.url(:large)), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
                 <% end %>
-                
+
                 <%= link_to image_tag("Medici_logos/Medici_logo_final.png"), root_path, class: "navbar-left hidden-xs main-logo"%>
                 <% if current_user %>
 
@@ -124,6 +124,7 @@
         <div class="col-sm-9 col-lg-10 content">
           <%= yield %>
         <div id="color-hack"></div>
+        <%= render 'layouts/footer' %>
         </div>
       </div>
     </div>
