@@ -157,6 +157,7 @@
     padding: .1vw 1vw;
     border-radius: 14px;
     transition: padding 0.2s;
+    cursor: pointer;
     background: repeating-linear-gradient(
       45deg,
       #E1E1E1,
@@ -170,12 +171,12 @@
 }
 
 .checkbox-wrapper label{
-
     margin-top: 2px;
     margin-bottom: 0px;
     padding: 2px;
     display: inline-block;
     background-color: transparent;
+    cursor: pointer;
 }
 .checkbox-wrapper label p{
     margin-left: 4px;

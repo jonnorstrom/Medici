@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function(){
-
     $('.super-search').click(function(){
       $('.search-in-search').slideDown();
     });
@@ -18,21 +17,53 @@ $(document).on('turbolinks:load', function(){
     $(".btn2").click(function(){
         $(".panel-sign-in").slideDown();
     });
-	  document.getElementById('museum-toggle').focus();
-    $("#museum-toggle").click(function(){
-        $(".museum-panel").toggle();
+
+    $( "#museum-toggle" ).prop( "checked", true );
+    $( "#exhibit-toggle" ).prop( "checked", true );
+    $( "#event-toggle" ).prop( "checked", true);
+
+    var hasClicked = false;
+    $(".checkbox-wrapper").click(function(){
+      if(hasClicked == false){
+         $( "#museum-toggle" ).prop( "checked", false );
+         $( "#exhibit-toggle" ).prop( "checked", false );
+         $( "#event-toggle" ).prop( "checked", false );
+
+         $('.museum-panel').hide();
+         $('.exhibit-panel').hide();
+         $('.event-panel').hide();
+         hasClicked = true;
+         $( "this" ).prop("checked", true);
+      }
+    });
+    
+    $( "#museum-toggle" ).change(function() {
+        if($(this).prop("checked")) {
+          $('.museum-panel').show();
+        } 
+        else {
+          $('.museum-panel').hide();
+        }
         setTimeout(function(){ $container.masonry('layout'); }, 300);
     });
-    document.getElementById('exhibit-toggle').focus();
-     $("#exhibit-toggle").click(function(){
-        $(".exhibit-panel").toggle();
+    $( "#exhibit-toggle" ).change(function() {
+        if($(this).prop("checked")) {
+          $('.exhibit-panel').show();
+        } 
+        else {
+          $('.exhibit-panel').hide();
+        }
         setTimeout(function(){ $container.masonry('layout'); }, 300);
     });
-     document.getElementById('event-toggle').focus();
-     $("#event-toggle").click(function(){
-        $(".event-panel").toggle();
+    $( "#event-toggle" ).change(function() {
+        if($(this).prop("checked")) {
+          $('.event-panel').show();
+        } 
+        else {
+          $('.event-panel').hide();
+        }
         setTimeout(function(){ $container.masonry('layout'); }, 300);
-    });
+    });        
 
     $(window).resize(function(){
        var width = $(window).width();

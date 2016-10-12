@@ -65,26 +65,25 @@
                 <% end %>
                 <% unless @user_page || @show_page %>
                   <label class="checkbox-wrapper" for="museum-toggle">
-                    <input type="checkbox" id="museum-toggle" class="hidden" checked>
+                    <input type="checkbox" id="museum-toggle" class="hidden" checked="checked">
                     <div class=" well museum-label-toggle"></div>
                     <label for="museum-toggle"><p>museums</p></label>
                   </label>
                   <label class="checkbox-wrapper" for="exhibit-toggle">
-                    <input type="checkbox" id="exhibit-toggle" class="hidden" checked>
+                    <input type="checkbox" id="exhibit-toggle" class="hidden" checked="checked">
                     <div class=" well exhibit-label-toggle"></div>
                     <label for="exhibit-toggle"><p>exhibits</p></label>
                   </label>
                   <label class="checkbox-wrapper" for="event-toggle">
-                    <input type="checkbox" id="event-toggle" class="hidden" checked>
+                    <input type="checkbox" id="event-toggle" class="hidden" checked="checked">
                     <div class=" well event-label-toggle"></div>
                     <label for="event-toggle"><p>events</p></label>
                   </label>
                 <% end %>
-
                 <% if current_user %>
                 <button type="button"class="list-group-item">
-                  <span class="glyphicon glyphicon-shopping-cart"></span>
                   <%= link_to "checkout", cart_path(current_user.id) %>
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
                   <%if current_order.tickets.where(paid: false).size > 0 %>
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
                   <% end %>
@@ -93,9 +92,7 @@
                     <%= link_to "logout", destroy_user_session_path, :method => :delete %>
                   </button>
                 <% else %>
-
                   <%= button_to "Log in", new_user_session_path, type: "button", id: "log-in-button", class: "list-group-item" %>
-
                   <button type="button"class="list-group-item">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                     <a href="#">check out</a>
