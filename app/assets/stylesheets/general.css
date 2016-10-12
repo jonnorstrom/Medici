@@ -196,6 +196,7 @@ a:focus {
 	padding-top: 2%;
 }
 
-.super-search {
-
+select#any_or_all.form-control {
+	width: 8%;
+	display: inline-block;
 }

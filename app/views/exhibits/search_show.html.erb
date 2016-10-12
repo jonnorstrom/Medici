@@ -1,5 +1,5 @@
   <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
-  <div id="search-wrapper">
+  <div class="super-search-wrapper" id="search-wrapper">
 
     <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
     <div class="super-search main-search">
@@ -16,9 +16,9 @@
             </label>
             </div>
         <% end %>
+        <%= select_tag "any_or_all", "<option class='dropdown-item'>Any</option><option class='dropdown-item'>All</option>".html_safe, class: "form-control" %>
       </div>
       <div class="btn-group">
-        <%= select_tag "any_or_all", "<div class='dropdown-menu'><option class='dropdown-item'>Any</option><option class='dropdown-item'>All</option></div>".html_safe %>
       </div>
     <div class="input-group">
       <%= submit_tag "Search", class: "input-button search-input-button"%>

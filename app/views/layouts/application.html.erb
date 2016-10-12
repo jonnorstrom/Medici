@@ -65,6 +65,7 @@
                 </button>
                 <% end %>
                 <% unless @user_page || @show_page %>
+                <div class="nav-boxes">
                   <label class="checkbox-wrapper" for="museum-toggle">
                     <input type="checkbox" id="museum-toggle" class="hidden" checked>
                     <div class=" well museum-label-toggle"></div>
@@ -80,6 +81,7 @@
                     <div class=" well event-label-toggle"></div>
                     <label for="event-toggle"><p>events</p></label>
                   </label>
+                </div>
                 <% end %>
 
                 <% if current_user %>

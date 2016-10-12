@@ -131,6 +131,11 @@
     outline: none;
     border-bottom: 2px solid rgba(192, 192, 192, 1);
 }
+
+.super-search-wrapper {
+  margin-top: -2.5%;
+}
+
 .main-search #search{
   width: 35%;
 }
@@ -144,8 +149,13 @@
   color: #0C8795;
 }
 
+.nav-boxes {
+  margin-top: 5%;
+}
+
 .checkbox-wrapper{
     display: block;
+
     margin-left: 5px;
     margin-bottom: 0px;
 }
