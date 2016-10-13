@@ -16,11 +16,6 @@
 
       <div class="thumbnail-header">
         <h3><%= post.name %></h3>
-        <% if post.is_a?(Exhibit) %>
-        <div class="">
-          <%= post.museum.name %>
-        </div>
-        <% end %>
         <% if post.is_a?(Piece) %>
         <% elsif post.is_a?(Exhibit) && post.price == post.museum.price %>
           <p>
