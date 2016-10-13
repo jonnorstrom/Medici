@@ -32,9 +32,6 @@
 		width: 24%;
 	}
 }
-
-
-
 .thumbnail{
 	position: relative;
     margin: 0px 10px !important;
@@ -74,17 +71,33 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
 	background-color: dimGrey;
 }
-
-
 .museum-panel .progress-bar {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
-	background-color: #0C8795;
+	background: repeating-linear-gradient(
+      45deg,
+      #00AEEF,
+      #00AEEF 9px,
+      #23A2D1 9px,
+      #23A2D1 18px
+      );
 }
 .exhibit-panel .progress-bar {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
-	background-color: #1EBAEA;
+	background: repeating-linear-gradient(
+      45deg,
+      #DB4599,
+      #DB4599 9px,
+      #E861AB 9px,
+      #E861AB 18px
+      );
 }
 .event-panel .progress-bar{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
-	background-color: #8CD6E8;
+	background: repeating-linear-gradient(
+      45deg,
+      #F2D13E,
+      #F2D13E 9px,
+      #F7DE6F 9px,
+      #F7DE6F 18px
+      );
 }

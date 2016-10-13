@@ -13,7 +13,6 @@
 			<div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
 		</div>
 	</div>
-
 	<% if !@main_post.nil? %>
 		<%= link_to @main_post do %>
 		<div class="col-sm-6 col-md-4 col-lg-3 post-wrapper event-panel">
@@ -36,7 +35,6 @@
 					<% end %>
 				</div>
 				<p><%= @main_post.blurb %></p>
-
 				<div>
 					<% if current_user && @main_post.is_a?(Event)%>
 						<% if current_order.tickets.length > 0 %>
