@@ -8,9 +8,6 @@
   <h2> Exhibits: </h2>
 
   <% @exhibits.each do |exhibit| %>
-    <h3> <%= link_to exhibit.name, exhibit %> </h3 >
-    <p> <%= exhibit.start_date.strftime("%m/%Y/%d") %> - <%= exhibit.end_date.strftime("%m/%Y/%d") %> </p>
-    <p><%= exhibit.description %></p>
-    <%= image_tag exhibit.photo.url(:large) %>
+    <%= render "museum_row", post: exhibit, ticket: @ticket  %>
   <% end %>
 <% end %>

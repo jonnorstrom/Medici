@@ -200,3 +200,19 @@ select#any_or_all.form-control {
 	width: 8%;
 	display: inline-block;
 }
+
+.mobile-title {
+	color: dimGrey;
+	margin-top: -5%;
+}
+
+.thumbnail p:hover, .thumbnail p:focus, .thumbnail p:active, .thumbnail p:visited{
+	text-decoration: none;
+}
+
+.tagline {
+	margin-top: 80px;
+	text-align: center;
+	font-family: HansKendrick-Medium;
+	font-size: 1.2em;
+}

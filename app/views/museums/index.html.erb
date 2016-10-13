@@ -1,23 +1,25 @@
 <div class= "row masonry-container">
+	<%= link_to "http://www.medici-app.com", :target => "_blank" do%>
 	<div class= "hidden-xs app-advertisement post-wrapper">
 		<div class="thumbnail">
 
 				 <%= image_tag("app-img.png") %>
 					<div class="caption">
 						<div class="thumbnail-header">
-							<%= link_to "App Coming Soon", "http://www.medici-app.com" %>
 						</div>
+						<h3 class="mobile-title">App Coming Soon</h3>
 						<p>The first mobile way to discover, reserve and share your museum visit.</p>
 					</div>
 				</div>
 				<div class="progress">
 			<div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
 		</div>
+		<% end %>
 	</div>
 
 	<% if !@main_post.nil? %>
 		<%= link_to @main_post do %>
-		<div class="col-sm-6 col-md-4 col-lg-3 post-wrapper event-panel">
+		<div class="post-wrapper event-panel">
 			<div class="thumbnail">
 			<%= image_tag(@main_post.photo.url(:large)) %>
 			<div class="caption">
