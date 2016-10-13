@@ -2,12 +2,15 @@
 * === COLLAPSABLE SIDE NAV EXTRA SMALL (collapsed) ===
 */
 @media (max-width: 768px) {
-
     .navbar-fixed-side {
         position: fixed;
         margin-left: -15px;
         margin-right: -15px;
         border-color: transparent;
+    }
+    .navbar-brand-wrapper{
+        display: inline;
+        width: 100px;
     }
     .navbar-brand{
         font-family: "Brandon Grotesque" , "Helvetica";
