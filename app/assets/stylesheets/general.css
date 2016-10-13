@@ -79,7 +79,7 @@ a.avatar img{
 	left: 60%;
 	transform: translate(75%, -5%);
 	margin-bottom: 2%;
-	margin-top: -30%;
+	margin-top: -40%;
 }
 
 .cart-submit .input-button{
@@ -157,6 +157,10 @@ a:hover {
 	transition: transform 0.5s ease;
 }
 
+.main-logo {
+	margin-bottom: 5%;
+}
+
 .user-name:hover{
 	color:#0C8795 !important;
 }
@@ -211,7 +215,7 @@ select#any_or_all.form-control {
 }
 
 .tagline {
-	margin-top: 80px;
+	
 	text-align: center;
 	font-family: HansKendrick-Medium;
 	font-size: 1.2em;
