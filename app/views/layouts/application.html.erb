@@ -27,7 +27,6 @@
         <div class="col-sm-3 col-lg-2">
           <nav class="navbar navbar-default navbar-fixed-side">
             <div class="container">
-
               <div class="navbar-header">
 
                 <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
@@ -36,14 +35,16 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-
+                <div class= "brand-wrapper">
+                  <%= link_to image_tag("Medici_logos/Medici_logo_CMYK_sm.png"), root_path, class: "navbar-brand hidden-sm hidden-md hidden-lg"%>
+                </div>
                 <% if current_user && !current_user.image_url.nil? %>
                   <%= link_to image_tag(current_user.image_url + "?type=large"), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
                 <% elsif current_user && !current_user.avatar_file_name.nil? %>
                     <%= link_to image_tag(current_user.avatar.url(:large)), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
                 <% end %>
 
-                <%= link_to image_tag("Medici_logos/Medici_logo_final.png"), root_path, class: "navbar-left hidden-xs main-logo"%>
+                <%= link_to image_tag("Medici_logos/Medici_logo_CMYK.png"), root_path, class: "navbar-left hidden-xs main-logo"%>
                 <% if current_user %>
 
                   <%= link_to " #{current_user.name}!", user_path(current_user), class: "navbar-brand user-name" %>
