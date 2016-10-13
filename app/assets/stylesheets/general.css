@@ -202,6 +202,7 @@ a:focus {
 
 select#any_or_all.form-control {
 	width: 8%;
+	min-width: 50px;
 	display: inline-block;
 }
 
