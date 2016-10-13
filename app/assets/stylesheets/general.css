@@ -221,3 +221,7 @@ select#any_or_all.form-control {
 	font-family: HansKendrick-Medium;
 	font-size: 1.2em;
 }
+
+.mobile-tagline {
+	float: left;
+}

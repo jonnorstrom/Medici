@@ -37,6 +37,9 @@
                 </button>
                 <div class= "brand-wrapper">
                   <%= link_to image_tag("Medici_logos/Medici_logo_CMYK_sm.png"), root_path, class: "navbar-brand hidden-sm hidden-md hidden-lg"%>
+                  <p class="tagline mobile-tagline hidden-sm hidden-md hidden-lg">
+                    Change The Way You Museum
+                  </p>
                 </div>
                 <% if current_user && !current_user.image_url.nil? %>
                   <%= link_to image_tag(current_user.image_url + "?type=large"), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
@@ -65,7 +68,7 @@
                 </button>
                 <% end %>
                 <% unless @user_page || @show_page %>
-                <div class="nav-boxes hidden-xs">
+                <div class="nav-boxes">
                   <label class="checkbox-wrapper" for="museum-toggle">
                     <input type="checkbox" id="museum-toggle" class="hidden" checked="checked">
                     <div class=" well museum-label-toggle"></div>
@@ -99,7 +102,7 @@
                   <%= button_to "Log in", new_user_session_path, type: "button", id: "log-in-button", class: "list-group-item" %>
                   <button type="button"class="list-group-item">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
-                    <a href="#">check out</a>
+                    <a href="#"></a>
                     <%if current_order.tickets.where(paid: false).size > 0 %>
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
                     <% end %>
