@@ -101,3 +101,7 @@
       #F7DE6F 18px
       );
 }
+
+.image-featured {
+	z-index: 999;
+}

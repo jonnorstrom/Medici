@@ -6,11 +6,9 @@
 <%= render "shared/post_show_row", exhibit: @museum, museum: @museum, ticket: @ticket  %>
 <% if @exhibits[0] != nil %>
   <h2> Exhibits: </h2>
-
-  <% @exhibits.each do |exhibit| %>
-    <h3> <%= link_to exhibit.name, exhibit %> </h3 >
-    <p> <%= exhibit.start_date.strftime("%m/%Y/%d") %> - <%= exhibit.end_date.strftime("%m/%Y/%d") %> </p>
-    <p><%= exhibit.description %></p>
-    <%= image_tag exhibit.photo.url(:large) %>
-  <% end %>
+  <div class= "row masonry-container">
+    <% @exhibits.each do |exhibit| %>
+      <%= render "museum_row", post: exhibit, ticket: @ticket  %>
+    <% end %>
+  </div>
 <% end %>

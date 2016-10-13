@@ -134,7 +134,7 @@
     border-bottom: 2px solid rgba(192, 192, 192, 1);
 }
 .super-search-wrapper {
-  margin-top: -2.5%;
+  margin-top: -1%;
 }
 .main-search #search{
   width: 35%;
@@ -238,4 +238,15 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
     width: 100%;
     height: 100%;
     margin-left: -15px
+}
+
+.list-group-item .logout {
+
+  color: lightGrey;
+}
+
+.glyphicon-shopping-cart {
+  margin-top: 5px;
+  margin-left: -3px;
+  font-size: 20px;
 }
