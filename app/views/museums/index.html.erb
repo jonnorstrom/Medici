@@ -16,7 +16,6 @@
 		</div>
 		<% end %>
 	</div>
-
 	<% if !@main_post.nil? %>
 		<%= link_to @main_post do %>
 		<div class="post-wrapper event-panel">
@@ -39,7 +38,6 @@
 					<% end %>
 				</div>
 				<p><%= @main_post.blurb %></p>
-
 				<div>
 					<% if current_user && @main_post.is_a?(Event)%>
 						<% if current_order.tickets.length > 0 %>
