@@ -15,7 +15,7 @@ class User < ApplicationRecord
   after_create :send_admin_mail
 
   def send_admin_mail
-     UsersMailer.send_new_user_message(self).deliver
+     UsersMailer.signup_email(self).deliver
   end
 
   def facebook
