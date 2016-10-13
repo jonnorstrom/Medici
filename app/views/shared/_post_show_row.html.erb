@@ -3,9 +3,11 @@
 		<div class="row panel-row">
 			<div class= "image-featured col-md-4">
 				<%= image_tag exhibit.photo.url(:large) %>
-
-					<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
-
+					<% if !exhibit.ticketsite.nil? %>
+						<h4><a href= '<%="http://#{exhibit.ticketsite}"%>' target="_blank"  onclick="trackOutboundLink('<%="http://#{exhibit.ticketsite}"%>'); return false;">Tickets: $<%= '%i' % exhibit.price%></a></h4>
+					<% else %>
+						<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
+					<% end %>
 				<% if current_user && museum.is_a?(Event)%>
 					<% if current_order.tickets.length > 0 %>
 						<div class="input-group-btn">
@@ -18,13 +20,13 @@
 				          <%= f.hidden_field :quantity, value: 1%>
 				          <%= f.hidden_field :event_id, value: museum.id %>
 				          <%= f.hidden_field :user_id, value: current_user.id %>
-				          <%= f.submit "Add to Cart", class: "input-button" %>
+				          <%= f.submit "Get Tickets", class: "input-button" %>
 				        </div>
 				      </div>
 				    <% end %>
 					<% end %>
 				<% elsif museum.is_a?(Event) %>
-					<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
+					<%= link_to "Sign in to get tickets!", new_user_session_path, class: "input-button" %>
 				<% else %>
 					<div class="social-buttons">
 						<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-mention-button" data-text="@medici_app is guiding my experience at <%= museum.name %>!" data-show-count="false">Tweet</a>

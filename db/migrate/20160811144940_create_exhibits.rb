@@ -8,6 +8,7 @@ class CreateExhibits < ActiveRecord::Migration[5.0]
       t.date :start_date
       t.date :end_date
       t.integer :museum_id
+      t.string :ticketsite
       t.timestamps
     end
   end

@@ -4,11 +4,11 @@
 <% end %>
 
 <%= render "shared/post_show_row", exhibit: @museum, museum: @museum, ticket: @ticket  %>
-  <% if @exhibits[0] != nil %>
+<% if @exhibits[0] != nil %>
   <h2> Exhibits: </h2>
   <div class= "row masonry-container">
     <% @exhibits.each do |exhibit| %>
       <%= render "museum_row", post: exhibit, ticket: @ticket  %>
     <% end %>
   </div>
-  <% end %>
+<% end %>
