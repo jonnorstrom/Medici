@@ -12,13 +12,17 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:facebook]
+  after_create :send_admin_mail
 
-   def facebook
-     identities.where( :provider => "facebook" ).first
-   end
+  def send_admin_mail
+     UsersMailer.send_new_user_message(self).deliver
+  end
 
-   def facebook_client
-     @facebook_client ||= Facebook.client( access_token: facebook.accesstoken )
-   end
+  def facebook
+    identities.where( :provider => "facebook" ).first
+  end
 
+  def facebook_client
+    @facebook_client ||= Facebook.client( access_token: facebook.accesstoken )
+  end
 end

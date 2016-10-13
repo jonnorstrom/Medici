@@ -47,13 +47,13 @@
                   <%= f.hidden_field :quantity, value: 1%>
                   <%= f.hidden_field :event_id, value: post.id %>
                   <%= f.hidden_field :user_id, value: current_user.id %>
-                  <%= f.submit "Purchase Tickets", class: "input-button" %>
+                  <%= f.submit "Get Tickets", class: "input-button" %>
                 </div>
               </div>
             <% end %>
           <% end %>
         <% elsif post.is_a?(Event) %>
-					<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
+					<%= link_to "Sign in to get tickets!", new_user_session_path, class: "input-button" %>
         <% end %>
       </div>
       <% if post.tags.length > 2 %>
