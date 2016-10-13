@@ -1,44 +1,46 @@
-<% if post.is_a?(Museum) %>
-  <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper museum-panel">
-<% elsif post.is_a?(Exhibit) %>
-  <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper exhibit-panel">
-<% elsif post.is_a?(Event) %>
-  <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper event-panel">
-<% elsif post.is_a?(Piece) %>
-  <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper piece-panel">
-<% else %>
-  <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper">
-<% end %>
-  <div class="thumbnail">
-    <%= link_to image_tag(post.photo.url(:large)), post %>
-    <div class="caption">
+<% unless post.is_a?(Tag) %>
+  <% if post.is_a?(Museum) %>
+    <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper museum-panel">
+  <% elsif post.is_a?(Exhibit) %>
+    <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper exhibit-panel">
+  <% elsif post.is_a?(Event) %>
+    <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper event-panel">
+  <% elsif post.is_a?(Piece) %>
+    <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper piece-panel">
+  <% else %>
+    <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper">
+  <% end %>
+    <div class="thumbnail">
+      <%= link_to image_tag(post.photo.url(:large)), post %>
+      <div class="caption">
 
-      <div class="thumbnail-header">
-        <h3><%= link_to "#{post.name}", post %></h3>
-        <p> $<%= '%i' % post.price %>
-          <% if defined? post.exhibits.sort.first.price %>
-          - $<%= '%i' %post.exhibits.sort.first.price %>
-          <% end %>
-      </div>
-      <p><%= post.blurb %></p>
+        <div class="thumbnail-header">
+          <h3><%= link_to "#{post.name}", post %></h3>
+          <p> $<%= '%i' % post.price %>
+            <% if defined? post.exhibits.sort.first.price %>
+            - $<%= '%i' %post.exhibits.sort.first.price %>
+            <% end %>
+        </div>
+        <p><%= post.blurb %></p>
 
-      <div>
-        <% if current_user && post.is_a?(Museum) %>
-          <%= form_for ticket, remote: true do |f| %>
-            <div class="input-group">
-              <div class="input-group-btn">
-                <%= f.hidden_field :quantity, value: 1 %>
-                <%= f.hidden_field :museum_id, value: post.id %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
-                <%= f.submit "Purchase Tickets", class: "btn btn-primary" %>
+        <div>
+          <% if current_user && post.is_a?(Museum) %>
+            <%= form_for ticket, remote: true do |f| %>
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <%= f.hidden_field :quantity, value: 1 %>
+                  <%= f.hidden_field :museum_id, value: post.id %>
+                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= f.submit "Purchase Tickets", class: "btn btn-primary" %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
+    </div>
   </div>
-  <div class="progress">
-    <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
-  </div>
-</div>
+<% end %>
