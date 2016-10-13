@@ -45,10 +45,9 @@
                 <% end %>
 
                 <%= link_to image_tag("Medici_logos/Medici_logo_CMYK.png"), root_path, class: "navbar-left hidden-xs main-logo"%>
-                <% if current_user %>
-
-                  <%= link_to " #{current_user.name}!", user_path(current_user), class: "navbar-brand user-name" %>
-                <% end %>
+                <p class="tagline hidden-xs">
+                  Change The Way You Museum
+                </p>
               </div>
 
               <div class="collapse navbar-collapse">
@@ -56,7 +55,7 @@
                   <div id= "search-wrapper">
                     <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
                       <i class="fa fa-search" aria-hidden="true" style="font-size: 20px"></i>
-                      <%= text_field_tag :search, params[:search], placeholder: "search" %>
+                      <%= text_field_tag :search, params[:search], placeholder: "" %>
                     <% end %>
                   </div>
                 <% end %>
@@ -86,14 +85,15 @@
                 <% end %>
                 <% if current_user %>
                 <button type="button"class="list-group-item">
-                  <%= link_to "checkout", cart_path(current_user.id) %>
-                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <%= link_to  cart_path(current_user.id) do%>
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <% end %>
                   <%if current_order.tickets.where(paid: false).size > 0 %>
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
                   <% end %>
                 </button>
                   <button type="button"class="list-group-item">
-                    <%= link_to "logout", destroy_user_session_path, :method => :delete %>
+                    <%= link_to "logout", destroy_user_session_path, :method => :delete, class: "logout" %>
                   </button>
                 <% else %>
                   <%= button_to "Log in", new_user_session_path, type: "button", id: "log-in-button", class: "list-group-item" %>
@@ -109,9 +109,6 @@
               <footer class="social-footer hidden-xs">
               <%= link_to "https://www.facebook.com/medicimuseums" do %>
                 <i class="fa fa-facebook-square" aria-hidden="true"></i>
-              <% end %>
-              <%= link_to "https://www.instagram.com/medicimuseums/" do %>
-                <i class="fa fa-instagram" aria-hidden="true"></i>
               <% end %>
               <%= link_to "https://twitter.com/medicimuseums" do %>
                 <i class="fa fa-twitter-square" aria-hidden="true"></i>

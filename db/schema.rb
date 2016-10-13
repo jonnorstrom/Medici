@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160928214035) do
     t.float    "price"
     t.integer  "museum_id"
     t.string   "website"
+    t.string   "ticketsite"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160928214035) do
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "museum_id"
+    t.string   "ticketsite"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "photo_file_name"
@@ -96,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160928214035) do
     t.time     "opening_time"
     t.time     "closing_time"
     t.string   "website"
+    t.string   "ticketsite"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
