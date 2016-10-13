@@ -1,14 +1,14 @@
 <%= link_to post do%>
 <% if post.is_a?(Museum) %>
-  <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper museum-panel">
+  <div class="post-wrapper museum-panel">
 <% elsif post.is_a?(Exhibit) %>
-  <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper exhibit-panel">
+  <div class="post-wrapper exhibit-panel">
 <% elsif post.is_a?(Event) %>
-  <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper event-panel">
+  <div class="post-wrapper event-panel">
 <% elsif post.is_a?(Piece) %>
-  <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper piece-panel">
+  <div class="post-wrapper piece-panel">
 <% else %>
-  <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper">
+  <div class="post-wrapper">
 <% end %>
     <div class="thumbnail">
     <%= image_tag(post.photo.url(:large)) %>

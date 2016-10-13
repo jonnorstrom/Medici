@@ -4,11 +4,37 @@
     overflow:hidden;
     background-color: #f8f8f8;
 }
-
-.post-wrapper{
-	padding: 0px !important;
-	margin-bottom: -10px;
+@media (max-width: 750px) {
+	.post-wrapper{
+		padding: 0px !important;
+		margin-bottom: -10px;
+		width: 97%;
+	}
 }
+@media (min-width: 750px) {
+	.post-wrapper{
+		padding: 0px !important;
+		margin-bottom: -10px;
+		width: 48%;
+	}
+}
+@media (min-width: 970px) {
+	.post-wrapper{
+		padding: 0px !important;
+		margin-bottom: -10px;
+		width: 32%;
+	}
+}
+	@media (min-width: 1170px) {
+	.post-wrapper{
+		padding: 0px !important;
+		margin-bottom: -10px;
+		width: 24%;
+	}
+}
+
+
+
 .thumbnail{
 	position: relative;
     margin: 0px 10px !important;
