@@ -7,7 +7,7 @@ class TicketsMailer < ApplicationMailer
     attachments.inline['logo.jpg'] = File.read("#{Rails.root}/app/assets/images/Medici_logos/Medici_logo_CMYK_sm.png")
     @ticket = Ticket.where(user_id: @user.id).last
     @quantity = @ticket.quantity
-    @total = @ticket.price * @quantity
+    @total = 10 * @quantity
     @url  = tickets_redeem_url(@ticket)
     @code = @ticket.redemption_code
     if @ticket.exhibit_id != nil
