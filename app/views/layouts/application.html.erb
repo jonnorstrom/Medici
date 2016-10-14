@@ -8,7 +8,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc7bgkQoYVVLBCkZtxYPzzWCogA-3LmNY&callback=initMap" async defer></script>
     <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <!-- CDN references -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -19,37 +18,37 @@
     <%= favicon_link_tag 'm_fav.jpg' %>
     <meta name="google-site-verification" content="GcGNYhaeYWfnn0PHEB8CE0fgHlg0WkpaKPou3aN18CQ" />
   </head>
-
   <body>
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <div class="container-fluid">
       <div class="row nav-row">
         <div class="col-sm-3 col-lg-2">
-          <nav class="navbar navbar-default navbar-fixed-side">
+          <nav class="navbar navbar-default navbar-fixed-side" id="dynamic-nav">
             <div class="container">
               <div class="navbar-header">
-
                 <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
-                  <span class="sr-only">Toggle navigation</span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
                 <div class= "brand-wrapper">
-                  <%= link_to image_tag("Medici_logos/Medici_logo_CMYK_sm.png"), root_path, class: "navbar-brand hidden-sm hidden-md hidden-lg"%>
+                  <%= link_to image_tag("Medici_logos/Medici_Icon_CMYK.png"), root_path, class: "navbar-brand hidden-sm hidden-md hidden-lg"%>
+                </div>
+                 <div class="btn-group hidden-sm hidden-md hidden-lg" role="group" aria-label="toggles">
+                  <button type="button" class="btn btn-default button-museum">museum</button>
+                  <button type="button" class="btn btn-default button-exhibit">exhibit</button>
+                  <button type="button" class="btn btn-default button-event">event</button>
                 </div>
                 <% if current_user && !current_user.image_url.nil? %>
                   <%= link_to image_tag(current_user.image_url + "?type=large"), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
                 <% elsif current_user && !current_user.avatar_file_name.nil? %>
                     <%= link_to image_tag(current_user.avatar.url(:large)), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
                 <% end %>
-
                 <%= link_to image_tag("Medici_logos/Medici_logo_CMYK.png"), root_path, class: "navbar-left hidden-xs main-logo"%>
                 <p class="tagline hidden-xs">
                   Change The Way You Museum
                 </p>
               </div>
-
               <div class="collapse navbar-collapse">
                 <% if !@search_show %>
                   <div id= "search-wrapper">
@@ -65,7 +64,7 @@
                 </button>
                 <% end %>
                 <% unless @user_page || @show_page %>
-                <div class="nav-boxes">
+                <div class="nav-boxes hidden-xs">
                   <label class="checkbox-wrapper" for="museum-toggle">
                     <input type="checkbox" id="museum-toggle" class="hidden" checked="checked">
                     <div class=" well museum-label-toggle"></div>
@@ -119,6 +118,7 @@
           </nav>
         </div>
         <div class="col-sm-9 col-lg-10 content">
+          <%= image_tag("Medici_logos/Medici_logo_Inset.png", class: " inset-brand hidden-sm hidden-md hidden-lg")%>
           <%= yield %>
         <div id="color-hack"></div>
         <%= render 'layouts/footer' %>
