@@ -8,6 +8,9 @@
         margin-right: -15px;
         border-color: transparent;
     }
+    #dynamic-nav{
+        box-shadow: 3px 3px 10px rgba(0,0,0,.15);
+    }
     .navbar-brand-wrapper{
         display: inline;
         width: 100px;
@@ -15,15 +18,43 @@
     .navbar-brand{
         font-family: "Brandon Grotesque" , "Helvetica";
         color: dimGrey;
+        padding: 0px;
+    }
+    .navbar-brand img{
+        width: 25px;
     }
     .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{
-        color: lightGrey;
+        color: transparent;
         text-decoration: none;
+    }
+    .btn-group{
+        margin-top: 8px;
+        /*box-shadow: 3px 3px 10px rgba(0,0,0,.15);*/
+    }
+    .btn-group .btn-default{
+        border: #f8f8f8;
+    }
+    .btn-group .btn:first-child{
+        border-bottom: 4px solid #00AEEF;
+    }
+    .btn-group .btn:nth-child(2){
+        border-bottom: 4px solid #DB4599;
+    }
+    .btn-group .btn:last-child{
+        border-bottom: 4px solid #F2D13E;
     }
     .collapse.navbar-collapse{
         padding: 0px 0px;
     }
-
+    .navbar-toggle{
+        border: transparent !important;
+        background-color: #fff;
+        padding: 11px 0px !important; 
+        margin-right: 8px !important;
+    }
+    .navbar-toggle:hover, .navbar-toggle:focus{
+        background-color: #F8f8f8 !important;
+    }
     .side-nav-button{
         position: relative;
         display: block;
@@ -34,6 +65,13 @@
         border: transparent;
         text-align: left;
         font-size: 16px;
+    }
+    .inset-brand{
+        padding-top: 30px;
+        padding-bottom: 15px;    
+        display: block;
+        margin: auto;
+        width: 90%;
     }
 }
 /*

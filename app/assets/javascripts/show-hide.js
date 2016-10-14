@@ -78,4 +78,22 @@ $(document).on('turbolinks:load', function(){
        alert("You must accept the Terms and Conditions")
      }
    });
+   $(".button-museum").click(function(){
+    $(".exhibit-panel").hide();
+    $(".event-panel").hide();
+    $(".museum-panel").show();
+    setTimeout(function(){ $container.masonry(); }, 300);
+   })
+   $(".button-exhibit").click(function(){
+    $(".museum-panel").hide();
+    $(".event-panel").hide();
+    $(".exhibit-panel").show();
+    setTimeout(function(){ $container.masonry(); }, 300);
+   })
+   $(".button-event").click(function(){
+    $(".exhibit-panel").hide();
+    $(".museum-panel").hide();
+    $(".event-panel").show();
+    setTimeout(function(){ $container.masonry(); }, 300);
+   })
 });
