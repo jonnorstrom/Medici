@@ -35,9 +35,9 @@
                   <%= link_to image_tag("Medici_logos/Medici_Icon_CMYK.png"), root_path, class: "navbar-brand hidden-sm hidden-md hidden-lg"%>
                 </div>
                  <div class="btn-group hidden-sm hidden-md hidden-lg" role="group" aria-label="toggles">
-                  <button type="button" class="btn btn-default button-museum">museum</button>
-                  <button type="button" class="btn btn-default button-exhibit">exhibit</button>
-                  <button type="button" class="btn btn-default button-event">event</button>
+                  <button type="button" class="btn btn-default button-museums">museum</button>
+                  <button type="button" class="btn btn-default button-exhibits">exhibit</button>
+                  <button type="button" class="btn btn-default button-events">event</button>
                 </div>
                 <% if current_user && !current_user.image_url.nil? %>
                   <%= link_to image_tag(current_user.image_url + "?type=large"), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
