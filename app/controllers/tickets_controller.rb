@@ -51,8 +51,7 @@ class TicketsController < ApplicationController
   end
 
   def stats
-    @museums = Museum.all
-    @coupons = Coupon.all
+    @tickets = Ticket.all.sort {|x, y| x.user.name <=> y.user.name}
   end
 
   def update

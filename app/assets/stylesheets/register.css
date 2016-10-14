@@ -91,7 +91,7 @@
 .panel-sign-in .input-field:focus {
   outline: none;
   color: #444;
-  border-color: #35A9C3;
+  border-color: #00AEEF;
   border-left-width: 35px;
 }
 
@@ -123,7 +123,7 @@ input[type="checkbox"]:checked + label span {
 }
 
 .tag-list {
-	color: #0C8795 !important;
+	color: #00AEEF !important;
 	margin-bottom: -5px !important;
 	margin-top: -5px !important;
 }
