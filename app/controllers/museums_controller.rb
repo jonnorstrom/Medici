@@ -18,7 +18,7 @@ class MuseumsController < ApplicationController
     @show_page = true
     @museum = Museum.find(params[:id])
     @ticket = current_order.tickets.new
-    @exhibits = @museum.exhibits.all
+    @exhibits = @museum.exhibits.all + @museum.events.all
     @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
      marker.lat museum.latitude
      marker.lng museum.longitude

@@ -183,7 +183,7 @@
   color: dimGrey;
 }
 #advanced-search:hover {
-  color: #0C8795;
+  color: #00AEEF;
 }
 .nav-boxes {
   margin-top: 5%;
@@ -212,7 +212,7 @@
       );
 }
 .exhibit-toggle:hover, .museum-toggle:hover, .event-toggle:hover{
-  color: #0C8795;
+  color: #00AEEF;
 }
 
 .checkbox-wrapper label{
@@ -264,7 +264,7 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
 }
 
 .list-group-item a:hover{
-    color: #0C8795;
+    color: #00AEEF;
 }
 
 .toggle-group{
@@ -287,4 +287,9 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
   margin-top: 5px;
   margin-left: -3px;
   font-size: 20px;
+}
+
+.badge {
+  float: right;
+  margin-top: 6px;
 }

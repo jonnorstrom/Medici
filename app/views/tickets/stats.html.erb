@@ -1,47 +1,41 @@
 <table>
   <tr>
     <th>
-      Museums
-    </th>
-    <th>
-      Tickets Sold
-    </th>
-    <th>
-      Tickets Redeemed
+      Total Users
     </th>
   </tr>
-  <% @museums.each do |museum| %>
+
+  <tr>
+    <td>
+      <%= User.all.count %>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+      Quantity
+    </th>
+  </tr>
+  <% @tickets.each do |ticket| %>
   <tr>
       <td>
-        <%= museum.name %>
+        <%= ticket.user.name %>
       </td>
       <td>
-        <%= total_tickets(museum) %>
+        <%= ticket.user.email %>
       </td>
       <td>
-        <%= total_redeemed(museum) %>
+        <%= ticket.quantity %>
       </td>
   </tr>
   <% end %>
 
-</table>
-<table>
-  <tr>
-    <th>
-      Coupon
-    </th>
-    <th>
-      Coupon's redeemed
-    </th>
-  </tr>
-  <% @coupons.each do |coupon| %>
-  <tr>
-    <td>
-      <%= coupon.code %>
-    </td>
-    <td>
-      <%= coupon.quantity_redeemed %>
-    </td>
-  </tr>
-  <% end %>
 </table>

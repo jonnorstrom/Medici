@@ -38,6 +38,7 @@
                   <button type="button" class="btn btn-default button-museum">museum</button>
                   <button type="button" class="btn btn-default button-exhibit">exhibit</button>
                   <button type="button" class="btn btn-default button-event">event</button>
+
                 </div>
                 <% if current_user && !current_user.image_url.nil? %>
                   <%= link_to image_tag(current_user.image_url + "?type=large"), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
@@ -86,9 +87,9 @@
                 <button type="button"class="list-group-item">
                   <%= link_to  cart_path(current_user.id) do%>
                     <span class="glyphicon glyphicon-shopping-cart"></span>
-                  <% end %>
-                  <%if current_order.tickets.where(paid: false).size > 0 %>
-                    <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
+                    <%if current_order.tickets.where(paid: false).size > 0 %>
+                      <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
+                    <% end %>
                   <% end %>
                 </button>
                   <button type="button"class="list-group-item">
@@ -98,7 +99,7 @@
                   <%= button_to "Log in", new_user_session_path, type: "button", id: "log-in-button", class: "list-group-item" %>
                   <button type="button"class="list-group-item">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
-                    <a href="#">check out</a>
+                    <a href="#"></a>
                     <%if current_order.tickets.where(paid: false).size > 0 %>
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
                     <% end %>
@@ -112,7 +113,8 @@
               <%= link_to "https://twitter.com/medicimuseums" do %>
                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
               <% end %>
-              <p class= "text-muted">&copy;Medici App, LLC</p>
+              <p class= "text-muted">&copy;Medici App, LLC<br><%= link_to "Privacy Policy", terms_privacy_path, class: "text-muted" %></p>
+
             </footer>
             </div>
           </nav>
