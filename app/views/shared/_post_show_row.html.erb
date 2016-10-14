@@ -62,9 +62,11 @@
 								<button class="dropdown-toggle bullet" type="button" data-toggle="dropdown">
 									<i class="fa fa-car" aria-hidden="true"></i>
 								</button>
-								<ul class="dropdown-menu">
-									<li> &ensp; - <%= museum.transportation_info %></li>
-								</ul>
+								<% if !museum.transportation_info.nil? %>
+									<ul class="dropdown-menu">
+										<li> &ensp; - <%= museum.transportation_info %></li>
+									</ul>
+								<% end %>
 							</div>
 						</div>
 						<div class= "museum-info">

@@ -90,9 +90,9 @@
                 <button type="button"class="list-group-item">
                   <%= link_to  cart_path(current_user.id) do%>
                     <span class="glyphicon glyphicon-shopping-cart"></span>
-                  <% end %>
-                  <%if current_order.tickets.where(paid: false).size > 0 %>
-                    <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
+                    <%if current_order.tickets.where(paid: false).size > 0 %>
+                      <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
+                    <% end %>
                   <% end %>
                 </button>
                   <button type="button"class="list-group-item">

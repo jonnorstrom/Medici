@@ -250,3 +250,8 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
   margin-left: -3px;
   font-size: 20px;
 }
+
+.badge {
+  float: right;
+  margin-top: 6px;
+}
