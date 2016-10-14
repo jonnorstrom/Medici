@@ -148,7 +148,7 @@
     border-color: transparent !important;
 }
 #search-wrapper{
-    margin-left: 15px;
+    margin-left: 5px;
 }
 #search-wrapper i{
     background-color: #F8F8F8;
@@ -257,7 +257,7 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
 
 .list-group-item{
     margin-top: 2px;
-    padding: 5px 15px !important;
+    padding: 5px 5px !important;
     margin-bottom: 0px !important;
     border: transparent!important;
     background-color: #F8F8F8 !important;
