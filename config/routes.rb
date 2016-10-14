@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :museums
   get "tickets/stats" => "tickets#stats"
   get "tickets/thanks" => "tickets#thanks"
+  get "tickets/whoops" => "tickets#whoops"
   get "tickets/redeem/:id" => "tickets#redeem", as: :tickets_redeem
   resources :tickets
   get "exhibits/:id/tagging" => "exhibits#tagging_new"

@@ -4,7 +4,7 @@
 			<div class= "image-featured col-md-4">
 				<%= image_tag exhibit.photo.url(:large) %>
 				<% if !exhibit.ticketsite.nil? %>
-					<h4><a href= '<%="http://#{exhibit.ticketsite}"%>' target="_blank"  onclick="trackOutboundLink('<%="http://#{exhibit.ticketsite}"%>'); return false;">Tickets: $<%= '%i' % exhibit.price%></a></h4>
+					<h4><a target="_blank" href='<%="http://#{exhibit.ticketsite}"%>' onclick="trackOutboundLink('<%="http://#{exhibit.ticketsite}"%>'); return false;">Tickets: $<%= '%i' % exhibit.price%></a></h4>
 				<% else %>
 					<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
 				<% end %>
@@ -41,7 +41,9 @@
 				<div class="row">
 					<div class= "description-wrapper col-md-8 col-lg-12">
 						<h2><%= exhibit.name %></h2>
-            <% if exhibit.is_a?(Exhibit) || exhibit.is_a?(Event)%>
+            <% if (exhibit.is_a?(Exhibit) || exhibit.is_a?(Event)) && exhibit.start_date == exhibit.end_date %>
+							<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B, %d") %></h4>
+						<% else %>
   						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B, %d")%> - <%= exhibit.end_date.strftime("%B, %d %Y") %></h4>
             <% end %>
 

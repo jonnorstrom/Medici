@@ -34,17 +34,13 @@ class TicketsController < ApplicationController
 
   def redeem
     @ticket = Ticket.find(params[:id])
-    # @quantity = @ticket.quantity
-    # @ticket.update(quantity: @quantity - 1, order_id: 1)
-    # if @quantity - 1 == 0
-    #   @ticket.update(redeemed: true)
-    #   redirect_to current_user
-    # else
-    #   redirect_to ticket_path(@ticket)
-    # end
+    if @ticket.redeemed == true
+      redirect_to tickets_whoops_path
+    else
       @ticket.update(redeemed: true)
       puts @ticket.errors.full_messages
       redirect_to tickets_thanks_path
+    end
   end
 
   def thanks
