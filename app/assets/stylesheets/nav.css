@@ -29,12 +29,15 @@
     }
     .btn-group{
         margin-top: 8px;
+        margin-left: 15px;
         /*box-shadow: 3px 3px 10px rgba(0,0,0,.15);*/
     }
     .btn-group .btn-default{
         border: #f8f8f8;
+        width: 33%;
     }
     .btn-group .btn:first-child{
+        padding-left: 8px;
         border-bottom: 4px solid #00AEEF;
     }
     .btn-group .btn:nth-child(2){
