@@ -68,7 +68,7 @@
                 </button>
                 <% end %>
                 <% unless @user_page || @show_page %>
-                <div class="nav-boxes">
+                <div class="nav-boxes hidden-xs">
                   <label class="checkbox-wrapper" for="museum-toggle">
                     <input type="checkbox" id="museum-toggle" class="hidden" checked="checked">
                     <div class=" well museum-label-toggle"></div>
@@ -116,7 +116,8 @@
               <%= link_to "https://twitter.com/medicimuseums" do %>
                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
               <% end %>
-              <p class= "text-muted">&copy;Medici App, LLC</p>
+              <p class= "text-muted">&copy;Medici App, LLC<br><%= link_to "Privacy Policy", terms_privacy_path, class: "text-muted" %></p>
+
             </footer>
             </div>
           </nav>

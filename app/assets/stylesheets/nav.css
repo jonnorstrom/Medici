@@ -145,7 +145,7 @@
   color: dimGrey;
 }
 #advanced-search:hover {
-  color: #0C8795;
+  color: #00AEEF;
 }
 .nav-boxes {
   margin-top: 5%;
@@ -174,7 +174,7 @@
       );
 }
 .exhibit-toggle:hover, .museum-toggle:hover, .event-toggle:hover{
-  color: #0C8795;
+  color: #00AEEF;
 }
 
 .checkbox-wrapper label{
@@ -226,7 +226,7 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
 }
 
 .list-group-item a:hover{
-    color: #0C8795;
+    color: #00AEEF;
 }
 
 .toggle-group{

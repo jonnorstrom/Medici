@@ -5,7 +5,7 @@ h1, h2, h3, h4{
   font-family: HansKendrick-Heavy !important;
 }
 h4{
-  color: #35A9C3 !important;
+  color: #00AEEF !important;
 }
 p{
 	font-size: 17px;
@@ -162,7 +162,7 @@ a:hover {
 }
 
 .user-name:hover{
-	color:#0C8795 !important;
+	color:#00AEEF !important;
 }
 
 a:focus {
@@ -179,7 +179,7 @@ a:focus {
 }
 
 .social-footer a i:hover {
-	color: #0C8795;
+	color: #00AEEF;
 }
 
 .tags-list {
@@ -192,7 +192,7 @@ a:focus {
 	font-size: 1.4em;
 }
 .row-tags:hover {
-	color: #0C8795;
+	color: #00AEEF;
 }
 
 .search-in-search {
@@ -224,4 +224,11 @@ select#any_or_all.form-control {
 
 .mobile-tagline {
 	float: left;
+}
+
+.event-museum {
+	color: dimGray;
+}
+.event-museum:hover {
+	color: #00AEEF;
 }
