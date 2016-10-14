@@ -53,7 +53,9 @@
 						<div id="map"></div>
 					</div>
 					<div class= "col-sm-8 col-xs-12 museum-info-wrapper">
-						<h3><%= link_to "#{museum.name}", museum, class: "venue"%></h3>
+						<% if exhibit.is_a?(Exhibit) || (exhibit.is_a?(Event) && !exhibit.museum_id.nil?) %>
+							<h3><%= link_to "#{exhibit.museum.name}", museum, class: "venue"%></h3>
+						<% end %>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Address: </p>
 
