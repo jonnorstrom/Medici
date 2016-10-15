@@ -47,7 +47,7 @@ class TicketsController < ApplicationController
   end
 
   def stats
-    if Ticket.all > 1
+    if Ticket.all.count > 1
       @tickets = Ticket.all.sort {|x, y| x.user.name <=> y.user.name}
     else
       @tickets = Ticket.first
