@@ -3,7 +3,11 @@
 		<div class="row panel-row">
 			<div class= "image-featured col-md-4">
 				<%= image_tag exhibit.photo.url(:large) %>
-				<% if !exhibit.ticketsite.nil? %>
+				<% if exhibit.price == 0.0 %>
+				<p>
+					FREE
+				</p>
+				<% elsif !exhibit.ticketsite.nil? %>
 					<h4><a target="_blank" href='<%="http://#{exhibit.ticketsite}"%>' onclick="trackOutboundLink('<%="http://#{exhibit.ticketsite}"%>'); return false;, '_blank'">Tickets: $<%= '%i' % exhibit.price%></a></h4>
 				<% else %>
 					<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
