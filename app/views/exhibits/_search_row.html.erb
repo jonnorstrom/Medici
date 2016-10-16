@@ -1,46 +1,69 @@
-<% unless post.is_a?(Tag) %>
-  <% if post.is_a?(Museum) %>
-    <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper museum-panel">
-  <% elsif post.is_a?(Exhibit) %>
-    <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper exhibit-panel">
-  <% elsif post.is_a?(Event) %>
-    <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper event-panel">
-  <% elsif post.is_a?(Piece) %>
-    <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper piece-panel">
-  <% else %>
-    <div class="col-sm-6 col-md-4 col-lg-3 post-wrapper">
-  <% end %>
+<%= link_to post do%>
+<% if post.is_a?(Museum) %>
+  <div class="post-wrapper museum-panel">
+<% elsif post.is_a?(Exhibit) %>
+  <div class="post-wrapper exhibit-panel">
+<% elsif post.is_a?(Event) %>
+  <div class="post-wrapper event-panel">
+<% elsif post.is_a?(Piece) %>
+  <div class="post-wrapper piece-panel">
+<% else %>
+  <div class="post-wrapper">
+<% end %>
     <div class="thumbnail">
-      <%= link_to image_tag(post.photo.url(:large)), post %>
-      <div class="caption">
-
-        <div class="thumbnail-header">
-          <h3><%= link_to "#{post.name}", post %></h3>
-          <p> $<%= '%i' % post.price %>
-            <% if defined? post.exhibits.sort.first.price %>
-            - $<%= '%i' %post.exhibits.sort.first.price %>
-            <% end %>
-        </div>
-        <p><%= post.blurb %></p>
-
-        <div>
-          <% if current_user && post.is_a?(Museum) %>
+    <%= image_tag(post.photo.url(:large)) %>
+    <div class="caption">
+      <div class="thumbnail-header">
+        <h3><%= post.name %></h3>
+        <% if post.is_a?(Piece) %>
+        <% elsif post.is_a?(Exhibit) && post.price == post.museum.price %>
+          <p>
+            General Admission
+          </p>
+        <% elsif post.price == 0.0 %>
+          <p>
+            FREE
+          </p>
+        <% else %>
+        <p> $<%= '%i' % post.price %>
+          <% if (defined? post.exhibits.sort.first.price) && post.price != post.exhibits.sort.first.price%>
+          - $<%= '%i' %post.exhibits.sort.first.price %>
+          <% end %> </p>
+        <% end %>
+      </div>
+      <p><%= post.blurb %></p>
+      <div>
+        <% if current_user && post.is_a?(Event)%>
+          <% if current_order.tickets.length > 0 %>
+            <div class="input-group-btn">
+              <%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
+            </div>
+          <% else %>
             <%= form_for ticket, remote: true do |f| %>
               <div class="input-group">
                 <div class="input-group-btn">
-                  <%= f.hidden_field :quantity, value: 1 %>
-                  <%= f.hidden_field :museum_id, value: post.id %>
+                  <%= f.hidden_field :quantity, value: 1%>
+                  <%= f.hidden_field :event_id, value: post.id %>
                   <%= f.hidden_field :user_id, value: current_user.id %>
-                  <%= f.submit "Purchase Tickets", class: "btn btn-primary" %>
+                  <%= f.submit "Get Tickets", class: "input-button" %>
                 </div>
               </div>
             <% end %>
           <% end %>
-        </div>
+        <% elsif post.is_a?(Event) %>
+					<%= link_to "Sign in to get tickets!", new_user_session_path, class: "input-button" %>
+        <% end %>
       </div>
-    </div>
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
+      <% if post.tags.length > 2 %>
+        <% post.tags[0..1].each do |tag| %>
+          <%= link_to "##{tag.name}, ", tag, type: "button", class: "row-tags" %>
+        <% end %>
+          <%= link_to "##{post.tags[2].name}", post.tags[2], type: "button", class: "row-tags" %>
+      <% end %>
     </div>
   </div>
-<% end %>
+  <% end %>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
+  </div>
+</div>
