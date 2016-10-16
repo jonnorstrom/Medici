@@ -54,6 +54,11 @@
                 </p>
               </div>
               <div class="collapse navbar-collapse">
+                <% if current_user %>
+                  <button type="button"class="list-group-item">
+                    <%= link_to current_user.name, user_path(current_user), class: "hidden-sm hidden-md hidden-lg"%>
+                  </button>
+                <% end %>
                 <% if !@search_show %>
                   <div id= "search-wrapper">
                     <%= form_tag(exhibits_search_show_path, :method => "get", id: "search-form") do %>
