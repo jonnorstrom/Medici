@@ -5,9 +5,9 @@
         <h2>Pick some interests from our list of tags!</h2>
           <%= form_for(@user, :url => "tagging", :html => { :method => :post }) do |f| %>
 
-             <ul class="tags-list">
+
                <% Tag.all.each do |tag| %>
-               <li>
+
                  <%= hidden_field_tag "user_tag_ids_none", nil, {:name => "user[tag_ids][]"}%>
                  <div class="btn-link tag-btn">
                    <label class= "btn  tag-button tag-list">
@@ -15,9 +15,9 @@
                      <%= "##{tag.name}" %>
                    </label>
                  </div>
-               </li>
+
                <% end %>
-             </ul>
+          
              <div class="input-group">
                <%= f.submit "Save Interests", class: "input-button"%>
              </div>
