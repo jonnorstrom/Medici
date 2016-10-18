@@ -15,6 +15,20 @@
 <table>
   <tr>
     <th>
+      User Emails
+    </th>
+  </tr>
+  <% User.all.each do |user| %>
+<tr>
+  <td>
+    <%= user.email %>
+  </td>
+</tr>
+<% end %>
+</table>
+<table>
+  <tr>
+    <th>
       Name
     </th>
     <th>
