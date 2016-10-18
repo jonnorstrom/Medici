@@ -47,12 +47,14 @@ class TicketsController < ApplicationController
   end
 
   def stats
-    if Ticket.all.count > 1
-      @tickets = Ticket.all.sort {|x, y| x.user.name <=> y.user.name}
+      @tickets = Ticket.where(paid:true)
+    if @tickets.count > 1
+      @tickets = @tickets.sort {|x, y| x.user.name <=> y.user.name}
     else
-      @tickets = Ticket.first
+      @tickets = @tickets.first
     end
   end
+
 
   def update
     @order = current_order
