@@ -8,7 +8,9 @@
 					FREE
 				</p>
 				<% elsif !exhibit.ticketsite.nil? %>
-					<h4><a target="_blank" href='<%="http://#{exhibit.ticketsite}"%>' onclick="trackOutboundLink('<%="http://#{exhibit.ticketsite}"%>'); return false;, '_blank'">Tickets: $<%= '%i' % exhibit.price%></a></h4>
+
+						<a target="_blank" class= "input-button" href='<%="http://#{exhibit.ticketsite}"%>' onclick="trackOutboundLink('<%="http://#{exhibit.ticketsite}"%>'); return false;, '_blank'">Tickets: $<%= '%i' % exhibit.price%></a>
+
 				<% else %>
 					<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
 				<% end %>
@@ -18,7 +20,7 @@
 						<div class="input-group-btn">
 							<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
 						</div>
-					<% else %>
+					<% elsif museum.ticketable %>
 				    <%= form_for ticket, remote: true do |f| %>
 				      <div class="input-group">
 				        <div class="input-group-btn">
@@ -68,11 +70,11 @@
 							<p class= "museum-info-entry"> <i class="fa fa-map-pin" aria-hidden="true"></i> <%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
 							<div class="dropdown bullet">
 								<button class="dropdown-toggle bullet" type="button" data-toggle="dropdown">
-									<i class="fa fa-car" aria-hidden="true"></i>
+									<i class="fa fa-info" aria-hidden="true"></i>
 								</button>
 								<% if !museum.transportation_info.nil? %>
 									<ul class="dropdown-menu">
-										<li> &ensp; - <%= museum.transportation_info %></li>
+										<li class="trans-drop"> <%= museum.transportation_info %></li>
 									</ul>
 								<% end %>
 							</div>

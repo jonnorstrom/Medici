@@ -20,8 +20,18 @@
   </div>
 
   <div class="field">
-    <%= f.label "External website for tickets (if applicable)" %>
+    <%= f.label "External website for tickets (if not our own event)" %>
     <%= f.text_field :ticketsite %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ticketable %>
+    <%= f.check_box :ticketable %>
   </div>
 
   <div class="field">
@@ -52,16 +62,6 @@
   <div class="field">
     <%= f.label :address %>
     <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :ticketable %>
-    <%= f.check_box :ticketable %>
   </div>
 
   <div class="field">
