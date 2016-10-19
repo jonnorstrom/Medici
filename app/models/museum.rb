@@ -18,6 +18,10 @@ class Museum < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
+  def to_param
+    "#{id} #{name}".parameterize
+  end
+
   def close_must_be_after_open
     if opening_time == nil || closing_time == nil
       errors.add(:closing_time, "must be after start date")

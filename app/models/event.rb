@@ -15,6 +15,10 @@ class Event < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
+  def to_param
+    "#{id} #{name}".parameterize
+  end
+  
   private
     def end_must_be_after_start
       if start_date == nil || end_date == nil

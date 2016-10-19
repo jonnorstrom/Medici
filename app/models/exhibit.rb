@@ -9,4 +9,8 @@ class Exhibit < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   validates_presence_of :name, :start_date, :end_date, :blurb, :description, :photo
   validates_uniqueness_of :name
+
+  def to_param
+    "#{id} #{name}".parameterize
+  end
 end
