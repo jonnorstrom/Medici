@@ -16,63 +16,65 @@
 		</div>
 		<% end %>
 	</div>
-	<% if !@main_post.nil? %>
-		<%= link_to @main_post do %>
-		<div class="post-wrapper event-panel">
-			<div class="thumbnail">
-			<%= image_tag(@main_post.photo.url(:large)) %>
-			<div class="caption">
+	<% if !@main_posts.nil? %>
+		<% @main_posts.each do |post| %>
+			<%= link_to post do %>
+			<div class="post-wrapper event-panel">
+				<div class="thumbnail">
+				<%= image_tag(post.photo.url(:large)) %>
+				<div class="caption">
 
-				<div class="thumbnail-header">
-					<h3><%= @main_post.name %></h3>
-					<% if @main_post.is_a?(Piece) %>
-					<% elsif @main_post.price == 0.0 %>
-						<p>
-							FREE
-						</p>
-					<% else %>
-					<p> $<%= '%i' % @main_post.price %>
-						<% if defined? @main_post.exhibits.sort.first.price %>
-						- $<%= '%i' % @main_post.exhibits.sort.first.price %>
-						<% end %> </p>
-					<% end %>
-				</div>
-				<p><%= @main_post.blurb %></p>
-				<div>
-					<% if current_user && @main_post.is_a?(Event)%>
-						<% if current_order.tickets.length > 0 %>
-							<div class="input-group-btn">
-								<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
-							</div>
+					<div class="thumbnail-header">
+						<h3><%= post.name %></h3>
+						<% if post.is_a?(Piece) %>
+						<% elsif post.price == 0.0 %>
+							<p>
+								FREE
+							</p>
 						<% else %>
-							<%= form_for @ticket, remote: true do |f| %>
-								<div class="input-group">
-									<div class="input-group-btn">
-										<%= f.hidden_field :quantity, value: 1%>
-										<%= f.hidden_field :event_id, value: @main_post.id %>
-										<%= f.hidden_field :user_id, value: current_user.id %>
-										<%= f.submit "Purchase Tickets", class: "input-button" %>
-									</div>
-								</div>
-							<% end %>
+						<p> $<%= '%i' % post.price %>
+							<% if defined? post.exhibits.sort.first.price %>
+							- $<%= '%i' % post.exhibits.sort.first.price %>
+							<% end %> </p>
 						<% end %>
-					<% elsif @main_post.is_a?(Event) %>
-						<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
+					</div>
+					<p><%= post.blurb %></p>
+					<div>
+						<% if current_user && post.is_a?(Event)%>
+							<% if current_order.tickets.length > 0 %>
+								<div class="input-group-btn">
+									<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
+								</div>
+							<% else %>
+								<%= form_for @ticket, remote: true do |f| %>
+									<div class="input-group">
+										<div class="input-group-btn">
+											<%= f.hidden_field :quantity, value: 1%>
+											<%= f.hidden_field :event_id, value: post.id %>
+											<%= f.hidden_field :user_id, value: current_user.id %>
+											<%= f.submit "Purchase Tickets", class: "input-button" %>
+										</div>
+									</div>
+								<% end %>
+							<% end %>
+						<% elsif post.is_a?(Event) %>
+							<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
+						<% end %>
+					</div>
+					<% if post.tags.length > 2 %>
+						<% post.tags[0..1].each do |tag| %>
+							<%= link_to "##{tag.name}, ", tag, type: "button", class: "row-tags" %>
+						<% end %>
+							<%= link_to "##{post.tags[2].name}", post.tags[2], type: "button", class: "row-tags" %>
 					<% end %>
 				</div>
-				<% if @main_post.tags.length > 2 %>
-					<% @main_post.tags[0..1].each do |tag| %>
-						<%= link_to "##{tag.name}, ", tag, type: "button", class: "row-tags" %>
-					<% end %>
-						<%= link_to "##{@main_post.tags[2].name}", @main_post.tags[2], type: "button", class: "row-tags" %>
-				<% end %>
+			</div>
+			<% end %>
+			<div class="progress">
+				<div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
 			</div>
 		</div>
 		<% end %>
-		<div class="progress">
-			<div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
-		</div>
-	</div>
 	<% end %>
 	<% @posts.shuffle.each do |post| %>
 	  <%= render "museum_row", post: post, ticket: @ticket  %>

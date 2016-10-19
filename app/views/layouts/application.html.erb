@@ -32,14 +32,18 @@
                   <span class="icon-bar"></span>
                 </button>
                 <div class= "brand-wrapper">
-                  <%= link_to image_tag("Medici_logos/Medici_Icon_CMYK.png"), root_path, class: "navbar-brand hidden-sm hidden-md hidden-lg"%>
+                  <% if @user_page || @show_page %>
+                    <%= link_to image_tag("Medici_logos/Medici_logo_CMYK_sm.png"), root_path, class: "navbar-brand navbar-brand-long hidden-sm hidden-md hidden-lg"%>
+                  <% else %>
+                    <%= link_to image_tag("Medici_logos/Medici_Icon_CMYK.png"), root_path, class: "navbar-brand hidden-sm hidden-md hidden-lg"%>
+                  <% end %>
                 </div>
                  <div class="btn-group hidden-sm hidden-md hidden-lg" role="group" aria-label="toggles">
-
-                  <button type="button" class="btn btn-default button-museum">museums</button>
-                  <button type="button" class="btn btn-default button-exhibit">exhibits</button>
-                  <button type="button" class="btn btn-default button-event">events</button>
-
+                  <% unless @user_page || @show_page %>
+                    <button type="button" class="btn btn-default button-museum">museums</button>
+                    <button type="button" class="btn btn-default button-exhibit">exhibits</button>
+                    <button type="button" class="btn btn-default button-event">events</button>
+                  <% end %>
                 </div>
                 <% if current_user && !current_user.image_url.nil? %>
                   <%= link_to image_tag(current_user.image_url + "?type=large"), user_path(current_user), class: "navbar-left hidden-xs avatar"%>
@@ -128,7 +132,9 @@
           </nav>
         </div>
         <div class="col-sm-9 col-lg-10 content">
-          <%= image_tag("Medici_logos/Medici_logo_Inset.png", class: " inset-brand hidden-sm hidden-md hidden-lg")%>
+
+            <%= image_tag("Medici_logos/Medici_logo_Inset.png", class: " inset-brand hidden-sm hidden-md hidden-lg")%>
+
           <%= yield %>
         <div id="color-hack"></div>
         <%= render 'layouts/footer' %>

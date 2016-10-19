@@ -5,10 +5,15 @@
   </div>
 
   <div class="field">
+    <%= f.label "Priority?" %>
+    <%= f.check_box :main %>
+  </div>
+
+  <div class="field">
     <%= f.label :blurb %>
     <%= f.text_field :blurb %>
   </div>
-
+ 
   <div class="field">
     <%= f.label :description %>
     <%= f.text_area :description %>

@@ -23,6 +23,9 @@
     .navbar-brand img{
         width: 25px;
     }
+    .navbar-brand-long img {
+        width: 72px;
+    }
     .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus{
         color: transparent;
         text-decoration: none;
