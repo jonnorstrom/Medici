@@ -34,7 +34,7 @@
       <p><%= post.blurb %></p>
       <div>
         <% if (current_user && post.is_a?(Event)) %>
-          <% if current_order.tickets.length > 0 %>
+          <% if current_order.tickets.length > 0 && post.ticketable%>
             <div class="input-group-btn">
               <%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
             </div>
