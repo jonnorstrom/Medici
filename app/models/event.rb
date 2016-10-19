@@ -12,7 +12,7 @@ class Event < ApplicationRecord
   validates_presence_of :name, :start_date, :end_date, :opening_time, :closing_time, :blurb, :description, :photo, :price, :website, :address
   validates_uniqueness_of :name
   validate :image_dimensions
-  
+
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
@@ -27,8 +27,8 @@ class Event < ApplicationRecord
         required_height = 400
         dimensions = Paperclip::Geometry.from_file(photo.queued_for_write[:original].path)
 
-        errors.add(:photo, "Width must be 400px") unless dimensions.width == required_width
-        errors.add(:photo, "Height must be 400px") unless dimensions.height == required_height
+        errors.add(:photo, "Width must be 400px") unless dimensions.width >= required_width
+        errors.add(:photo, "Height must be 400px") unless dimensions.height >= required_height
       end
     end
     def end_must_be_after_start
