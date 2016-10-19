@@ -7,7 +7,7 @@
 				<p>
 					FREE
 				</p>
-				<% elsif !exhibit.ticketsite.nil? %>
+				<% elsif !exhibit.ticketsite.nil? && exhibit.ticketsite != "" %>
 
 						<a target="_blank" class= "input-button" href='<%="http://#{exhibit.ticketsite}"%>' onclick="trackOutboundLink('<%="http://#{exhibit.ticketsite}"%>'); return false;, '_blank'">Tickets: $<%= '%i' % exhibit.price%></a>
 
@@ -16,24 +16,28 @@
 				<% end %>
 
 				<% if current_user && museum.is_a?(Event)%>
-					<% if current_order.tickets.length > 0 %>
-						<div class="input-group-btn">
-							<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
-						</div>
-					<% elsif museum.ticketable %>
-				    <%= form_for ticket, remote: true do |f| %>
-				      <div class="input-group">
-				        <div class="input-group-btn">
-				          <%= f.hidden_field :quantity, value: 1%>
-				          <%= f.hidden_field :event_id, value: museum.id %>
-				          <%= f.hidden_field :user_id, value: current_user.id %>
-				          <%= f.submit "Add to Cart", class: "input-button" %>
-				        </div>
-				      </div>
-				    <% end %>
+					<% if museum.end_date > Date.today %>
+						<% if current_order.tickets.length > 0 %>
+							<div class="input-group-btn">
+								<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
+							</div>
+						<% elsif museum.ticketable %>
+					    <%= form_for ticket, remote: true do |f| %>
+					      <div class="input-group">
+					        <div class="input-group-btn">
+					          <%= f.hidden_field :quantity, value: 1%>
+					          <%= f.hidden_field :event_id, value: museum.id %>
+					          <%= f.hidden_field :user_id, value: current_user.id %>
+					          <%= f.submit "Add to Cart", class: "input-button" %>
+					        </div>
+					      </div>
+					    <% end %>
+						<% end %>
 					<% end %>
 				<% elsif museum.is_a?(Event) %>
-					<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
+				  <% if museum.end_date > Date.today %>
+						<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
+					<% end %>
 				<% else %>
 					<div class="social-buttons">
 						<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-share-button" data-text="is guiding my experience at <%= museum.name %>!" data-show-count="false">Tweet</a>
@@ -48,7 +52,7 @@
 					<div class= "description-wrapper col-md-8 col-lg-12">
 						<h2><%= exhibit.name %></h2>
             <% if (exhibit.is_a?(Exhibit) || exhibit.is_a?(Event)) && exhibit.start_date == exhibit.end_date %>
-							<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B %d") %></h4>
+							<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B %d, %Y") %></h4>
 						<% elsif exhibit.is_a?(Exhibit) || exhibit.is_a?(Event) %>
   						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B, %d")%> - <%= exhibit.end_date.strftime("%B, %d %Y") %></h4>
             <% end %>
