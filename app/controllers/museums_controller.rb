@@ -5,7 +5,7 @@ class MuseumsController < ApplicationController
 
   def index
     @ticket = current_order.tickets.new
-    @posts = Museum.all + Exhibit.all + Event.all + Piece.all
+    @posts = Museum.all + Exhibit.all + Event.where("end_date > ?", Date.today) + Piece.all
     Event.all.each do |event|
       if event.main != false
         @main_post = event
