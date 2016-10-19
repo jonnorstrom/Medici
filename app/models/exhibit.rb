@@ -9,8 +9,22 @@ class Exhibit < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   validates_presence_of :name, :start_date, :end_date, :blurb, :description, :photo
   validates_uniqueness_of :name
+  validate :image_dimensions
 
   def to_param
     "#{id} #{name}".parameterize
+  end
+
+  private
+
+  def image_dimensions
+    if photo.queued_for_write[:original] != nil
+      required_width  = 400
+      required_height = 400
+      dimensions = Paperclip::Geometry.from_file(photo.queued_for_write[:original].path)
+
+      errors.add(:photo, "Width must be 400px") unless dimensions.width == required_width
+      errors.add(:photo, "Height must be 400px") unless dimensions.height == required_height
+    end
   end
 end

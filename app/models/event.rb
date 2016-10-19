@@ -11,15 +11,26 @@ class Event < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   validates_presence_of :name, :start_date, :end_date, :opening_time, :closing_time, :blurb, :description, :photo, :price, :website, :address
   validates_uniqueness_of :name
-
+  validate :image_dimensions
+  
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
   def to_param
     "#{id} #{name}".parameterize
   end
-  
+
   private
+    def image_dimensions
+      if photo.queued_for_write[:original] != nil
+        required_width  = 400
+        required_height = 400
+        dimensions = Paperclip::Geometry.from_file(photo.queued_for_write[:original].path)
+
+        errors.add(:photo, "Width must be 400px") unless dimensions.width == required_width
+        errors.add(:photo, "Height must be 400px") unless dimensions.height == required_height
+      end
+    end
     def end_must_be_after_start
       if start_date == nil || end_date == nil
         errors.add(:closing_time, "must be after start date")
