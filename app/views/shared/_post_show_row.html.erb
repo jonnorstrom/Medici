@@ -38,13 +38,14 @@
 				  <% if museum.end_date > Date.today %>
 						<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
 					<% end %>
-				<% else %>
+				<% end %>
 					<div class="social-buttons">
 						<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-share-button" data-text="is guiding my experience at <%= museum.name %>!" data-show-count="false">Tweet</a>
+						<a class="js-social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= yield :url %>" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
 						<!-- <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.facebook.com%2Fmediciapp&layout=button&size=small&mobile_iframe=true&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe> -->
 
 					</div>
-				<% end %>
+
 			</div>
 
 			<div class= "col-lg-8" >
