@@ -44,13 +44,25 @@
 <table>
   <tr>
     <th>
+      Name
+    </th>
+    <th>
       User Emails
     </th>
+    <th>
+      Sign-up Date
+    </th>
   </tr>
-  <% User.all.each do |user| %>
+  <% @users.each do |user| %>
 <tr>
   <td>
+    <%= user.name %>
+  </td>
+  <td>
     <%= user.email %>
+  </td>
+  <td>
+    <%= user.created_at.strftime("%m/%d") %>
   </td>
 </tr>
 <% end %>

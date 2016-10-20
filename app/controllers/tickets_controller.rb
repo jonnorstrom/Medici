@@ -53,6 +53,7 @@ class TicketsController < ApplicationController
     else
       @tickets = @tickets.first
     end
+      @users = User.all.sort {|x, y| x.created_at <=> y.created_at}
   end
 
 
