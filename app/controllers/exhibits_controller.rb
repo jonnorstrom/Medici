@@ -124,6 +124,6 @@ class ExhibitsController < ApplicationController
   private
 
   def exhibit_params
-    params.require(:exhibit).permit(:name, :blurb, :description, :photo, :price, :start_date, :end_date, :museum_id, :tag_ids => [])
+    params.require(:exhibit).permit(:name, :blurb, :description, :photo, :price, :start_date, :end_date, :museum_id, :permanent, :ticketsite, :tag_ids => [])
   end
   end

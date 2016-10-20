@@ -51,7 +51,9 @@
 				<div class="row">
 					<div class= "description-wrapper col-md-8 col-lg-12">
 						<h2><%= exhibit.name %></h2>
-            <% if (exhibit.is_a?(Exhibit) || exhibit.is_a?(Event)) && exhibit.start_date == exhibit.end_date %>
+						<% if exhibit.is_a?(Exhibit) && exhibit.permanent %>
+							<h4>Permanent Collection at <%= museum.name %></h4>
+            <% elsif (exhibit.is_a?(Exhibit) || exhibit.is_a?(Event)) && exhibit.start_date == exhibit.end_date %>
 							<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B %d, %Y") %></h4>
 						<% elsif exhibit.is_a?(Exhibit) || exhibit.is_a?(Event) %>
   						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B, %d")%> - <%= exhibit.end_date.strftime("%B, %d %Y") %></h4>

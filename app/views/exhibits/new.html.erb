@@ -21,12 +21,17 @@
 
   <div class="field">
     <%= f.label :start_date %>
-    <%= f.date_select :start_date %>
+    <%= f.date_select :start_date, :include_blank => true %>
   </div>
 
   <div class="field">
     <%= f.label :end_date %>
-    <%= f.date_select :end_date %>
+    <%= f.date_select :end_date, :include_blank => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :permanent %>
+    <%= f.check_box :permanent %>
   </div>
 
   <div class="field">
