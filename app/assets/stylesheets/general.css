@@ -187,15 +187,6 @@ a:focus {
 	list-style: none;
 }
 
-.row-tags {
-	color: #9B9999;
-	font-family: HansKendrick-Light;
-	font-size: 1.4em;
-}
-.row-tags:hover {
-	color: #00AEEF;
-}
-
 .search-in-search {
 	display: none;
 	padding-top: 2%;
