@@ -1,6 +1,9 @@
 <div class="panel panel-exhibit-show">
 	<div class="panel-heading">
 		<div class="row panel-row">
+			<%= link_to (root_path) do %>
+				<i class="fa fa-times back-x hidden-xs"></i>
+			<% end %>
 			<div class= "image-featured col-md-4">
 				<%= image_tag exhibit.photo.url(:large) %>
 				<% if exhibit.price == 0.0 %>
@@ -41,8 +44,8 @@
 				<% end %>
 					<div class="social-buttons">
 						<!-- <a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-share-button" data-text="is guiding my experience at <%= museum.name %>!" data-show-count="false">Tweet</a> -->
-						<a class="js-social-share twitter" href='https://twitter.com/intent/tweet?text=I love @medicimuseums and <%="#{exhibit.name}"%>' target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-						<a class="js-social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= yield :url %>" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+						<a class="js-social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= yield :url %>" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+						<a class="js-social-share twitter" href='https://twitter.com/intent/tweet?text=I love @medicimuseums and <%="#{exhibit.name}"%>' target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
 					</div>
 
 			</div>
@@ -92,7 +95,7 @@
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Website:</p>
 							<p class= "museum-info-entry"> <i class="fa fa-share-square-o" aria-hidden="true" style="padding-top: 7px;"></i>
-								<a href= '<%="http://#{museum.website}"%>' target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%="http://#{museum.website}"%></a>
+								<a href= '<%="http://#{museum.website}"%>' class="website" target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%="http://#{museum.website}"%></a>
 							</p>
 						</div>
 					</div>

@@ -66,9 +66,9 @@
         <% end %>
       </div>
       <% if post.tags.length > 1 %>
-        <% post.tags[0..1].each do |tag| %>
-          <%= link_to "##{tag.name}", tag, type: "button", class: "btn btn-default tag-button row-tags" %>
-        <% end %>
+
+          <%= link_to "##{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
+
 
       <% end %>
     </div>

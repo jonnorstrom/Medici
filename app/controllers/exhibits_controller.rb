@@ -10,7 +10,7 @@ class ExhibitsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
      marker.lat museum.latitude
      marker.lng museum.longitude
-   end
+    end
   end
 
   def new
@@ -126,4 +126,4 @@ class ExhibitsController < ApplicationController
   def exhibit_params
     params.require(:exhibit).permit(:name, :blurb, :description, :photo, :price, :start_date, :end_date, :museum_id, :permanent, :ticketsite, :tag_ids => [])
   end
-  end
+end
