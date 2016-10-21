@@ -62,7 +62,7 @@
   						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B, %d")%> - <%= exhibit.end_date.strftime("%B, %d %Y") %></h4>
             <% end %>
 
-						<p><%= exhibit.description %></p>
+						<p><%= simple_format(exhibit.description) %></p>
 					</div>
 				</div>
 				<div class="row">

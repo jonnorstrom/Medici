@@ -355,9 +355,14 @@ table tr:hover td {
 }
 
 .website {
+	text-align: right;
+	width: 25em;
 	white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.fa-share-square-o {
+	float: right;
 }
 i.fa.fa-twitter-square, i.fa.fa-facebook-square{
 	font-size: 2em;
