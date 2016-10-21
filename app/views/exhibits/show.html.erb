@@ -8,6 +8,6 @@
 <h2> Related Exhibits </h2>
 <div class= "row masonry-container">
   <% Event.all.each do |event| %>
-    <%= render "museum_row", post: event, ticket: @ticket  %>
+    <%= render "museums/museum_row", post: event, ticket: @ticket  %>
   <% end %>
 </div>
