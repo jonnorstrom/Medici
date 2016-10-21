@@ -33,32 +33,40 @@
       </div>
       <p><%= post.blurb %></p>
       <div>
-        <% if current_user && post.is_a?(Event)%>
-          <% if current_order.tickets.length > 0 %>
+        <% if (current_user && post.is_a?(Event)) %>
+          <% if (current_order.tickets.length > 0 && post.ticketable) && post.end_date > Date.today%>
             <div class="input-group-btn">
               <%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
             </div>
-          <% else %>
+          <% elsif post.ticketable && post.end_date > Date.today %>
             <%= form_for ticket, remote: true do |f| %>
               <div class="input-group">
                 <div class="input-group-btn">
                   <%= f.hidden_field :quantity, value: 1%>
                   <%= f.hidden_field :event_id, value: post.id %>
-                  <%= f.hidden_field :user_id, value: current_user.id %>
+                  <%= f.hidden_field :user_id, value: 1 %>
                   <%= f.submit "Get Tickets", class: "input-button" %>
                 </div>
               </div>
             <% end %>
           <% end %>
         <% elsif post.is_a?(Event) %>
-					<%= link_to "Sign in to get tickets!", new_user_session_path, class: "input-button" %>
+          <% if post.ticketable && post.end_date > Date.today%>
+            <%= form_for ticket, remote: true do |f| %>
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <%= f.hidden_field :quantity, value: 1%>
+                  <%= f.hidden_field :event_id, value: post.id %>
+                  <%= f.hidden_field :user_id, value: 1 %>
+                  <%= f.submit "Get Tickets", class: "input-button" %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
-      <% if post.tags.length > 2 %>
-        <% post.tags[0..1].each do |tag| %>
-          <%= link_to "##{tag.name}, ", tag, type: "button", class: "row-tags" %>
-        <% end %>
-          <%= link_to "##{post.tags[2].name}", post.tags[2], type: "button", class: "row-tags" %>
+      <% if post.tags.length > 0 %>
+          <%= link_to "##{post.tags[0].name}", post.tags[0], type: "button", class: "row-tags" %>
       <% end %>
     </div>
   </div>

@@ -348,6 +348,7 @@ table tr:hover td {
 	margin-left: 5%;
 	margin-right: 4%;
 }
+
 .back-x {
 	float:right;
 	margin-right: 1.5%;
@@ -361,13 +362,16 @@ table tr:hover td {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .fa-share-square-o {
 	float: right;
 }
+
 i.fa.fa-twitter-square, i.fa.fa-facebook-square{
 	font-size: 2em;
 	margin: 0 1% 0 1%;
 }
+
 i.fa.fa-twitter-square:hover, i.fa.fa-facebook-square:hover{
 	color: #00AEEF;
 }
