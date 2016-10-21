@@ -5,3 +5,10 @@
 
 
 <%= render "shared/post_show_row", exhibit: @event, museum: @event, ticket: @ticket  %>
+
+<h2> Related Events </h2>
+<div class= "row masonry-container">
+  <% Event.all.each do |event| %>
+    <%= render "museum_row", post: event, ticket: @ticket  %>
+  <% end %>
+</div>

@@ -88,7 +88,7 @@ class ExhibitsController < ApplicationController
     if @exhibit.update(exhibit_params)
       redirect_to :root
     else
-      render :"post/edit"
+      render :"exhibit/edit"
     end
   end
 

@@ -40,7 +40,7 @@ class MuseumsController < ApplicationController
     if @museum.update(museum_params)
       redirect_to :root
     else
-      render :"post/edit"
+      render :"museums/edit"
     end
   end
 
