@@ -5,6 +5,8 @@ class ExhibitsController < ApplicationController
   def show
     @show_page = true
     @exhibit = Exhibit.find(params[:id])
+    @related_exhibits = Exhibit.where(museum_id: @exhibit.museum_id)
+    @related_exhibits = @related_exhibits.reject{|ex| ex == @exhibit }
     @ticket = current_order.tickets.new
     @museum = Museum.find(@exhibit.museum_id)
     @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
