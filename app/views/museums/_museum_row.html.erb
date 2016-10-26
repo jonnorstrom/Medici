@@ -15,6 +15,11 @@
     <div class="caption">
       <div class="thumbnail-header">
         <h3><%= post.name %></h3>
+        <% if post.respond_to?(:museum_id) && !post.museum_id.nil?%>
+          <p>
+            <%= Museum.find(post.museum_id).name %>
+          </p>
+        <% end %>
         <% if post.is_a?(Piece) %>
         <% elsif post.is_a?(Exhibit) && post.price == post.museum.price %>
           <p>
