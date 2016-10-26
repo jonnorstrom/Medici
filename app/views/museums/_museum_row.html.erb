@@ -16,7 +16,7 @@
       <div class="thumbnail-header">
         <h3><%= post.name %></h3>
         <% if post.respond_to?(:museum_id) && !post.museum_id.nil?%>
-          <p>
+          <p class="museum-name">
             <%= Museum.find(post.museum_id).name %>
           </p>
         <% end %>

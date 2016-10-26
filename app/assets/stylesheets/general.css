@@ -375,3 +375,7 @@ i.fa.fa-twitter-square, i.fa.fa-facebook-square{
 i.fa.fa-twitter-square:hover, i.fa.fa-facebook-square:hover{
 	color: #00AEEF;
 }
+
+.museum-name {
+	color: dimGray;
+}
