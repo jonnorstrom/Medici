@@ -45,7 +45,7 @@
 	margin-bottom: 8px;
 }
 .thumbnail-header a {
-	color: dimGrey;
+	color: #696969;
 	display: inline;
 	font-size: 2rem;
 }
@@ -55,7 +55,7 @@
 	margin: 0px;
 	right: 0px;
 	bottom: 1px;
-	color: dimGrey;
+	color: #696969;
 }
 .thumbnail p{
 	line-height: 120%;
@@ -69,7 +69,7 @@
 }
 .app-advertisement .progress-bar {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);
-	background-color: dimGrey;
+	background-color: #696969;
 }
 .museum-panel .progress-bar {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.18);

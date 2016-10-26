@@ -17,7 +17,7 @@
     }
     .navbar-brand{
         font-family: "Brandon Grotesque" , "Helvetica";
-        color: dimGrey;
+        color: #696969;
         padding: 0px;
     }
     .navbar-brand img{
@@ -187,7 +187,7 @@
 #advanced-search{
   font-size: 1.3em;
   visibility: hidden;
-  color: dimGrey;
+  color: #696969;
 }
 #advanced-search:hover {
   color: #00AEEF;
@@ -267,7 +267,7 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
     font-size: 17px;
 }
 .list-group-item  a{
-    color: dimGrey;
+    color: #696969;
 }
 
 .list-group-item a:hover{

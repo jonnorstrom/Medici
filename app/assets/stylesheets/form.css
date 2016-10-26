@@ -45,7 +45,7 @@ body {
   border: 1px solid #ddd;
   transition: border-width 0.2s ease;
   border-radius: 2px;
-  color: dimGrey;
+  color: #696969;
 }
 
 .modal-form .input-field:focus {
@@ -82,7 +82,7 @@ input[type="checkbox"]:checked + label span {
 }
 
 .modal-form .title {
-  color: dimGrey;
+  color: #696969;
   font-size: 20px;
   font-weight: bold;
   margin: 10px 0 30px 0;

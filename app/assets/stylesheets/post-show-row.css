@@ -37,7 +37,7 @@
     margin-bottom: 6px;
 }
 .panel-exhibit-show h4{
-	color: dimGrey;
+	color: #696969;
 }
 .panel-exhibit-show .venue{
 	font-size: 16px;
@@ -50,7 +50,7 @@
 	width: 100%!important;
 }
 .museum-info-wrapper h3 > a{
-	color: dimGrey !important;
+	color: #696969 !important;
 	font-size: 20px !important;
 	font-family: HansKendrick-Heavy;
 }
@@ -64,14 +64,14 @@
 }
 .museum-info-type{
 	margin: 3px;
-	color: dimGrey!important;
+	color: #696969!important;
 	float: left;
 	font-size: 14px;
 	font-family: HansKendrick-Heavy;
 }
 .museum-info-entry, .museum-info-entry a{
 	font-family: HansKendrick-light;
-	color: dimGrey;
+	color: #696969;
 	margin: 3px;
 	font-size: 14px !important;
 	float: right;
