@@ -1,27 +1,53 @@
 require "rails_helper"
 
-RSpec.describe User, :type => :model do
-  subject { described_class.new }
-
+describe User do
+  let(:user) {User.new}
   it "is valid with valid attributes" do
-    subject.name = "Corbin Dallas"
-    subject.password = "multipass"
-    subject.email = "corbin@dallas.com"
-    expect(subject).to be_valid
+    user.name = "Corbin Dallas"
+    user.password = "multipass"
+    user.email = "corbin@dallas.com"
+    expect(user).to be_valid
   end
   it "is not valid without an email" do
-    subject.name = "Corbin Dallas"
-    subject.password = "multipass"
-    expect(subject).to_not be_valid
+    user.name = "Corbin Dallas"
+    user.password = "multipass"
+    expect(user).to_not be_valid
   end
   it "is not valid without a password"do
-      subject.name = "Corbin Dallas"
-      subject.email = "corbin@dallas.com"
-      expect(subject).to_not be_valid
+      user.name = "Corbin Dallas"
+      user.email = "corbin@dallas.com"
+      expect(user).to_not be_valid
   end
   it "is not valid without a name" do
-    subject.password = "multipass"
-    subject.email = "corbin@dallas.com"
-    expect(subject).to_not be_valid
+    user.password = "multipass"
+    user.email = "corbin@dallas.com"
+    expect(user).to_not be_valid
   end
+  it "sends a welcome email" do
+    user = User.create(name: "Corbin Dallas", email: "corbin@dallas.com", password: "multipass")
+    expect {user.send_admin_mail }.to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
+end
+
+describe UsersMailer do
+  let(:user) {User.create(name: "Corbin Dallas", email: "corbin@dallas.com", password: "multipass")}
+  let(:mail) {UsersMailer.signup_email(user)}
+
+  it "renders the subject" do
+    expect(mail.subject).to eql('Welcome to Medici Museums!')
+  end
+
+  it "renders the recipient email" do
+    expect(mail.to).to eql([user.email])
+  end
+
+  it "renders the sender email" do
+    expect(mail.from).to eql(['admin@medicimuseums.com'])
+  end
+
+  it "assigns @name" do
+    expect(mail.body.encoded).to match(user.name)
+  end
+
+
 end

@@ -28,12 +28,12 @@ class Ticket < ApplicationRecord
   end
 
   private
-
   def museum_present
     if museum.nil?
       errors.add(:museum, "is not a valid museum")
     end
   end
+
 
   def order_present
     if order.nil?

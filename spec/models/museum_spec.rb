@@ -126,4 +126,16 @@ RSpec.describe Museum, :type => :model do
     field.website = "www.fieldmuseum.org"
     expect(field).to_not be_valid
   end
+  it "is not valid without the correct photo dimensions" do
+    field.name = "Field Museum"
+    field.blurb = "A great museum"
+    field.description = "Remember when SUE was a huge deal? It's still great."
+    field.address = "1400 S Lake Shore Dr, Chicago, IL 60605"
+    field.price = 10
+    field.photo = File.new("test/fixtures/small_field.jpg")
+    field.opening_time = Time.now
+    field.closing_time = Time.now
+    field.website = "www.fieldmuseum.org"
+    expect(field).to_not be_valid
+  end
 end
