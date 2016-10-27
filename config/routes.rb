@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:show]
   get "terms/terms" => "terms#terms"
   get "terms/privacy" => "terms#privacy"
+  get "terms/about" => "terms#about"
 
   root to: "museums#index"
 end

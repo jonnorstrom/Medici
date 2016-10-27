@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- MEH-di-chee -->
-    <!-- meh-DEE-chee -->
-    <!-- M'DICI! -->
+    <!-- MEH-di-chee?-->
+    <!-- meh-DEE-chee?-->
+    <!-- M'DICI!! -->
     <title>Medici</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -128,6 +128,7 @@
               <%= link_to "https://twitter.com/medicimuseums" do %>
                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
               <% end %>
+              <p class= "text-muted"><%= link_to "About", terms_about_path, class: "text-muted" %></p>
               <p class= "text-muted">&copy;Medici App, LLC<br><%= link_to "Privacy Policy", terms_privacy_path, class: "text-muted" %></p>
 
             </footer>
