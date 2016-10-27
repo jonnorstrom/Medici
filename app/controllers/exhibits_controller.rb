@@ -103,6 +103,7 @@ class ExhibitsController < ApplicationController
 
   def tagging_create
     @exhibit = Exhibit.find(params[:id])
+    @exhibit.taggings.destroy_all
     exhibit_params[:tag_ids].each do |tag|
       if tag != ""
         @tagging = @exhibit.taggings.new(tag_id: tag.to_i)

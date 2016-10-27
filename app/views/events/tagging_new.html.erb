@@ -4,10 +4,17 @@
    <ul>
      <% Tag.all.each do |tag| %>
      <%= hidden_field_tag "event_tag_ids_none", nil, {:name => "event[tag_ids][]"}%>
-     <li>
-       <%= check_box_tag "event_tag_ids_#{tag.id}", tag.id, (f.object.taggings.present? && f.object.taggings.include?(tag.id)), {:name => "event[tag_ids][]"} %>
-       <%= label_tag "event_tag_ids_#{tag.id}", tag.name %>
-     </li>
+       <% if @event.tags.include?(tag) %>
+          <li>
+           <%= check_box_tag "event_tag_ids_#{tag.id}", tag.id, true, {:name => "event[tag_ids][]"} %>
+           <%= label_tag "event_tag_ids_#{tag.id}", tag.name %>
+         </li>
+       <% else %>
+         <li>
+           <%= check_box_tag "event_tag_ids_#{tag.id}", tag.id, (f.object.taggings.present? && f.object.taggings.include?(tag.id)), {:name => "event[tag_ids][]"} %>
+           <%= label_tag "event_tag_ids_#{tag.id}", tag.name %>
+         </li>
+       <% end %>
      <% end %>
    </ul>
 

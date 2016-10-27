@@ -51,6 +51,7 @@ class MuseumsController < ApplicationController
 
   def tagging_create
     @museum = Museum.find(params[:id])
+    @museum.taggings.destroy_all
     museum_params[:tag_ids].each do |tag|
       if tag != ""
         @tagging = @museum.taggings.new(tag_id: tag.to_i)

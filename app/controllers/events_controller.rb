@@ -43,6 +43,7 @@ class EventsController < ApplicationController
 
   def tagging_create
     @event = Event.find(params[:id])
+    @event.taggings.destroy_all
     event_params[:tag_ids].each do |tag|
       if tag != ""
         @tagging = @event.taggings.new(tag_id: tag.to_i)
