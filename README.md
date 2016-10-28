@@ -1,5 +1,6 @@
 # Medici
 [![Code Climate](https://codeclimate.com/github/scottsouthard/Medici/badges/gpa.svg)](https://codeclimate.com/github/scottsouthard/Medici)
+[![Test Coverage](https://codeclimate.com/github/scottsouthard/Medici/badges/coverage.svg)](https://codeclimate.com/github/scottsouthard/Medici/coverage)
 
 A specialized pilot web app for cultural insight and event tickets from the folks at Cultural Media Inc.
 
