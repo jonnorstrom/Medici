@@ -75,7 +75,7 @@ class MuseumsController < ApplicationController
   private
 
   def museum_params
-    params.require(:museum).permit(:name, :transportation_info, :blurb, :website, :opening_time, :closing_time, :description, :photo, :address, :price, :ticketsite, :tag_ids => [])
+    params.require(:museum).permit(:name, :transportation_info, :blurb, :website, :opening_time, :closing_time, :description, :photo, :address, :price, :ticketsite, :sun_open, :sun_close, :mon_open, :mon_close, :tue_open, :tue_close, :wed_open, :wed_close, :thu_open, :thu_close, :fri_open, :fri_close, :sat_open, :sat_close, :tag_ids => [])
   end
 
 end

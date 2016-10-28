@@ -39,7 +39,7 @@ class Museum < ApplicationRecord
   def close_must_be_after_open
     if opening_time == nil || closing_time == nil
       errors.add(:closing_time, "must be after opening_time")
-    elsif opening_time >= closing_time
+    elsif opening_time > closing_time
       errors.add(:closing_time, "must be after opening_time")
     end
   end
