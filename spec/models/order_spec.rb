@@ -8,16 +8,13 @@ describe Order do
   let(:ticket_2){order_1.tickets.new(quantity: 1, museum_id: museum.id)}
 
   it "has tickets that belongs to the order" do
-
-
-    order_1.save
-    expect(ticket_1.order).to eq(order_1)
+    ticket_1
+    expect(order_1.tickets).to include(ticket_1)
   end
 
   it "can calculate a subtotal" do
     ticket_1
     ticket_2
-    order_1.save
     expect(current_order.subtotal).to eq(200.0)
   end
 
