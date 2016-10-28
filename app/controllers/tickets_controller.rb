@@ -28,10 +28,6 @@ class TicketsController < ApplicationController
     redirect_to cart_path(id: current_user.id)
   end
 
-  def update
-
-  end
-
   def redeem
     @ticket = Ticket.find(params[:id])
     if @ticket.redeemed == true

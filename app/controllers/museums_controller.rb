@@ -16,9 +16,9 @@ class MuseumsController < ApplicationController
     @ticket = current_order.tickets.new
     @exhibits = @museum.exhibits.all + @museum.events.all
     @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
-     marker.lat museum.latitude
-     marker.lng museum.longitude
-   end
+      marker.lat museum.latitude
+      marker.lng museum.longitude
+    end
   end
 
   def new

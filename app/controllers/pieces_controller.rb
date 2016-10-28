@@ -9,9 +9,9 @@ class PiecesController < ApplicationController
     end
     @ticket = current_order.tickets.new
     @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
-     marker.lat museum.latitude
-     marker.lng museum.longitude
-   end
+      marker.lat museum.latitude
+      marker.lng museum.longitude
+    end
   end
 
   def new

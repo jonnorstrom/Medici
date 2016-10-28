@@ -1,14 +1,5 @@
 $(document).on('turbolinks:load', function(){
-   $('.super-search').click(function(){
-     $('.search-in-search').slideDown();
-   });
-   $("#log-in-button").click(function(){
-       $(".post-wrapper").fadeOut(2000);
-   });
-   $(".panel-sign-in").fadeIn(1000);
-   $(".btn2").click(function(){
-       $(".panel-sign-in").slideDown();
-   });
+
 
 
    var $container = $('.masonry-container');
@@ -33,7 +24,7 @@ $(document).on('turbolinks:load', function(){
    $( "#event-toggle" ).prop( "checked", true);
    var hasClicked = false;
    $(".checkbox-wrapper").click(function(){
-     if(hasClicked == false){
+     if(hasClicked === false){
         $( "#museum-toggle" ).prop( "checked", false );
         $( "#exhibit-toggle" ).prop( "checked", false );
         $( "#event-toggle" ).prop( "checked", false );

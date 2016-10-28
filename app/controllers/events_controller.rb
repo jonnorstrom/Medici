@@ -6,11 +6,10 @@ class EventsController < ApplicationController
     @show_page = true
     @event = Event.find(params[:id])
     @ticket = current_order.tickets.new
-    # @museum = Museum.find(@event.museum_id)
     @hash = Gmaps4rails.build_markers(@event) do |museum, marker|
-     marker.lat museum.latitude
-     marker.lng museum.longitude
-   end
+      marker.lat museum.latitude
+      marker.lng museum.longitude
+    end
   end
 
   def new

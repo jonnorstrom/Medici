@@ -36,6 +36,7 @@ gem 'stripe'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'aws-sdk', '>= 2.5.3'
+gem "codeclimate-test-reporter", group: :test, require: nil
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -9,10 +9,6 @@ class ApplicationController < ActionController::Base
     session[:previous_url] = request.original_fullpath unless request.fullpath =~ /\/users/
   end
 
-  def after_sign_in_path_for(resource)
-    session[:previous_url] || root_path
-  end
-
   def current_order
     if session[:order_id]
       Order.new
@@ -47,7 +43,7 @@ class ApplicationController < ActionController::Base
   def administrative
     if not is_admin?
      redirect_to root_url
-   end
+    end
   end
 
   def store_current_location
