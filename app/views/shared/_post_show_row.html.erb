@@ -59,7 +59,7 @@
             <% elsif (exhibit.is_a?(Exhibit) || exhibit.is_a?(Event)) && exhibit.start_date == exhibit.end_date %>
 							<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B %d, %Y") %></h4>
 						<% elsif exhibit.is_a?(Exhibit) || exhibit.is_a?(Event) %>
-  						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B, %d")%> - <%= exhibit.end_date.strftime("%B, %d %Y") %></h4>
+  						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B %d")%> - <%= exhibit.end_date.strftime("%B %d, %Y") %></h4>
             <% end %>
 
 						<p><%= simple_format(exhibit.description) %></p>

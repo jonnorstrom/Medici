@@ -41,6 +41,11 @@ class EventsController < ApplicationController
   end
 
   def tagging_create
+    @type_museum
+    @type_art
+    @medium
+    @misc
+    
     @event = Event.find(params[:id])
     @event.taggings.destroy_all
     event_params[:tag_ids].each do |tag|
