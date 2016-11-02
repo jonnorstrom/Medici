@@ -10,6 +10,8 @@ class EventsController < ApplicationController
       marker.lat museum.latitude
       marker.lng museum.longitude
     end
+    @other_events = Event.all.where("end_date > ?", Date.today)
+    @other_events = @other_events.to_a - [@event]
   end
 
   def new
