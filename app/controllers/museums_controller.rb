@@ -7,7 +7,7 @@ class MuseumsController < ApplicationController
     @ticket = current_order.tickets.new
     @posts = Museum.all + Exhibit.all + Event.where("end_date > ?", Date.today) + Piece.all
     @main_posts = Event.where(main: true)
-    @posts.delete(@main_post)
+    @posts = @posts - @main_post
   end
 
   def show
