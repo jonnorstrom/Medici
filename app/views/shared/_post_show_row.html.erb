@@ -19,10 +19,10 @@
 				<% end %>
 
 				<% if current_user && museum.is_a?(Event)%>
-					<% if museum.end_date > Date.today %>
+					<% if museum.end_date >= Date.today %>
 						<% if current_order.tickets.length > 0 && museum.ticketable %>
 							<div class="input-group-btn">
-								<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
+								<%= link_to "Complete Your Current Order", cart_path(id: current_user.id), class: "input-button" %>
 							</div>
 						<% elsif museum.ticketable %>
 					    <%= form_for ticket, remote: true do |f| %>
