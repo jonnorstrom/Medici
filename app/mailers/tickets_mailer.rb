@@ -17,7 +17,7 @@ class TicketsMailer < ApplicationMailer
     else
       @museum = Museum.find(@ticket.museum_id).name
     end
-    mail(from: 'MediciMuseums <admin@medicimuseums.com>', to: @user.email, subject: 'Thanks for purchasing your ticket to Emoji Mystery!')
+    mail(from: 'MediciMuseums <admin@medicimuseums.com>', to: @user.email, subject: 'Thanks for purchasing your ticket!')
   end
 
 end
