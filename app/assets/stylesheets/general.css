@@ -387,3 +387,7 @@ p.extra-hours{
 	font-size: 14px !important;
 	text-align: right;
 }
+
+.coupon-error {
+	color: #ff0000;
+}
