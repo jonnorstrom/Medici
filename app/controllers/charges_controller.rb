@@ -37,7 +37,6 @@ class ChargesController < ApplicationController
       redirect_to charges_redemption_path
     else
 
-
       customer = Stripe::Customer.create(
         :email => params[:stripeEmail],
         :source  => params[:stripeToken]
