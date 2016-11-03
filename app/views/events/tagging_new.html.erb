@@ -56,7 +56,7 @@
    </ul>
 
    <ul>
-     <h3>Type of Museum</h3>
+     <h3>Misc</h3>
      <% @misc.each do |tag| %>
      <%= hidden_field_tag "event_tag_ids_none", nil, {:name => "event[tag_ids][]"}%>
        <% if @event.tags.include?(tag) %>
