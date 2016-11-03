@@ -43,7 +43,7 @@ class TicketsController < ApplicationController
   end
 
   def stats
-    @tickets = Ticket.where(id: 12, paid:true)
+    @tickets = Ticket.where(paid:true)
     if @tickets.count > 1
       @tickets = @tickets.sort {|x, y| x.user.name <=> y.user.name}
     else
