@@ -725,14 +725,11 @@
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
-
+ 												<%= attachments.inline['photo.png'] %>
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
-                            <h1><span style="color:78787a"><span style="font-family:arial,helvetica neue,helvetica,sans-serif">Hi <%= @user.name %>, this is your ticket for&nbsp;</span></span><span style="font-family:arial,helvetica neue,helvetica,sans-serif"><span style="color:DB4599"><a href="https://www.facebook.com/events/155193231604329/" target="_blank">Emoji Mystery!</a></span></span></h1>
-
-<p><span style="font-size:14px"><span style="color:#A9A9A9">Hosted by the</span><span style="color:78787a"> </span><a href="http://www.chicagohistory.org/" target="_blank">Chicago History Museum</a><span style="color:78787a"> </span><span style="color:#A9A9A9">and</span><span style="color:78787a"> </span><a href="https://www.facebook.com/museumgamenight/?ref=br_rs" target="_blank">Museum Game Night</a></span><br>
-<br>
-Please show this email at the museum's front desk to gain entry.</p>
+                            <h1><span style="color:78787a"><span style="font-family:arial,helvetica neue,helvetica,sans-serif">Hi <%= @user.name %>, this is your ticket for&nbsp;</span></span><span style="font-family:arial,helvetica neue,helvetica,sans-serif"><span style="color:DB4599"><a href="https://www.facebook.com/events/155193231604329/" target="_blank"><%= @museum %> </a></span></span></h1><br>
+														<p>Please show this email at the entrance.</p>
 
                         </td>
                     </tr>
@@ -783,9 +780,9 @@ Please show this email at the museum's front desk to gain entry.</p>
 
                         <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
-                            <p>You have purchased <%= @quantity%> tickets to Emoji Mystery &nbsp;| Total $<%= @total %></p>
+                            <p>You have reserved <%= @quantity%> tickets to <%= @museum %> &nbsp;</p>
 
-<p>Your redemption code is: <%= @code %></p>
+														<p>Your redemption code is: <%= @code %></p>
 
                         </td>
                     </tr>
@@ -809,9 +806,13 @@ Please show this email at the museum's front desk to gain entry.</p>
                     <tbody><tr>
                         <td>
                             <span></span>
+														<p>
+                            	Thanks for partying with Medici Museums!
+                            </p>
                         </td>
                     </tr>
                 </tbody></table>
+
 <!--
                 <td class="mcnDividerBlockInner" style="padding: 18px;">
                 <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
@@ -858,10 +859,6 @@ Please show this email at the museum's front desk to gain entry.</p>
                         <tbody><tr>
                             <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
 
-
-                                        <img align="center" alt="" src="https://gallery.mailchimp.com/acbea4dfbc9aea30f6493fbdb/images/fe34b415-52a5-4167-b531-4776925083cb.jpg" width="564" style="max-width:1280px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
-
-
                             </td>
                         </tr>
                     </tbody></table>
@@ -880,17 +877,17 @@ Please show this email at the museum's front desk to gain entry.</p>
 				<!--[if mso]>
 				<td valign="top" width="600" style="width:600px;">
 				<![endif]-->
-                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                <!-- <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
 
-                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; line-height: 150%;">
+                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; line-height: 150%;"> -->
 
-                            <span style="font-size:18px">About this event:</span>
+                            <!-- <span style="font-size:18px">About this event:</span>
 
 <p style="line-height: 150%;"><span style="color:#A9A9A9">Tuesday, October 18, 2016 from 5:30 pm to 8:00 pm</span><br>
 <br>
 <a href="https://www.google.com/maps/place/Chicago+History+Museum" target="_blank">Chicago History Museum<br>
-1601 N Clark St, Chicago, Illinois 60614</a></p>
+1601 N Clark St, Chicago, Illinois 60614</a></p> -->
 
                         </td>
                     </tr>

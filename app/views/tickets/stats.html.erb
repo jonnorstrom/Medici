@@ -22,6 +22,9 @@
       Email
     </th>
     <th>
+      Event
+    </th>
+    <th>
       Quantity
     </th>
   </tr>
@@ -34,6 +37,9 @@
         <%= ticket.user.email %>
       </td>
       <td>
+        <%= Event.find(ticket.event_id).name %>
+      </td>
+      <td>
         <%= ticket.quantity %>
       </td>
   </tr>
@@ -41,6 +47,7 @@
 
 </table>
 
+<h3>All Users</h3>
 <table>
   <tr>
     <th>

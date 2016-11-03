@@ -7,7 +7,9 @@ class MuseumsController < ApplicationController
     @ticket = current_order.tickets.new
     @posts = Museum.all + Exhibit.all + Event.where("end_date > ?", Date.today) + Piece.all
     @main_posts = Event.where(main: true)
-    @posts.delete(@main_post)
+    if !@main_posts.nil?
+      @posts = @posts.to_a - @main_posts
+    end
   end
 
   def show
@@ -45,6 +47,10 @@ class MuseumsController < ApplicationController
   end
 
   def tagging_new
+    @type_museum = Tag.where(category: "Type of Museum")
+    @type_art = Tag.where(category: "Type of Art")
+    @medium = Tag.where(category: "Medium")
+    @misc = Tag.where(category: "Misc")
     @museum = Museum.find(params[:id])
     @tagging = Tagging.new
   end
@@ -75,7 +81,7 @@ class MuseumsController < ApplicationController
   private
 
   def museum_params
-    params.require(:museum).permit(:name, :transportation_info, :blurb, :website, :opening_time, :closing_time, :description, :photo, :address, :price, :ticketsite, :tag_ids => [])
+    params.require(:museum).permit(:name, :transportation_info, :blurb, :website, :opening_time, :closing_time, :description, :photo, :address, :price, :ticketsite, :sun_open, :sun_close, :mon_open, :mon_close, :tue_open, :tue_close, :wed_open, :wed_close, :thu_open, :thu_close, :fri_open, :fri_close, :sat_open, :sat_close, :tag_ids => [])
   end
 
 end

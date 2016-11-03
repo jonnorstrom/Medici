@@ -2,7 +2,8 @@
 
    <p>Tags</p>
    <ul>
-     <% Tag.all.each do |tag| %>
+     <h2>Type of Museum</h2>
+     <% @type_museum.each do |tag| %>
        <%= hidden_field_tag "exhibit_tag_ids_none", nil, {:name => "exhibit[tag_ids][]"}%>
        <% if @exhibit.tags.include?(tag) %>
           <li>
@@ -18,6 +19,59 @@
      <% end %>
    </ul>
 
+   <ul>
+     <h2>Type of Art</h2>
+     <% @type_art.each do |tag| %>
+       <%= hidden_field_tag "exhibit_tag_ids_none", nil, {:name => "exhibit[tag_ids][]"}%>
+       <% if @exhibit.tags.include?(tag) %>
+          <li>
+           <%= check_box_tag "exhibit_tag_ids_#{tag.id}", tag.id, true, {:name => "exhibit[tag_ids][]"} %>
+           <%= label_tag "exhibit_tag_ids_#{tag.id}", tag.name %>
+         </li>
+       <% else %>
+         <li>
+           <%= check_box_tag "exhibit_tag_ids_#{tag.id}", tag.id, (f.object.taggings.present? && f.object.taggings.include?(tag.id)), {:name => "exhibit[tag_ids][]"} %>
+           <%= label_tag "exhibit_tag_ids_#{tag.id}", tag.name %>
+         </li>
+       <% end %>
+     <% end %>
+   </ul>
+
+   <ul>
+     <h2>Medium</h2>
+     <% @medium.each do |tag| %>
+       <%= hidden_field_tag "exhibit_tag_ids_none", nil, {:name => "exhibit[tag_ids][]"}%>
+       <% if @exhibit.tags.include?(tag) %>
+          <li>
+           <%= check_box_tag "exhibit_tag_ids_#{tag.id}", tag.id, true, {:name => "exhibit[tag_ids][]"} %>
+           <%= label_tag "exhibit_tag_ids_#{tag.id}", tag.name %>
+         </li>
+       <% else %>
+         <li>
+           <%= check_box_tag "exhibit_tag_ids_#{tag.id}", tag.id, (f.object.taggings.present? && f.object.taggings.include?(tag.id)), {:name => "exhibit[tag_ids][]"} %>
+           <%= label_tag "exhibit_tag_ids_#{tag.id}", tag.name %>
+         </li>
+       <% end %>
+     <% end %>
+   </ul>
+
+   <ul>
+     <h2>Misc</h2>
+     <% @misc.each do |tag| %>
+       <%= hidden_field_tag "exhibit_tag_ids_none", nil, {:name => "exhibit[tag_ids][]"}%>
+       <% if @exhibit.tags.include?(tag) %>
+          <li>
+           <%= check_box_tag "exhibit_tag_ids_#{tag.id}", tag.id, true, {:name => "exhibit[tag_ids][]"} %>
+           <%= label_tag "exhibit_tag_ids_#{tag.id}", tag.name %>
+         </li>
+       <% else %>
+         <li>
+           <%= check_box_tag "exhibit_tag_ids_#{tag.id}", tag.id, (f.object.taggings.present? && f.object.taggings.include?(tag.id)), {:name => "exhibit[tag_ids][]"} %>
+           <%= label_tag "exhibit_tag_ids_#{tag.id}", tag.name %>
+         </li>
+       <% end %>
+     <% end %>
+   </ul>
    <%= f.submit %>
 
 <% end %>

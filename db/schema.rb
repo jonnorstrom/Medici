@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020171302) do
+ActiveRecord::Schema.define(version: 20161028204552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,20 @@ ActiveRecord::Schema.define(version: 20161020171302) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.time     "sun_open"
+    t.time     "sun_close"
+    t.time     "mon_open"
+    t.time     "mon_close"
+    t.time     "tue_open"
+    t.time     "tue_close"
+    t.time     "wed_open"
+    t.time     "wed_close"
+    t.time     "thu_open"
+    t.time     "thu_close"
+    t.time     "fri_open"
+    t.time     "fri_close"
+    t.time     "sat_open"
+    t.time     "sat_close"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -150,6 +164,7 @@ ActiveRecord::Schema.define(version: 20161020171302) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "category"
   end
 
   create_table "tickets", force: :cascade do |t|

@@ -10,6 +10,8 @@ class EventsController < ApplicationController
       marker.lat museum.latitude
       marker.lng museum.longitude
     end
+    @other_events = Event.all.where("end_date > ?", Date.today)
+    @other_events = @other_events.to_a - [@event]
   end
 
   def new
@@ -36,6 +38,10 @@ class EventsController < ApplicationController
   end
 
   def tagging_new
+    @type_museum = Tag.where(category: "Type of Museum")
+    @type_art = Tag.where(category: "Type of Art")
+    @medium = Tag.where(category: "Medium")
+    @misc = Tag.where(category: "Misc")
     @event = Event.find(params[:id])
     @tagging = Tagging.new
   end
@@ -66,6 +72,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :blurb, :transportation_info, :address, :website, :description, :photo, :opening_time, :closing_time, :start_date, :price, :end_date, :museum_id, :ticketsite, :ticketable, :tag_ids => [])
+    params.require(:event).permit(:name, :blurb, :transportation_info, :address, :website, :description, :photo, :opening_time, :closing_time, :start_date, :price, :end_date, :main, :museum_id, :ticketsite, :ticketable, :tag_ids => [])
   end
 end

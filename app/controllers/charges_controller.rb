@@ -33,26 +33,31 @@ class ChargesController < ApplicationController
       }
     end
 
-    customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
-    )
-    stripe_charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @final_amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd',
-      :metadata    => charge_metadata
-    )
-    @charge = Charge.create!(amount: @final_amount, coupon: @coupon, stripe_id: stripe_charge.id)
-    @coupon.update_attributes(quantity_redeemed: @coupon.quantity_redeemed += 1)
-    @order.tickets.update(paid: true)
-    @order.tickets.delete_all
-    TicketsMailer.purchase_email(current_user).deliver_now
+    if @final_amount <= 0
+      redirect_to charges_redemption_path
+    else
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
+      customer = Stripe::Customer.create(
+        :email => params[:stripeEmail],
+        :source  => params[:stripeToken]
+      )
+      stripe_charge = Stripe::Charge.create(
+        :customer    => customer.id,
+        :amount      => @final_amount,
+        :description => 'Rails Stripe customer',
+        :currency    => 'usd',
+        :metadata    => charge_metadata
+      )
+      @charge = Charge.create!(amount: @final_amount, coupon: @coupon, stripe_id: stripe_charge.id)
+      @coupon.update_attributes(quantity_redeemed: @coupon.quantity_redeemed += 1)
+      @order.tickets.update(paid: true)
+      @order.tickets.delete_all
+      TicketsMailer.purchase_email(current_user).deliver_now
+    end
+
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to new_charge_path
   end
 
   def redemption

@@ -95,6 +95,10 @@ class ExhibitsController < ApplicationController
   end
 
   def tagging_new
+    @type_museum = Tag.where(category: "Type of Museum")
+    @type_art = Tag.where(category: "Type of Art")
+    @medium = Tag.where(category: "Medium")
+    @misc = Tag.where(category: "Misc")
     @search_show = true
     @show_page = true
     @exhibit = Exhibit.find(params[:id])

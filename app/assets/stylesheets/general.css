@@ -383,3 +383,15 @@ i.fa.fa-twitter-square:hover, i.fa.fa-facebook-square:hover{
 .museum-name {
 	color: #696969;
 }
+
+p.extra-hours{
+	font-family: HansKendrick-light;
+	color: #696969;
+	margin: 3px;
+	font-size: 14px !important;
+	text-align: right;
+}
+
+.coupon-error {
+	color: #ff0000;
+}
