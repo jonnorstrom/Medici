@@ -129,16 +129,12 @@
                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
               <% end %>
               <p class= "text-muted">&copy;Medici App, LLC<br><%= link_to "Privacy Policy", terms_privacy_path, class: "text-muted" %> | <%= link_to "About", terms_about_path, class: "text-muted" %></p> 
-
-
             </footer>
             </div>
           </nav>
         </div>
         <div class="col-sm-9 col-lg-10 content">
-
             <%= image_tag("Medici_logos/Medici_logo_Inset.png", class: " inset-brand hidden-sm hidden-md hidden-lg")%>
-
           <%= yield %>
         <div id="color-hack"></div>
         <%= render 'layouts/footer' %>
