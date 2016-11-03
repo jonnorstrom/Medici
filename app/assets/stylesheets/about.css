@@ -1,0 +1,59 @@
+@media (max-width: 750px) {
+	.about-wrapper{
+		width: 97%;
+	}
+}
+@media (min-width: 750px) {
+	.about-wrapper{
+		width: 48%;
+	}
+}
+@media (min-width: 970px) {
+	.about-wrapper{
+		width: 32%;
+	}
+}
+	@media (min-width: 1170px) {
+	.about-wrapper{
+		width: 24%;
+	}
+}
+.about-row{
+	margin-bottom: 10px;
+}
+.about-wrapper{
+	display: inline-block;
+	padding: 0px;
+	margin: 15px 0px 0px 0px;
+}
+.about-column{
+	display: block; 
+	margin: auto;
+}
+#about-logo{
+	display: block;
+	margin: auto;
+	width: 300px;
+}
+.about-header {
+	display: block;
+	margin: 30px auto;
+	max-width: 820px;
+	padding: 40px;
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("blurry_museum.jpg");
+    background-position: center bottom;
+}
+.about-header p{
+    color: #FFF;
+    margin: 5px;
+	display: block;
+	margin: auto;
+	text-align: center;
+	width: 400px;
+}
+
+
+
