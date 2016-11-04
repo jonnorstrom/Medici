@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   before_save :update_subtotal
 
   def subtotal
-    tickets.collect {|ticket| ticket.valid? ? (ticket.quantity * ticket.unit_price) : 0}.sum
+    tickets.collect {|ticket| ticket.valid? ? (ticket.total_price) : 0}.sum
   end
 
   private

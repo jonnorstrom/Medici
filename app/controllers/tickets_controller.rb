@@ -43,13 +43,13 @@ class TicketsController < ApplicationController
   end
 
   def stats
-    @tickets = Ticket.where(paid:true)
+      @tickets = Ticket.where(paid:true)
     if @tickets.count > 1
       @tickets = @tickets.sort {|x, y| x.user.name <=> y.user.name}
     else
       @tickets = @tickets.first
     end
-    @users = User.all.sort {|x, y| x.created_at <=> y.created_at}
+      @users = User.all.sort {|x, y| x.created_at <=> y.created_at}
   end
 
 
@@ -73,7 +73,7 @@ class TicketsController < ApplicationController
   private
 
     def ticket_params
-      params.require(:ticket).permit(:user_id, :quantity, :exhibit_id, :event_id, :original_quantity, :museum_id)
+      params.require(:ticket).permit(:user_id, :quantity, :exhibit_id, :event_id, :original_quantity, :museum_id, :coupon_code)
     end
 
 end
