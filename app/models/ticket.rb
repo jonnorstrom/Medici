@@ -71,4 +71,20 @@ class Ticket < ApplicationRecord
        self[:total_price] = 0.0
     end
   end
+
+
+
+
+  # def finalize
+  #   self[:unit_price] = unit_price
+  #   self[:total_price] = quantity * self[:unit_price]
+  #
+  #   @code = coupon_code
+  #
+  #   @coupon = Coupon.find_by(coupon_code: coupon_code)
+  #
+  #   if @coupon.active
+  #     self[:total_price] = total_price - (total_price * @coupon.discount)
+  #   end
+  # end
 end
