@@ -6,22 +6,13 @@
 
         <%= form_tag charges_path do %>
           <article>
-            <% if flash[:error].present? %>
-              <div id="error_explanation">
-                <p class="coupon-error"><%= flash[:error] %></p>
-              </div>
-            <% end %>
+
             <label class="amount">
               <p>
                 Amount: <%= @amount %>
               </p>
             </label>
           </article>
-
-            <%= label_tag(:couponCode, 'Coupon:') %>
-            <%= text_field_tag(:couponCode) %>
-
-            <p>(Discount will be applied after credit card verification)</p>
 
           <% if @amount.to_i == 0 %>
             <%= link_to "Get your tickets!", charges_redemption_path %>

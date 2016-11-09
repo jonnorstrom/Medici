@@ -18,6 +18,9 @@
   <% elsif museum.is_a?(Event) %>
     <%= f.hidden_field :event_id, value: museum.id %>
   <% end %>
+  <%= f.label "Coupon Code" %>
+  <%= f.text_field :coupon_code %>
+
   <div class="cart-submit">
     <%= f.submit "Check Out", class: "btn input-button" %>
   </div>
