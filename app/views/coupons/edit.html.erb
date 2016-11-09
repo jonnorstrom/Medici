@@ -14,8 +14,13 @@
     <%= f.date_field :expires_at %>
   </div>
 
+  <div class="field">
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "Add Coupon"%>
+    <%= f.submit "Update Coupon"%>
   </div>
 <% end %>
 
@@ -25,11 +30,4 @@
   <li><%=msg%></li>
   <% end %>
   </ul>
-<% end %>
-
-<% @coupons.each do |coupon| %>
-  <li>Code: <%=coupon.code%></li>
-  <li>%<%=sprintf('%.2f', coupon.discount_percent.to_f)[2..-1]%> off</li>
-  <li><%= link_to "Edit", edit_coupon_path(coupon) %></li>
-  <br>
 <% end %>

@@ -15,7 +15,15 @@ class CouponsController < ApplicationController
     end
   end
 
+  def edit
+    @coupon = Coupon.find(params[:id])
+  end
+
   def update
+    cp = params[:coupon]
+    @coupon = Coupon.find(params[:id])
+    @coupon.update({code: cp[:code], discount_percent: cp[:discount_percent].to_f, expires_at: cp[:expires_at], active: cp[:active]})
+    redirect_to coupons_path
   end
 
   def delete
