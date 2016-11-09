@@ -5,7 +5,8 @@ class CouponsController < ApplicationController
   end
 
   def create
-    @coupon = Coupon.new(coupon_params)
+    cp = params[:coupon]
+    @coupon = Coupon.new({code: cp[:code], discount_percent: cp[:discount_percent].to_f, expires_at: cp[:expires_at]})
     if @coupon.save
       redirect_to coupons_path
     else
@@ -22,7 +23,7 @@ class CouponsController < ApplicationController
 
   private
 
-  def coupon_params
-    params.require(:coupon).permit(:code, :discount_percent, :expires_at)
-  end
+  # def coupon_params
+  #   params.require(:coupon).permit(:code, :discount_percent, :expires_at)
+  # end
 end

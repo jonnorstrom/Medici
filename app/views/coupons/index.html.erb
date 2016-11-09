@@ -6,7 +6,7 @@
 
   <div class="field">
     <%= f.label :discount_percent %>
-    <%= f.number_field :discount_percent, step: :any %>
+    <%= f.number_field :discount_percent, step: 0.01 %>
   </div>
 
   <div class="field">
@@ -25,4 +25,11 @@
   <li><%=msg%></li>
   <% end %>
   </ul>
+<% end %>
+
+<% @coupons.each do |coupon| %>
+  <li>Code: <%=coupon.code%></li>
+  <li>%<%=sprintf('%.2f', coupon.discount_percent.to_f)[2..-1]%> off</li>
+  <li><%= coupon.id %></li>
+  <br>
 <% end %>
