@@ -1,6 +1,6 @@
 class Coupon < ApplicationRecord
   has_many :charges
-  belongs_to :ticket
+  belongs_to :ticket, :required => false
   validates_presence_of :code, :discount_percent
   validates_uniqueness_of :code
 

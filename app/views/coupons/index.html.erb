@@ -1,0 +1,28 @@
+<%= form_for(@coupon) do |f| %>
+  <div class="field">
+    <%= f.label :code %>
+    <%= f.text_field :code, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :discount_percent %>
+    <%= f.number_field :discount_percent, step: :any %>
+  </div>
+
+  <div class="field">
+    <%= f.label :expires_at %>
+    <%= f.date_field :expires_at %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Coupon"%>
+  </div>
+<% end %>
+
+<% if @coupon_errors %>
+  <ul>
+  <% @coupon_errors.each do |msg| %>
+  <li><%=msg%></li>
+  <% end %>
+  </ul>
+<% end %>
