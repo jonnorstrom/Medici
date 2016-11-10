@@ -1,0 +1,55 @@
+<%= form_for(@coupon) do |f| %>
+  <div class="field">
+    <%= f.label :code %>
+    <%= f.text_field :code, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :discount_percent %>
+    <%= f.number_field :discount_percent, step: 0.01 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :expires_at %>
+    <%= f.date_field :expires_at %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add Coupon"%>
+  </div>
+<% end %>
+
+<% if @coupon_errors %>
+  <ul>
+  <% @coupon_errors.each do |msg| %>
+  <li><%=msg%></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<% @coupons.each do |coupon| %>
+  <li>Code: <%=coupon.code%></li>
+  <li>Activated? : <%= coupon.active %></li>
+
+  <% if coupon.discount_percent == 1 %>
+    <li>%100 off! </li>
+  <% else %>
+    <li>%<%=sprintf('%.2f', coupon.discount_percent.to_f)[2..-1]%> off</li>
+  <% end %>
+
+  <% if coupon.expires_at %>
+    <li>Expires <%= coupon.expires_at.strftime("%B%e %Y - %l:%M %p")%></li>
+    <% if (coupon.expires_at < Time.now) %>
+      <p>THIS HAS EXPIRED</p>
+    <% end %>
+  <% else %>
+    <li>No expiration set yet.</li>
+  <% end %>
+
+  <li><%= link_to "Edit", edit_coupon_path(coupon) %></li>
+  <%= form_for(coupon, :html => { :method => :delete, :remote => true }) do |f| %>
+    <%= f.submit :value => "Delete Coupon" %>
+  <% end %>
+
+  <br><br>
+<% end %>

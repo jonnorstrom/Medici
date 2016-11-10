@@ -34,5 +34,6 @@ Rails.application.routes.draw do
   get "terms/privacy" => "terms#privacy"
   get "terms/about" => "terms#about"
 
+  resources :coupons
   root to: "museums#index"
 end

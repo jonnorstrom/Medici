@@ -44,47 +44,47 @@ class Ticket < ApplicationRecord
     end
   end
 
-  def finalize
-    self[:unit_price] = unit_price
-    self[:total_price] = quantity * self[:unit_price]
-    if self[:coupon_code] == "MONASKEEZA"
-       self[:total_price] = (quantity * self[:unit_price]) * 0.7
-    elsif self[:coupon_code] == "WATCHMEWEIWEI"
-       self[:total_price] = (quantity * self[:unit_price]) * 0.7
-    elsif self[:coupon_code] == "MONET-NAY"
-       self[:total_price] = (quantity * self[:unit_price]) * 0.7
-    elsif self[:coupon_code] == "KLIMTAF"
-       self[:total_price] = (quantity * self[:unit_price]) * 0.7
-    elsif self[:coupon_code] == "VANGOGHBRO"
-       self[:total_price] = (quantity * self[:unit_price]) * 0.7
-    elsif self[:coupon_code] == "FRIENDSNFAM"
-       self[:total_price] = 0.0
-    elsif self[:coupon_code] == "HEYNEIGHBOR"
-       self[:total_price] = 0.0
-    elsif self[:coupon_code] == "TECHSQUAD"
-       self[:total_price] = 0.0
-    elsif self[:coupon_code] == "FRANDS"
-       self[:total_price] = 0.0
-    elsif self[:coupon_code] == "MUSEUMFOMO"
-       self[:total_price] = 0.0
-    elsif self[:coupon_code] == "INVISIBLEMUSEUM"
-       self[:total_price] = 0.0
-    end
-  end
-
-
-
-
   # def finalize
   #   self[:unit_price] = unit_price
   #   self[:total_price] = quantity * self[:unit_price]
-  #
-  #   @code = coupon_code
-  #
-  #   @coupon = Coupon.find_by(coupon_code: coupon_code)
-  #
-  #   if @coupon.active
-  #     self[:total_price] = total_price - (total_price * @coupon.discount)
+  #   if self[:coupon_code] == "MONASKEEZA"
+  #      self[:total_price] = (quantity * self[:unit_price]) * 0.7
+  #   elsif self[:coupon_code] == "WATCHMEWEIWEI"
+  #      self[:total_price] = (quantity * self[:unit_price]) * 0.7
+  #   elsif self[:coupon_code] == "MONET-NAY"
+  #      self[:total_price] = (quantity * self[:unit_price]) * 0.7
+  #   elsif self[:coupon_code] == "KLIMTAF"
+  #      self[:total_price] = (quantity * self[:unit_price]) * 0.7
+  #   elsif self[:coupon_code] == "VANGOGHBRO"
+  #      self[:total_price] = (quantity * self[:unit_price]) * 0.7
+  #   elsif self[:coupon_code] == "FRIENDSNFAM"
+  #      self[:total_price] = 0.0
+  #   elsif self[:coupon_code] == "HEYNEIGHBOR"
+  #      self[:total_price] = 0.0
+  #   elsif self[:coupon_code] == "TECHSQUAD"
+  #      self[:total_price] = 0.0
+  #   elsif self[:coupon_code] == "FRANDS"
+  #      self[:total_price] = 0.0
+  #   elsif self[:coupon_code] == "MUSEUMFOMO"
+  #      self[:total_price] = 0.0
+  #   elsif self[:coupon_code] == "INVISIBLEMUSEUM"
+  #      self[:total_price] = 0.0
   #   end
   # end
+
+
+
+
+  def finalize
+    self[:unit_price] = unit_price
+    self[:total_price] = quantity * self[:unit_price]
+
+    @code = coupon_code
+
+    @coupon = Coupon.find_by(code: coupon_code)
+
+    if @coupon && @coupon.active
+      self[:total_price] = total_price - (total_price * @coupon.discount_percent)
+    end
+  end
 end
