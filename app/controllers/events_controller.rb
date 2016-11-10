@@ -38,10 +38,10 @@ class EventsController < ApplicationController
   end
 
   def tagging_new
-    @type_museum = Tag.where(category: "Type of Museum")
-    @type_art = Tag.where(category: "Type of Art")
-    @medium = Tag.where(category: "Medium")
-    @misc = Tag.where(category: "Misc")
+    @type_museum = Tag.where(category: "Type of Museum").order(:name)
+    @type_art = Tag.where(category: "Type of Art").order(:name)
+    @medium = Tag.where(category: "Medium").order(:name)
+    @misc = Tag.where(category: "Misc").order(:name)
     @event = Event.find(params[:id])
     @tagging = Tagging.new
   end
