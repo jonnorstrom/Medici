@@ -86,18 +86,5 @@ class Ticket < ApplicationRecord
     if @coupon && @coupon.active
       self[:total_price] = total_price - (total_price * @coupon.discount_percent)
     end
-
-
-    if self[:coupon_code] == "MONASKEEZA"
-       self[:total_price] = (quantity * self[:unit_price]) * 0.7
-    elsif self[:coupon_code] == "WATCHMEWEIWEI"
-       self[:total_price] = (quantity * self[:unit_price]) * 0.7
-    elsif self[:coupon_code] == "MONET-NAY"
-       self[:total_price] = (quantity * self[:unit_price]) * 0.7
-    elsif self[:coupon_code] == "KLIMTAF"
-       self[:total_price] = (quantity * self[:unit_price]) * 0.7
-    elsif self[:coupon_code] == "VANGOGHBRO"
-       self[:total_price] = (quantity * self[:unit_price]) * 0.7
-    end
   end
 end
