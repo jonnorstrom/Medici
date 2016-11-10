@@ -81,10 +81,10 @@ class Ticket < ApplicationRecord
 
     @code = coupon_code
 
-    @coupon = Coupon.find_by(coupon_code: coupon_code)
+    @coupon = Coupon.find_by(code: coupon_code)
 
-    if @coupon.active
-      self[:total_price] = total_price - (total_price * @coupon.discount)
+    if @coupon && @coupon.active
+      self[:total_price] = total_price - (total_price * @coupon.discount_percent)
     end
   end
 end

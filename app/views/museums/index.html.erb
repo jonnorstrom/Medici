@@ -78,6 +78,7 @@
 	<% end %>
 </div>
 	<% if admin? %>
+		<%= link_to "Manage Coupons", coupons_path %><br>
 		<%= link_to "Add Museum", new_museum_path %><br>
 		<%= link_to "Add Exhibit", new_exhibit_path %><br>
 		<%= link_to "Add Event", new_event_path %><br>

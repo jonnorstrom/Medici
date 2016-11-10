@@ -29,7 +29,27 @@
 
 <% @coupons.each do |coupon| %>
   <li>Code: <%=coupon.code%></li>
-  <li>%<%=sprintf('%.2f', coupon.discount_percent.to_f)[2..-1]%> off</li>
+  <li>Activated? : <%= coupon.active %></li>
+
+  <% if coupon.discount_percent == 1 %>
+    <li>%100 off! </li>
+  <% else %>
+    <li>%<%=sprintf('%.2f', coupon.discount_percent.to_f)[2..-1]%> off</li>
+  <% end %>
+
+  <% if coupon.expires_at %>
+    <li>Expires <%= coupon.expires_at.strftime("%B%e %Y - %l:%M %p")%></li>
+    <% if (coupon.expires_at < Time.now) %>
+      <p>THIS HAS EXPIRED</p>
+    <% end %>
+  <% else %>
+    <li>No expiration set yet.</li>
+  <% end %>
+
   <li><%= link_to "Edit", edit_coupon_path(coupon) %></li>
-  <br>
+  <%= form_for(coupon, :html => { :method => :delete, :remote => true }) do |f| %>
+    <%= f.submit :value => "Delete Coupon" %>
+  <% end %>
+
+  <br><br>
 <% end %>

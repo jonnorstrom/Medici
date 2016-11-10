@@ -11,6 +11,7 @@ class CouponsController < ApplicationController
       redirect_to coupons_path
     else
       @coupon_errors = @coupon.errors.full_messages
+      @coupons = Coupon.all
       render :index
     end
   end
@@ -22,11 +23,17 @@ class CouponsController < ApplicationController
   def update
     cp = params[:coupon]
     @coupon = Coupon.find(params[:id])
-    @coupon.update({code: cp[:code], discount_percent: cp[:discount_percent].to_f, expires_at: cp[:expires_at], active: cp[:active]})
-    redirect_to coupons_path
+    if @coupon.update({code: cp[:code], discount_percent: cp[:discount_percent].to_f, expires_at: cp[:expires_at], active: cp[:active]})
+      redirect_to coupons_path
+    else
+      @coupon_errors = @coupon.errors.full_messages
+      render :edit
+    end
   end
 
-  def delete
+  def destroy
+    Coupon.find(params[:id]).destroy
+    redirect_to coupons_path
   end
 
   private

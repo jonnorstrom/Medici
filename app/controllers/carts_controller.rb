@@ -13,6 +13,4 @@ class CartsController < ApplicationController
     @total = '%.2f' % @total_num
     @charge = Charge.new
   end
-
-
 end
