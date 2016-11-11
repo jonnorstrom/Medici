@@ -39,7 +39,7 @@
       <p><%= post.blurb %></p>
       <div>
         <% if (current_user && post.is_a?(Event)) %>
-          <% if current_order.tickets.length > 0 && post.ticketable%>
+          <% if current_order.includes_event_post?(post.id) && post.ticketable%>
             <div class="input-group-btn">
               <%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
             </div>
@@ -71,10 +71,7 @@
         <% end %>
       </div>
       <% if post.tags.length > 1 %>
-
           <%= link_to "##{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
-
-
       <% end %>
     </div>
   </div>
