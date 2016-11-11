@@ -3,7 +3,7 @@
 
    <p>Tags</p>
    <ul>
-     <% Tag.all.each do |tag| %>
+     <% Tag.all.order(:name).each do |tag| %>
      <%= hidden_field_tag "piece_tag_ids_none", nil, {:name => "piece[tag_ids][]"}%>
      <li>
        <%= check_box_tag "piece_tag_ids_#{tag.id}", tag.id, (f.object.tags.include?(tag)), {:name => "piece[tag_ids][]"} %>
