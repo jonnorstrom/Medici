@@ -20,15 +20,15 @@
 
 				<% if current_user && museum.is_a?(Event)%>
 					<% if museum.end_date >= Date.today %>
-						<% if current_order.tickets.length > 0 && museum.ticketable %>
+						<% if current_order.includes_event_post?(museum.id) && museum.ticketable %>
 							<div class="input-group-btn">
 								<%= link_to "Complete Your Current Order", cart_path(id: current_user.id), class: "input-button" %>
 							</div>
 						<% elsif museum.ticketable %>
-					    <%= form_for ticket, remote: true do |f| %>
+					    <%= form_for ticket do |f| %>
 					      <div class="input-group">
 					        <div class="input-group-btn">
-					          <%= f.hidden_field :quantity, value: 1%>
+					          <%= f.hidden_field :quantity, value: 1 %>
 					          <%= f.hidden_field :event_id, value: museum.id %>
 					          <%= f.hidden_field :user_id, value: current_user.id %>
 					          <%= f.submit "Add to Cart", class: "input-button" %>

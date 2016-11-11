@@ -1,0 +1,25 @@
+<h2>Make a New Tag</h2>
+
+<%= form_for @tag, html: {class: 'backend-form'} do |f| %>
+<div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name, autofocus: true %>
+</div>
+
+<div class="field">
+  <%= f.label :category %>
+  <%= f.select(:category, @categories) %>
+</div>
+
+<div class="field">
+  <%= f.submit %>
+</div>
+<% end %>
+
+<% if @tag_errors %>
+  <ul>
+  <% @tag_errors.each do |msg| %>
+  <li><%=msg%></li>
+  <% end %>
+  </ul>
+<% end %>

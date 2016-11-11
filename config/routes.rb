@@ -29,10 +29,11 @@ Rails.application.routes.draw do
   post "users/:id/tagging" => "users#tagging_create"
   resources :users, only: [:show]
   resources :taggings
-  resources :tags, only: [:show]
+  resources :tags, only: [:show, :new, :create]
   get "terms/terms" => "terms#terms"
   get "terms/privacy" => "terms#privacy"
   get "terms/about" => "terms#about"
 
+  resources :coupons
   root to: "museums#index"
 end

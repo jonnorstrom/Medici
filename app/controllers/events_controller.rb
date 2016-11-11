@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :tagging_create
 
   def show
+    p "IN EVENTS#SHOW"
     @show_page = true
     @event = Event.find(params[:id])
     @ticket = current_order.tickets.new
@@ -38,10 +39,10 @@ class EventsController < ApplicationController
   end
 
   def tagging_new
-    @type_museum = Tag.where(category: "Type of Museum")
-    @type_art = Tag.where(category: "Type of Art")
-    @medium = Tag.where(category: "Medium")
-    @misc = Tag.where(category: "Misc")
+    @type_museum = Tag.where(category: "Type of Museum").order(:name)
+    @type_art = Tag.where(category: "Type of Art").order(:name)
+    @medium = Tag.where(category: "Medium").order(:name)
+    @misc = Tag.where(category: "Misc").order(:name)
     @event = Event.find(params[:id])
     @tagging = Tagging.new
   end
