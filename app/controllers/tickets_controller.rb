@@ -27,8 +27,8 @@ class TicketsController < ApplicationController
     @ticket.user_id = current_user.id
     p "CURRENT ticket"
     p @ticket
-    # @order.save
     @ticket.update(original_quantity: @ticket.quantity, user_id: current_user.id)
+    @order.save
     session[:order_id] = @order.id
     redirect_to cart_path(id: current_user.id)
   end

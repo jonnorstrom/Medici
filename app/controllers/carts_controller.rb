@@ -10,6 +10,7 @@ class CartsController < ApplicationController
         sum + ticket.total_price
       # end
     end
+    @total_num
     @total = '%.2f' % @total_num
     @charge = Charge.new
   end
