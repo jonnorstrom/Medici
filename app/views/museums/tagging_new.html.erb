@@ -1,3 +1,4 @@
+<%= link_to "Make new tag for this item", new_tagging_path(:type => "museum", :type_id => @museum.id)%>
 <%= form_for(@museum, :url => "tagging", :html => { :method => :post }) do |f| %>
 
    <p>Tags</p>
