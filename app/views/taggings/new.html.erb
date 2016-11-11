@@ -1,13 +1,17 @@
-<%= form_tag({controller: "taggings", action: "create"}, method: "post") do %>
+<%= form_tag({controller: "taggings", action: "create"}, method: "post", class: 'backend-form') do %>
   <%= hidden_field_tag(:type_id, @type_id) %>
   <%= hidden_field_tag(:type, @type) %>
-
-  <%= label_tag(:name, "Name of Tag:") %>
-  <%= text_field_tag(:name) %><br><br>
+  <div class="field">
+    <%= label_tag(:name, "Name of Tag:") %>
+    <%= text_field_tag(:name) %>
+  </div>
+  <div class="field">
   <%= label_tag(:category, "Category of Tag:") %>
-  <%= select_tag(:category, options_for_select(Tag.get_all_categories)) %><br><br>
-
+  <%= select_tag(:category, options_for_select(Tag.get_all_categories)) %>
+  </div>
+  <div class="field">
   <%= submit_tag("Submit")%>
+  </div>
 <% end %>
 
 <% if @tag_errors %>
