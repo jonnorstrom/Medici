@@ -1,6 +1,6 @@
 <h2>Make a New Tag</h2>
 
-<%= form_for(@tag) do |f| %>
+<%= form_for @tag, html: {class: 'backend-form'} do |f| %>
 <div class="field">
   <%= f.label :name %>
   <%= f.text_field :name, autofocus: true %>
