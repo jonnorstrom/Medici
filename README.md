@@ -14,7 +14,7 @@ The web app is active on Heroku, using a pinch of AWS S3 for image and video hos
 
 ## Authors
 
-Built and deployed with love and care by [Pete Nichols](https://github.com/PeterDrakeNichols) and [Scott Southard](https://github.com/ScottSouthard), maintained by [Jon Norstrom](https://github.com/jonnorstrom).
+Built and deployed with love and care by [Pete Nichols](https://github.com/PeterDrakeNichols) and [Scott Southard](https://github.com/ScottSouthard), maintained and updated by [Jon Norstrom](https://github.com/jonnorstrom).
 
 ## License
 
