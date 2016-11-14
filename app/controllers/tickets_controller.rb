@@ -17,12 +17,17 @@ class TicketsController < ApplicationController
   end
 
   def create
+    p "IN TICKETS#CREATE"
     @order = current_order
+    p "CURRENT ORDER"
+    p @order
     @ticket = @order.tickets.new(ticket_params)
     prng = Random.new
     @ticket.redemption_code = prng.rand(1000000000000).to_s + "MD101"
     @ticket.user_id = current_user.id
-    @order.save
+    p "CURRENT ticket"
+    p @ticket
+    # @order.save
     @ticket.update(original_quantity: @ticket.quantity, user_id: current_user.id)
     session[:order_id] = @order.id
     redirect_to cart_path(id: current_user.id)

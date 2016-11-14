@@ -41,7 +41,7 @@
 					<p><%= post.blurb %></p>
 					<div>
 						<% if current_user && post.is_a?(Event)%>
-							<% if current_order.tickets.length > 0 %>
+							<% if current_order.includes_event_post?(post.id) %>
 								<div class="input-group-btn">
 									<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
 								</div>
@@ -83,6 +83,6 @@
 		<%= link_to "Add Exhibit", new_exhibit_path %> |
 		<%= link_to "Add Event", new_event_path %> |
 		<%= link_to "Add Piece", new_piece_path %> |
-		<%= link_to "Manage Tags", new_tag_path %> | 
+		<%= link_to "Manage Tags", new_tag_path %> |
 		<%= link_to "See Backend Numbers", tickets_stats_path %>
 	<% end %>
