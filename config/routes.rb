@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "tickets/thanks" => "tickets#thanks"
   get "tickets/whoops" => "tickets#whoops"
   get "tickets/redeem/:id" => "tickets#redeem", as: :tickets_redeem
+  post "tickets/apply_coupons" => "tickets#apply_coupons", as: :tickets_coupons
+  
   resources :tickets
   get "exhibits/:id/tagging" => "exhibits#tagging_new"
   post "exhibits/:id/tagging" => "exhibits#tagging_create"

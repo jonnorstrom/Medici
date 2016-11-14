@@ -67,6 +67,15 @@ class TicketsController < ApplicationController
     redirect_to new_charge_path
   end
 
+  def apply_coupons
+    @order = current_order
+    @tickets = @order.tickets
+    params[:tickets].each do |k, v|
+      @tickets.find(k.to_i).update_attributes(ticket_params(k))
+    end
+    redirect_to new_charge_path
+  end
+
   def destroy
     @order = current_order
     @ticket = @order.tickets.find(params[:id])
@@ -77,8 +86,8 @@ class TicketsController < ApplicationController
 
   private
 
-    def ticket_params
-      params.require(:ticket).permit(:user_id, :quantity, :exhibit_id, :event_id, :original_quantity, :museum_id, :coupon_code)
+    def ticket_params(id)
+      params.require(:tickets).require(id).permit(:user_id, :quantity, :exhibit_id, :event_id, :original_quantity, :museum_id, :coupon_code)
     end
 
 end
