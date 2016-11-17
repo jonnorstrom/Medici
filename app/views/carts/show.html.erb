@@ -28,7 +28,11 @@
               <div class = "ticket-drop-down" id= "drop-select">
                 <%= f.select :quantity, (0..12) %>
               </div>
-              <h4>$</h4><h4 class= "unit-price"> <%=ticket.unit_price%></h4><h4>0</h4>
+              <% if ticket.unit_price > 0 %>
+                <h4>$</h4><h4 class= "unit-price"> <%=ticket.unit_price%></h4><h4>0</h4>
+              <% else %>
+                <h4 class= "unit-price">FREE</h4>
+              <% end %>
             </div>
             <div class="coupon">
               <%= f.label "Coupon Code" %>
