@@ -44,7 +44,7 @@
 							<%= link_to "##{post.tags[0].name}", post.tags[0], type: "button", class: "row-tags" %>
 					<% end %>
 						<% if current_user && post.is_a?(Event)%>
-							<% if current_order.tickets.length > 0 %>
+							<% if current_order.includes_event_post?(post.id) %>
 								<div class="input-group-btn">
 									<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
 								</div>
@@ -55,7 +55,7 @@
 											<%= f.hidden_field :quantity, value: 1%>
 											<%= f.hidden_field :event_id, value: post.id %>
 											<%= f.hidden_field :user_id, value: current_user.id %>
-											<%= f.submit "Purchase Tickets", class: "input-button" %>
+											<%= f.submit "RSVP to Join Us!", class: "input-button" %>
 										</div>
 									</div>
 								<% end %>
@@ -79,9 +79,11 @@
 	<% end %>
 </div>
 	<% if admin? %>
-		<%= link_to "Add Museum", new_museum_path %><br>
-		<%= link_to "Add Exhibit", new_exhibit_path %><br>
-		<%= link_to "Add Event", new_event_path %><br>
-		<%= link_to "Add Piece", new_piece_path %><br>
+		<%= link_to "Manage Coupons", coupons_path %> |
+		<%= link_to "Add Museum", new_museum_path %> |
+		<%= link_to "Add Exhibit", new_exhibit_path %> |
+		<%= link_to "Add Event", new_event_path %> |
+		<%= link_to "Add Piece", new_piece_path %> |
+		<%= link_to "Manage Tags", new_tag_path %> |
 		<%= link_to "See Backend Numbers", tickets_stats_path %>
 	<% end %>

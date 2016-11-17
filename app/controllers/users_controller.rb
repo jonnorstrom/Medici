@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @tickets = Ticket.where(user_id: current_user.id, paid: true, redeemed: false)
     @redeemed_tickets = Ticket.where(user_id: current_user.id, paid: true, redeemed: true)
     @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all
+    @all_museums = Museum.all
     @posts = []
     @ticket = current_order.tickets.new
     @all_posts.each do |post|

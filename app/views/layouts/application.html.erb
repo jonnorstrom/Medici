@@ -107,9 +107,12 @@
                     <% end %>
                   <% end %>
                 </button>
-                  <button type="button"class="list-group-item">
-                    <%= link_to "logout", destroy_user_session_path, :method => :delete, class: "logout" %>
-                  </button>
+                <% if current_order.tickets.length > 0 %>
+                  <%= link_to "Clear Cart", clear_cart_path %>
+                <% end %>
+                <button type="button"class="list-group-item">
+                  <%= link_to "logout", destroy_user_session_path, :method => :delete, class: "logout" %>
+                </button>
                 <% else %>
                   <%= button_to "Log in", new_user_session_path, type: "button", id: "log-in-button", class: "list-group-item" %>
                   <button type="button"class="list-group-item">
@@ -130,10 +133,10 @@
               <% end %>
               <p class= "text-muted">
                 <%= link_to "About", terms_about_path, class: "text-muted" %>
-                | 
-                <%= link_to "Privacy Policy", terms_privacy_path, class: "text-muted" %> 
+                |
+                <%= link_to "Privacy Policy", terms_privacy_path, class: "text-muted" %>
                 <p style="font-size : 10px; color : #D3D3D3">&copy;Medici App, LLC </p>
-              </p> 
+              </p>
             </footer>
             </div>
           </nav>

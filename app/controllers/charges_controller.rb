@@ -65,6 +65,15 @@ class ChargesController < ApplicationController
     @amount_float = @order.subtotal * 100.00
     @amount = @amount_float.to_i
     @final_amount = @amount
+    @final_amount > 0 ? @free = "" : @free = "free"
+    @tix = "ticket"
+    @tixmessage = "ticket has"
+    @order.tickets.each do |t|
+      if t.quantity
+        @tix = "tickets"
+        @tixmessage = "tickets have"
+      end
+    end
     @coupon = Coupon.new(discount_percent: 0.00)
     @order.tickets.update(paid: true)
     @order.tickets.delete_all

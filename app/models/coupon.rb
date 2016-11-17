@@ -1,8 +1,15 @@
 class Coupon < ApplicationRecord
   has_many :charges
-  belongs_to :ticket
+  belongs_to :ticket, :required => false
   validates_presence_of :code, :discount_percent
   validates_uniqueness_of :code
+  validate :expiration_date_cannot_be_in_the_past
+
+  def expiration_date_cannot_be_in_the_past
+    if expires_at && expires_at < Time.now
+      errors.add(:expires_at, "Can't set expiration date in the past")
+    end
+  end
 
   def self.get(code)
     where(code: normalize_code(code)).
