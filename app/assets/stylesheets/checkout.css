@@ -30,9 +30,6 @@
     height: 29px;
     width: 88px;
 }
-.cart-body{
-	margin-bottom: 15px;
-}
 .cart-body label{
 	display: block;
 }
@@ -45,13 +42,13 @@
 }
 .cart-body .input-button{
 	padding: 12px 20px;
+	position: static;
 }
 .cart-body span ~ a{
 	font-family: HansKendrick-Medium;
 	color: #696969;
 	font-size: 12px;
 }
-
 .hidden-submit {
 	display: none;
 }
