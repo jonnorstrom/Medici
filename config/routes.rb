@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, class_name: 'FormUser', :controllers => { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations'}
 
 
+  get "carts/clear" => "carts#clear", as: :clear_cart
   resources :carts, only: [:show]
   get "museums/:id/tagging" => "museums#tagging_new"
   post "museums/:id/tagging" => "museums#tagging_create"
