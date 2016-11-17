@@ -18,7 +18,7 @@ class TicketsController < ApplicationController
 
   def create
     @order = current_order
-    @ticket = @order.tickets.new(ticket_params)
+    @ticket = @order.tickets.new(create_ticket_params)
     prng = Random.new
     @ticket.redemption_code = prng.rand(1000000000000).to_s + "MD101"
     @ticket.user_id = current_user.id
@@ -66,7 +66,7 @@ class TicketsController < ApplicationController
     @order = current_order
     @tickets = @order.tickets
     params[:tickets].each do |k, v|
-      @tickets.find(k.to_i).update_attributes(ticket_params(k))
+      @tickets.find(k.to_i).update_attributes(update_ticket_params(k))
     end
     redirect_to new_charge_path
   end
@@ -81,7 +81,11 @@ class TicketsController < ApplicationController
 
   private
 
-    def ticket_params(id)
+    def create_ticket_params()
+      params.require(:ticket).permit(:user_id, :quantity, :exhibit_id, :event_id, :original_quantity, :museum_id, :coupon_code)
+    end
+
+    def update_ticket_params(id)
       params.require(:tickets).require(id).permit(:user_id, :quantity, :exhibit_id, :event_id, :original_quantity, :museum_id, :coupon_code)
     end
 

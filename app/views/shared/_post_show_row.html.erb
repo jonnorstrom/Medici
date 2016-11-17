@@ -112,7 +112,7 @@
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Website:</p>
 							<p class= "museum-info-entry"> <i class="fa fa-share-square-o" aria-hidden="true" style="padding-top: 7px;"></i>
-								<a href= '<%="http://#{museum.website}"%>' class="website" target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%="www" << ("#{museum.website}").scan( /www([^>]*).com/).last.first << ".com"%></a>
+								<a href= '<%="http://#{museum.website}"%>' class="website" target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%= museum.website %></a>
 							</p>
 						</div>
 					</div>
@@ -121,7 +121,7 @@
 		</div>
 	</div>
 		<div class="panel-body">
-			<!-- 
+			<!--
 			<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-share-button" data-text="is guiding my experience at <%= museum.name %>!" data-show-count="false">Tweet</a> -->
 			<a class="js-social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= yield :url %>" target="_blank">
 				<i class="fa fa-facebook-square fa-card text-muted" aria-hidden="true"></i>
