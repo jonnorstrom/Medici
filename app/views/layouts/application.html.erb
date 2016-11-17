@@ -107,10 +107,12 @@
                     <% end %>
                   <% end %>
                 </button>
-                <%= link_to "Clear Cart", clear_cart_path %>
-                  <button type="button"class="list-group-item">
-                    <%= link_to "logout", destroy_user_session_path, :method => :delete, class: "logout" %>
-                  </button>
+                <% if current_order.tickets.length > 0 %>
+                  <%= link_to "Clear Cart", clear_cart_path %>
+                <% end %>
+                <button type="button"class="list-group-item">
+                  <%= link_to "logout", destroy_user_session_path, :method => :delete, class: "logout" %>
+                </button>
                 <% else %>
                   <%= button_to "Log in", new_user_session_path, type: "button", id: "log-in-button", class: "list-group-item" %>
                   <button type="button"class="list-group-item">
