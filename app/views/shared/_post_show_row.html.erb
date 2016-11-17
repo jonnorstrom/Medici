@@ -20,15 +20,15 @@
 
 				<% if current_user && museum.is_a?(Event)%>
 					<% if museum.end_date >= Date.today %>
-						<% if current_order.tickets.length > 0 && museum.ticketable %>
+						<% if current_order.includes_event_post?(museum.id) && museum.ticketable %>
 							<div class="input-group-btn">
 								<%= link_to "Complete Your Current Order", cart_path(id: current_user.id), class: "input-button" %>
 							</div>
 						<% elsif museum.ticketable %>
-					    <%= form_for ticket, remote: true do |f| %>
+					    <%= form_for ticket do |f| %>
 					      <div class="input-group">
 					        <div class="input-group-btn">
-					          <%= f.hidden_field :quantity, value: 1%>
+					          <%= f.hidden_field :quantity, value: 1 %>
 					          <%= f.hidden_field :event_id, value: museum.id %>
 					          <%= f.hidden_field :user_id, value: current_user.id %>
 					          <%= f.submit "Add to Cart", class: "input-button" %>
@@ -43,13 +43,8 @@
 					<% end %>
 				<% end %>
 					<div class="social-buttons">
-						<!-- <a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-share-button" data-text="is guiding my experience at <%= museum.name %>!" data-show-count="false">Tweet</a> -->
-						<a class="js-social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= yield :url %>" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-						<a class="js-social-share twitter" href='https://twitter.com/intent/tweet?text=I love @medicimuseums and <%="#{exhibit.name}"%>' target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
 					</div>
-
 			</div>
-
 			<div class= "col-lg-8" >
 				<div class="row">
 					<div class= "description-wrapper col-md-8 col-lg-12">
@@ -75,7 +70,6 @@
 						<% end %>
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Address: </p>
-
 							<p class= "museum-info-entry"> <i class="fa fa-map-pin" aria-hidden="true"></i> <%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
 							<div class="dropdown bullet">
 								<button class="dropdown-toggle bullet" type="button" data-toggle="dropdown">
@@ -118,7 +112,7 @@
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Website:</p>
 							<p class= "museum-info-entry"> <i class="fa fa-share-square-o" aria-hidden="true" style="padding-top: 7px;"></i>
-								<a href= '<%="http://#{museum.website}"%>' class="website" target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%="http://#{museum.website}"%></a>
+								<a href= '<%="http://#{museum.website}"%>' class="website" target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%= museum.website %></a>
 							</p>
 						</div>
 					</div>
@@ -127,8 +121,16 @@
 		</div>
 	</div>
 		<div class="panel-body">
+			<!--
+			<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-share-button" data-text="is guiding my experience at <%= museum.name %>!" data-show-count="false">Tweet</a> -->
+			<a class="js-social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= yield :url %>" target="_blank">
+				<i class="fa fa-facebook-square fa-card text-muted" aria-hidden="true"></i>
+			</a>
+			<a class="js-social-share twitter" href='https://twitter.com/intent/tweet?text=I love @medicimuseums and <%="#{exhibit.name}"%>' target="_blank">
+				<i class="fa fa-twitter-square fa-card text-muted" aria-hidden="true"></i>
+			</a>
 			<div class="tag-wrapper">
-        <% exhibit.tags.each do |tag| %>
+       				<% exhibit.tags.each do |tag| %>
 					<div class="btn-link">
 						<%= link_to(tag) do %>
 					    <button type="button" class="btn btn-default tag-button"><%="##{tag.name}"%></button>

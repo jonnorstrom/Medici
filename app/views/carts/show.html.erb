@@ -16,41 +16,50 @@
   <div class="panel panel-sign-in">
     <div class="panel-heading">
       <div class= "cart-wrapper">
+        <%= form_tag(tickets_coupons_path, method: "post") do %>
           <% @tickets.each do |ticket| %>
-            <% if ticket.exhibit_id != nil%>
-              <%= render 'carts/cart_row', museum: ticket.exhibit, ticket: ticket, show_total: true %>
-            <% elsif ticket.event_id != nil %>
-              <%= render 'carts/cart_row', museum: ticket.event, ticket: ticket, show_total: true %>
-            <% else %>
-              <%= render 'carts/cart_row', museum: ticket.museum, ticket: ticket, show_total: true %>
-              <% ticket.museum.exhibits.each do |exhibit| %>
-                <%= form_for ticket, remote: true do |f| %>
+          <%= fields_for "tickets[]", ticket do |f| %>
+            <div class= "ticket-sub-row">
+              <p class = "item-name">
+                <%= link_to ticket_path(ticket), method: :delete do %>
+                <i class="fa fa-times"></i>
                 <% end %>
-              <% end %>
+              <%= ticket.event.name %></p>
+              <div class = "ticket-drop-down" id= "drop-select">
+                <%= f.select :quantity, (0..12) %>
+              </div>
+              <h4>$</h4><h4 class= "unit-price"> <%=ticket.unit_price%></h4><h4>0</h4>
+            </div>
+            <div class="coupon">
+              <%= f.label "Coupon Code" %>
+              <%= f.text_field :coupon_code %>
+            </div>
             <% end %>
-        </div>
+          <% end %>
       </div>
-      <div class="coupon">
+    </div>
 
-      </div>
-
-      <div class="panel-body cart-body">
-        <input type="CHECKBOX" name="terms" id= "rm-t">
-        <label for="rm-t"><span class="checkbox-span"></span>I've read the <br><%= link_to "Terms and Conditions", terms_terms_path %> </label>
-         <!-- <h3>$</h3><h3 id='grand-total'>0.00</h3> -->
-        <% end %>
-        <% end %>
+    <div class="panel-body cart-body">
+      <input type="CHECKBOX" name="terms" id= "rm-t">
+      <label for="rm-t"><span class="checkbox-span"></span>I've read the <br><%= link_to "Terms and Conditions", terms_terms_path %> </label>
+       <!-- <h3>$</h3><h3 id='grand-total'>0.00</h3> -->
+       <div class="cart-submit">
+         <%= submit_tag("Check Out")%>
+       </div>
+     <% end %>
     </div>
   </div>
+  <% end %>
 </div>
 
 <script type="text/javascript">
   $(document).on('turbolinks:load', function(){
-    $('.cart_form').on('click', function(e){
-      if (!$("input[name='terms']").is(':checked')){
-        e.preventDefault();
-        alert("You must accept the Terms and Conditions")
-      }
-    });
+    // $('.cart-wrapper form').on('submit', function(e){
+    //   if (!$("input[name='terms']").is(':checked')){
+    //     e.preventDefault();
+    //     alert("You must accept the Terms and Conditions")
+    //
+    //   }
+    // });
   });
 </script>

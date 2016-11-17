@@ -107,6 +107,7 @@
                     <% end %>
                   <% end %>
                 </button>
+                <%= link_to "Clear Cart", clear_cart_path %>
                   <button type="button"class="list-group-item">
                     <%= link_to "logout", destroy_user_session_path, :method => :delete, class: "logout" %>
                   </button>
@@ -128,7 +129,12 @@
               <%= link_to "https://twitter.com/medicimuseums" do %>
                 <i class="fa fa-twitter-square" aria-hidden="true"></i>
               <% end %>
-              <p class= "text-muted">&copy;Medici App, LLC<br><%= link_to "Privacy Policy", terms_privacy_path, class: "text-muted" %> | <%= link_to "About", terms_about_path, class: "text-muted" %></p>
+              <p class= "text-muted">
+                <%= link_to "About", terms_about_path, class: "text-muted" %>
+                |
+                <%= link_to "Privacy Policy", terms_privacy_path, class: "text-muted" %>
+                <p style="font-size : 10px; color : #D3D3D3">&copy;Medici App, LLC </p>
+              </p>
             </footer>
             </div>
           </nav>
