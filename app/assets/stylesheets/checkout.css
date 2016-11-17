@@ -22,7 +22,6 @@
     width: 60px;
     border-radius: 5px !important;
 }
-
 .ticket-drop-down > select{
     background: transparent !important;
     border: none;
@@ -30,8 +29,18 @@
     height: 29px;
     width: 88px;
 }
+.coupon{
+	margin-top: 10px;
+	float: right;
+}
+.coupon .coupon-field{
+	font-size: 12px;
+	border-radius : 4px;
+	border: 1px solid #ddd;
+}
+.coupon 
 .cart-body label{
-	display: block;
+	display: inline;
 }
 .cart-body h3{
 	display: inline;
