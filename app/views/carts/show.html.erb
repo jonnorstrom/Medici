@@ -45,10 +45,10 @@
 
     <div class="panel-body cart-body">
       <input type="CHECKBOX" name="terms" id= "rm-t">
-      <label for="rm-t"><span class="checkbox-span"></span>I've read the <br><%= link_to "Terms and Conditions", terms_terms_path %> </label>
+      <label for="rm-t"><span class="checkbox-span"></span>I've read the <%= link_to "Terms and Conditions", terms_terms_path %> </label>
        <!-- <h3>$</h3><h3 id='grand-total'>0.00</h3> -->
-       <div class="cart-submit">
-         <%= submit_tag("Check Out")%>
+       <div class="cart-submit hidden-submit">
+         <%= submit_tag "Check Out", class: "btn" %>
        </div>
      <% end %>
     </div>
@@ -57,13 +57,14 @@
 </div>
 
 <script type="text/javascript">
-  $(document).on('turbolinks:load', function(){
-    // $('.cart-wrapper form').on('submit', function(e){
-    //   if (!$("input[name='terms']").is(':checked')){
-    //     e.preventDefault();
-    //     alert("You must accept the Terms and Conditions")
-    //
-    //   }
-    // });
+  $(document).ready(function(){
+    $('.cart-wrapper form').on('submit', function(e){
+      if (!$("input[name='terms']").is(':checked')){
+        e.preventDefault();
+      }
+    });
+    $("input[name='terms']").on('click', function(e){
+      $('.cart-submit').toggle();
+    })
   });
 </script>

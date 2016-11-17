@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(document).ready( function(){
 	var total = +$('.unit-price').text() * +$('#drop-select option:selected').text();
     $('#grand-total').text(total);
 	$('select').on('change', function()
