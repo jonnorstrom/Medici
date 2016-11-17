@@ -112,7 +112,7 @@
 						<div class= "museum-info">
 							<p class= "museum-info-type"> Website:</p>
 							<p class= "museum-info-entry"> <i class="fa fa-share-square-o" aria-hidden="true" style="padding-top: 7px;"></i>
-								<a href= '<%="http://#{museum.website}"%>' class="website" target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%="www" << ("#{museum.website}").scan( /www([^>]*).com/).last.first << ".com"%></a>
+								<a href= '<%="http://#{museum.website}"%>' class="website" target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%="#{musuem.website}".match(/www.([^>]+).com\Z/)[1]%></a>
 							</p>
 						</div>
 					</div>
