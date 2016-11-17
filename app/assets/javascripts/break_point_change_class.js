@@ -1,5 +1,5 @@
-$(document).on('turbolinks:load', function(){
-    
+$(document).ready( function(){
+
      var width = $(window).width();
      if(width <= 768){
           console.log("meow");
