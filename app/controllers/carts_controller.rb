@@ -13,4 +13,9 @@ class CartsController < ApplicationController
     @total = '%.2f' % @total_num
     @charge = Charge.new
   end
+
+  def clear
+    current_order.clear_cart
+    redirect_to root_path
+  end
 end

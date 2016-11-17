@@ -12,6 +12,10 @@ class Order < ApplicationRecord
     return found
   end
 
+  def clear_cart
+    self.tickets.destroy_all
+  end
+
   private
 
   def update_subtotal
