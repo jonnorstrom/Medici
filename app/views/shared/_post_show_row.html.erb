@@ -39,7 +39,7 @@
 					<% end %>
 				<% elsif museum.is_a?(Event) %>
 				  <% if museum.end_date > Date.today && museum.ticketable %>
-						<%= link_to "Sign in to buy tickets!", new_user_session_path, class: "input-button" %>
+						<%= link_to "Sign in to RSVP", new_user_session_path, class: "input-button" %>
 					<% end %>
 				<% end %>
 					<div class="social-buttons">
