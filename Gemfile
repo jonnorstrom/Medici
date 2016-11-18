@@ -19,7 +19,7 @@ gem 'pry-rails', :group => :development
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -31,7 +31,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'geocoder'
 gem 'underscore-rails'
 gem 'gmaps4rails'
-gem 'jquery-turbolinks'
+# gem 'jquery-turbolinks'
 gem 'stripe'
 gem 'omniauth'
 gem 'omniauth-facebook'
