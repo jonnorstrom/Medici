@@ -43,6 +43,37 @@
 </table>
 
 
+<h2>Party w/ Medici Tix</h2>
+<table>
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Email
+    </th>
+    <th>
+      Quantity
+    </th>
+  </tr>
+  <% @party_night.each do |ticket| %>
+    <tr>
+        <td>
+          <%= ticket.user.name %>
+        </td>
+        <td>
+          <%= ticket.user.email %>
+        </td>
+        <td>
+          <%= ticket.quantity %>
+        </td>
+    </tr>
+  <% end %>
+  <p>Total: <%= @party_night.count %></p>
+</table>
+
+
+
 <h3>All Users</h3>
 <table>
   <tr>
