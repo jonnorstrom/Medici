@@ -13,6 +13,7 @@
 </table>
 
 
+<h2>Game Night Tix</h2>
 <table>
   <tr>
     <th>
@@ -22,30 +23,26 @@
       Email
     </th>
     <th>
-      Event
-    </th>
-    <th>
       Quantity
     </th>
   </tr>
-  <% @tickets.each do |ticket| %>
-  <tr>
-      <td>
-        <%= ticket.user.name %>
-      </td>
-      <td>
-        <%= ticket.user.email %>
-      </td>
-      <td>
-        <%= Event.find(ticket.event_id).name %>
-      </td>
-      <td>
-        <%= ticket.quantity %>
-      </td>
-  </tr>
+  <% @game_night.each do |ticket| %>
+    <tr>
+        <td>
+          <%= ticket.user.name %>
+        </td>
+        <td>
+          <%= ticket.user.email %>
+        </td>
+        <td>
+          <%= ticket.quantity %>
+        </td>
+    </tr>
   <% end %>
-
+  <p>Total: <%= @game_night.count %></p>
 </table>
+
+
 
 <h3>All Users</h3>
 <table>
