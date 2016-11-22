@@ -43,13 +43,15 @@ class TicketsController < ApplicationController
   end
 
   def stats
-      @tickets = Ticket.where(paid:true)
+    @tickets = Ticket.where(paid:true)
     if @tickets.count > 1
       @tickets = @tickets.sort {|x, y| x.user.name <=> y.user.name}
     else
       @tickets = @tickets.first
     end
-      @users = User.all.sort {|x, y| x.created_at <=> y.created_at}
+    @e_id = Event.find_by(name: "Museum Game Night: Emoji Mystery").id
+    @game_night = @tickets.where(event_id: @e_id)
+    @users = User.all.sort {|x, y| x.created_at <=> y.created_at}
   end
 
 
