@@ -50,7 +50,12 @@ class TicketsController < ApplicationController
       @tickets = @tickets.first
     end
     @e_id = Event.find_by(name: "Museum Game Night: Emoji Mystery").id
-    @game_night = @tickets.where(event_id: @e_id)
+    @game_night = []
+    @tickets.each do |t|
+      if t.event_id == @e_id
+        @game_night << t
+      end
+    end
     @users = User.all.sort {|x, y| x.created_at <=> y.created_at}
   end
 
