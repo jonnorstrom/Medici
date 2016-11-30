@@ -24,6 +24,10 @@ class Event < ApplicationRecord
     Event.all.map { |ev| ev if ev.tickets.count > 0 }.compact!
   end
 
+  def paid_tickets
+    tickets.select { |t| t.paid == true }
+  end
+
   private
     def image_dimensions
       if photo.queued_for_write[:original] != nil
