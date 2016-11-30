@@ -66,11 +66,11 @@ class ExhibitsController < ApplicationController
     else
       @posts = @all_posts.all.order('created_at DESC')
     end
-    Tag.all.each do |tag|
-      if tag.name.downcase == @term
-        @posts << tag
-      end
-    end
+    # Tag.all.each do |tag|
+    #   if tag.name.downcase == @term
+    #     @posts << tag
+    #   end
+    # end
     @posts = @posts.uniq
     if @posts.length == 1 && @posts[0].is_a?(Tag)
       redirect_to @posts[0]
