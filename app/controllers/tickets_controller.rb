@@ -49,6 +49,9 @@ class TicketsController < ApplicationController
     else
       @tickets = @tickets.first
     end
+
+    @events_with_tickets = Event.find_events_with_tickets
+
     @game_id = Event.find_by(name: "Museum Game Night: Emoji Mystery").id
     @party_id = Event.find_by(name: "Party with Medici Museums").id
     @game_night = []

@@ -20,6 +20,10 @@ class Event < ApplicationRecord
     "#{id} #{name}".parameterize
   end
 
+  def self.find_events_with_tickets
+    Event.all.map { |ev| ev if ev.tickets.count > 0 }.compact!
+  end
+
   private
     def image_dimensions
       if photo.queued_for_write[:original] != nil

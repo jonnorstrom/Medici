@@ -13,50 +13,24 @@
 </table>
 
 
-<h2>Party with Medici Museums</h2>
-<table>
-  <tr>
-    <th>
-      Name
-    </th>
-    <th>
-      Email
-    </th>
-    <th>
-      Quantity
-    </th>
-  </tr>
-  <% @party_night.each do |ticket| %>
-    <tr>
-        <td>
-          <%= ticket.user.name %>
-        </td>
-        <td>
-          <%= ticket.user.email %>
-        </td>
-        <td>
-          <%= ticket.quantity %>
-        </td>
-    </tr>
-  <% end %>
-  <p>Total: <%= @party_total %></p>
-</table>
 
-<h2>Museum Game Night: Emoji Mystery</h2>
-<table>
-  <tr>
-    <th>
-      Name
-    </th>
-    <th>
-      Email
-    </th>
-    <th>
-      Quantity
-    </th>
-  </tr>
-  <% @game_night.each do |ticket| %>
+<% @events_with_tickets.each do |event| %>
+  <h2><%= Event.name %></h2>
+  <table>
     <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Quantity
+      </th>
+    </tr>
+
+    <% event.tickets.each do |ticket| %>
+      <tr>
         <td>
           <%= ticket.user.name %>
         </td>
@@ -66,10 +40,11 @@
         <td>
           <%= ticket.quantity %>
         </td>
-    </tr>
-  <% end %>
-  <p>Total: <%= @game_total %></p>
-</table>
+      </tr>
+    <% end %>
+    <p>Total: <%= event.tickets.inject(0) {|sum,t| sum + t.quantity } %></p>
+  </table>
+<% end %>
 
 <h3>All Users</h3>
 <table>
