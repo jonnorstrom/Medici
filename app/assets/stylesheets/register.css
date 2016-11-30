@@ -2,32 +2,65 @@
 	height: 100vh;
   display: flex;
 }
-.panel-sign-in{
-  display: none;
-  position: absolute;
-  left: 40%;
-  top: 50%;
-  min-width: 300px;
-  transform: translate(-50%, -50%);
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15) !important;
-  animation-name: dropPanel;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-out;
-  animation-duration: 0.6s;
+@media screen and (max-width: 768px) { 
+  .panel-sign-in{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    min-width: 300px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15) !important;
+    animation-name: dropPanel;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 0.6s;
+  }
+      @keyframes dropPanel {
+      0% {
+          left: 50%;
+          top: 0%;
+          transform: translate(-50%, -50%);
+      }
+      100% {
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+      }
+  }
 }
 
-@keyframes dropPanel {
-    0% {
-        left: 40%;
-        top: 0%;
-        transform: translate(-50%, -50%);
-    }
-    100% {
-        left: 40%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
+@media screen and (min-width: 768px) { 
+    .panel-sign-in{
+    display: none;
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    min-width: 300px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15) !important;
+    animation-name: dropPanel;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 0.6s;
+  }
+    @keyframes dropPanel {
+      0% {
+          left: 40%;
+          top: 0%;
+          transform: translate(-50%, -50%);
+      }
+      100% {
+          left: 40%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+      }
+  }
 }
+
+
+
+
 .header-wrapper{
 	text-align: center;
 }

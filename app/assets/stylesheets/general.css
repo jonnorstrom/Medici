@@ -363,8 +363,8 @@ table tr:hover td {
 	text-align: right;
 	width: 25em;
 	white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
 }
 
 .fa-share-square-o {
