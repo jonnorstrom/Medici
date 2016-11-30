@@ -13,39 +13,46 @@
 </table>
 
 
-<table>
-  <tr>
-    <th>
-      Name
-    </th>
-    <th>
-      Email
-    </th>
-    <th>
-      Event
-    </th>
-    <th>
-      Quantity
-    </th>
-  </tr>
-  <% @tickets.each do |ticket| %>
-  <tr>
-      <td>
-        <%= ticket.user.name %>
-      </td>
-      <td>
-        <%= ticket.user.email %>
-      </td>
-      <td>
-        <%= Event.find(ticket.event_id).name %>
-      </td>
-      <td>
-        <%= ticket.quantity %>
-      </td>
-  </tr>
-  <% end %>
 
-</table>
+<% @events_with_tickets.each do |event| %>
+  <h2><%= event.name %></h2>
+  <table>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Quantity
+      </th>
+      <th>
+        Update
+      </th>
+    </tr>
+
+    <% event.tickets.each do |ticket| %>
+      <tr>
+        <td>
+          <%= ticket.user.name %>
+        </td>
+        <td>
+          <%= ticket.user.email %>
+        </td>
+        <td>
+          <%= ticket.quantity %>
+        </td>
+        <td>
+          <%= form_for(ticket, :html => { :method => :delete }) do |f| %>
+            <%= f.submit("Remove Ticket") %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <p>Total: <%= event.tickets.inject(0) {|sum,t| sum + t.quantity } %></p>
+  </table>
+<% end %>
 
 <h3>All Users</h3>
 <table>

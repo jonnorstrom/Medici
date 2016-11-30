@@ -22,3 +22,11 @@
   border-radius: 7px;
   padding: 20px;
 }
+
+.terms-container {
+  max-width: 800px;
+}
+
+.terms-container p, .terms-container a {
+  font-size: 10px;
+}

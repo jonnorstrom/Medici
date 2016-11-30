@@ -44,7 +44,7 @@
               <%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
             </div>
           <% elsif post.ticketable %>
-            <%= form_for ticket, remote: true do |f| %>
+            <%= form_for ticket do |f| %>
               <div class="input-group">
                 <div class="input-group-btn">
                   <%= f.hidden_field :quantity, value: 1%>
@@ -57,7 +57,7 @@
           <% end %>
         <% elsif post.is_a?(Event) %>
           <% if post.ticketable %>
-            <%= form_for ticket, remote: true do |f| %>
+            <%= form_for ticket do |f| %>
               <div class="input-group">
                 <div class="input-group-btn">
                   <%= f.hidden_field :quantity, value: 1%>

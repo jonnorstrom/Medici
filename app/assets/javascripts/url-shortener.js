@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(document).ready(function(){
 	var shortenURL = function(s){
 		sEnd = s.slice(s.length - 15);
 		sStart = s.replace('http://', '').replace('https://', '').substr(0,14);

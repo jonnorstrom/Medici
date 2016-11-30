@@ -43,13 +43,16 @@ class TicketsController < ApplicationController
   end
 
   def stats
-      @tickets = Ticket.where(paid:true)
+    @tickets = Ticket.where(paid:true)
     if @tickets.count > 1
       @tickets = @tickets.sort {|x, y| x.user.name <=> y.user.name}
     else
       @tickets = @tickets.first
     end
-      @users = User.all.sort {|x, y| x.created_at <=> y.created_at}
+
+    @events_with_tickets = Event.find_events_with_tickets
+
+    @users = User.all.sort {|x, y| x.created_at <=> y.created_at}
   end
 
 
@@ -72,11 +75,8 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    @order = current_order
-    @ticket = @order.tickets.find(params[:id])
-    @ticket.destroy
-    @tickets = @order.tickets
-    redirect_to cart_path(id: current_user.id)
+    @ticket = Ticket.find(params[:id]).destroy
+    redirect_to(:back)
   end
 
   private
