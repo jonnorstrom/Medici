@@ -32,7 +32,7 @@
       </th>
     </tr>
 
-    <% event.tickets.each do |ticket| %>
+    <% event.paid_tickets.each do |ticket| %>
       <tr>
         <td>
           <%= ticket.user.name %>
@@ -45,7 +45,7 @@
         </td>
         <td>
           <%= form_for(ticket, :html => { :method => :delete }) do |f| %>
-            <%= f.submit("Remove Ticket") %>
+            <%= f.submit "Remove Ticket", data: {confirm: 'Are you sure?'} %>
           <% end %>
         </td>
       </tr>
