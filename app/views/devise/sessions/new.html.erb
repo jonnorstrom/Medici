@@ -3,7 +3,6 @@
     <div class="panel-heading">
       <div class= "header-wrapper">
         <p id="header">Log into Medici</p>
-
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <%= f.email_field :email, placeholder:"e-mail", autofocus: true, class:"input-field"%>
           <%= f.password_field :password, placeholder:"password", autocomplete: "off", class:"input-field" %>
@@ -21,7 +20,6 @@
         </div>
         <div class="btn-group" role="group" aria-label="connect with faceboobs">
           <%= button_to user_facebook_omniauth_authorize_path, class: "btn btn-primary facebook-connect" do %> <i class="fa fa-facebook-square" style= "color: white;" aria-hidden="true"></i>  Connect with Facebook <% end %>
-
         </div>
         <br>
       </div>

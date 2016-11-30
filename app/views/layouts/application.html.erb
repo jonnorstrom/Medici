@@ -143,6 +143,13 @@
         </div>
         <div class="col-sm-9 col-lg-10 content">
             <%= image_tag("Medici_logos/Medici_logo_Inset.png", class: " inset-brand hidden-sm hidden-md hidden-lg")%>
+             <% if current_user %>
+                <button type="button"class="list-group-item" style= "text-align: center">
+                  <%= link_to "logout", destroy_user_session_path, :method => :delete, class: "logout" %>
+                </button>
+                <% else %>
+                  <%= button_to "Log in", new_user_session_path, type: "button", id: "log-in-button", class: "list-group-item", style:"text-align: center"%>
+                <% end %>
           <%= yield %>
         <div id="color-hack"></div>
         <%= render 'layouts/footer' %>
