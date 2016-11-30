@@ -26,6 +26,15 @@ class User < ApplicationRecord
     @facebook_client ||= Facebook.client( access_token: facebook.accesstoken )
   end
 
+  def convert_1_to_2_names
+    names = split_names
+    self.update_columns(first_name: names[0], last_name: names[1..-1].join(" "))
+  end
+
+  def split_names
+    full_name.split(" ")
+  end
+
   def name
     return full_name if full_name.length > 0
 
