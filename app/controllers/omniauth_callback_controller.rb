@@ -9,8 +9,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = @identity.user || current_user
 
     if @user.nil?
-      p "IN USER.NIL? CONDITIONAL"
       @user = User.create( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image )
+
+      @user.errors.full_messages.each do |m|
+        p m
+      end
+
       @identity.update_attribute( :user_id, @user.id )
     end
 
@@ -19,7 +23,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     if @user.persisted?
-      p "IN 'IF USER.PERSISTED?' CONDITIONAL"
       @identity.update_attribute( :user_id, @user.id )
       # This is because we've created the user manually, and Device expects a
       # FormUser class (with the validations)
@@ -27,7 +30,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: provider.capitalize) if is_navigational_format?
     else
-      p "IN ELSE STATEMENT - USER.PERSISTED? FAILED"
       session["devise.#{provider}_data"] = env["omniauth.auth"]
       redirect_to new_user_registration_url
     end
