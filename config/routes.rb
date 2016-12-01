@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :taggings
   resources :tags, only: [:show, :new, :create]
+  delete "tags/" => "tags#destroy_multiple", as: :destroy_multiple_tags
   get "terms/terms" => "terms#terms"
   get "terms/privacy" => "terms#privacy"
   get "terms/about" => "terms#about"

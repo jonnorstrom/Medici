@@ -23,3 +23,36 @@
   <% end %>
   </ul>
 <% end %>
+
+<h2>Delete some tag</h2>
+
+<%= form_tag destroy_multiple_tags_path, method: :delete do %>
+  <h3>Type of Museum</h3>
+  <ul>
+    <% @type_museum.each do |tag| %>
+      <li><%= check_box_tag "tags[]", tag.id %><%= tag.name %></li>
+    <% end %>
+  </ul>
+
+  <h3>Type of Art</h3>
+  <ul>
+    <% @type_art.each do |tag| %>
+      <li><%= check_box_tag "tags[]", tag.id %><%= tag.name %></li>
+    <% end %>
+  </ul>
+
+  <h3>Medium</h3>
+  <ul>
+    <% @medium.each do |tag| %>
+      <li><%= check_box_tag "tags[]", tag.id %><%= tag.name %></li>
+    <% end %>
+  </ul>
+  
+  <h3>Misc</h3>
+  <ul>
+    <% @misc.each do |tag| %>
+      <li><%= check_box_tag "tags[]", tag.id %><%= tag.name %></li>
+    <% end %>
+  </ul>
+  <%= submit_tag "Delete selected tags" %>
+<% end %>
