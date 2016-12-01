@@ -12,7 +12,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.nil?
       p "IN 'IF USER.NIL?' CONDITIONAL"
-      @user = User.create( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image )
+      @user = User.new( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image )
+      p "HERE'S THE USER"
+      p @user
       @identity.update_attribute( :user_id, @user.id )
     end
 
@@ -30,6 +32,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: provider.capitalize) if is_navigational_format?
     else
+      p "IN ELSE STATEMENT - USER.PERSISTED? FAILED"
       session["devise.#{provider}_data"] = env["omniauth.auth"]
       redirect_to new_user_registration_url
     end
