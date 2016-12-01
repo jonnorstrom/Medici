@@ -9,8 +9,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @user = @identity.user || current_user
     if @user.nil?
-      names = @identity.name.split(" ")
-      @user = User.create( email: @identity.email || "", first_name: names[0], last_name: names[1..-1].join(" "), image_url: @identity.image )
+      @user = User.create( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image )
       @identity.update_attribute( :user_id, @user.id )
     end
 
