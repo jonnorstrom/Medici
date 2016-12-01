@@ -7,8 +7,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def generic_callback( provider )
     p "MADE IT TO GENERIC CALLBACK\n\n=============================================\n\n============================================="
     @identity = Identity.find_for_oauth env["omniauth.auth"]
-
+    p "#{@identity.email} - email & #{@identity.name} - name"
     @user = @identity.user || current_user
+    p @user
     if @user.nil?
       @user = User.create( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image )
       @identity.update_attribute( :user_id, @user.id )
