@@ -6,18 +6,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def generic_callback( provider )
     @identity = Identity.find_for_oauth env["omniauth.auth"]
-    p "IDENTITY IN GENERIC CALLBACK"
-    p @identity
     @user = @identity.user || current_user
 
     if @user.nil?
-      p "IN 'IF USER.NIL?' CONDITIONAL"
-      @user = User.new( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image )
-      p "HERE'S THE USER ERRORS"
-      @user.save
-      @user.errors.full_messages.each do |m|
-        p m
-      end
+      p "IN USER.NIL? CONDITIONAL"
+      @user = User.create( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image )
       @identity.update_attribute( :user_id, @user.id )
     end
 
