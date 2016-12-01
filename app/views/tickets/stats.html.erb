@@ -28,6 +28,9 @@
         Quantity
       </th>
       <th>
+        Purchase Date
+      </th>
+      <th>
         Update
       </th>
     </tr>
@@ -42,6 +45,9 @@
         </td>
         <td>
           <%= ticket.quantity %>
+        </td>
+        <td>
+          <%= ticket.updated_at.strftime("%m/%d") %>
         </td>
         <td>
           <%= form_for(ticket, :html => { :method => :delete }) do |f| %>

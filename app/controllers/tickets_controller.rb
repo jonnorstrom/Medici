@@ -51,6 +51,7 @@ class TicketsController < ApplicationController
     end
 
     @events_with_tickets = Event.find_events_with_tickets
+    @events_with_tickets.sort! {|x, y| y.updated_at <=> x.updated_at}
 
     @users = User.all.sort {|x, y| y.created_at <=> x.created_at}
   end
