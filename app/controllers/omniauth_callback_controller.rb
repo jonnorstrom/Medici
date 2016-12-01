@@ -13,13 +13,15 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.nil?
       p "IN 'IF USER.NIL?' CONDITIONAL"
       @user = User.new( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image )
-      p "HERE'S THE USER"
-      p @user
+      p "HERE'S THE USER ERRORS"
+      @user.save
+      @user.errors.full_messages.each do |m|
+        p m
+      end
       @identity.update_attribute( :user_id, @user.id )
     end
 
     if @user.email.blank? && @identity.email
-      p "IN 'IF USER.EMAIL.BLANK? && IDENTITY.EMAIL' CONDITIONAL"
       @user.update_attribute( :email, @identity.email)
     end
 
