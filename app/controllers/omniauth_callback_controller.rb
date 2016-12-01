@@ -9,7 +9,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = @identity.user || current_user
 
     if @user.nil?
-      @user = User.create( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image )
+      @user = User.create( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image, password: Devise.friendly_token.first(8))
 
       @user.errors.full_messages.each do |m|
         p m
