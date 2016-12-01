@@ -12,10 +12,7 @@ class Identity < ActiveRecord::Base
     identity.email = auth.info.email
 
     identity.image = auth.info.image
-
-    p identity
-    p "abovve is identity object, below is the save command"
-    p identity.save
+    identity.save
     identity
   end
 end

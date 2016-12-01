@@ -5,21 +5,24 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def generic_callback( provider )
-    p "MADE IT TO GENERIC CALLBACK\n\n=============================================\n\n============================================="
     @identity = Identity.find_for_oauth env["omniauth.auth"]
-    p "#{@identity.email} - email & #{@identity.name} - name"
+    p "IDENTITY IN GENERIC CALLBACK"
+    p @identity
     @user = @identity.user || current_user
-    p @user
+
     if @user.nil?
+      p "IN 'IF USER.NIL?' CONDITIONAL"
       @user = User.create( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image )
       @identity.update_attribute( :user_id, @user.id )
     end
 
     if @user.email.blank? && @identity.email
+      p "IN 'IF USER.EMAIL.BLANK? && IDENTITY.EMAIL' CONDITIONAL"
       @user.update_attribute( :email, @identity.email)
     end
 
     if @user.persisted?
+      p "IN 'IF USER.PERSISTED?' CONDITIONAL"
       @identity.update_attribute( :user_id, @user.id )
       # This is because we've created the user manually, and Device expects a
       # FormUser class (with the validations)
