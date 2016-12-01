@@ -35,7 +35,7 @@
       </th>
     </tr>
 
-    <% event.paid_tickets.each do |ticket| %>
+    <% event.paid_tickets.sort! {|x, y| y.updated_at <=> x.updated_at}.each do |ticket| %>
       <tr>
         <td>
           <%= ticket.user.name %>
