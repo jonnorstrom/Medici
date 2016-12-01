@@ -47,6 +47,9 @@ class User < ApplicationRecord
   ######################################
 
   def name
-    "#{first_name} #{last_name}"
+    return full_name if full_name.length > 0
+
+    set_full_name
+    get_full_name
   end
 end
