@@ -5,6 +5,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def generic_callback( provider )
+    p "MADE IT TO GENERIC CALLBACK\n\n=============================================\n\n============================================="
     @identity = Identity.find_for_oauth env["omniauth.auth"]
 
     @user = @identity.user || current_user
