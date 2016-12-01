@@ -4,8 +4,6 @@ class Identity < ActiveRecord::Base
   validates_uniqueness_of :uid, :scope => :provider
 
   def self.find_for_oauth(auth)
-    p auth
-    p "here's the auth!"
     identity = find_by(provider: auth.provider, uid: auth.uid)
     identity = create(uid: auth.uid, provider: auth.provider) if identity.nil?
     identity.accesstoken = auth.credentials.token
@@ -16,7 +14,8 @@ class Identity < ActiveRecord::Base
     identity.image = auth.info.image
 
     p identity
-    identity.save
+    p "abovve is identity object, below is the save command"
+    p identity.save
     identity
   end
 end
