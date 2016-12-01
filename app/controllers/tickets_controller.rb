@@ -52,7 +52,7 @@ class TicketsController < ApplicationController
 
     @events_with_tickets = Event.find_events_with_tickets
 
-    @users = User.all.sort {|x, y| x.created_at <=> y.created_at}
+    @users = User.all.sort {|x, y| y.created_at <=> x.created_at}
   end
 
 

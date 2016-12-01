@@ -36,14 +36,6 @@ class User < ApplicationRecord
   def split_names
     full_name.split(" ")
   end
-
-  def get_full_name
-    "#{first_name} #{last_name}"
-  end
-
-  def set_full_name
-    self.update_columns(full_name: get_full_name)
-  end
   ######################################
 
   def name
@@ -51,5 +43,15 @@ class User < ApplicationRecord
 
     set_full_name
     get_full_name
+  end
+
+  private
+
+  def get_full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def set_full_name
+    self.update_columns(full_name: get_full_name)
   end
 end
