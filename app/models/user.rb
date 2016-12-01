@@ -26,6 +26,8 @@ class User < ApplicationRecord
     @facebook_client ||= Facebook.client( access_token: facebook.accesstoken )
   end
 
+
+  ## for when :full_name was an attribute - needed to split and reasssign ##
   def convert_1_to_2_names
     names = split_names
     self.update_columns(first_name: names[0], last_name: names[1..-1].join(" "))
@@ -35,18 +37,16 @@ class User < ApplicationRecord
     full_name.split(" ")
   end
 
-  def name
-    return full_name if full_name.length > 0
-
-    set_full_name
-    get_full_name
-  end
-
   def get_full_name
     "#{first_name} #{last_name}"
   end
 
   def set_full_name
     self.update_columns(full_name: get_full_name)
+  end
+  ######################################
+
+  def name
+    "#{first_name} #{last_name}"
   end
 end
