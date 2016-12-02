@@ -6,7 +6,7 @@ class MuseumsController < ApplicationController
   def index
     @ticket = current_order.tickets.new
     @posts = Museum.all + Exhibit.all + Event.where("end_date > ?", Date.today) + Piece.all
-    @main_posts = Event.where(main: true)
+    @main_posts = Event.where(main: true).where("end_date > ?", Date.today)
     if !@main_posts.nil?
       @posts = @posts.to_a - @main_posts
     end
@@ -16,7 +16,7 @@ class MuseumsController < ApplicationController
     @show_page = true
     @museum = Museum.find(params[:id])
     @ticket = current_order.tickets.new
-    @exhibits = @museum.exhibits.all + @museum.events.all
+    @exhibits = @museum.exhibits.all + @museum.events.where("end_date > ?", Date.today)
     @hash = Gmaps4rails.build_markers(@museum) do |museum, marker|
       marker.lat museum.latitude
       marker.lng museum.longitude
