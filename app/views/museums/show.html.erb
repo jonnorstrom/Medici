@@ -5,7 +5,7 @@
 
 <%= render "shared/post_show_row", exhibit: @museum, museum: @museum, ticket: @ticket  %>
 <% if @exhibits[0] != nil %>
-  <h2> Exhibits </h2>
+  <h2> Exhibits & Events </h2>
   <div class= "row masonry-container">
     <% @exhibits.each do |exhibit| %>
       <%= render "museum_row", post: exhibit, ticket: @ticket  %>
