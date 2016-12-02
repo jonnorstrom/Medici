@@ -50,7 +50,14 @@ class TicketsController < ApplicationController
       @tickets = @tickets.first
     end
 
+    # events_with_tickets is array of event names
     @events_with_tickets = Event.find_events_with_tickets.sort! {|x, y| y.updated_at <=> x.updated_at}
+
+    @table_hash = {}
+
+    @events_with_tickets.each do |event|
+      @table_hash[event.name] = event.tickets.to_a.sort! {|x, y| y.updated_at <=> x.updated_at}
+    end
 
     @users = User.all.sort {|x, y| y.created_at <=> x.created_at}
   end
