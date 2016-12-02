@@ -306,6 +306,10 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
   font-size: 20px;
 }
 
+.clear-cart-button a {
+  color: #00AEEF;
+}
+
 .badge {
   float: right;
   margin-top: 6px;
