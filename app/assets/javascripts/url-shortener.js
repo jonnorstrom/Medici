@@ -6,5 +6,7 @@ $(document).ready(function(){
 		document.getElementById("venue-website").innerHTML = shorten;
 		return shorten;
 	}
-	shortenURL(document.getElementById("venue-website").innerHTML);
+	if (document.getElementById("venue-website")) {
+		shortenURL(document.getElementById("venue-website").innerHTML);
+	}
 });
