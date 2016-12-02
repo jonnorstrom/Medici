@@ -34,6 +34,8 @@ class Event < ApplicationRecord
       return tickets.to_a.sort! {|x, y| y.quantity <=> x.quantity}
     when "Name"
       return tickets.to_a.sort! {|x, y| x.user.name <=> y.user.name}
+    when "Email"
+      return tickets.to_a.sort! {|x, y| x.user.email <=> y.user.email}
     else
       return tickets.to_a.sort! {|x, y| y.updated_at <=> x.updated_at}
     end
