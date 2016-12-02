@@ -1,73 +1,60 @@
 <%= link_to post do%>
-<% if post.is_a?(Museum) %>
-  <div class="post-wrapper museum-panel">
-<% elsif post.is_a?(Exhibit) %>
-  <div class="post-wrapper exhibit-panel">
-<% elsif post.is_a?(Event) %>
-  <div class="post-wrapper event-panel">
-<% elsif post.is_a?(Piece) %>
-  <div class="post-wrapper piece-panel">
-<% else %>
-  <div class="post-wrapper">
-<% end %>
+  <div class="post-wrapper <%=post.class.model_name.human.downcase%>-panel">
     <div class="thumbnail">
-    <%= image_tag(post.photo.url(:large)) %>
-    <div class="caption">
-      <div class="thumbnail-header">
-        <h3><%= post.name %></h3>
-        <% if post.respond_to?(:museum_id) && !post.museum_id.nil?%>
-          <%= link_to Museum.find(post.museum_id).name, museum_path(Museum.find(post.museum_id)), class: "text-muted museum-name-link" %>
-        <% end %>
-        <% if post.is_a?(Piece) %>
-        <% elsif post.is_a?(Exhibit) && post.price == post.museum.price %>
-          <p>
-            General Admission
+      <%= image_tag(post.photo.url(:large)) %>
+      <div class="caption">
+        <div class="thumbnail-header">
+          <h3><%= post.name %></h3>
+          <% if post.respond_to?(:museum_id) && !post.museum_id.nil?%>
+            <%= link_to Museum.find(post.museum_id).name, museum_path(Museum.find(post.museum_id)), class: "text-muted museum-name-link" %>
+          <% end %>
+          <% if post.is_a?(Piece) %>
+          <% elsif post.is_a?(Exhibit) && post.price == post.museum.price %>
+            <p>General Admission</p>
+          <% elsif post.price == 0.0 %>
+            <p>FREE</p>
+          <% else %>
+          <p> $<%= '%i' % post.price %>
+            <% if (defined? post.exhibits.sort.first.price) && post.price != post.exhibits.sort.first.price%>
+            - $<%= '%i' %post.exhibits.sort.first.price %>
+            <% end %>
           </p>
-        <% elsif post.price == 0.0 %>
-          <p>
-            FREE
-          </p>
-        <% else %>
-        <p> $<%= '%i' % post.price %>
-          <% if (defined? post.exhibits.sort.first.price) && post.price != post.exhibits.sort.first.price%>
-          - $<%= '%i' %post.exhibits.sort.first.price %>
-          <% end %> </p>
-        <% end %>
-      </div>
-      <p><%= post.blurb %></p>
-      <div>
-        <% if (current_user && post.is_a?(Event)) %>
-          <% if current_order.includes_event_post?(post.id) && post.ticketable%>
-            <div class="input-group-btn">
-              <%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
-            </div>
-          <% elsif post.ticketable %>
-            <%= form_for ticket do |f| %>
-              <div class="input-group">
-                <div class="input-group-btn">
-                  <%= f.hidden_field :quantity, value: 1%>
-                  <%= f.hidden_field :event_id, value: post.id %>
-                  <%= f.hidden_field :user_id, value: 1 %>
-                  <%= f.submit "Get Tickets", class: "input-button" %>
-                </div>
+          <% end %>
+        </div>
+        <p><%= post.blurb %></p>
+        <div>
+          <% if (current_user && post.is_a?(Event)) %>
+            <% if current_order.includes_event_post?(post.id) && post.ticketable%>
+              <div class="input-group-btn">
+                <%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
               </div>
+            <% elsif post.ticketable %>
+              <%= form_for ticket do |f| %>
+                <div class="input-group">
+                  <div class="input-group-btn">
+                    <%= f.hidden_field :quantity, value: 1%>
+                    <%= f.hidden_field :event_id, value: post.id %>
+                    <%= f.hidden_field :user_id, value: 1 %>
+                    <%= f.submit "Get Tickets", class: "input-button" %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% elsif post.is_a?(Event) %>
+            <% if post.ticketable %>
+              <%= form_for ticket do |f| %>
+                <div class="input-group">
+                  <div class="input-group-btn">
+                    <%= f.hidden_field :quantity, value: 1%>
+                    <%= f.hidden_field :event_id, value: post.id %>
+                    <%= f.hidden_field :user_id, value: 1 %>
+                    <%= f.submit "Get Tickets", class: "input-button" %>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
-        <% elsif post.is_a?(Event) %>
-          <% if post.ticketable %>
-            <%= form_for ticket do |f| %>
-              <div class="input-group">
-                <div class="input-group-btn">
-                  <%= f.hidden_field :quantity, value: 1%>
-                  <%= f.hidden_field :event_id, value: post.id %>
-                  <%= f.hidden_field :user_id, value: 1 %>
-                  <%= f.submit "Get Tickets", class: "input-button" %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
+        </div>
       <% if post.tags.length > 1 %>
           <%= link_to "##{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
       <% end %>
