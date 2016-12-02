@@ -16,9 +16,7 @@
       <div class="thumbnail-header">
         <h3><%= post.name %></h3>
         <% if post.respond_to?(:museum_id) && !post.museum_id.nil?%>
-          <p class="museum-name">
-            <%= Museum.find(post.museum_id).name %>
-          </p>
+          <%= link_to Museum.find(post.museum_id).name, museum_path(Museum.find(post.museum_id)), class: "text-muted museum-name-link" %>
         <% end %>
         <% if post.is_a?(Piece) %>
         <% elsif post.is_a?(Exhibit) && post.price == post.museum.price %>
