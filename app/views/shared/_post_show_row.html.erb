@@ -1,148 +1,127 @@
 <div class="panel panel-exhibit-show">
-	<div class="panel-heading">
-		<div class="row panel-row">
-			<%= link_to (root_path) do %>
-				<i class="fa fa-times back-x hidden-xs"></i>
-			<% end %>
-			<div class= "image-featured col-md-4">
-				<%= image_tag exhibit.photo.url(:large) %>
-				<% if exhibit.price == 0.0 %>
-				<p>
-					FREE
-				</p>
-				<% elsif !exhibit.ticketsite.nil? && exhibit.ticketsite != "" %>
-
-						<a target="_blank" class= "input-button" href='<%="http://#{exhibit.ticketsite}"%>' onclick="trackOutboundLink('<%="http://#{exhibit.ticketsite}"%>'); return false;, '_blank'">Tickets: $<%= '%i' % exhibit.price%></a>
-
-				<% else %>
-					<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
-				<% end %>
-
-				<% if current_user && museum.is_a?(Event)%>
-					<% if museum.end_date >= Date.today %>
-						<% if current_order.includes_event_post?(museum.id) && museum.ticketable %>
-							<div class="input-group-btn">
-								<%= link_to "Complete Your Current Order", cart_path(id: current_user.id), class: "input-button" %>
-							</div>
-						<% elsif museum.ticketable %>
-					    <%= form_for ticket do |f| %>
-					      <div class="input-group">
-					        <div class="input-group-btn">
-					          <%= f.hidden_field :quantity, value: 1 %>
-					          <%= f.hidden_field :event_id, value: museum.id %>
-					          <%= f.hidden_field :user_id, value: current_user.id %>
-					          <%= f.submit "Add to Cart", class: "input-button" %>
-					        </div>
-					      </div>
-					    <% end %>
-						<% end %>
-					<% end %>
-				<% elsif museum.is_a?(Event) %>
-				  <% if museum.end_date > Date.today && museum.ticketable %>
-						<%= link_to "Sign in to RSVP", new_user_session_path, class: "input-button" %>
-					<% end %>
-				<% end %>
-					<div class="social-buttons">
-					</div>
+	<div class="panel-heading row">
+		<div class= "col-md-4 info-container">
+			<div id= "feature-image" style= "background-image: url(<%=exhibit.photo.url(:large)%>);">
 			</div>
-			<div class= "col-lg-8" >
-				<div class="row">
-					<div class= "description-wrapper col-md-8 col-lg-12">
-						<h2><%= exhibit.name %></h2>
-						<% if exhibit.is_a?(Exhibit) && exhibit.permanent %>
-							<h4>Ongoing</h4>
-            <% elsif (exhibit.is_a?(Exhibit) || exhibit.is_a?(Event)) && exhibit.start_date == exhibit.end_date %>
-							<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B %d, %Y") %></h4>
-						<% elsif (exhibit.is_a?(Exhibit) || exhibit.is_a?(Event)) && (exhibit.start_date <= Date.today) %>
-							<h4>Through <%= exhibit.end_date.strftime("%B %d, %Y") %></h4>
-						<% elsif exhibit.is_a?(Exhibit) || exhibit.is_a?(Event) %>
-  						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=(exhibit.start_date.strftime("%Y") < (exhibit.end_date.strftime("%Y")) ? exhibit.start_date.strftime("%B %d, %Y") : exhibit.start_date.strftime("%B %d"))%> - <%= exhibit.end_date.strftime("%B %d, %Y") %></h4>
-            <% end %>
-
-						<p><%= simple_format(exhibit.description) %></p>
-					</div>
+			<% if current_user && museum.is_a?(Event)%>
+				<% if museum.end_date >= Date.today %>
+					<% if current_order.includes_event_post?(museum.id) && museum.ticketable %>
+						<div class="input-group-btn">
+							<%= link_to "Complete Your Current Order", cart_path(id: current_user.id), class: "input-button" %>
+						</div>
+				<% elsif museum.ticketable %>
+				    <%= form_for ticket do |f| %>
+				      	<div class="input-group">
+					        <div class="input-group-btn">
+						        <%= f.hidden_field :quantity, value: 1 %>
+						        <%= f.hidden_field :event_id, value: museum.id %>
+						        <%= f.hidden_field :user_id, value: current_user.id %>
+						        <%= f.submit "Add to Cart", class: "input-button" %>
+					        </div>
+				        </div>
+				    <% end %>
+				<% end %>
+			<% end %>
+			<% elsif museum.is_a?(Event) %>
+			  <% if museum.end_date > Date.today && museum.ticketable %>
+					<%= link_to "Sign in to RSVP", new_user_session_path, class: "input-button" %>
+				<% end %>
+			<% end %>
+			<div class= "museum-info">
+				<p class= "museum-info-entry"></i> <%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
+				<div class="transportation-tooltip">
+					<p class= "museum-info-type"> Address:
+						<i class="fa fa-info-circle" aria-hidden="true"></i>
+					</p>
+  					<span class="title tooltiptext">
+  						<% if !museum.transportation_info.nil? %>
+  							<%= museum.transportation_info %>
+  						<% end %>
+  					</span>
 				</div>
-				<div class="row">
-					<div class= "col-xs-4 geo-location hidden-xs">
-						<div id="map"></div>
-					</div>
-					<div class= "col-sm-8 col-xs-12 museum-info-wrapper">
-						<% if exhibit.is_a?(Exhibit) || (exhibit.is_a?(Event) && !exhibit.museum_id.nil?) %>
-							<h3><%= link_to "#{exhibit.museum.name}", museum, class: "venue"%></h3>
-						<% end %>
-						<div class= "museum-info">
-							<p class= "museum-info-type"> Address: </p>
-							<p class= "museum-info-entry"> <i class="fa fa-map-pin" aria-hidden="true"></i> <%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
-							<div class="dropdown bullet">
-								<button class="dropdown-toggle bullet" type="button" data-toggle="dropdown">
-									<i class="fa fa-info" aria-hidden="true"></i>
-								</button>
-								<% if !museum.transportation_info.nil? %>
-									<ul class="dropdown-menu">
-										<li class="trans-drop"> <%= museum.transportation_info %></li>
-									</ul>
-								<% end %>
-							</div>
-						</div>
-						<div class= "museum-info">
-							<p class= "museum-info-type"> Hours:</p>
-							<% if museum.opening_time != museum.closing_time %>
-								<p class= "museum-info-entry"> <i class="fa fa-clock-o" aria-hidden="true"></i> <%=museum.opening_time.strftime("%I:%M%p")%> - <%=museum.closing_time.strftime("%I:%M%p")%></p>
-							<% else %>
-								<p class= " extra-hours"> <i class="fa fa-clock-o" aria-hidden="true"></i>
-									Sunday: <%=museum.sun_open.strftime("%I:%M%p")%> - <%=museum.sun_close.strftime("%I:%M%p")%></p>
-								<p class= " extra-hours">
-									Monday: <%=museum.mon_open.strftime("%I:%M%p")%> - <%=museum.mon_close.strftime("%I:%M%p")%>
-								</p>
-								<p class= " extra-hours">
-									Tuesday: <%=museum.tue_open.strftime("%I:%M%p")%> - <%=museum.tue_close.strftime("%I:%M%p")%>
-								</p>
-								<p class= " extra-hours">
-									Wednesday: <%=museum.wed_open.strftime("%I:%M%p")%> - <%=museum.wed_close.strftime("%I:%M%p")%>
-								</p>
-								<p class= " extra-hours">
-									Thursday: <%=museum.thu_open.strftime("%I:%M%p")%> - <%=museum.thu_close.strftime("%I:%M%p")%>
-								</p>
-								<p class= " extra-hours">
-									Friday: <%=museum.fri_open.strftime("%I:%M%p")%> - <%=museum.fri_close.strftime("%I:%M%p")%>
-								</p>
-								<p class= " extra-hours">
-									Saturday: <%=museum.sat_open.strftime("%I:%M%p")%> - <%=museum.sat_close.strftime("%I:%M%p")%>
-								</p>
-							<% end %>
-						</div>
-						<div class= "museum-info">
-							<p class= "museum-info-type"> Website:</p>
-							<p class= "museum-info-entry"> <i class="fa fa-share-square-o" aria-hidden="true" style="padding-top: 7px;"></i>
-								<a href= '<%="http://#{museum.website}"%>'id= "venue-website1" class="website" target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%= museum.website %></a>
-							</p>
-						</div>
-					</div>
+			</div>
+			<div class= "museum-info">
+				<p class= "museum-info-type"> Hours:</p>
+				<% if museum.opening_time != museum.closing_time %>
+					<p class= "museum-info-entry">&or;</i> <%=museum.opening_time.strftime("%I:%M%p")%> - <%=museum.closing_time.strftime("%I:%M%p")%></p>
+				<% else %>
+					<p class= " extra-hours"> <i class="fa fa-clock-o" aria-hidden="true"></i>
+						Sunday: <%=museum.sun_open.strftime("%I:%M%p")%> - <%=museum.sun_close.strftime("%I:%M%p")%></p>
+					<p class= " extra-hours">
+						Monday: <%=museum.mon_open.strftime("%I:%M%p")%> - <%=museum.mon_close.strftime("%I:%M%p")%>
+					</p>
+					<p class= " extra-hours">
+						Tuesday: <%=museum.tue_open.strftime("%I:%M%p")%> - <%=museum.tue_close.strftime("%I:%M%p")%>
+					</p>
+					<p class= " extra-hours">
+						Wednesday: <%=museum.wed_open.strftime("%I:%M%p")%> - <%=museum.wed_close.strftime("%I:%M%p")%>
+					</p>
+					<p class= " extra-hours">
+						Thursday: <%=museum.thu_open.strftime("%I:%M%p")%> - <%=museum.thu_close.strftime("%I:%M%p")%>
+					</p>
+					<p class= " extra-hours">
+						Friday: <%=museum.fri_open.strftime("%I:%M%p")%> - <%=museum.fri_close.strftime("%I:%M%p")%>
+					</p>
+					<p class= " extra-hours">
+						Saturday: <%=museum.sat_open.strftime("%I:%M%p")%> - <%=museum.sat_close.strftime("%I:%M%p")%>
+					</p>
+				<% end %>
+			</div>
+			<div class= "museum-info website-info">
+				<p class= "museum-info-type"> Site:</p>
+				<p class= "museum-info-entry">
+					<a href= '<%="http://#{museum.website}"%>'id= "venue-website"target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%= museum.website %></a>
+				</p>
+			</div>
+		</div>
+		<div class= "description-wrapper col-md-8">
+			<div class="col-md-11 description">
+				<h2><%= exhibit.name %></h2>
+				<a class="js-social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= yield :url %>" target="_blank">
+					<i class="fa fa-facebook fa-card" aria-hidden="true"></i>
+				</a>
+				<a class="js-social-share twitter" href='https://twitter.com/intent/tweet?text=I love @medicimuseums and <%="#{exhibit.name}"%>' target="_blank">
+					<i class="fa fa-twitter fa-card" aria-hidden="true"></i>
+				</a>
+				<% if exhibit.is_a?(Exhibit) && exhibit.permanent %>
+					<h4>Permanent Collection at <%= museum.name %></h4>
+				<% elsif (exhibit.is_a?(Exhibit) || exhibit.is_a?(Event)) && exhibit.start_date == exhibit.end_date %>
+					<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B %d, %Y") %></h4>
+				<% elsif exhibit.is_a?(Exhibit) || exhibit.is_a?(Event) %>
+						<h4 class= "dates"><i class="fa fa-calendar" aria-hidden="true"></i> <%=exhibit.start_date.strftime("%B %d")%> - <%= exhibit.end_date.strftime("%B %d, %Y") %></h4>
+				<% end %>
+				<p><%= simple_format(exhibit.description) %></p>
+				<% if exhibit.price == 0.0 %>
+					<p>
+						FREE
+					</p>
+					<% elsif !exhibit.ticketsite.nil? && exhibit.ticketsite != "" %>
+							<a target="_blank" class= "input-button" href='<%="http://#{exhibit.ticketsite}"%>' onclick="trackOutboundLink('<%="http://#{exhibit.ticketsite}"%>'); return false;, '_blank'">Tickets: $<%= '%i' % exhibit.price%></a>
+					<% else %>
+						<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
+				<% end %>
+			</div>
+			<div class= "social col-md-1">
+				<div>
+				<%= link_to (root_path) do %>
+					<i class="fa fa-times back-x hidden-xs"></i>
+				<% end %>
 				</div>
 			</div>
 		</div>
-	</div>
-		<div class="panel-body">
-			<!--
-			<a href="https://twitter.com/intent/tweet?screen_name=Medici_App" class="twitter-share-button" data-text="is guiding my experience at <%= museum.name %>!" data-show-count="false">Tweet</a> -->
-			<a class="js-social-share facebook" href="https://www.facebook.com/sharer/sharer.php?u=<%= yield :url %>" target="_blank">
-				<i class="fa fa-facebook-square fa-card text-muted" aria-hidden="true"></i>
-			</a>
-			<a class="js-social-share twitter" href='https://twitter.com/intent/tweet?text=I love @medicimuseums and <%="#{exhibit.name}"%>' target="_blank">
-				<i class="fa fa-twitter-square fa-card text-muted" aria-hidden="true"></i>
-			</a>
-			<div class="tag-wrapper">
-       				<% exhibit.tags.each do |tag| %>
-					<div class="btn-link">
-						<%= link_to(tag) do %>
-					    <button type="button" class="btn btn-default tag-button"><%="##{tag.name}"%></button>
-						<% end %>
-					</div>
-        <% end %>
-			</div>
+  </div>
+	<div class="panel-body">
+		<div class="tag-wrapper">
+				<% exhibit.tags.each do |tag| %>
+				<div class="btn-link">
+					<%= link_to(tag) do %>
+				    <button type="button" class="btn btn-default tag-button"><%="##{tag.name}"%></button>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
 	</div>
 </div>
-
 <script type="text/javascript">
   function buildMap(){
     handler = Gmaps.build('Google');
