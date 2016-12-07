@@ -41,12 +41,16 @@
 				</div>
 			</div>
 			<div class= "museum-info">
-				<p class= "museum-info-entry"><%= museum.get_todays_hours %></p>
+				<% if museum.is_a?(Museum) %>
+					<p class= "museum-info-entry"><%= museum.get_todays_hours %></p>
+				<% elsif museum.is_a?(Event) %>
+					<p class= "museum-info-entry"><%= museum.opening_time.strftime("%I:%M%p") %> - <%= museum.closing_time.strftime("%I:%M%p") %></p>
+				<% end %>
 				<div class="information-tooltip">
 					<p class= "museum-info-type">Today's Hours:
 						<i class="fa fa-clock-o" aria-hidden="true"></i>
 					</p>
-					<% if !museum.has_general_hours? %>
+					<% if museum.is_a?(Museum) && !museum.has_general_hours? %>
 						<span class="title tooltiptext">
 							<p class= " extra-hours">
 								Sunday: <%=museum.sun_open.strftime("%I:%M%p")%> - <%=museum.sun_close.strftime("%I:%M%p")%></p>

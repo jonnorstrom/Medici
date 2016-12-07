@@ -69,9 +69,19 @@
 				</div>
 		<% end %>
 	<% end %>
+
 	<% @posts.shuffle.each do |post| %>
-	  <%= render "museum_row", post: post, ticket: @ticket  %>
+		<% if post.is_a?(Exhibit) %>
+			<%= render "exhibit_row", post: post, ticket: @ticket %>
+		<% elsif post.is_a?(Event) %>
+			<%= render "event_row", post: post, ticket: @ticket %>
+		<% elsif post.is_a?(Museum) %>
+	  	<%= render "museum_row", post: post, ticket: @ticket %>
+		<% elsif post.is_a?(Piece) %>
+			<%= render "piece_row", post: post, ticket: @ticket %>
+		<% end %>
 	<% end %>
+
 </div>
 <% if admin? %>
 	<div style="padding-bottom: 15px;">

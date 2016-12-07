@@ -1,0 +1,60 @@
+<%= link_to post do%>
+  <div class="post-wrapper event-panel">
+    <div class="thumbnail">
+      <%= image_tag(post.photo.url(:large)) %>
+      <div class="caption">
+        <div class="thumbnail-header">
+          <h3><%= post.name %></h3>
+          <% if post.respond_to?(:museum_id) && !post.museum_id.nil?%>
+            <%= link_to post.museum.name, museum_path(post.museum.id), class: "text-muted museum-name-link" %>
+          <% end %>
+          <% if post.price == 0.0 %>
+            <p>FREE</p>
+          <% else %>
+            <p> $<%= '%i' % post.price %></p>
+          <% end %>
+        </div>
+        <p><%= post.blurb %></p>
+        <div>
+          <% if (current_user && post.is_a?(Event)) %>
+            <% if current_order.includes_event_post?(post.id) && post.ticketable%>
+              <div class="input-group-btn">
+                <%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
+              </div>
+            <% elsif post.ticketable %>
+              <%= form_for ticket do |f| %>
+                <div class="input-group">
+                  <div class="input-group-btn">
+                    <%= f.hidden_field :quantity, value: 1%>
+                    <%= f.hidden_field :event_id, value: post.id %>
+                    <%= f.hidden_field :user_id, value: 1 %>
+                    <%= f.submit "Get Tickets", class: "input-button" %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% elsif post.is_a?(Event) %>
+            <% if post.ticketable %>
+              <%= form_for ticket do |f| %>
+                <div class="input-group">
+                  <div class="input-group-btn">
+                    <%= f.hidden_field :quantity, value: 1%>
+                    <%= f.hidden_field :event_id, value: post.id %>
+                    <%= f.hidden_field :user_id, value: 1 %>
+                    <%= f.submit "Get Tickets", class: "input-button" %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <% if post.tags.length > 1 %>
+          <%= link_to "##{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
+    </div>
+  </div>
+<% end %>
