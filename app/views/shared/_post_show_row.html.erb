@@ -44,7 +44,7 @@
 				<% if museum.is_a?(Museum) %>
 					<p class= "museum-info-entry"><%= museum.get_todays_hours %></p>
 				<% elsif museum.is_a?(Event) %>
-					<p class= "museum-info-entry"><%= museum.opening_time.strftime("%I:%M%p") %> - <%= museum.closing_time.strftime("%I:%M%p") %></p>
+					<p class= "museum-info-entry"><%= museum.opening_time.strftime("%l:%M%p") %> - <%= museum.closing_time.strftime("%l:%M%p") %></p>
 				<% end %>
 				<div class="information-tooltip">
 					<p class= "museum-info-type">Today's Hours:
