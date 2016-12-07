@@ -2,6 +2,24 @@
 * === COLLAPSABLE SIDE NAV EXTRA SMALL (collapsed) ===
 */
 @media (max-width: 768px) {
+    .mobile-login .modal-dialogue{
+        
+    }
+    .mobile-login .modal-content{
+        margin-top: 200px;
+    }
+    .mobile-login .modal-header img{
+        max-width: 100px;
+    }
+    .mobile-login .modal-footer p{
+        text-align: center;
+        font-size: 14px; 
+    }
+    .mobile-login .modal-footer .input-button{
+        display: inline !important;
+        margin-bottom: 0px;
+    }
+
     .navbar-fixed-side {
         position: fixed;
         margin-left: -15px;
