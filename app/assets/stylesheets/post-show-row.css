@@ -156,12 +156,14 @@
 .tag-wrapper-user {
 	float:left;
 }
+
 .tag-button{
 	border: 2px solid #D3D3D3 !important;
 	font-family: HansKendrick-Heavy;
 	color: #D3D3D3 !important;
 	border-radius: 20px !important;
 }
+
 .fa-card{
 	margin: 0px 2px !important;
 }

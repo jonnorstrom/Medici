@@ -2,7 +2,7 @@
 	height: 100vh;
   display: flex;
 }
-@media screen and (max-width: 768px) { 
+@media screen and (max-width: 768px) {
   .panel-sign-in{
     display: none;
     position: absolute;
@@ -30,7 +30,7 @@
   }
 }
 
-@media screen and (min-width: 768px) { 
+@media screen and (min-width: 768px) {
     .panel-sign-in{
     display: none;
     position: absolute;
@@ -185,4 +185,6 @@ input[type="checkbox"]:checked + label span {
 }
 a.row-tags {
 	font-size: 1em;
+	color: #999 !important;
+	font-weight: bold !important;
 }
