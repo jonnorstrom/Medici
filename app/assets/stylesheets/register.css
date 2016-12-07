@@ -184,7 +184,7 @@ input[type="checkbox"]:checked + label span {
 	border: 1px solid #00AEEF;
 }
 a.row-tags {
-	font-size: 1em;
+	font-size: 14px ;
 	color: #999 !important;
 	font-weight: bold !important;
 }
