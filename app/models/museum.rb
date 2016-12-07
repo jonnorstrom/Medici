@@ -23,30 +23,44 @@ class Museum < ApplicationRecord
     "#{id} #{name}".parameterize
   end
 
+  def has_general_hours?
+    general_hours != "12:00AM - 12:00AM" ? true : false
+  end
+
   def get_todays_hours
+    if has_general_hours?
+      return general_hours
+    end
+
     case Time.now.strftime("%A") ##today
     when "Monday"
-      todays_hours = "#{mon_open.strftime("%I:%M%p")} - #{mon_close.strftime("%I:%M%p")}"
+      todays_hours = "#{mon_open.strftime("%l:%M%p")} - #{mon_close.strftime("%l:%M%p")}"
     when "Tuesday"
-      todays_hours = "#{tue_open.strftime("%I:%M%p")} - #{tue_close.strftime("%I:%M%p")}"
+      todays_hours = "#{tue_open.strftime("%l:%M%p")} - #{tue_close.strftime("%l:%M%p")}"
     when "Wednesday"
-      todays_hours = "#{wed_open.strftime("%I:%M%p")} - #{wed_close.strftime("%I:%M%p")}"
+      todays_hours = "#{wed_open.strftime("%l:%M%p")} - #{wed_close.strftime("%l:%M%p")}"
     when "Thursday"
-      todays_hours = "#{thu_open.strftime("%I:%M%p")} - #{thu_close.strftime("%I:%M%p")}"
+      todays_hours = "#{thu_open.strftime("%l:%M%p")} - #{thu_close.strftime("%l:%M%p")}"
     when "Friday"
-      todays_hours = "#{fri_open.strftime("%I:%M%p")} - #{fri_close.strftime("%I:%M%p")}"
+      todays_hours = "#{fri_open.strftime("%l:%M%p")} - #{fri_close.strftime("%l:%M%p")}"
     when "Saturday"
-      todays_hours = "#{sat_open.strftime("%I:%M%p")} - #{sat_close.strftime("%I:%M%p")}"
+      todays_hours = "#{sat_open.strftime("%l:%M%p")} - #{sat_close.strftime("%l:%M%p")}"
     when "Sunday"
-      todays_hours = "#{sun_open.strftime("%I:%M%p")} - #{sun_close.strftime("%I:%M%p")}"
+      todays_hours = "#{sun_open.strftime("%l:%M%p")} - #{sun_close.strftime("%l:%M%p")}"
     end
+
     if todays_hours == "12:00AM - 012:00AM"
-      todays_hours = "Closed today"
+      return "Closed"
     end
+
     return todays_hours
   end
 
-   private
+  private
+
+  def general_hours
+     "#{opening_time.strftime("%I:%M%p")} - #{closing_time.strftime("%I:%M%p")}"
+  end
 
   def image_dimensions
     if photo.queued_for_write[:original] != nil
@@ -66,5 +80,4 @@ class Museum < ApplicationRecord
       errors.add(:closing_time, "must be after opening_time")
     end
   end
-
 end
