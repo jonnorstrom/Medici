@@ -23,6 +23,29 @@ class Museum < ApplicationRecord
     "#{id} #{name}".parameterize
   end
 
+  def get_todays_hours
+    case Time.now.strftime("%A") ##today
+    when "Monday"
+      todays_hours = "#{mon_open.strftime("%I:%M%p")} - #{mon_close.strftime("%I:%M%p")}"
+    when "Tuesday"
+      todays_hours = "#{tue_open.strftime("%I:%M%p")} - #{tue_close.strftime("%I:%M%p")}"
+    when "Wednesday"
+      todays_hours = "#{wed_open.strftime("%I:%M%p")} - #{wed_close.strftime("%I:%M%p")}"
+    when "Thursday"
+      todays_hours = "#{thu_open.strftime("%I:%M%p")} - #{thu_close.strftime("%I:%M%p")}"
+    when "Friday"
+      todays_hours = "#{fri_open.strftime("%I:%M%p")} - #{fri_close.strftime("%I:%M%p")}"
+    when "Saturday"
+      todays_hours = "#{sat_open.strftime("%I:%M%p")} - #{sat_close.strftime("%I:%M%p")}"
+    when "Sunday"
+      todays_hours = "#{sun_open.strftime("%I:%M%p")} - #{sun_close.strftime("%I:%M%p")}"
+    end
+    if todays_hours == "12:00AM - 012:00AM"
+      todays_hours = "Closed today"
+    end
+    return todays_hours
+  end
+
    private
 
   def image_dimensions
