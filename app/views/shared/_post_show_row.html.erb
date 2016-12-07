@@ -28,49 +28,57 @@
 				<% end %>
 			<% end %>
 			<div class= "museum-info">
-				<p class= "museum-info-entry"></i> <%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
-				<div class="transportation-tooltip">
-					<p class= "museum-info-type"> Address: 
+				<p class= "museum-info-entry"><%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
+				<div class="information-tooltip">
+					<p class= "museum-info-type"> Address:
 						<i class="fa fa-info-circle" aria-hidden="true"></i>
 					</p>
-
-  						<% if !museum.transportation_info.nil? %>
-	  						<span class="title tooltiptext">
-	  							<%= museum.transportation_info %>
-	  						</span>
-  						<% end %>
+						<% if museum.transportation_info != "" %>
+							<span class="title tooltiptext">
+								<%= museum.transportation_info %>
+							</span>
+						<% end %>
 				</div>
 			</div>
 			<div class= "museum-info">
-				<p class= "museum-info-type"> Hours:</p>
-				<% if museum.opening_time != museum.closing_time %>
-					<p class= "museum-info-entry"></i> <%=museum.opening_time.strftime("%I:%M%p")%> - <%=museum.closing_time.strftime("%I:%M%p")%></p>
-				<% else %>
-					<p class= " extra-hours"> <i class="fa fa-clock-o" aria-hidden="true"></i>
-						Sunday: <%=museum.sun_open.strftime("%I:%M%p")%> - <%=museum.sun_close.strftime("%I:%M%p")%></p>
-					<p class= " extra-hours">
-						Monday: <%=museum.mon_open.strftime("%I:%M%p")%> - <%=museum.mon_close.strftime("%I:%M%p")%>
-					</p>
-					<p class= " extra-hours">
-						Tuesday: <%=museum.tue_open.strftime("%I:%M%p")%> - <%=museum.tue_close.strftime("%I:%M%p")%>
-					</p>
-					<p class= " extra-hours">
-						Wednesday: <%=museum.wed_open.strftime("%I:%M%p")%> - <%=museum.wed_close.strftime("%I:%M%p")%>
-					</p>
-					<p class= " extra-hours">
-						Thursday: <%=museum.thu_open.strftime("%I:%M%p")%> - <%=museum.thu_close.strftime("%I:%M%p")%>
-					</p>
-					<p class= " extra-hours">
-						Friday: <%=museum.fri_open.strftime("%I:%M%p")%> - <%=museum.fri_close.strftime("%I:%M%p")%>
-					</p>
-					<p class= " extra-hours">
-						Saturday: <%=museum.sat_open.strftime("%I:%M%p")%> - <%=museum.sat_close.strftime("%I:%M%p")%>
-					</p>
+				<% if museum.is_a?(Museum) %>
+					<p class= "museum-info-entry"><%= museum.get_todays_hours %></p>
+				<% elsif museum.is_a?(Event) %>
+					<p class= "museum-info-entry"><%= museum.opening_time.strftime("%I:%M%p") %> - <%= museum.closing_time.strftime("%I:%M%p") %></p>
 				<% end %>
-			</div>
+				<div class="information-tooltip">
+					<p class= "museum-info-type">Today's Hours:
+						<i class="fa fa-clock-o" aria-hidden="true"></i>
+					</p>
+					<% if museum.is_a?(Museum) && !museum.has_general_hours? %>
+						<span class="title tooltiptext">
+							<p class= " extra-hours">
+								Sunday: <%=museum.sun_open.strftime("%I:%M%p")%> - <%=museum.sun_close.strftime("%I:%M%p")%></p>
+							<p class= " extra-hours">
+								Monday: <%=museum.mon_open.strftime("%I:%M%p")%> - <%=museum.mon_close.strftime("%I:%M%p")%>
+							</p>
+							<p class= " extra-hours">
+								Tuesday: <%=museum.tue_open.strftime("%I:%M%p")%> - <%=museum.tue_close.strftime("%I:%M%p")%>
+							</p>
+							<p class= " extra-hours">
+								Wednesday: <%=museum.wed_open.strftime("%I:%M%p")%> - <%=museum.wed_close.strftime("%I:%M%p")%>
+							</p>
+							<p class= " extra-hours">
+								Thursday: <%=museum.thu_open.strftime("%I:%M%p")%> - <%=museum.thu_close.strftime("%I:%M%p")%>
+							</p>
+							<p class= " extra-hours">
+								Friday: <%=museum.fri_open.strftime("%I:%M%p")%> - <%=museum.fri_close.strftime("%I:%M%p")%>
+							</p>
+							<p class= " extra-hours">
+								Saturday: <%=museum.sat_open.strftime("%I:%M%p")%> - <%=museum.sat_close.strftime("%I:%M%p")%>
+							</p>
+						</span>
+					<% end %>
+					</div>
+				</div>
 			<div class= "museum-info website-info">
 				<p class= "museum-info-type"> Site:</p>
-				<p class= "museum-info-entry"> 
+				<p class= "museum-info-entry">
 					<a href= '<%="http://#{museum.website}"%>'id= "venue-website"target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%= museum.website %></a>
 				</p>
 			</div>
@@ -110,7 +118,7 @@
 				</div>
 			</div>
 		</div>
-    </div>
+  </div>
 	<div class="panel-body">
 		<div class="tag-wrapper">
 				<% exhibit.tags.each do |tag| %>

@@ -14,25 +14,28 @@
 
 
 
-<% @events_with_tickets.each do |event| %>
-  <h2><%= event.name %></h2>
-  <table>
+<% @table_hash.each do |key_event_name, array_of_tickets| %>
+  <h2><%= key_event_name %></h2>
+  <table class="tickets-table">
     <tr>
       <th>
-        Name
+        <%= link_to "Name", tickets_stats_path(:parameter => "Name")%>
       </th>
       <th>
-        Email
+        <%= link_to "Email", tickets_stats_path(:parameter => "Email")%>
       </th>
       <th>
-        Quantity
+        <%= link_to "Quantity", tickets_stats_path(:parameter => "Quantity")%>
       </th>
       <th>
-        Update
+        <%= link_to "Purchase Date", tickets_stats_path(:parameter => "Purchase Date")%>
+      </th>
+      <th>
+        <%= link_to "Update", tickets_stats_path()%>
       </th>
     </tr>
 
-    <% event.tickets.each do |ticket| %>
+    <% array_of_tickets.each do |ticket| %>
       <tr>
         <td>
           <%= ticket.user.name %>
@@ -44,15 +47,31 @@
           <%= ticket.quantity %>
         </td>
         <td>
+          <%= ticket.updated_at.strftime("%m/%d") %>
+        </td>
+        <td>
           <%= form_for(ticket, :html => { :method => :delete }) do |f| %>
-            <%= f.submit("Remove Ticket") %>
+            <%= f.submit "Remove Ticket", data: {confirm: 'Are you sure?'} %>
           <% end %>
         </td>
       </tr>
     <% end %>
-    <p>Total: <%= event.tickets.inject(0) {|sum,t| sum + t.quantity } %></p>
+    <p>Total: <%= Event.find_by(name: key_event_name).tickets.inject(0) {|sum,t| sum + t.quantity } %></p>
   </table>
 <% end %>
+
+<script type="text/javascript">
+  // $('.tickets-table th').on('click', function(event){
+  //   var data = {}
+  //   data["parameter"] = ($(event.target).text().trim())
+  //
+  //   $.ajax({
+  //     data: data,
+  //     url: "/tickets/stats"
+  //   })
+  //
+  // })
+</script>
 
 <h3>All Users</h3>
 <table>
