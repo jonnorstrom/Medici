@@ -13,8 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- CDN references -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.js"></script>
     <script src= "https://cdn.jsdelivr.net/masonry/4.1.1/masonry.pkgd.min.js"></script>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -142,14 +142,26 @@
           </nav>
         </div>
         <div class="col-sm-9 col-lg-10 content">
-            <%= image_tag("Medici_logos/Medici_logo_Inset.png", class: " inset-brand hidden-sm hidden-md hidden-lg")%>
             <div class= "mobile-login hidden-sm hidden-md hidden-lg" >
-              <% if current_user %> 
-                <button type="button"class="list-group-item">
-                  <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-                </button>
-              <% else %>
-                <%= link_to "Log In", new_user_session_path, type: "button"%>
+              <% if !current_user %> 
+              <!-- Modal -->
+              <div id="signUpModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <%=image_tag("Medici_logos/Medici_logo_CMYK.png", class: "mobile-logo")%>
+                    </div>
+                    <div class="modal-footer">
+                      <p>Change the way you museum.</p>
+                      <!-- <button type="button" class="input-button" data-dismiss="modal">Sign Up</button> -->
+                      <%= button_to "Sign Up", new_user_registration_path, method: :get, class: "input-button"%>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
               <% end %>
             </div>
           <%= yield %>

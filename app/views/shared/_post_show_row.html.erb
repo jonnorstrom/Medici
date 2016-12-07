@@ -33,17 +33,18 @@
 					<p class= "museum-info-type"> Address: 
 						<i class="fa fa-info-circle" aria-hidden="true"></i>
 					</p>
-  					<span class="title tooltiptext">
+
   						<% if !museum.transportation_info.nil? %>
-  							<%= museum.transportation_info %>
+	  						<span class="title tooltiptext">
+	  							<%= museum.transportation_info %>
+	  						</span>
   						<% end %>
-  					</span>
 				</div>
 			</div>
 			<div class= "museum-info">
 				<p class= "museum-info-type"> Hours:</p>
 				<% if museum.opening_time != museum.closing_time %>
-					<p class= "museum-info-entry">&or;</i> <%=museum.opening_time.strftime("%I:%M%p")%> - <%=museum.closing_time.strftime("%I:%M%p")%></p>
+					<p class= "museum-info-entry"></i> <%=museum.opening_time.strftime("%I:%M%p")%> - <%=museum.closing_time.strftime("%I:%M%p")%></p>
 				<% else %>
 					<p class= " extra-hours"> <i class="fa fa-clock-o" aria-hidden="true"></i>
 						Sunday: <%=museum.sun_open.strftime("%I:%M%p")%> - <%=museum.sun_close.strftime("%I:%M%p")%></p>

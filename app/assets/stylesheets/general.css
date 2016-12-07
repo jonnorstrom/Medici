@@ -70,6 +70,7 @@ button.btn.btn-default.tag-button:focus {
 	overflow: hidden;
 }
 .masonry-container {
+	padding-left: 15px;
 	overflow: hidden;
 }
 .post-wrapper {
