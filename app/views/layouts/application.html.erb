@@ -56,9 +56,7 @@
                     <%= link_to "Hi #{current_user.name}", user_path(current_user), class: "name-link hidden-xs" %>
                 <% end %>
                 <%= link_to image_tag("Medici_logos/Medici_logo_CMYK.png"), root_path, class: "navbar-left hidden-xs main-logo"%>
-                <p class="tagline hidden-xs">
-                  change the way you museum
-                </p>
+                <p class="tagline hidden-xs">change the way you museum</p>
               </div>
               <div class="collapse navbar-collapse">
                 <% if current_user %>
@@ -99,22 +97,26 @@
                 </div>
                 <% end %>
                 <% if current_user %>
-                <button type="button"class="list-group-item">
-                  <%= link_to  cart_path(current_user.id) do%>
-                    <span class="glyphicon glyphicon-shopping-cart"></span>
-                    <%if current_order.tickets.where(paid: false).size > 0 %>
-                      <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
+                  <button type="button"class="list-group-item">
+                    <%= link_to  cart_path(current_user.id) do%>
+                      <span class="glyphicon glyphicon-shopping-cart"></span>
+                      <%if current_order.tickets.where(paid: false).size > 0 %>
+                        <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
+                      <% end %>
                     <% end %>
+                  </button>
+                  <% if current_order.tickets.length > 0 %>
+                    <button type="button"class="list-group-item clear-cart-button">
+                      <%= link_to "clear cart", clear_cart_path%>
+                    </button>
                   <% end %>
-                </button>
-                <% if current_order.tickets.length > 0 %>
-                  <%= link_to "Clear Cart", clear_cart_path %>
-                <% end %>
-                <button type="button"class="list-group-item">
-                  <%= link_to "logout", destroy_user_session_path, :method => :delete, class: "logout" %>
-                </button>
+                  <button type="button"class="list-group-item">
+                    <%= link_to "logout", destroy_user_session_path, :method => :delete, class: "logout" %>
+                  </button>
                 <% else %>
-                  <%= button_to "Log in", new_user_session_path, type: "button", id: "log-in-button", class: "list-group-item" %>
+                  <button type="button"class="list-group-item">
+                    <%= link_to "Log in", new_user_session_path, id: "log-in-button", class: "" %>
+                  </button>
                   <button type="button"class="list-group-item">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                     <a href="#"></a>
@@ -125,36 +127,36 @@
                 <% end %>
               </div>
               <footer class="social-footer hidden-xs">
-              <%= link_to "https://www.facebook.com/medicimuseums" do %>
-                <i class="fa fa-facebook-square" aria-hidden="true"></i>
-              <% end %>
-              <%= link_to "https://twitter.com/medicimuseums" do %>
-                <i class="fa fa-twitter-square" aria-hidden="true"></i>
-              <% end %>
-              <p class= "text-muted">
-                <%= link_to "About", terms_about_path, class: "text-muted" %>
-                |
-                <%= link_to "Privacy Policy", terms_privacy_path, class: "text-muted" %>
-                <p style="font-size : 10px; color : #D3D3D3">&copy;Medici App, LLC </p>
-              </p>
+                <%= link_to "https://www.facebook.com/medicimuseums" do %>
+                  <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                <% end %>
+                <%= link_to "https://twitter.com/medicimuseums" do %>
+                  <i class="fa fa-twitter-square" aria-hidden="true"></i>
+                <% end %>
+                <p class= "text-muted">
+                  <%= link_to "about", terms_about_path, class: "text-muted" %> | <%= link_to "privacy policy", terms_privacy_path, class: "text-muted" %>
+                  <p style="font-size : 10px; color : #D3D3D3">&copy;Medici App, LLC </p>
+                </p>
             </footer>
             </div>
           </nav>
         </div>
         <div class="col-sm-9 col-lg-10 content">
-            <%= image_tag("Medici_logos/Medici_logo_Inset.png", class: " inset-brand hidden-sm hidden-md hidden-lg")%>
-            <div class= "mobile-login hidden-sm hidden-md hidden-lg" >
-              <% if current_user %> 
-                <button type="button"class="list-group-item">
-                  <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-                </button>
-              <% else %>
-                <%= link_to "Log In", new_user_session_path, type: "button"%>
-              <% end %>
-            </div>
+          <%= image_tag("Medici_logos/Medici_logo_Inset.png", class: " inset-brand hidden-sm hidden-md hidden-lg")%>
+          <div class= "mobile-login hidden-sm hidden-md hidden-lg" >
+            <% if current_user %>
+              <button type="button"class="list-group-item">
+                <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+              </button>
+            <% else %>
+              <button type="button"class="list-group-item">
+                <%= link_to "Log In", new_user_session_path %>
+              </button>
+            <% end %>
+          </div>
           <%= yield %>
-        <div id="color-hack"></div>
-        <%= render 'layouts/footer' %>
+          <div id="color-hack"></div>
+          <%= render 'layouts/footer' %>
         </div>
       </div>
     </div>

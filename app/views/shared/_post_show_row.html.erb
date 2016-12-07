@@ -30,7 +30,7 @@
 			<div class= "museum-info">
 				<p class= "museum-info-entry"></i> <%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
 				<div class="transportation-tooltip">
-					<p class= "museum-info-type"> Address: 
+					<p class= "museum-info-type"> Address:
 						<i class="fa fa-info-circle" aria-hidden="true"></i>
 					</p>
   					<span class="title tooltiptext">
@@ -69,7 +69,7 @@
 			</div>
 			<div class= "museum-info website-info">
 				<p class= "museum-info-type"> Site:</p>
-				<p class= "museum-info-entry"> 
+				<p class= "museum-info-entry">
 					<a href= '<%="http://#{museum.website}"%>'id= "venue-website"target="_blank"  onclick="trackOutboundLink('<%="http://#{museum.website}"%>'); return false;, '_blank'"><%= museum.website %></a>
 				</p>
 			</div>
@@ -109,7 +109,7 @@
 				</div>
 			</div>
 		</div>
-    </div>
+  </div>
 	<div class="panel-body">
 		<div class="tag-wrapper">
 				<% exhibit.tags.each do |tag| %>

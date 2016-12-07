@@ -2,16 +2,14 @@
 	<%= link_to "http://www.medici-app.com", :target => "_blank" do%>
 	<div class= "hidden-xs app-advertisement post-wrapper">
 		<div class="thumbnail">
-
-				 <%= image_tag("app-img.png") %>
-					<div class="caption">
-						<div class="thumbnail-header">
-						</div>
-						<h3 class="mobile-title">App Coming Soon</h3>
-						<p>The first mobile way to discover, reserve and share your museum visit.</p>
-					</div>
-				</div>
-				<div class="progress">
+			<%= image_tag("app-img.png") %>
+			<div class="caption">
+				<div class="thumbnail-header"></div>
+				<h3 class="mobile-title">App Coming Soon</h3>
+				<p>The first mobile way to discover, reserve and share your museum visit.</p>
+			</div>
+		</div>
+		<div class="progress">
 			<div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
 		</div>
 		<% end %>
@@ -19,66 +17,64 @@
 	<% if !@main_posts.nil? %>
 		<% @main_posts.each do |post| %>
 			<%= link_to post do %>
-			<div class="post-wrapper event-panel">
-				<div class="thumbnail">
-				<%= image_tag(post.photo.url(:large)) %>
-				<div class="caption">
-
-					<div class="thumbnail-header">
-						<h3><%= post.name %></h3>
-						<% if post.is_a?(Piece) %>
-						<% elsif post.price == 0.0 %>
-							<p>
-								FREE
-							</p>
-						<% else %>
-						<p> $<%= '%i' % post.price %>
-							<% if defined? post.exhibits.sort.first.price %>
-							- $<%= '%i' % post.exhibits.sort.first.price %>
-							<% end %> </p>
-						<% end %>
-					</div>
-					<p><%= post.blurb %></p>
-					<div>
-					<% if post.tags.length > 0 %>
-							<%= link_to "##{post.tags[0].name}", post.tags[0], type: "button", class: "row-tags" %>
-					<% end %>
-						<% if current_user && post.is_a?(Event)%>
-							<% if current_order.includes_event_post?(post.id) %>
-								<div class="input-group-btn">
-									<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
-								</div>
-							<% else %>
-								<%= form_for @ticket do |f| %>
-									<div class="input-group">
-										<div class="input-group-btn">
-											<%= f.hidden_field :quantity, value: 1%>
-											<%= f.hidden_field :event_id, value: post.id %>
-											<%= f.hidden_field :user_id, value: current_user.id %>
-											<%= f.submit "RSVP to Join Us", class: "input-button" %>
-										</div>
-									</div>
+				<div class="post-wrapper event-panel">
+					<div class="thumbnail">
+						<%= image_tag(post.photo.url(:large)) %>
+						<div class="caption">
+							<div class="thumbnail-header">
+								<h3><%= post.name %></h3>
+								<% if post.is_a?(Piece) %>
+								<% elsif post.price == 0.0 %>
+									<p>FREE</p>
+								<% else %>
+									<p> $<%= '%i' % post.price %>
+										<% if defined? post.exhibits.sort.first.price %>
+											- $<%= '%i' % post.exhibits.sort.first.price %>
+										<% end %>
+									</p>
 								<% end %>
-							<% end %>
-
-						<% elsif post.is_a?(Event) %>
-							<%= link_to "Sign in to RSVP", new_user_session_path, class: "input-button", id: "cart-input-button" %>
-						<% end %>
+							</div>
+							<p><%= post.blurb %></p>
+							<div>
+								<% if post.tags.length > 0 %>
+										<%= link_to "##{post.tags[0].name}", post.tags[0], type: "button", class: "row-tags" %>
+								<% end %>
+								<% if current_user && post.is_a?(Event)%>
+									<% if current_order.includes_event_post?(post.id) %>
+										<div class="input-group-btn">
+											<%= link_to "Check Out", cart_path(id: current_user.id), class: "input-button" %>
+										</div>
+									<% else %>
+										<%= form_for @ticket do |f| %>
+											<div class="input-group">
+												<div class="input-group-btn">
+													<%= f.hidden_field :quantity, value: 1%>
+													<%= f.hidden_field :event_id, value: post.id %>
+													<%= f.hidden_field :user_id, value: current_user.id %>
+													<%= f.submit "RSVP to Join Us", class: "input-button" %>
+												</div>
+											</div>
+										<% end %>
+									<% end %>
+								<% elsif post.is_a?(Event) %>
+									<%= link_to "Sign in to RSVP", new_user_session_path, class: "input-button", id: "cart-input-button" %>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				<% end %>
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
 					</div>
 				</div>
-			</div>
-			<% end %>
-			<div class="progress">
-				<div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
-			</div>
-		</div>
 		<% end %>
 	<% end %>
 	<% @posts.shuffle.each do |post| %>
 	  <%= render "museum_row", post: post, ticket: @ticket  %>
 	<% end %>
 </div>
-	<% if admin? %>
+<% if admin? %>
+	<div style="padding-bottom: 15px;">
 		<%= link_to "Manage Coupons", coupons_path %> |
 		<%= link_to "Add Museum", new_museum_path %> |
 		<%= link_to "Add Exhibit", new_exhibit_path %> |
@@ -86,4 +82,5 @@
 		<%= link_to "Add Piece", new_piece_path %> |
 		<%= link_to "Manage Tags", new_tag_path %> |
 		<%= link_to "See Backend Numbers", tickets_stats_path %>
-	<% end %>
+	</div>
+<% end %>
