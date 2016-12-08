@@ -102,6 +102,12 @@
       );
 }
 
+.exhibit-panel .thumbnail-header > a:hover,
+.event-panel .thumbnail-header > a:hover,
+.piece-panel .thumbnail-header > a:hover {
+	color: #696969;
+}
+
 .image-featured {
 	z-index: 999;
 }

@@ -183,8 +183,21 @@ input[type="checkbox"]:checked + label span {
 	color: #00AEEF;
 	border: 1px solid #00AEEF;
 }
+
 a.row-tags {
-	font-size: 14px ;
 	color: #999 !important;
 	font-weight: bold !important;
+}
+
+@media screen and (max-width: 768px) {
+	a.row-tags {
+		font-size: 14px ;
+	}
+}
+
+
+@media screen and (min-width: 769px) {
+	a.row-tags {
+		font-size: 10px ;
+	}
 }
