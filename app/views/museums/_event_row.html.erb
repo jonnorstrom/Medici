@@ -1,11 +1,11 @@
-<%= link_to post do%>
+<%= link_to post do %>
   <div class="post-wrapper event-panel">
     <div class="thumbnail">
       <%= image_tag(post.photo.url(:large)) %>
       <div class="caption">
         <div class="thumbnail-header">
           <h3><%= post.name %></h3>
-          <% if post.respond_to?(:museum_id) && !post.museum_id.nil?%>
+          <% if post.museum %>
             <%= link_to post.museum.name, museum_path(post.museum.id), class: "text-muted museum-name-link" %>
           <% end %>
           <% if post.price == 0.0 %>
