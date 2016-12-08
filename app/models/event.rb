@@ -45,11 +45,11 @@ class Event < ApplicationRecord
     def image_dimensions
       if photo.queued_for_write[:original] != nil
         required_width  = 400
-        required_height = 400
+        required_height = 298
         dimensions = Paperclip::Geometry.from_file(photo.queued_for_write[:original].path)
 
         errors.add(:photo, "Width must be 400px") unless dimensions.width >= required_width
-        errors.add(:photo, "Height must be 400px") unless dimensions.height >= required_height
+        errors.add(:photo, "Height must be 298px") unless dimensions.height >= required_height
       end
     end
     def end_must_be_after_start
