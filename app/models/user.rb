@@ -13,6 +13,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:facebook]
   after_create :send_admin_mail
+  before_save :check_name_states
 
   def send_admin_mail
      UsersMailer.signup_email(self).deliver
@@ -46,6 +47,16 @@ class User < ApplicationRecord
   end
 
   private
+
+  def check_name_states
+    if !full_name.nil? && full_name.length < 1
+      self.full_name = get_full_name
+    elsif !full_name.nil? && full_name.length > 1
+      names = split_names
+      self.first_name = names[0]
+      self.last_name = names[1..-1].join(" ")
+    end
+  end
 
   def get_full_name
     "#{first_name} #{last_name}"
