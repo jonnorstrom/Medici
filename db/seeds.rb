@@ -1,10 +1,8 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+
+## These are all the legitmate tags that Medici uses for their site
 
 # Tag.create(category: "Type of Museum", name: "Art")
 # Tag.create(category: "Type of Art", name: "Modern Art")
@@ -65,6 +63,9 @@
 # Tag.create(category: "Misc", name: "Habitat")
 # Tag.create(category: "Misc", name: "Party")
 
+## run 'rails c' and then query 'User.all' to find any given user's email address to login with
+## all these users will be admin users, but the normal defualt is 'admin: false'
+
 # all_users = 8.times do
 #   User.create(
 #               first_name: Faker::Name.first_name,
@@ -78,6 +79,7 @@
 
 all_museums = 3.times do
   name = "#{Faker::Company.name} #{Faker::Company.suffix}"
+  
   address = "#{Faker::Address.street_address} #{Faker::Address.street_suffix}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.zip_code}"
 
   Museum.create(
@@ -91,7 +93,7 @@ all_museums = 3.times do
                 opening_time: Time.now,
                 closing_time: (Time.now + 20000)
                 )
-  Event.create(
-                name: 
-                )
+  # Event.create(
+  #               name:
+  #               )
 end
