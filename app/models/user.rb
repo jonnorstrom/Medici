@@ -52,6 +52,8 @@ class User < ApplicationRecord
   end
 
   def set_full_name
-    self.update_columns(full_name: get_full_name)
+    if self.id
+      self.update_columns(full_name: get_full_name)
+    end
   end
 end
