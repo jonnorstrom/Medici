@@ -47,9 +47,15 @@
 					<p class= "museum-info-entry"><%= museum.opening_time.strftime("%l:%M%p") %> - <%= museum.closing_time.strftime("%l:%M%p") %></p>
 				<% end %>
 				<div class="information-tooltip">
-					<p class= "museum-info-type">Today's Hours:
-						<i class="fa fa-clock-o" aria-hidden="true"></i>
-					</p>
+					<% if !museum.is_a?(Event) %>
+						<p class= "museum-info-type">Today's Hours:
+							<i class="fa fa-clock-o" aria-hidden="true"></i>
+						</p>
+					<% else %>
+						<p class= "museum-info-type">Time:
+							<i class="fa fa-clock-o" aria-hidden="true"></i>
+						</p>
+					<% end %>
 					<% if museum.is_a?(Museum) && !museum.has_general_hours? %>
 						<span class="title tooltiptext">
 							<p class= " extra-hours">
@@ -101,13 +107,11 @@
 				<% end %>
 				<p><%= simple_format(exhibit.description) %></p>
 				<% if exhibit.price == 0.0 %>
-					<p>
-						FREE
-					</p>
-					<% elsif !exhibit.ticketsite.nil? && exhibit.ticketsite != "" %>
-							<a target="_blank" class= "input-button" href='<%="http://#{exhibit.ticketsite}"%>' onclick="trackOutboundLink('<%="http://#{exhibit.ticketsite}"%>'); return false;, '_blank'">Tickets: $<%= '%i' % exhibit.price%></a>
-					<% else %>
-						<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
+					<h4>FREE</h4>
+				<% elsif !exhibit.ticketsite.nil? && exhibit.ticketsite != "" %>
+					<a target="_blank" class= "input-button" href='<%="http://#{exhibit.ticketsite}"%>' onclick="trackOutboundLink('<%="http://#{exhibit.ticketsite}"%>'); return false;, '_blank'">Tickets: $<%= '%i' % exhibit.price%></a>
+				<% else %>
+					<h4>Tickets: $<%= '%i' % exhibit.price%></h4>
 				<% end %>
 			</div>
 			<div class= "social col-md-1">

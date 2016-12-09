@@ -115,14 +115,14 @@
                   </button>
                 <% else %>
                   <button type="button"class="list-group-item">
-                    <%= link_to "Log in", new_user_session_path, id: "log-in-button", class: "" %>
-                  </button>
-                  <button type="button"class="list-group-item">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                     <a href="#"></a>
                     <%if current_order.tickets.where(paid: false).size > 0 %>
                     <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
                     <% end %>
+                  </button>
+                  <button type="button"class="list-group-item">
+                    <%= link_to "log in", new_user_session_path, id: "log-in-button", class: "" %>
                   </button>
                 <% end %>
               </div>

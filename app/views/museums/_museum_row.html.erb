@@ -9,7 +9,7 @@
             <p>FREE</p>
           <% else %>
           <p> $<%= '%i' % post.price %>
-            <% if (defined? post.exhibits.sort.first.price) && post.price != post.exhibits.sort.first.price%>
+            <% if (defined? post.exhibits.sort.first.price) && post.price != (post.exhibits.sort.first.price + post.price)%>
             - $<%= '%i' %post.exhibits.sort.first.price %>
             <% end %>
           </p>
