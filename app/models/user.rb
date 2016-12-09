@@ -40,21 +40,22 @@ class User < ApplicationRecord
   ######################################
 
   def name
-    return full_name if full_name && full_name.length > 0
+    return full_name if full_name && full_name.length > 0 && full_name != " "
 
     set_full_name
     get_full_name
+
+    if full_name == " " || full_name = ""
+      return email
+    end
+    return full_name
   end
 
   private
 
   def check_name_states
-    if !full_name.nil? && full_name.length < 1
-      self.full_name = get_full_name
-    elsif !full_name.nil? && full_name.length > 1
-      names = split_names
-      self.first_name = names[0]
-      self.last_name = names[1..-1].join(" ")
+    unless !(full_name && first_name && last_name)
+      set_full_name
     end
   end
 
