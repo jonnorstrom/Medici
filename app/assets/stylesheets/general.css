@@ -389,3 +389,8 @@ p.extra-hours{
 .coupon-error {
 	color: #ff0000;
 }
+
+
+.backend-form .field select {
+	min-width: 100px;
+}
