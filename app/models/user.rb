@@ -45,7 +45,7 @@ class User < ApplicationRecord
     set_full_name
     get_full_name
 
-    if full_name == " " || full_name = ""
+    if full_name == " " || full_name == ""
       return email
     end
     return full_name
@@ -54,8 +54,8 @@ class User < ApplicationRecord
   private
 
   def check_name_states
-    unless !(full_name && first_name && last_name)
-      set_full_name
+    if full_name.nil? && first_name && last_name
+      self.full_name = get_full_name
     end
   end
 

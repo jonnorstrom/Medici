@@ -1,7 +1,12 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-
-
+Tagging.destroy_all
+User.destroy_all
+Event.destroy_all
+Exhibit.destroy_all
+Piece.destroy_all
+Museum.destroy_all
+Tag.destroy_all
 ## These are all the legitmate tags that Medici uses for their site
 
 Tag.create(category: "Type of Museum", name: "Art")
@@ -77,7 +82,8 @@ all_users = 8.times do
               )
 end
 
-all_museums = 3.times do
+
+2.times do
   name = "#{Faker::Company.name} #{Faker::Company.suffix}"
 
   address = "#{Faker::Address.street_address} #{Faker::Address.street_suffix}, #{Faker::Address.city}, #{Faker::Address.state}, #{Faker::Address.zip_code}"
@@ -91,9 +97,86 @@ all_museums = 3.times do
                 address: address,
                 transportation_info: Faker::Lorem.sentence,
                 opening_time: Time.now,
-                closing_time: (Time.now + 20000)
+                closing_time: (Time.now + 20000),
+                photo_file_name: Faker::Avatar.image
                 )
-  # Event.create(
-  #               name:
-  #               )
+
+  date = (DateTime.now + rand(12..20))
+
+    Event.create(
+                  name: Faker::University.name,
+                  start_date: date,
+                  end_date: date,
+                  opening_time: Time.now,
+                  closing_time: (Time.now + 60*100*2),
+                  address: Museum.last.address,
+                  blurb: Faker::ChuckNorris.fact,
+                  description: Faker::Hipster.paragraph(5),
+                  price: Faker::Number.decimal(2, 2),
+                  museum_id: Museum.last.id,
+                  website: Faker::Internet.url,
+                  main: [true, false].sample,
+                  ticketable: false,
+                  max_price: 100,
+                  photo_file_name: Faker::Avatar.image
+                  )
+
+  Exhibit.create(
+                  name: Faker::University.name,
+                  blurb: Faker::ChuckNorris.fact,
+                  description: Faker::Hipster.paragraph(5),
+                  price: Faker::Number.decimal(2, 2),
+                  start_date: date,
+                  end_date: date,
+                  museum_id: Museum.last.id,
+                  ticketsite: Faker::Internet.url,
+                  photo_file_name: Faker::Avatar.image,
+                  permanent: [true, false].sample
+                  )
+
+    Piece.create(
+                  name: Faker::University.name,
+                  blurb: Faker::ChuckNorris.fact,
+                  description: Faker::Hipster.paragraph(5),
+                  museum_id: Museum.last.id,
+                  photo_file_name: Faker::Avatar.image,
+                  )
+end
+
+2.times do
+  Museum.all.each do |post|
+    tag = Tag.all.sample
+    Tagging.create(
+                    user_id: User.last.id,
+                    museum_id: post.id,
+                    tag_id: tag.id
+                    )
+  end
+
+  Event.all.each do |post|
+    tag = Tag.all.sample
+    Tagging.create(
+                    user_id: User.last.id,
+                    event_id: post.id,
+                    tag_id: tag.id
+                    )
+  end
+
+  Exhibit.all.each do |post|
+    tag = Tag.all.sample
+    Tagging.create(
+                    user_id: User.last.id,
+                    exhibit_id: post.id,
+                    tag_id: tag.id
+                    )
+  end
+
+  Piece.all.each do |post|
+    tag = Tag.all.sample
+    Tagging.create(
+                    user_id: User.last.id,
+                    piece_id: post.id,
+                    tag_id: tag.id
+                    )
+  end
 end
