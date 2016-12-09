@@ -1,4 +1,11 @@
 <%= form_for (@museum), html: {multipart: true, class: "backend-form"} do |f| %>
+
+  <% if @museum.errors.any? %>
+    <% @museum.errors.each do |attribute, message| %>
+      <p><%= attribute %>: <%= message %></p>
+    <% end %>
+  <% end %>
+
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true %>
@@ -131,11 +138,4 @@
   <div class="actions">
     <%= f.submit "Add Museum"%>
   </div>
-<% end %>
-
-<% if @museum.errors.any? %>
-  <% @museum.errors.each do |attribute, message| %>
-    <%= attribute %>:
-    <%= message %>
-  <% end %>
 <% end %>

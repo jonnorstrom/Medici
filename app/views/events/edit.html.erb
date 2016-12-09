@@ -1,4 +1,9 @@
-<%= form_for (@event), html: {multipart: true} do |f| %>
+<%= form_for (@event), html: {multipart: true, class: "backend-form"} do |f| %>
+  <% if @event.errors.any? %>
+    <% @event.errors.each do |attribute, message| %>
+      <p><%= attribute %>: <%= message %></p>
+    <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true %>
@@ -83,13 +88,6 @@
   <div class="actions">
     <%= f.submit "Edit Event"%>
   </div>
-<% end %>
-
-<% if @event.errors.any? %>
-  <% @event.errors.each do |attribute, message| %>
-    <%= attribute %>:
-    <%= message %>
-  <% end %>
 <% end %>
 
 <%= link_to "Delete Event", @event, :method => :delete, :confirm => "You sure?" %>

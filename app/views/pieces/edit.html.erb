@@ -1,4 +1,10 @@
-<%= form_for (@piece), html: {multipart: true} do |f| %>
+<%= form_for (@piece), html: {multipart: true, class: "backend-form"} do |f| %>
+  <% if @piece.errors.any? %>
+    <% @piece.errors.each do |attribute, message| %>
+      <p><%= attribute %>: <%= message %></p>
+    <% end %>
+  <% end %>
+
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true %>
@@ -27,13 +33,6 @@
   <div class="actions">
     <%= f.submit "Add Piece"%>
   </div>
-<% end %>
-
-<% if @piece.errors.any? %>
-  <% @piece.errors.each do |attribute, message| %>
-    <%= attribute %>:
-    <%= message %>
-  <% end %>
 <% end %>
 
 <%= link_to "Delete Piece", @piece, :method => :delete, :confirm => "You sure?" %>
