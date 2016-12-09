@@ -11,7 +11,7 @@
           <% if post.price == 0.0 %>
             <p>FREE</p>
           <% else %>
-            <p> $<%= '%i' % post.price %></p>
+            <p> $<%= ('%i' % post.price) + (!post.max_price.nil? ? (" - $" + '%i' % post.max_price) : "")%></p>
           <% end %>
         </div>
         <p><%= post.blurb %></p>
