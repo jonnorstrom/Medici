@@ -1,3 +1,9 @@
+<% if @event.errors.any? %>
+  <% @event.errors.each do |attribute, message| %>
+    <p><%= attribute %>: <%= message %></p>
+  <% end %>
+<% end %>
+
 <%= form_for (@event), html: {multipart: true, class: "backend-form"} do |f| %>
   <div class="field">
     <%= f.label :name %>
@@ -32,6 +38,11 @@
   <div class="field">
     <%= f.label :price %>
     <%= f.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :max_price %>
+    <%= f.number_field :max_price %>
   </div>
 
   <div class="field">
@@ -83,11 +94,4 @@
   <div class="actions">
     <%= f.submit "Add Event"%>
   </div>
-<% end %>
-
-<% if @event.errors.any? %>
-  <% @event.errors.each do |attribute, message| %>
-    <%= attribute %>:
-    <%= message %>
-  <% end %>
 <% end %>
