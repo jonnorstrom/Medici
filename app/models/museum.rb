@@ -27,12 +27,12 @@ class Museum < ApplicationRecord
     general_hours != "12:00AM - 12:00AM" ? true : false
   end
 
-  def get_todays_hours
+  def get_any_days_hours(day)
     if has_general_hours?
       return general_hours
     end
 
-    case Time.now.strftime("%A") ##today
+    case day ##today
     when "Monday"
       todays_hours = "#{mon_open.strftime("%l:%M%p")} - #{mon_close.strftime("%l:%M%p")}"
     when "Tuesday"
@@ -49,7 +49,7 @@ class Museum < ApplicationRecord
       todays_hours = "#{sun_open.strftime("%l:%M%p")} - #{sun_close.strftime("%l:%M%p")}"
     end
 
-    if todays_hours == "12:00AM - 012:00AM"
+    if todays_hours == "12:00AM - 12:00AM"
       return "Closed"
     end
 
