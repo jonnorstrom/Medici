@@ -3,7 +3,7 @@
 */
 @media (max-width: 768px) {
     .mobile-login .modal-dialogue{
-        
+
     }
     .mobile-login .modal-content{
         margin-top: 200px;
@@ -13,7 +13,7 @@
     }
     .mobile-login .modal-footer p{
         text-align: center;
-        font-size: 14px; 
+        font-size: 14px;
     }
     .mobile-login .modal-footer .input-button{
         display: inline !important;
@@ -329,6 +329,14 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
 }
 
 .badge {
-  float: right;
+  position: relative;
+  right: 8px;
+  bottom: 13px;
   margin-top: 6px;
+  background-color: rgb(240, 120, 120) !important;
+}
+
+#search-wrapper input::-webkit-input-placeholder {
+  color: #ccc;
+  font-style: italic;
 }
