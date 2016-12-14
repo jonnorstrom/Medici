@@ -5,7 +5,7 @@ class MuseumsController < ApplicationController
 
   def index
     @ticket = current_order.tickets.new
-    @posts = Museum.all + Exhibit.all..where("end_date > ?", Date.today) + Event.where("end_date > ?", Date.today) + Piece.all
+    @posts = Museum.all + Exhibit.all.where("end_date > ?", Date.today) + Event.where("end_date > ?", Date.today) + Piece.all
     @main_posts = Event.where(main: true).where("end_date > ?", Date.today)
     if !@main_posts.nil?
       @posts = @posts.to_a - @main_posts
