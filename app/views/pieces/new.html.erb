@@ -15,13 +15,18 @@
   </div>
 
   <div class="field">
+    <%= f.label "Priority?" %>
+    <%= f.check_box :main %>
+  </div>
+
+  <div class="field">
     <%= f.label :photo %>
     <%= f.file_field :photo %>
   </div>
 
   <div class="field">
     <%= f.label :museum_id %>
-    <%= f.collection_select :museum_id, Museum.order(:name), :id, :name %>
+    <%= f.collection_select :museum_id, Museum.order(:name), :id, :name, {:include_blank => true} %>
   </div>
 
   <div class="actions">
