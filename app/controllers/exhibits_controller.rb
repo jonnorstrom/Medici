@@ -36,7 +36,11 @@ class ExhibitsController < ApplicationController
     @ticket = current_order.tickets.new
     @posts = []
     @term = params[:search].downcase
+    @category = params[:category].downcase
+    @price = params[:pricing]
+    @dates = params[:dates]
     @tags = params[:tag_search]
+    @all_posts = filter_all_posts
     if params[:search]
       if @tags
         @all_posts.each do |post|
@@ -133,4 +137,33 @@ class ExhibitsController < ApplicationController
   def exhibit_params
     params.require(:exhibit).permit(:name, :blurb, :description, :photo, :price, :start_date, :end_date, :museum_id, :permanent, :ticketsite, :tag_ids => [])
   end
+
+  def filter_all_posts
+    # category, price, dates
+    if @price == "Free"
+      @all_posts -= Museum.where('price = 0') - Event.where('price = 0') - Exhibit.where('price = 0')
+    end
+
+    case @dates
+    when "Today"
+      @all_posts -= Museum.all - Piece.all - Event.where('start_date <= ? and end_date >= ?', DateTime.now + 1, DateTime.now - 1) - Exhibit.where('start_date <= ? and end_date >= ?', DateTime.now + 1, DateTime.now - 1)
+    when "Tomorrow"
+      @all_posts -= Museum.all - Piece.all - Event.where('start_date <= ? and end_date >= ?', DateTime.now + 2, DateTime.now - 1) - Exhibit.where('start_date <= ? and end_date >= ?', DateTime.now + 2, DateTime.now - 1)
+    when "This Week"
+      @all_posts -= Museum.all - Piece.all - Event.where('start_date <= ? and end_date >= ?', DateTime.now + 8, DateTime.now - 1) - Exhibit.where('start_date <= ? and end_date >= ?', DateTime.now + 8, DateTime.now - 1)
+    when "This Month"
+      @all_posts -= Museum.all - Piece.all - Event.where('start_date <= ? and end_date >= ?', DateTime.now + 31, DateTime.now - 1) - Exhibit.where('start_date <= ? and end_date >= ?', DateTime.now + 31, DateTime.now - 1)
+    end
+
+    if @category
+      tag = Tag.find_by(name: @category)
+      @all_posts.each do |post|
+        unless post.tags.include?(tag)
+          @all_posts -= [post]
+        end
+      end
+    end
+    return @all_posts
+  end
+
 end
