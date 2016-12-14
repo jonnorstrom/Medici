@@ -51,6 +51,6 @@ describe Exhibit do
     field.description = "Remember when SUE was a huge deal? It's still great."
     field.photo = File.new("test/fixtures/small_field.jpg")
     field.save
-    expect(field.errors[:photo]).to include("Height must be 400px")
+    expect(field.errors[:photo]).to include("Height must be 298px")
   end
 end

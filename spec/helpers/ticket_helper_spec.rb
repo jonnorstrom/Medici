@@ -6,9 +6,7 @@ describe TicketHelper, type: :helper do
 
   it "can count a total number of tickets for each post" do
     museum.tickets.new(original_quantity: 2)
-    p museum.tickets
-    p total_tickets(museum)
     expect(total_tickets(museum)).to eq(2)
   end
-
+  
 end

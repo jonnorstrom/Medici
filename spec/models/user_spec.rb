@@ -3,34 +3,30 @@ require "rails_helper"
 describe User do
   let(:user) {User.new}
   it "is valid with valid attributes" do
-    user.name = "Corbin Dallas"
+    user.full_name = "Corbin Dallas"
     user.password = "multipass"
     user.email = "corbin@dallas.com"
     expect(user).to be_valid
   end
   it "is not valid without an email" do
-    user.name = "Corbin Dallas"
+    user.full_name = "Corbin Dallas"
     user.password = "multipass"
     expect(user).to_not be_valid
   end
   it "is not valid without a password"do
-      user.name = "Corbin Dallas"
+      user.full_name = "Corbin Dallas"
       user.email = "corbin@dallas.com"
       expect(user).to_not be_valid
   end
-  it "is not valid without a name" do
-    user.password = "multipass"
-    user.email = "corbin@dallas.com"
-    expect(user).to_not be_valid
-  end
+  
   it "sends a welcome email" do
-    user = User.create(name: "Corbin Dallas", email: "corbin@dallas.com", password: "multipass")
+    user = User.create(full_name: "Corbin Dallas", email: "corbin@dallas.com", password: "multipass")
     expect {user.send_admin_mail }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 end
 
 describe UsersMailer do
-  let(:user) {User.create(name: "Corbin Dallas", email: "corbin@dallas.com", password: "multipass")}
+  let(:user) {User.create(full_name: "Corbin Dallas", email: "corbin@dallas.com", password: "multipass")}
   let(:mail) {UsersMailer.signup_email(user)}
 
   it "renders the subject" do
