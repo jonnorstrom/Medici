@@ -121,6 +121,7 @@
 	color: #696969;
 	margin: 3px;
 	font-size: 14px !important;
+	clear: both;
 	float: right;
 }
 .information-tooltip .tooltiptext {
