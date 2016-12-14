@@ -12,6 +12,7 @@ class Event < ApplicationRecord
   validates_presence_of :name, :start_date, :end_date, :opening_time, :closing_time, :blurb, :description, :photo, :price, :website, :address
   validates_uniqueness_of :name
   validate :image_dimensions
+  validate :max_higher_than_min
 
   geocoded_by :address
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
@@ -24,7 +25,29 @@ class Event < ApplicationRecord
     Event.all.map { |ev| ev if ev.tickets.count > 0 }.compact!
   end
 
+  def paid_tickets
+    tickets.select { |t| t.paid == true }
+  end
+
+  def sorted_tickets(parameter = nil, direction = nil)
+    case parameter
+    when "Quantity"
+      return tickets.to_a.sort! {|x, y| y.quantity <=> x.quantity}
+    when "Name"
+      return tickets.to_a.sort! {|x, y| x.user.name <=> y.user.name}
+    when "Email"
+      return tickets.to_a.sort! {|x, y| x.user.email <=> y.user.email}
+    else
+      return tickets.to_a.sort! {|x, y| y.updated_at <=> x.updated_at}
+    end
+  end
+
   private
+
+    def max_higher_than_min
+      errors.add(:pricing, "Max price must be more than price") unless (!max_price.nil? && max_price > price)
+    end
+
     def image_dimensions
       if photo.queued_for_write[:original] != nil
         required_width  = 400

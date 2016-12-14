@@ -3,6 +3,10 @@ class TagsController < ApplicationController
 
   def new
     @tag = Tag.new
+    @type_museum = Tag.where(category: "Type of Museum").order(:name)
+    @type_art = Tag.where(category: "Type of Art").order(:name)
+    @medium = Tag.where(category: "Medium").order(:name)
+    @misc = Tag.where(category: "Misc").order(:name)
   end
 
   def show
@@ -27,6 +31,15 @@ class TagsController < ApplicationController
       @tag_errors = @tag.errors.full_messages
       render :new
     end
+  end
+
+  def destroy_multiple
+    if params[:tags]
+      params[:tags].each do |tag_id|
+        Tag.find(tag_id).destroy
+      end
+    end
+    redirect_to(:back)
   end
 
 

@@ -6,10 +6,15 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def generic_callback( provider )
     @identity = Identity.find_for_oauth env["omniauth.auth"]
-
     @user = @identity.user || current_user
     if @user.nil?
-      @user = User.create( email: @identity.email || "", name: @identity.name, image_url: @identity.image )
+      @user = User.new( email: @identity.email || "", full_name: @identity.name, image_url: @identity.image, password: Devise.friendly_token.first(8))
+
+      names = @user.split_names
+      @user.first_name = names[0]
+      @user.last_name = names[1..-1].join(" ")
+      @user.save
+
       @identity.update_attribute( :user_id, @user.id )
     end
 

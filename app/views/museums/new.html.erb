@@ -1,4 +1,11 @@
 <%= form_for (@museum), html: {multipart: true, class: "backend-form"} do |f| %>
+
+  <% if @museum.errors.any? %>
+    <% @museum.errors.each do |attribute, message| %>
+      <p><%= attribute %>: <%= message %></p>
+    <% end %>
+  <% end %>
+
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name, autofocus: true %>
@@ -21,12 +28,12 @@
 
   <div class="field">
     <%= f.label :opening_time %>
-    <%= f.time_select :opening_time, {include_blank: true, ampm:true, minute_step: 30} %>
+    <%= f.time_select :opening_time, {include_blank: true, ampm:true, minute_step: 15} %>
   </div>
 
   <div class="field">
     <%= f.label :closing_time %>
-    <%= f.time_select :closing_time, {include_blank: true, ampm:true, minute_step: 30}%>
+    <%= f.time_select :closing_time, {include_blank: true, ampm:true, minute_step: 15}%>
   </div>
 
   <p>
@@ -35,72 +42,72 @@
 
   <div class="field">
     <%= f.label :sun_open %>
-    <%= f.time_select :sun_open, {include_blank: true, ampm:true, minute_step: 30} %>
+    <%= f.time_select :sun_open, {include_blank: true, ampm:true, minute_step: 15} %>
   </div>
 
   <div class="field">
     <%= f.label :sun_close %>
-    <%= f.time_select :sun_close, {include_blank: true, ampm:true, minute_step: 30}  %>
+    <%= f.time_select :sun_close, {include_blank: true, ampm:true, minute_step: 15}  %>
   </div>
 
   <div class="field">
     <%= f.label :mon_open %>
-    <%= f.time_select :mon_open, {include_blank: true, ampm:true, minute_step: 30} %>
+    <%= f.time_select :mon_open, {include_blank: true, ampm:true, minute_step: 15} %>
   </div>
 
   <div class="field">
     <%= f.label :mon_close %>
-    <%= f.time_select :mon_close, {include_blank: true, ampm:true, minute_step: 30}  %>
+    <%= f.time_select :mon_close, {include_blank: true, ampm:true, minute_step: 15}  %>
   </div>
 
   <div class="field">
     <%= f.label :tue_open %>
-    <%= f.time_select :tue_open, {include_blank: true, ampm:true, minute_step: 30} %>
+    <%= f.time_select :tue_open, {include_blank: true, ampm:true, minute_step: 15} %>
   </div>
 
   <div class="field">
     <%= f.label :tue_close %>
-    <%= f.time_select :tue_close, {include_blank: true, ampm:true, minute_step: 30}  %>
+    <%= f.time_select :tue_close, {include_blank: true, ampm:true, minute_step: 15}  %>
   </div>
 
   <div class="field">
     <%= f.label :wed_open %>
-    <%= f.time_select :wed_open, {include_blank: true, ampm:true, minute_step: 30} %>
+    <%= f.time_select :wed_open, {include_blank: true, ampm:true, minute_step: 15} %>
   </div>
 
   <div class="field">
     <%= f.label :wed_close %>
-    <%= f.time_select :wed_close, {include_blank: true, ampm:true, minute_step: 30}  %>
+    <%= f.time_select :wed_close, {include_blank: true, ampm:true, minute_step: 15}  %>
   </div>
 
   <div class="field">
     <%= f.label :thu_open %>
-    <%= f.time_select :thu_open, {include_blank: true, ampm:true, minute_step: 30} %>
+    <%= f.time_select :thu_open, {include_blank: true, ampm:true, minute_step: 15} %>
   </div>
 
   <div class="field">
     <%= f.label :thu_close %>
-    <%= f.time_select :thu_close, {include_blank: true, ampm:true, minute_step: 30}  %>
+    <%= f.time_select :thu_close, {include_blank: true, ampm:true, minute_step: 15}  %>
   </div>
 
   <div class="field">
     <%= f.label :fri_open %>
-    <%= f.time_select :fri_open, {include_blank: true, ampm:true, minute_step: 30} %>
+    <%= f.time_select :fri_open, {include_blank: true, ampm:true, minute_step: 15} %>
   </div>
 
   <div class="field">
     <%= f.label :fri_close %>
-    <%= f.time_select :fri_close, {include_blank: true, ampm:true, minute_step: 30}  %>
+    <%= f.time_select :fri_close, {include_blank: true, ampm:true, minute_step: 15}  %>
   </div>
 
   <div class="field">
     <%= f.label :sat_open %>
-    <%= f.time_select :sat_open, {include_blank: true, ampm:true, minute_step: 30} %>
+    <%= f.time_select :sat_open, {include_blank: true, ampm:true, minute_step: 15} %>
   </div>
 
   <div class="field">
     <%= f.label :sat_close %>
-    <%= f.time_select :sat_close, {include_blank: true, ampm:true, minute_step: 30}  %>
+    <%= f.time_select :sat_close, {include_blank: true, ampm:true, minute_step: 15}  %>
   </div>
 
   <div class="field">
@@ -131,11 +138,4 @@
   <div class="actions">
     <%= f.submit "Add Museum"%>
   </div>
-<% end %>
-
-<% if @museum.errors.any? %>
-  <% @museum.errors.each do |attribute, message| %>
-    <%= attribute %>:
-    <%= message %>
-  <% end %>
 <% end %>

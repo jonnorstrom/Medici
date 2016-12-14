@@ -167,9 +167,11 @@
         color: lightGrey;
         margin: .4rem;
     }
+
     .text-muted{
     color:lightGrey !important;
     font-size: 1.8vh;
+    margin-bottom: 0px;
     }
 }
 
@@ -320,6 +322,10 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
   margin-top: 5px;
   margin-left: -3px;
   font-size: 20px;
+}
+
+.clear-cart-button a {
+  color: #00AEEF;
 }
 
 .badge {

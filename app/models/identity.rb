@@ -12,7 +12,6 @@ class Identity < ActiveRecord::Base
     identity.email = auth.info.email
 
     identity.image = auth.info.image
-
     identity.save
     identity
   end

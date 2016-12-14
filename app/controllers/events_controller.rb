@@ -33,7 +33,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to :root
     else
-      render :"event/edit"
+      render :"events/edit"
     end
   end
 
@@ -72,6 +72,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :blurb, :transportation_info, :address, :website, :description, :photo, :opening_time, :closing_time, :start_date, :price, :end_date, :main, :museum_id, :ticketsite, :ticketable, :tag_ids => [])
+    params.require(:event).permit(:name, :blurb, :max_price, :transportation_info, :address, :website, :description, :photo, :opening_time, :closing_time, :start_date, :price, :end_date, :main, :museum_id, :ticketsite, :ticketable, :tag_ids => [])
   end
 end
