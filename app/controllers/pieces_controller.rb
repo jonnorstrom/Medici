@@ -67,6 +67,6 @@ class PiecesController < ApplicationController
   private
 
   def piece_params
-    params.require(:piece).permit(:name, :blurb, :description, :photo, :museum_id, :tag_ids => [])
+    params.require(:piece).permit(:name, :blurb, :main, :description, :photo, :museum_id, :tag_ids => [])
   end
 end

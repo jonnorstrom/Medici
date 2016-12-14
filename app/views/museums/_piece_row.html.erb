@@ -1,5 +1,5 @@
 <%= link_to post do%>
-  <div class="post-wrapper piece-panel">
+  <div class="post-wrapper app-advertisement">
     <div class="thumbnail">
       <%= image_tag(post.photo.url(:large)) %>
       <div class="caption">
@@ -11,7 +11,7 @@
         </div>
         <p><%= post.blurb %></p>
         <% if post.tags.length > 1 %>
-            <%= link_to "##{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
+            <%= link_to "#{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
         <% end %>
       </div>
     </div>
