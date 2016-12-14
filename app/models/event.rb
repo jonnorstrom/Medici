@@ -45,7 +45,7 @@ class Event < ApplicationRecord
   private
 
     def max_higher_than_min
-      errors.add(:pricing, "Max price must be more than price") unless (!max_price.nil? && max_price > price)
+      errors.add(:pricing, "Max price must be more than price") unless (max_price.nil? || max_price > price)
     end
 
     def image_dimensions
