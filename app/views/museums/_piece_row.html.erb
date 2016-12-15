@@ -10,6 +10,9 @@
           <% end %>
         </div>
         <p><%= post.blurb %></p>
+        <% if admin? %>
+          <%= link_to "Edit Piece", edit_piece_path(post) %>
+        <% end %>
         <% if post.tags.length > 1 %>
             <%= link_to "#{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
         <% end %>
