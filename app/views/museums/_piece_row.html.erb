@@ -1,25 +1,53 @@
-<%= link_to "http://www.medici-app.com", :target => "_blank" do%>
-  <div class="post-wrapper app-advertisement">
-    <div class="thumbnail">
-      <%= image_tag(post.photo.url(:large)) %>
-      <div class="caption">
-        <div class="thumbnail-header">
-          <h3><%= post.name %></h3>
-          <% if post.respond_to?(:museum_id) && !post.museum_id.nil?%>
-            <%= link_to post.museum.name, museum_path(post.museum.id), class: "text-muted museum-name-link" %>
+<% if post.external_url %>
+  <%= link_to post.external_url, :target => "_blank" do%>
+    <div class="post-wrapper app-advertisement">
+      <div class="thumbnail">
+        <%= image_tag(post.photo.url(:large)) %>
+        <div class="caption">
+          <div class="thumbnail-header">
+            <h3><%= post.name %></h3>
+            <% if post.respond_to?(:museum_id) && !post.museum_id.nil?%>
+              <%= link_to post.museum.name, museum_path(post.museum.id), class: "text-muted museum-name-link" %>
+            <% end %>
+          </div>
+          <p><%= post.blurb %></p>
+          <% if admin? %>
+            <%= link_to "Edit Piece", edit_piece_path(post) %>
+          <% end %>
+          <% if post.tags.length > 1 %>
+              <%= link_to "#{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
           <% end %>
         </div>
-        <p><%= post.blurb %></p>
-        <% if admin? %>
-          <%= link_to "Edit Piece", edit_piece_path(post) %>
-        <% end %>
-        <% if post.tags.length > 1 %>
-            <%= link_to "#{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
-        <% end %>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
       </div>
     </div>
-    <div class="progress">
-      <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
+  <% end %>
+<% else %>
+  <%= link_to post do%>
+    <div class="post-wrapper app-advertisement">
+      <div class="thumbnail">
+        <%= image_tag(post.photo.url(:large)) %>
+        <div class="caption">
+          <div class="thumbnail-header">
+            <h3><%= post.name %></h3>
+            <% if post.respond_to?(:museum_id) && !post.museum_id.nil?%>
+              <%= link_to post.museum.name, museum_path(post.museum.id), class: "text-muted museum-name-link" %>
+            <% end %>
+          </div>
+          <p><%= post.blurb %></p>
+          <% if admin? %>
+            <%= link_to "Edit Piece", edit_piece_path(post) %>
+          <% end %>
+          <% if post.tags.length > 1 %>
+              <%= link_to "#{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped" style= "width: 100%"></div>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>

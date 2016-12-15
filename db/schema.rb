@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214231626) do
+ActiveRecord::Schema.define(version: 20161215184656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 20161214231626) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.boolean  "main",               default: false
+    t.string   "external_url"
   end
 
   create_table "taggings", force: :cascade do |t|
