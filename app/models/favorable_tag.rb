@@ -1,0 +1,3 @@
+class FavorableTag < ApplicationRecord
+
+end

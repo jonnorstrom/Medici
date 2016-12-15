@@ -8,7 +8,15 @@
   <h2> Exhibits & Events </h2>
   <div class= "row masonry-container">
     <% @exhibits.each do |exhibit| %>
-      <%= render "museum_row", post: exhibit, ticket: @ticket  %>
+      <% if exhibit.is_a?(Exhibit) %>
+				<%= render "exhibit_row", post: exhibit, ticket: @ticket %>
+			<% elsif exhibit.is_a?(Event) %>
+				<%= render "event_row", post: exhibit, ticket: @ticket %>
+			<% elsif exhibit.is_a?(Museum) %>
+				<%= render "museum_row", post: exhibit, ticket: @ticket %>
+			<% elsif exhibit.is_a?(Piece) %>
+				<%= render "piece_row", post: exhibit, ticket: @ticket %>
+			<% end %>
     <% end %>
   </div>
 <% end %>

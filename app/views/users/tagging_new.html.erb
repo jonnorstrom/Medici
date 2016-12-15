@@ -12,7 +12,7 @@
                  <div class="btn-link tag-btn">
                    <label class= "btn  tag-button tag-list">
                      <%= check_box_tag "user_tag_ids_#{tag.id}", tag.id, (f.object.taggings.present? && f.object.taggings.include?(tag.id)), {:name => "user[tag_ids][]"}%>
-                     <%= "##{tag.name}" %>
+                     <%= "#{tag.name}" %>
                    </label>
                  </div>
 

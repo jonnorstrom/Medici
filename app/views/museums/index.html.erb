@@ -21,9 +21,11 @@
 									</div>
 									<p><%= post.blurb %></p>
 									<div>
-										<% if post.tags.length > 0 %>
-												<%= link_to "#{post.tags[0].name}", post.tags[0], type: "button", class: "row-tags" %>
-										<% end %>
+										<% if post.favorable_tags_as_tags.length > 0 %>
+						          <% post.favorable_tags_as_tags.each do |tag| %>
+						            <%= link_to "#{tag.name}", tag, type: "button", class: "btn btn-default tag-button row-tags" %>
+						            <% end %>
+						        <% end %>
 										<% if current_user %>
 											<% if current_order.includes_event_post?(post.id) %>
 												<div class="input-group-btn">
@@ -67,9 +69,11 @@
 										<%= link_to "Edit Piece", edit_piece_path(post) %>
 									<% end %>
 									<div>
-										<% if post.tags.length > 0 %>
-												<%= link_to "#{post.tags[0].name}", post.tags[0], type: "button", class: "row-tags" %>
-										<% end %>
+										<% if post.favorable_tags_as_tags.length > 0 %>
+						          <% post.favorable_tags_as_tags.each do |tag| %>
+						            <%= link_to "#{tag.name}", tag, type: "button", class: "btn btn-default tag-button row-tags" %>
+						            <% end %>
+						        <% end %>
 									</div>
 								</div>
 							</div>

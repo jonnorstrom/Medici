@@ -30,6 +30,13 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+    @event.favorable_tags.destroy_all
+
+    params[:event][:preferred_tag].each do |t_id|
+      FavorableTag.find_or_create_by(event_id: @event.id, tag_id: t_id)
+    end
+
+    params[:event].delete(:preferred_tag)
     if @event.update(event_params)
       redirect_to :root
     else
@@ -72,6 +79,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :blurb, :max_price, :transportation_info, :address, :website, :description, :photo, :opening_time, :closing_time, :start_date, :price, :end_date, :main, :museum_id, :ticketsite, :ticketable, :tag_ids => [])
+    params.require(:event).permit(:name, :blurb, :max_price, :transportation_info, :address, :website, :description, :photo, :opening_time, :closing_time, :start_date, :price, :end_date, :main, :museum_id, :ticketsite, :ticketable, :tag_ids => [], :preferred_tag => [])
   end
 end

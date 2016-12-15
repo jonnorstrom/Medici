@@ -31,6 +31,13 @@ class PiecesController < ApplicationController
 
   def update
     @piece = Piece.find(params[:id])
+    @piece.favorable_tags.destroy_all
+
+    params[:piece][:preferred_tag].each do |t_id|
+      FavorableTag.find_or_create_by(piece_id: @piece.id, tag_id: t_id)
+    end
+
+    params[:piece].delete(:preferred_tag)
     if @piece.update(piece_params)
       check_external_url
       redirect_to :root
@@ -69,7 +76,7 @@ class PiecesController < ApplicationController
   private
 
   def piece_params
-    params.require(:piece).permit(:name, :blurb, :external_url, :main, :description, :photo, :museum_id, :tag_ids => [])
+    params.require(:piece).permit(:name, :blurb, :external_url, :main, :description, :photo, :museum_id, :tag_ids => [], :preferred_tag => [])
   end
 
   def check_external_url

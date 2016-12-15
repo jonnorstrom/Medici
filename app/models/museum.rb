@@ -56,6 +56,18 @@ class Museum < ApplicationRecord
     return todays_hours
   end
 
+  def favorable_tags
+    FavorableTag.where(museum_id: self.id)
+  end
+
+  def favorable_tags_as_tags
+    favorable_tags.map { |t| Tag.find(t.tag_id) }
+  end
+
+  def has_perferred_tag?(tag)
+    return favorable_tags_as_tags.include?(tag)
+  end
+
   private
 
   def general_hours
