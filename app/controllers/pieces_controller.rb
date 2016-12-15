@@ -33,7 +33,7 @@ class PiecesController < ApplicationController
     if @piece.update(piece_params)
       redirect_to :root
     else
-      render :"post/edit"
+      render :"pieces/edit"
     end
   end
 

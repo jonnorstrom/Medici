@@ -32,7 +32,7 @@
 
   <div class="field">
     <%= f.label :museum_id %>
-    <%= f.collection_select :museum_id, Museum.order(:name), :id, :name, , {:include_blank => true} %>
+    <%= f.collection_select :museum_id, Museum.order(:name), :id, :name , {:include_blank => true} %>
   </div>
 
   <div class="actions">

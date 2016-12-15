@@ -62,6 +62,9 @@
 										<h3><%= post.name %></h3>
 									</div>
 									<p><%= post.blurb %></p>
+									<% if admin? %>
+										<%= link_to "Edit Piece", edit_piece_path(post) %>
+									<% end %>
 									<div>
 										<% if post.tags.length > 0 %>
 												<%= link_to "#{post.tags[0].name}", post.tags[0], type: "button", class: "row-tags" %>
