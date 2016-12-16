@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209180754) do
+ActiveRecord::Schema.define(version: 20161215201104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,16 @@ ActiveRecord::Schema.define(version: 20161209180754) do
     t.boolean  "permanent"
   end
 
+  create_table "favorable_tags", force: :cascade do |t|
+    t.integer  "tag_id",     null: false
+    t.integer  "event_id"
+    t.integer  "museum_id"
+    t.integer  "exhibit_id"
+    t.integer  "piece_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -144,12 +154,14 @@ ActiveRecord::Schema.define(version: 20161209180754) do
     t.string   "blurb"
     t.string   "description"
     t.integer  "museum_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.boolean  "main",               default: false
+    t.string   "external_url"
   end
 
   create_table "taggings", force: :cascade do |t|

@@ -56,7 +56,7 @@
           <% end %>
         </div>
       <% if post.tags.length > 1 %>
-          <%= link_to "##{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
+          <%= link_to "#{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
       <% end %>
     </div>
   </div>

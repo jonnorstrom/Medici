@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe ApplicationHelper, type: :helper do
-  let(:user){User.create(name:"Corbin Dallas", email: "corbin@dallas.com", password: "multipass", admin: true)}
-  let(:user_2){User.create(name:"Lilu", email: "lilu@5th.com", password: "multipass")}
+  let(:user){User.create(full_name:"Corbin Dallas", email: "corbin@dallas.com", password: "multipass", admin: true)}
+  let(:user_2){User.create(full_name:"Lilu", email: "lilu@5th.com", password: "multipass")}
 
   it "should return true if user is an admin" do
     expect(user.admin?).to be(true)

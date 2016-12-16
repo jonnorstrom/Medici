@@ -28,13 +28,14 @@
 				<% end %>
 			<% end %>
 			<div class= "museum-info">
-				<p class= "museum-info-entry"><%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
+				<p class= "museum-info-type"> Address:
+					<% if !museum.transportation_info.nil? && museum.transportation_info != "" %>
+						<i class="fa fa-info-circle" aria-hidden="true"></i>
+					<% end %>
+				</p>
 				<div class="information-tooltip">
-					<p class= "museum-info-type"> Address:
-						<% if !museum.transportation_info.nil? && museum.transportation_info != "" %>
-							<i class="fa fa-info-circle" aria-hidden="true"></i>
-						<% end %>
-					</p>
+					<p class= "museum-info-entry"><%= link_to museum.address, "http://maps.google.com/?q=#{museum.address}", :target => "_blank" %></p>
+
 						<% if !museum.transportation_info.nil? && museum.transportation_info != ""  %>
 							<span class="title tooltiptext">
 								<%= museum.transportation_info %>
@@ -124,7 +125,7 @@
 				<% exhibit.tags.each do |tag| %>
 				<div class="btn-link">
 					<%= link_to(tag) do %>
-				    <button type="button" class="btn btn-default tag-button"><%="##{tag.name}"%></button>
+				    <button type="button" class="btn btn-default tag-button"><%="#{tag.name}"%></button>
 					<% end %>
 				</div>
 			<% end %>

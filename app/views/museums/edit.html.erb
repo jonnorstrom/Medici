@@ -128,6 +128,17 @@
     <%= f.file_field :photo %>
   </div>
 
+  <% if @museum.tags.length > 0 %>
+    <div class="field" style="outline: 1px #ddd solid; display: inline-block; padding: 10px;">
+      <p>Select Preferred Tags</p>
+      <% @museum.tags.each do |tag| %>
+        <%= check_box_tag "museum_tag_ids_#{tag.id}", tag.id, @museum.has_perferred_tag?(tag), {name: "museum[preferred_tag][]"} %>
+        <%= label_tag tag.name %>
+       <br>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit "Edit Museum"%>
   </div>

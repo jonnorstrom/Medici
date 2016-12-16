@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :current_order, :resource_name, :resource, :devise_mapping, :finish_order
   before_filter :store_location, :unless => :devise_controller?
-
+  # heres something new
   def store_location
     # store last url as long as it isn't a /users path
     session[:previous_url] = request.original_fullpath unless request.fullpath =~ /\/users/
