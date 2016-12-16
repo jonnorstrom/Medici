@@ -48,8 +48,10 @@
             <% end %>
           <% end %>
         </div>
-        <% if post.tags.length > 1 %>
-          <%= link_to "##{post.tags[0].name}", post.tags[0], type: "button", class: "btn btn-default tag-button row-tags" %>
+        <% if post.favorable_tags_as_tags.length > 0 %>
+          <% post.favorable_tags_as_tags.each do |tag| %>
+            <%= link_to "#{tag.name}", tag, type: "button", class: "btn btn-default tag-button row-tags" %>
+            <% end %>
         <% end %>
       </div>
     </div>

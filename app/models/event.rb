@@ -42,10 +42,22 @@ class Event < ApplicationRecord
     end
   end
 
+  def favorable_tags
+    FavorableTag.where(event_id: self.id)
+  end
+
+  def favorable_tags_as_tags
+    favorable_tags.map { |t| Tag.find(t.tag_id) }
+  end
+
+  def has_perferred_tag?(tag)
+    return favorable_tags_as_tags.include?(tag)
+  end
+
   private
 
     def max_higher_than_min
-      errors.add(:pricing, "Max price must be more than price") unless (!max_price.nil? && max_price > price)
+      errors.add(:pricing, "Max price must be more than price") unless (max_price.nil? || max_price > price)
     end
 
     def image_dimensions

@@ -9,6 +9,14 @@
 <h2> Related Events </h2>
 <div class= "row masonry-container">
   <% @other_events.each do |event| %>
-    <%= render "museums/museum_row", post: event, ticket: @ticket  %>
+    <% if event.is_a?(Exhibit) %>
+      <%= render "museums/exhibit_row", post: event, ticket: @ticket %>
+    <% elsif event.is_a?(Event) %>
+      <%= render "museums/event_row", post: event, ticket: @ticket %>
+    <% elsif event.is_a?(Museum) %>
+      <%= render "museums/museum_row", post: event, ticket: @ticket %>
+    <% elsif event.is_a?(Piece) %>
+      <%= render "museums/piece_row", post: event, ticket: @ticket %>
+    <% end %>
   <% end %>
 </div>

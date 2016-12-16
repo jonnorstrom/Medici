@@ -137,6 +137,6 @@ RSpec.describe Museum, :type => :model do
     field.closing_time = Time.now
     field.website = "www.fieldmuseum.org"
     field.save
-    expect(field.errors[:photo]).to include("Height must be 400px")
+    expect(field.errors[:photo]).to include("Height must be 298px")
   end
 end

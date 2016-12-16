@@ -84,6 +84,16 @@
     <%= f.file_field :photo %>
   </div>
 
+  <% if @event.tags.length > 0 %>
+    <div class="field" style="outline: 1px #ddd solid; display: inline-block; padding: 10px;">
+      <p>Select Preferred Tags</p>
+      <% @event.tags.each do |tag| %>
+        <%= check_box_tag "event_tag_ids_#{tag.id}", tag.id, @event.has_perferred_tag?(tag), {name: "event[preferred_tag][]"} %>
+        <%= label_tag tag.name %>
+       <br>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Edit Event"%>

@@ -22,6 +22,9 @@ class ExhibitsController < ApplicationController
   def create
     @exhibit = Exhibit.new(exhibit_params)
     if @exhibit.save
+      if @exhibit.price.nil?
+        @exhibit.update(price: 0)
+      end
       redirect_to :root
     else
       @errors = @exhibit.errors.full_messages
@@ -91,6 +94,13 @@ class ExhibitsController < ApplicationController
 
   def update
     @exhibit = Exhibit.find(params[:id])
+    @exhibit.favorable_tags.destroy_all
+
+    params[:exhibit][:preferred_tag].each do |t_id|
+      FavorableTag.find_or_create_by(exhibit_id: @exhibit.id, tag_id: t_id)
+    end
+
+    params[:exhibit].delete(:preferred_tag)
     if @exhibit.update(exhibit_params)
       redirect_to :root
     else
@@ -135,7 +145,7 @@ class ExhibitsController < ApplicationController
   private
 
   def exhibit_params
-    params.require(:exhibit).permit(:name, :blurb, :description, :photo, :price, :start_date, :end_date, :museum_id, :permanent, :ticketsite, :tag_ids => [])
+    params.require(:exhibit).permit(:name, :blurb, :description, :photo, :price, :start_date, :end_date, :museum_id, :permanent, :ticketsite, :tag_ids => [], :preferred_tag => [])
   end
 
   def filter_all_posts

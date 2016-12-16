@@ -15,6 +15,18 @@ class Exhibit < ApplicationRecord
     "#{id} #{name}".parameterize
   end
 
+  def favorable_tags
+    FavorableTag.where(exhibit_id: self.id)
+  end
+
+  def favorable_tags_as_tags
+    favorable_tags.map { |t| Tag.find(t.tag_id) }
+  end
+
+  def has_perferred_tag?(tag)
+    return favorable_tags_as_tags.include?(tag)
+  end
+
   private
 
   def image_dimensions

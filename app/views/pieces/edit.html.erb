@@ -21,18 +21,39 @@
   </div>
 
   <div class="field">
+    <%= f.label "Priority?" %>
+    <%= f.check_box :main %>
+  </div>
+
+  <div class="field">
+    <%= f.label :external_url %>
+    <%= f.text_field :external_url %>
+  </div>
+
+  <div class="field">
     <%= f.label :photo %>
     <%= f.file_field :photo %>
   </div>
 
   <div class="field">
     <%= f.label :museum_id %>
-    <%= f.collection_select :museum_id, Museum.order(:name), :id, :name %>
+    <%= f.collection_select :museum_id, Museum.order(:name), :id, :name , {:include_blank => true} %>
   </div>
+
+  <% if @piece.tags.length > 0 %>
+    <div class="field" style="outline: 1px #ddd solid; display: inline-block; padding: 10px;">
+      <p>Select Preferred Tags</p>
+      <% @piece.tags.each do |tag| %>
+        <%= check_box_tag "piece_tag_ids_#{tag.id}", tag.id, @piece.has_perferred_tag?(tag), {name: "piece[preferred_tag][]"} %>
+        <%= label_tag tag.name %>
+       <br>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Add Piece"%>
   </div>
+  <br>
+  <%= link_to "Delete Piece", @piece, :method => :delete, :confirm => "You sure?" %>
 <% end %>
-
-<%= link_to "Delete Piece", @piece, :method => :delete, :confirm => "You sure?" %>
