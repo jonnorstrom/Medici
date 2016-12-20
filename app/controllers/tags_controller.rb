@@ -37,6 +37,7 @@ class TagsController < ApplicationController
     if params[:tags]
       params[:tags].each do |tag_id|
         Tag.find(tag_id).destroy
+        FavorableTag.where(tag_id: tag_id).destroy_all
       end
     end
     redirect_to(:back)
