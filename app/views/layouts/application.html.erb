@@ -96,6 +96,84 @@
                   </label>
                 </div>
                 <% end %>
+                <!-- <form class="accordian-form" action="">
+                  <div class = "accordion-option">
+                    <input class="hidden" checked="checked" type="radio" name="form-position" value="first" id="form-first"/>
+                    <label for="form-first" data-toggle"collapse" data-target="#catagory">
+                      <p class="accordian-x" aria-hidden="true">&times</p>
+                      <p>Catagory</p>
+                    </label>
+                  </div>
+                  <div id="catagory" class="collapse">
+                      Lorem ipsum dolor text....
+                  </div>
+                  <div class = "accordion-option">
+                    <input class="hidden" type="radio" name="form-position" value="second" id="form-second"/>
+                    <label for="form-second">
+                      <p class="accordian-x" aria-hidden="true">&times</p>
+                      <p>Dates</p>
+                    </label>
+                  </div>
+                  <div class = "accordion-option">
+                    <input class="hidden" type="radio" name="form-position" value="third" id="form-third"/>
+                    <label for="form-third">
+                      <p class="accordian-x" aria-hidden="true">&times</p>
+                      <p>Price</p>
+                    </label>
+                  </div>
+                </form> -->
+                <form class="accordion-form" action="">
+                  <div class="panel-group" id="accordion">
+                    <div class="panel panel-accordion">
+                      <div class="panel-heading">
+                        <div class = "accordion-option">
+                          <input class="hidden" checked="checked" type="radio" name="form-position" value="first" id="form-first"/>
+                          <label data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                           <!--  <p class="accordian-x" aria-hidden="true">&times</p> -->
+                            <p>Catagory</p>
+                          </label>
+                        </div>
+                      </div>
+                      <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-accordion">
+                      <div class="panel-heading">
+                        <div class = "accordion-option">
+                          <input class="hidden" type="radio" name="form-position" value="second" id="form-second"/>
+                          <label for="form-second" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                            <!-- <p class="accordian-x" aria-hidden="true">&times</p> -->
+                            <p>Dates</p>
+                          </label>
+                        </div>
+                      </div>
+                      <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-accordion">
+                      <div class="panel-heading">
+                        <div class = "accordion-option">
+                          <input class="hidden" type="radio" name="form-position" value="third" id="form-third"/>
+                          <label for="form-third" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                            <!-- <p class="accordian-x" aria-hidden="true">&times</p> -->
+                            <p>Price</p>
+                          </label>
+                        </div>
+                      </div>
+                      <div id="collapse3" class="panel-collapse collapse">
+                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                      </div>
+                    </div>
+                  </div>
+                </form> 
                 <% if current_user %>
                   <div>
                     <button type="button"class="list-group-item">
@@ -117,14 +195,14 @@
                   </div>
                   <% else %>
                     <button type="button"class="list-group-item">
+                      <%= link_to "log in", new_user_session_path, id: "log-in-button", class: "" %>
+                    </button>
+                    <button type="button"class="list-group-item">
                       <span class="glyphicon glyphicon-shopping-cart"></span>
                       <a href="#"></a>
                       <%if current_order.tickets.where(paid: false).size > 0 %>
                       <span class="badge"> <%= "#{current_order.tickets.size}" %> </span>
                       <% end %>
-                    </button>
-                    <button type="button"class="list-group-item">
-                      <%= link_to "log in", new_user_session_path, id: "log-in-button", class: "" %>
                     </button>
                 <% end %>
               </div>
