@@ -225,7 +225,6 @@
 }
 .checkbox-wrapper{
     display: block;
-
     margin-left: 5px;
     margin-bottom: 0px;
 }
@@ -251,9 +250,8 @@
 }
 
 .checkbox-wrapper label{
-    margin-top: 2px;
     margin-bottom: 0px;
-    padding: 2px;
+    padding: 1px;
     display: inline-block;
     background-color: transparent;
     cursor: pointer;
@@ -300,6 +298,43 @@ input#event-toggle[type=checkbox]:checked ~.event-label-toggle{
 
 .list-group-item a:hover{
     color: #00AEEF;
+}
+.navbar-collapse .accordian-form{
+    margin: 0px;
+    padding: 0px !important; 
+}
+.accordion-form .panel{
+    border: transparent;
+    border-radius: 8px;
+
+}
+.panel-accordion .panel-heading{
+    background-color: #f8f8f8;
+}
+.panel-accordion .panel-body{
+    background-color: #f5f5f5 !important;
+    box-shadow: inset 1px 3px 3px rgba(0,0,0,.1);
+}
+.accordian-option {
+    display: block;
+}
+.accordian-form p {
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
+.accordian-form span {
+    padding-bottom: 4px;
+    margin-left: 15px !important;
+}
+.accordian-x{
+    font-size: 25px !important;
+    z-index: 100; 
+    transform: rotate(45deg);
+    transition: all .2s ease;
+}
+.accordian-form input[type=radio]:checked + label > .accordian-x{
+    transform: rotate(90deg);
 }
 
 .toggle-group{

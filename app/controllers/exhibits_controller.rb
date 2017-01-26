@@ -38,8 +38,17 @@ class ExhibitsController < ApplicationController
     @all_posts = Museum.all + Exhibit.all + Event.all + Piece.all
     @ticket = current_order.tickets.new
     @posts = []
+    @category = []
     @term = params[:search].downcase
+    if params[:category]
+      params[:category].each do |k, v|
+        @category << k
+      end
+    end
+    @price = params[:pricing]
+    @dates = params[:dates]
     @tags = params[:tag_search]
+    filter_all_posts
     if params[:search]
       if @tags
         @all_posts.each do |post|
@@ -69,11 +78,6 @@ class ExhibitsController < ApplicationController
     else
       @posts = @all_posts.all.order('created_at DESC')
     end
-    # Tag.all.each do |tag|
-    #   if tag.name.downcase == @term
-    #     @posts << tag
-    #   end
-    # end
     @posts = @posts.uniq
     if @posts.length == 1 && @posts[0].is_a?(Tag)
       redirect_to @posts[0]
@@ -142,5 +146,52 @@ class ExhibitsController < ApplicationController
 
   def exhibit_params
     params.require(:exhibit).permit(:name, :blurb, :description, :photo, :price, :start_date, :end_date, :museum_id, :permanent, :ticketsite, :tag_ids => [], :preferred_tag => [])
+  end
+
+  def filter_all_posts
+    if @price == "Free"
+      @all_posts = Museum.where('price = 0') + Event.where('price = 0') + Exhibit.where('price = 0')
+    end
+
+    case @dates
+    when "Today"
+      @all_posts = @all_posts - Event.where('end_date < ?', DateTime.now - 1)
+      @all_posts = @all_posts - Event.where('start_date > ?',  DateTime.now + 1)
+      @all_posts = @all_posts - Exhibit.where('end_date < ?', DateTime.now - 1)
+      @all_posts = @all_posts - Exhibit.where('start_date > ?',  DateTime.now + 1)
+    when "Tomorrow"
+      @all_posts = @all_posts - Event.where('end_date < ?', DateTime.now)
+      @all_posts = @all_posts - Event.where('start_date > ?',  DateTime.now + 2)
+      @all_posts = @all_posts - Exhibit.where('end_date < ?', DateTime.now)
+      @all_posts = @all_posts - Exhibit.where('start_date > ?',  DateTime.now + 2)
+    when "This Week"
+      @all_posts = @all_posts - Event.where('end_date < ?', DateTime.now)
+      @all_posts = @all_posts - Event.where('start_date > ?',  DateTime.now + 8)
+      @all_posts = @all_posts - Exhibit.where('end_date < ?', DateTime.now)
+      @all_posts = @all_posts - Exhibit.where('start_date > ?',  DateTime.now + 8)
+    when "This Month"
+      @all_posts = @all_posts - Event.where('end_date < ?', DateTime.now)
+      @all_posts = @all_posts - Event.where('start_date > ?',  DateTime.now + 32)
+      @all_posts = @all_posts - Exhibit.where('end_date < ?', DateTime.now)
+      @all_posts = @all_posts - Exhibit.where('start_date > ?',  DateTime.now + 32)
+    end
+
+    if @category.length > 0
+      tags = []
+      @category.each do |c|
+        tags << Tag.find_by(name: c)
+      end
+      @all_posts.each do |post|
+        keep = false
+        tags.each do |tag|
+          if post.tags.include?(tag)
+            keep = true
+          end
+        end
+        if keep == false
+          @all_posts -= [post]
+        end
+      end
+    end
   end
 end

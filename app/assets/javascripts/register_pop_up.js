@@ -5,7 +5,6 @@ $(document).ready(function() {
 		if (!visited) {
 	  		localStorage.setItem('visited', true);
 			$('#signUpModal').modal('show');
-		}
-	}
-
+		}	
+	}	
 });
