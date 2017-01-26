@@ -151,7 +151,7 @@ class ExhibitsController < ApplicationController
   def filter_all_posts
     # category, price, dates
     if @price == "Free"
-      @all_posts -= Museum.where('price = 0') - Event.where('price = 0') - Exhibit.where('price = 0')
+      @all_posts = Museum.where('price = 0') + Event.where('price = 0') + Exhibit.where('price = 0')
     end
 
     case @dates
